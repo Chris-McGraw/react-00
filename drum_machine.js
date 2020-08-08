@@ -41,15 +41,12 @@ class DrumMachine extends React.Component {
 class PowerContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.togglePower = this.togglePower.bind(this);
   }
 
   render() {
     return (
       <div>
-        <div id="pad-container">
-          <div className="drum-pad" id="pad-q" onClick={this.togglePower}></div>
-        </div>
+        <div id="power-container" onClick={this.props.togglePower}></div>
       </div>
     );
   }

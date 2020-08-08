@@ -37,6 +37,20 @@ html,body {
   border: 1px solid black;
 }
 
+#power-container {
+  position: absolute;
+  left: 60px;
+  bottom: 190px;
+
+  width: 100px;
+  height: 200px;
+  margin-left: 250px;
+  margin-bottom: 40px;
+
+  background-color: blue;
+  border: 1px dashed white;
+}
+
 #pad-container {
   position: absolute;
   bottom: 0;
