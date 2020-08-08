@@ -12,7 +12,7 @@ class DrumMachine extends React.Component {
     return (
       <div>
         <div id="drum-machine">
-          <PadContainer />
+          <PadContainer power={this.state.power}/>
         </div>
       </div>
     );
@@ -26,7 +26,7 @@ class PadContainer extends React.Component {
   }
 
   padPress() {
-    console.log(this.state.power);
+    console.log(this.props.power);
   }
 
   render() {
