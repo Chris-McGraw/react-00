@@ -11,7 +11,23 @@ class DrumMachine extends React.Component {
   render() {
     return (
       <div>
-        <div id="drum-machine"></div>
+        <div id="drum-machine">
+          <PadContainer />
+        </div>
+      </div>
+    );
+  }
+}
+
+class PadContainer extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <div id="pad-container"></div>
       </div>
     );
   }
