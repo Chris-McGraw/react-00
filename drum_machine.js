@@ -17,6 +17,6 @@ class DrumMachine extends React.Component {
   }
 }
 
-ReactDOM.render(JSX, document.getElementById('root'))
+// ReactDOM.render(JSX, document.getElementById('root'));
 const domContainer = document.querySelector('#drum_machine');
 ReactDOM.render(<DrumMachine />, domContainer);
