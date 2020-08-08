@@ -6,13 +6,49 @@ class DrumMachine extends React.Component {
     this.state = {
       power: "on"
     };
+    this.togglePower = this.togglePower.bind(this);
+  }
+
+  togglePower() {
+    if(this.state.power === "on") {
+      this.setState({
+        power: "off"
+      });
+
+      console.log(this.state.power);
+    }
+    else {
+      this.setState({
+        power: "on"
+      });
+
+      console.log(this.state.power);
+    }
   }
 
   render() {
     return (
       <div>
         <div id="drum-machine">
-          <PadContainer power={this.state.power}/>
+          <PowerContainer togglePower={this.togglePower} />
+          <PadContainer power={this.state.power} />
+        </div>
+      </div>
+    );
+  }
+}
+
+class PowerContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.togglePower = this.togglePower.bind(this);
+  }
+
+  render() {
+    return (
+      <div>
+        <div id="pad-container">
+          <div className="drum-pad" id="pad-q" onClick={this.togglePower}></div>
         </div>
       </div>
     );
@@ -26,6 +62,7 @@ class PadContainer extends React.Component {
   }
 
   padPress() {
+    console.log("local match?");
     console.log(this.props.power);
   }
 
