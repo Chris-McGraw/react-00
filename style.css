@@ -22,3 +22,17 @@ html,body {
 
   background-color: black;
 }
+
+#drum-machine {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+
+  height: 80%;
+  width: 90%;
+  margin: auto;
+
+  background-color: #2d2e2d;
+  border: 1px solid black;
+}
