@@ -24,10 +24,16 @@ class PadContainer extends React.Component {
     super(props);
   }
 
+  padPress() {
+    console.log(this.state.power);
+  }
+
   render() {
     return (
       <div>
-        <div id="pad-container"></div>
+        <div id="pad-container">
+          <div className="drum-pad" id="pad-q" onClick={this.padPress}></div>
+        </div>
       </div>
     );
   }
