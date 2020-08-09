@@ -83,7 +83,7 @@ class PadContainer extends React.Component {
 
   render() {
     let padPowered = {
-      border: "1px solid yellow";
+      border: "1px solid yellow"
     };
     if(this.props.power === "off") {
       padPowered = {
