@@ -83,8 +83,8 @@ class PadContainer extends React.Component {
 
   render() {
     let padPowered = {
-      backgroundImage: "inherit",
-      backgroundColor: "inherit"
+      backgroundImage: "null",
+      backgroundColor: "null"
     };
     if(this.props.power === "off") {
       padPowered = {
@@ -102,6 +102,9 @@ class PadContainer extends React.Component {
           <div className="drum-pad" id="pad-a" style={padPowered} onClick={this.padPress}></div>
           <div className="drum-pad" id="pad-s" style={padPowered} onClick={this.padPress}></div>
           <div className="drum-pad" id="pad-d" style={padPowered} onClick={this.padPress}></div>
+          <div className="drum-pad" id="pad-z" style={padPowered} onClick={this.padPress}></div>
+          <div className="drum-pad" id="pad-x" style={padPowered} onClick={this.padPress}></div>
+          <div className="drum-pad" id="pad-c" style={padPowered} onClick={this.padPress}></div>
         </div>
       </div>
     );

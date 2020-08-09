@@ -202,3 +202,18 @@ html,body {
   background-color: #0e839f;
   background-image: radial-gradient(#6be2fa, #0e839f);
 }
+
+#pad-z {
+  background-color: #ad020c;
+  background-image: radial-gradient(#fd6846, #ad020c);
+}
+
+#pad-x {
+  background-color: #ad020c;
+  background-image: radial-gradient(#fd6846, #ad020c);
+}
+
+#pad-c {
+  background-color: #ad020c;
+  background-image: radial-gradient(#fd6846, #ad020c);
+}
