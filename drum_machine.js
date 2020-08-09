@@ -20,8 +20,6 @@ class DrumMachine extends React.Component {
         power: "on"
       });
     }
-
-    console.log(this.state.power);
   }
 
   render() {
@@ -54,10 +52,18 @@ class PowerContainer extends React.Component {
     return (
       <div>
         <div id="power-container">
-          <div id="slider-path"></div>
-
           <div id="power-switch" style={switchSlide} onClick={this.props.togglePower}>
             <div id="power-switch-indicator"></div>
+          </div>
+
+          <div id="slider-path"></div>
+
+          <div id="power-on-line">
+            <p>ON</p>
+          </div>
+
+          <div id="power-off-line">
+            <p>OFF</p>
           </div>
         </div>
       </div>

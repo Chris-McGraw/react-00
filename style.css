@@ -50,19 +50,6 @@ html,body {
   border: 1px dashed white;
 }
 
-#slider-path {
-  position: relative;
-  z-index: 20;
-  left: 0;
-  right: 0;
-
-  height: 100%;
-  width: 8px;
-  margin: auto;
-
-  background-color: black;
-}
-
 #power-switch {
   display: grid;
   justify-content: center;
@@ -93,6 +80,63 @@ html,body {
   background-color: white;
 
   cursor: pointer;
+}
+
+#slider-path {
+  position: relative;
+  z-index: 20;
+  left: 0;
+  right: 0;
+
+  height: 100%;
+  width: 8px;
+  margin: auto;
+
+  background-color: black;
+}
+
+#power-on-line {
+  position: absolute;
+  z-index: 0;
+  top: 50px;
+
+  width: 100px;
+  height: 1px;
+
+  background-color: white;
+}
+
+#power-on-line p {
+  position: absolute;
+  top: -8px;
+  right: -27px;
+
+  font-family: sans-serif;
+  color: white;
+
+  user-select: none;
+}
+
+#power-off-line {
+  position: absolute;
+  z-index: 0;
+  bottom: 49px;
+
+  width: 100px;
+  height: 1px;
+
+  background-color: white;
+}
+
+#power-off-line p {
+  position: absolute;
+  top: -8px;
+  right: -35px;
+
+  font-family: sans-serif;
+  color: white;
+
+  user-select: none;
 }
 
 #pad-container {
