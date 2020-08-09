@@ -93,9 +93,18 @@ class PadContainer extends React.Component {
     return (
       <div>
         <div id="pad-container">
-          <div className="drum-pad" id="pad-q" style={padPowered} onClick={this.padPress}></div>
-          <div className="drum-pad" id="pad-w" style={padPowered} onClick={this.padPress}></div>
-          <div className="drum-pad" id="pad-e" style={padPowered} onClick={this.padPress}></div>
+          <div className="drum-pad" id="pad-q" style={padPowered} onClick={this.padPress}>
+            <div className="pad-glow"></div>
+          </div>
+
+          <div className="drum-pad" id="pad-w" style={padPowered} onClick={this.padPress}>
+            <div className="pad-glow"></div>
+          </div>
+
+          <div className="drum-pad" id="pad-e" style={padPowered} onClick={this.padPress}>
+            <div className="pad-glow"></div>
+          </div>
+
           <div className="drum-pad" id="pad-a" style={padPowered} onClick={this.padPress}></div>
           <div className="drum-pad" id="pad-s" style={padPowered} onClick={this.padPress}></div>
           <div className="drum-pad" id="pad-d" style={padPowered} onClick={this.padPress}></div>

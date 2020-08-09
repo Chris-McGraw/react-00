@@ -40,7 +40,7 @@ html,body {
 #power-container {
   position: absolute;
   left: 60px;
-  bottom: 190px;
+  bottom: 120px;
 
   width: 100px;
   height: 200px;
@@ -150,7 +150,7 @@ html,body {
   grid-row-gap: 20px;
 
   height: 60%;
-  width: 40%;
+  width: 45%;
   margin-right: 40px;
   margin-bottom: 40px;
 
@@ -158,13 +158,12 @@ html,body {
 }
 
 .drum-pad {
-  grid-column: span 1;
-
-  position: relative;
-
   display: grid;
+  grid-column: span 1;
   align-items: center;
   justify-content: center;
+
+  position: relative;
 
   background-color: #898F90;
   box-shadow: 8px 8px 8px rgba(0,0,0, 1.0);
@@ -194,26 +193,41 @@ html,body {
 }
 
 #pad-s {
-  background-color: #0e839f;
-  background-image: radial-gradient(#6be2fa, #0e839f);
+  background-color: #0530da;
+  background-image: radial-gradient(#818bfa, #0530da);
 }
 
 #pad-d {
-  background-color: #0e839f;
-  background-image: radial-gradient(#6be2fa, #0e839f);
+  background-color: #0530da;
+  background-image: radial-gradient(#818bfa, #0530da);
 }
 
 #pad-z {
-  background-color: #ad020c;
-  background-image: radial-gradient(#fd6846, #ad020c);
+  background-color: #d6b002;
+  background-image: radial-gradient(#ffeb99, #d6b002);
 }
 
 #pad-x {
-  background-color: #ad020c;
-  background-image: radial-gradient(#fd6846, #ad020c);
+  background-color: #d6b002;
+  background-image: radial-gradient(#ffeb99, #d6b002);
 }
 
 #pad-c {
-  background-color: #ad020c;
-  background-image: radial-gradient(#fd6846, #ad020c);
+  background-color: #0c810c;
+  background-image: radial-gradient(#2bef39, #0c810c);
+}
+
+.pad-glow {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  width: 100px;
+  height: 100px;
+
+  background-color: rgba(255,255,255, 0.2);
+  border-radius: 100%;
+  box-shadow: 0 0 50px rgba(255,255,255, 0.5);
+
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
