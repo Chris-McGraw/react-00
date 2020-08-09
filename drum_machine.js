@@ -11,18 +11,22 @@ class DrumMachine extends React.Component {
 
   togglePower() {
     if(this.state.power === "on") {
+      console.log(this.state.power);
+
       this.setState({
         power: "off"
       });
 
-      console.log(this.state.power);
+      setTimeout(function() {
+        console.log(this.state.power);
+      }, 50);
     }
     else {
       this.setState({
         power: "on"
       });
 
-      console.log(this.state.power);
+      // console.log(this.state.power);
     }
   }
 
@@ -46,7 +50,13 @@ class PowerContainer extends React.Component {
   render() {
     return (
       <div>
-        <div id="power-container" onClick={this.props.togglePower}></div>
+        <div id="power-container">
+          <div id="slider-path"></div>
+
+          <div id="power-switch" onClick={this.props.togglePower}>
+            <div id="power-switch-indicator"></div>
+          </div>
+        </div>
       </div>
     );
   }
