@@ -78,15 +78,23 @@ class PadContainer extends React.Component {
   }
 
   padPress() {
-    console.log("local match?");
     console.log(this.props.power);
   }
 
   render() {
+    if(this.props.power === "off") {
+      padPowered = {
+        backgroundImage: "none !important",
+        backgroundColor: "#898F90 !important""
+      }
+    }
+
     return (
       <div>
         <div id="pad-container">
-          <div className="drum-pad" id="pad-q" onClick={this.padPress}></div>
+          <div className="drum-pad" id="pad-q" style={padPowered} onClick={this.padPress}></div>
+          <div className="drum-pad" id="pad-w" onClick={this.padPress}></div>
+          <div className="drum-pad" id="pad-e" onClick={this.padPress}></div>
         </div>
       </div>
     );

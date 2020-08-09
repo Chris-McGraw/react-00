@@ -84,7 +84,7 @@ html,body {
 
 #slider-path {
   position: relative;
-  z-index: 20;
+  z-index: 10;
   left: 0;
   right: 0;
 
@@ -174,8 +174,16 @@ html,body {
 }
 
 #pad-q {
-  /* background-color: #b43233; */
+  background-color: #ad020c;
+  background-image: radial-gradient(#fd6846, #ad020c);
+}
 
+#pad-w {
+  background-color: #ad020c;
+  background-image: radial-gradient(#fd6846, #ad020c);
+}
+
+#pad-e {
   background-color: #ad020c;
   background-image: radial-gradient(#fd6846, #ad020c);
 }
