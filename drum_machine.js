@@ -83,13 +83,13 @@ class PadContainer extends React.Component {
 
   render() {
     let padPowered = {
-      backgroundImage: "null",
-      backgroundColor: "null"
+      border: "1px solid yellow";
     };
     if(this.props.power === "off") {
       padPowered = {
         backgroundImage: "none",
-        backgroundColor: "#898F90"
+        backgroundColor: "#898F90",
+        border: "none"
       }
     }
 
