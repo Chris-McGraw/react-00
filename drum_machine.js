@@ -11,30 +11,24 @@ class DrumMachine extends React.Component {
 
   togglePower() {
     if(this.state.power === "on") {
-      console.log(this.state.power);
-
       this.setState({
         power: "off"
       });
-
-      setTimeout(function() {
-        console.log(this.state.power);
-      }, 50);
     }
     else {
       this.setState({
         power: "on"
       });
-
-      // console.log(this.state.power);
     }
+
+    console.log(this.state.power);
   }
 
   render() {
     return (
       <div>
         <div id="drum-machine">
-          <PowerContainer togglePower={this.togglePower} />
+          <PowerContainer power={this.state.power} togglePower={this.togglePower} />
           <PadContainer power={this.state.power} />
         </div>
       </div>
@@ -48,12 +42,21 @@ class PowerContainer extends React.Component {
   }
 
   render() {
+    let switchSlide = {
+      transform: "translateY(0%)";
+    }
+    if(this.props.power === "off") {
+      switchSlide = {
+        transform: "translateY(100%)";
+      }
+    }
+
     return (
       <div>
         <div id="power-container">
           <div id="slider-path"></div>
 
-          <div id="power-switch" onClick={this.props.togglePower}>
+          <div id="power-switch" style={switchSlide} onClick={this.props.togglePower}>
             <div id="power-switch-indicator"></div>
           </div>
         </div>
