@@ -83,8 +83,8 @@ class PadContainer extends React.Component {
 
   render() {
     let padPowered = {
-      backgroundImage: "radial-gradient(#fd6846, #ad020c)",
-      backgroundColor: "#ad020c"
+      backgroundImage: "inherit",
+      backgroundColor: "inherit"
     };
     if(this.props.power === "off") {
       padPowered = {
