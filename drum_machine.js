@@ -43,11 +43,11 @@ class PowerContainer extends React.Component {
 
   render() {
     let switchSlide = {
-      transform: "translateY(0%)";
+      transform: "translateY(0%)"
     }
     if(this.props.power === "off") {
       switchSlide = {
-        transform: "translateY(100%)";
+        transform: "translateY(100%)"
       }
     }
 
