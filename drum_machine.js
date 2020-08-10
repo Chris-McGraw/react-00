@@ -27,6 +27,14 @@ class DrumMachine extends React.Component {
   setCurrentKit(event) {
     if(this.state.power === "on") {
       console.log(event.currentTarget.id);
+
+      if(event.currentTarget.id === "kit-btn-2") {
+        this.setState({
+          currentKit: "kit-2"
+        });
+
+        document.querySelector("#" + event.currentTarget.id).style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
+      }
     }
   }
 
