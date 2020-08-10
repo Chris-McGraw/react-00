@@ -77,12 +77,12 @@ class PadContainer extends React.Component {
     this.padPress = this.padPress.bind(this);
   }
 
-  padPress() {
+  padPress(event) {
     console.log(this.props.power);
 
-    console.log(this);
+    console.log(event.target.id);
 
-    // document.querySelector("#" + this.children[0].id).play();
+    document.querySelector("#" + event.target.id.children[0].id).play();
 
     // audio.play();
   }
@@ -106,7 +106,7 @@ class PadContainer extends React.Component {
       <div>
         <div id="pad-container">
           <div className="drum-pad" id="pad-q" style={padPowered} onClick={this.padPress}>
-            <audio preload="auto" src="audio/808s/loaded.wav" className="clip" id="Q"></audio>
+            <audio preload="auto" src="audio/loaded.wav" className="clip" id="Q"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>Q</p>
           </div>
