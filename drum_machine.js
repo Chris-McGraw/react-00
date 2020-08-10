@@ -8,6 +8,7 @@ class DrumMachine extends React.Component {
       currentKit: "kit-1"
     };
     this.togglePower = this.togglePower.bind(this);
+    this.setCurrentKit = this.setCurrentKit.bind(this);
   }
 
   togglePower() {
@@ -23,12 +24,18 @@ class DrumMachine extends React.Component {
     }
   }
 
+  setCurrentKit(event) {
+    if(this.state.power === "on") {
+      console.log(event.currentTarget.id);
+    }
+  }
+
   render() {
     return (
       <div>
         <div id="drum-machine">
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
-          <KitChoiceContainer power={this.state.power} currentKit={this.state.currentKit} />
+          <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} currentKit={this.state.currentKit} />
           <PadContainer power={this.state.power} currentKit={this.state.currentKit} />
         </div>
       </div>
@@ -96,12 +103,14 @@ class KitChoiceContainer extends React.Component {
     return (
       <div>
         <div id="kit-choice-container">
-          <div className="kit-choice-btn" id="kit-btn-1" style={btnPowered}>
+          <div className="kit-choice-btn" id="kit-btn-1"
+          style={btnPowered} onClick={this.props.setCurrentKit}>
             <div className="kit-choice-btn-glow" style={btnGlowPowered}></div>
             <p>1</p>
           </div>
 
-          <div className="kit-choice-btn" id="kit-btn-2" style={btnPowered}>
+          <div className="kit-choice-btn" id="kit-btn-2"
+          style={btnPowered} onClick={this.props.setCurrentKit}>
             <div className="kit-choice-btn-glow" style={btnGlowPowered}></div>
             <p>2</p>
           </div>
