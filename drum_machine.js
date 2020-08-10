@@ -40,7 +40,9 @@ class DrumMachine extends React.Component {
       }
 
       var elements = document.getElementsByClassName("kit-choice-btn");
-      console.log(elements);
+      console.log(elements[0]);
+      console.log(elements[1]);
+      console.log(elements[2]);
 
       document.querySelector("#" + event.currentTarget.id).style.backgroundColor = "#E9E8EB";
       document.querySelector("#" + event.currentTarget.id).style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
