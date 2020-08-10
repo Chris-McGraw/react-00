@@ -80,9 +80,9 @@ class PadContainer extends React.Component {
   padPress(event) {
     console.log(this.props.power);
 
-    console.log(event.target.id);
+    console.log(event.target);
 
-    document.querySelector("#" + event.target.id.children[0].id).play();
+    // document.querySelector("#" + event.target.id.children[0].id).play();
 
     // audio.play();
   }
