@@ -28,6 +28,7 @@ class DrumMachine extends React.Component {
       <div>
         <div id="drum-machine">
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
+          <KitChoiceContainer power={this.state.power} currentKit={this.state.currentKit} />
           <PadContainer power={this.state.power} currentKit={this.state.currentKit} />
         </div>
       </div>
@@ -72,6 +73,35 @@ class PowerContainer extends React.Component {
   }
 }
 
+class KitChoiceContainer extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <div id="kit-choice-container">
+          <div class="kit-choice-btn" id="kit-btn-1">
+            <div class="kit-choice-btn-glow"></div>
+            <p>1</p>
+          </div>
+
+          <div class="kit-choice-btn" id="kit-btn-2">
+            <div class="kit-choice-btn-glow"></div>
+            <p>2</p>
+          </div>
+
+          <div class="kit-choice-btn" id="kit-btn-3">
+            <div class="kit-choice-btn-glow"></div>
+            <p>3</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
 class PadContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -83,6 +113,9 @@ class PadContainer extends React.Component {
 
     if(this.props.power === "on") {
       if(this.props.currentKit === "kit-1") {
+        event.currentTarget.children[0].src = "audio/808s/loaded.wav"
+      }
+      else if(this.props.currentKit === "kit-2") {
         event.currentTarget.children[0].src = "audio/808s/chirp.wav"
       }
 
