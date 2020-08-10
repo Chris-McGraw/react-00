@@ -167,7 +167,8 @@ html,body {
 
   height: 70px;
 
-  background-color: #898F90;
+  background-color: #c0c7ca;
+  background-image: radial-gradient(#b6b4be, #c0c7ca);
   box-shadow: 6px 6px 6px rgba(0,0,0, 1.0);
 
   cursor: pointer;
