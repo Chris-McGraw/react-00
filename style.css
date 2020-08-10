@@ -242,8 +242,7 @@ html,body {
 
 #pad-q {
   background-color: #ad020c;
-  /* background-image: radial-gradient(#fd6846, #ad020c); */
-   background-image: radial-gradient(rgba(255,255,255, 0.1), rgba(255,255,255, 0.2));
+  background-image: radial-gradient(#fd6846, #ad020c);
 }
 
 #pad-w {
