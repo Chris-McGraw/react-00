@@ -174,6 +174,11 @@ html,body {
   transition: background-color 0.4s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
+#kit-btn-1 {
+  background-color: #E9E8EB;
+  background-image: radial-gradient(#E9E8EB, #dad9de);
+}
+
 .kit-choice-btn-glow {
   display: grid;
   align-items: center;
