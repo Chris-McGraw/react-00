@@ -96,7 +96,7 @@ class KitChoiceContainer extends React.Component {
     return (
       <div>
         <div id="kit-choice-container">
-          <div className="kit-choice-btn" id="kit-btn-1" style={{btnPowered, btnActive}}>
+          <div className="kit-choice-btn" id="kit-btn-1" style={btnPowered}>
             <div className="kit-choice-btn-glow" style={btnGlowPowered}></div>
             <p>1</p>
           </div>
