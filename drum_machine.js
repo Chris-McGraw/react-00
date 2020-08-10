@@ -81,6 +81,10 @@ class KitChoiceContainer extends React.Component {
   render() {
     let btnPowered = {};
     let btnGlowPowered = {};
+    let btnActive = {
+      backgroundColor: "#E9E8EB",
+      backgroundImage: "radial-gradient(#E9E8EB, #dad9de)"
+    };
 
     if(this.props.power === "off") {
       btnPowered = {
@@ -91,12 +95,16 @@ class KitChoiceContainer extends React.Component {
         boxShadow: "none",
         backgroundColor: "rgba(255,255,255, 0.0)"
       }
+      btnActive = {
+        backgroundImage: "none",
+        backgroundColor: "#898F90"
+      }
     }
 
     return (
       <div>
         <div id="kit-choice-container">
-          <div className="kit-choice-btn" id="kit-btn-1" style={btnPowered}>
+          <div className="kit-choice-btn" id="kit-btn-1" style={{btnPowered, btnActive}}>
             <div className="kit-choice-btn-glow" style={btnGlowPowered}></div>
             <p>1</p>
           </div>
