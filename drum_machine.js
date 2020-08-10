@@ -82,18 +82,18 @@ class KitChoiceContainer extends React.Component {
     return (
       <div>
         <div id="kit-choice-container">
-          <div class="kit-choice-btn" id="kit-btn-1">
-            <div class="kit-choice-btn-glow"></div>
+          <div className="kit-choice-btn" id="kit-btn-1">
+            <div className="kit-choice-btn-glow"></div>
             <p>1</p>
           </div>
 
-          <div class="kit-choice-btn" id="kit-btn-2">
-            <div class="kit-choice-btn-glow"></div>
+          <div className="kit-choice-btn" id="kit-btn-2">
+            <div className="kit-choice-btn-glow"></div>
             <p>2</p>
           </div>
 
-          <div class="kit-choice-btn" id="kit-btn-3">
-            <div class="kit-choice-btn-glow"></div>
+          <div className="kit-choice-btn" id="kit-btn-3">
+            <div className="kit-choice-btn-glow"></div>
             <p>3</p>
           </div>
         </div>
