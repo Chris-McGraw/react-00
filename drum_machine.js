@@ -81,10 +81,14 @@ class KitChoiceContainer extends React.Component {
   render() {
     let btnPowered = {};
     let btnGlowPowered = {};
-    let btnActive = {
-      backgroundColor: "#E9E8EB",
-      backgroundImage: "radial-gradient(#E9E8EB, #dad9de)"
-    };
+    let btnActive = {};
+
+    if(this.props.currentKit === "kit-1") {
+      btnActive = {
+        backgroundColor: "#E9E8EB",
+        backgroundImage: "radial-gradient(#E9E8EB, #dad9de)"
+      }
+    }
 
     if(this.props.power === "off") {
       btnPowered = {
