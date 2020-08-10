@@ -4,7 +4,8 @@ class DrumMachine extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      power: "on"
+      power: "on",
+      currentKit: "kit-1"
     };
     this.togglePower = this.togglePower.bind(this);
   }
@@ -27,7 +28,7 @@ class DrumMachine extends React.Component {
       <div>
         <div id="drum-machine">
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
-          <PadContainer power={this.state.power} />
+          <PadContainer power={this.state.power} currentKit={this.state.currentKit} />
         </div>
       </div>
     );
@@ -81,6 +82,10 @@ class PadContainer extends React.Component {
     // console.log(this.props.power);
 
     if(this.props.power === "on") {
+      if(this.props.currentKit === "kit-1") {
+        event.currentTarget.children[0].src = "audio/808s/chirp.wav"
+      }
+
       let audio = event.currentTarget.children[0];
 
       audio.pause();
