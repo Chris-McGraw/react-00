@@ -39,10 +39,12 @@ class DrumMachine extends React.Component {
         });
       }
 
-      document.getElementsByClassName("kit-choice-btn").forEach(function(i) {
-        i.style.backgroundColor = "#c0c7ca";
-        i.style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
-      });
+      let test = document.getElementsByClassName("kit-choice-btn");
+
+      for(var i = 0; i < test.length; i++) {
+        test[i].classList.style.backgroundColor = "#c0c7ca";
+        test[i].classList.style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
+      }
 
       document.querySelector("#" + event.currentTarget.id).style.backgroundColor = "#E9E8EB";
       document.querySelector("#" + event.currentTarget.id).style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
