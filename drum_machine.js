@@ -28,13 +28,24 @@ class DrumMachine extends React.Component {
     if(this.state.power === "on") {
       console.log(event.currentTarget.id);
 
-      if(event.currentTarget.id === "kit-btn-2") {
+      if(event.currentTarget.id === "kit-btn-1") {
+        this.setState({
+          currentKit: "kit-1"
+        });
+      }
+      else if(event.currentTarget.id === "kit-btn-2") {
         this.setState({
           currentKit: "kit-2"
         });
-
-        document.querySelector("#" + event.currentTarget.id).style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
       }
+
+      document.getElementsByClassName("kit-choice-btn").forEach(function(i) {
+        i.style.backgroundColor = "#c0c7ca";
+        i.style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
+      });
+
+      document.querySelector("#" + event.currentTarget.id).style.backgroundColor = "#E9E8EB";
+      document.querySelector("#" + event.currentTarget.id).style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
     }
   }
 
