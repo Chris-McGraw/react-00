@@ -178,6 +178,19 @@ class PadContainer extends React.Component {
     event.currentTarget.style.boxShadow = "8px 8px 8px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
   }
 
+  handleKeyPress(event) {
+    if (event.keyCode === 13) {
+      this.padPress();
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyPress);
+  }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyPress);
+  }
+
   render() {
     let padPowered = {};
     let padGlowPowered = {};
