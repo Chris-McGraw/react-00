@@ -98,7 +98,7 @@ class KitChoiceContainer extends React.Component {
   }
 
   kitBtnDown(event) {
-    if(this.state.power === "on") {
+    if(this.props.power === "on") {
       var kitBtns = document.getElementsByClassName("kit-choice-btn");
 
       for(let n = 0; n < kitBtns.length; n++) {
