@@ -163,7 +163,7 @@ class PadContainer extends React.Component {
         event.currentTarget.children[0].src = "audio/808s/chirp.wav";
       }
 
-      event.currentTarget.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)"
+      event.currentTarget.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
 
       let audio = event.currentTarget.children[0];
 
@@ -171,6 +171,10 @@ class PadContainer extends React.Component {
       audio.currentTime = 0
       audio.play();
     }
+  }
+
+  padLift(event) {
+    event.currentTarget.style.boxShadow = "8px 8px 8px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
   }
 
   render() {
@@ -191,7 +195,7 @@ class PadContainer extends React.Component {
     return (
       <div>
         <div id="pad-container">
-          <div className="drum-pad" id="pad-q" style={padPowered} onMouseDown={this.padPress}>
+          <div className="drum-pad" id="pad-q" style={padPowered} onMouseDown={this.padPress} onMouseUp={this.padLift}>
             <audio preload="auto" src="audio/808s/loaded.wav" className="clip" id="Q"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>Q</p>
