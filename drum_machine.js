@@ -104,6 +104,16 @@ class PowerContainer extends React.Component {
 class KitChoiceContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.kitBtnDown = this.kitBtnDown.bind(this);
+    this.kitBtnUp = this.kitBtnUp.bind(this);
+  }
+
+  kitBtnDown() {
+    event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+  }
+
+  kitBtnUp() {
+    event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0), inset none";
   }
 
   render() {
@@ -136,7 +146,8 @@ class KitChoiceContainer extends React.Component {
             <p>2</p>
           </div>
 
-          <div className="kit-choice-btn" id="kit-btn-3" style={btnPowered}>
+          <div className="kit-choice-btn" id="kit-btn-3" style={btnPowered}
+          onMouseDown={this.kitBtnDown} onMouseUp={this.kitBtnUp}>
             <div className="kit-choice-btn-glow" style={btnGlowPowered}></div>
             <p>3</p>
           </div>
