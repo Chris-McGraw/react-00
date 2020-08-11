@@ -26,8 +26,6 @@ class DrumMachine extends React.Component {
 
   setCurrentKit(event) {
     if(this.state.power === "on") {
-      console.log(event.currentTarget.id);
-
       if(event.currentTarget.id === "kit-btn-1") {
         this.setState({
           currentKit: "kit-1"
@@ -38,16 +36,6 @@ class DrumMachine extends React.Component {
           currentKit: "kit-2"
         });
       }
-
-      var btns = document.getElementsByClassName("kit-choice-btn");
-
-      for(let n = 0; n < btns.length; n++) {
-        btns[n].style.backgroundColor = "#c0c7ca";
-        btns[n].style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
-      }
-
-      document.querySelector("#" + event.currentTarget.id).style.backgroundColor = "#E9E8EB";
-      document.querySelector("#" + event.currentTarget.id).style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
     }
   }
 
@@ -109,7 +97,16 @@ class KitChoiceContainer extends React.Component {
   }
 
   kitBtnDown(event) {
-    event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.4)";
+    var kitBtns = document.getElementsByClassName("kit-choice-btn");
+
+    for(let n = 0; n < kitBtns.length; n++) {
+      kitBtns[n].style.backgroundColor = "#c0c7ca";
+      kitBtns[n].style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
+    }
+
+    event.currentTarget.style.backgroundColor = "#dad9de";
+    event.currentTarget.style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
+    event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.3)";
 
     this.props.setCurrentKit(event);
   }
@@ -136,14 +133,14 @@ class KitChoiceContainer extends React.Component {
     return (
       <div>
         <div id="kit-choice-container">
-          <div className="kit-choice-btn" id="kit-btn-1"
-          style={btnPowered} onClick={this.props.setCurrentKit}>
+          <div className="kit-choice-btn" id="kit-btn-1" style={btnPowered}
+          onMouseDown={this.kitBtnDown} onMouseUp={this.kitBtnUp}>
             <div className="kit-choice-btn-glow" style={btnGlowPowered}></div>
             <p>1</p>
           </div>
 
-          <div className="kit-choice-btn" id="kit-btn-2"
-          style={btnPowered} onClick={this.props.setCurrentKit}>
+          <div className="kit-choice-btn" id="kit-btn-2" style={btnPowered}
+          onMouseDown={this.kitBtnDown} onMouseUp={this.kitBtnUp}>
             <div className="kit-choice-btn-glow" style={btnGlowPowered}></div>
             <p>2</p>
           </div>
