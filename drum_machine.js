@@ -98,18 +98,20 @@ class KitChoiceContainer extends React.Component {
   }
 
   kitBtnDown(event) {
-    var kitBtns = document.getElementsByClassName("kit-choice-btn");
+    if(this.state.power === "on") {
+      var kitBtns = document.getElementsByClassName("kit-choice-btn");
 
-    for(let n = 0; n < kitBtns.length; n++) {
-      kitBtns[n].style.backgroundColor = "#c0c7ca";
-      kitBtns[n].style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
+      for(let n = 0; n < kitBtns.length; n++) {
+        kitBtns[n].style.backgroundColor = "#c0c7ca";
+        kitBtns[n].style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
+      }
+
+      event.currentTarget.style.backgroundColor = "#dad9de";
+      event.currentTarget.style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
+      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+
+      this.props.setCurrentKit(event);
     }
-
-    event.currentTarget.style.backgroundColor = "#dad9de";
-    event.currentTarget.style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
-    event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
-
-    this.props.setCurrentKit(event);
   }
 
   kitBtnUp(event) {
