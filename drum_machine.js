@@ -39,12 +39,11 @@ class DrumMachine extends React.Component {
         });
       }
 
-      var elements = document.getElementsByClassName("kit-choice-btn");
-      console.log(elements.length);
+      var btns = document.getElementsByClassName("kit-choice-btn");
 
-      for(let n = 0; n < elements.length; n++) {
-        elements[n].style.backgroundColor = "#c0c7ca";
-        elements[n].style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
+      for(let n = 0; n < btns.length; n++) {
+        btns[n].style.backgroundColor = "#c0c7ca";
+        btns[n].style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
       }
 
       document.querySelector("#" + event.currentTarget.id).style.backgroundColor = "#E9E8EB";
@@ -158,11 +157,13 @@ class PadContainer extends React.Component {
 
     if(this.props.power === "on") {
       if(this.props.currentKit === "kit-1") {
-        event.currentTarget.children[0].src = "audio/808s/loaded.wav"
+        event.currentTarget.children[0].src = "audio/808s/loaded.wav";
       }
       else if(this.props.currentKit === "kit-2") {
-        event.currentTarget.children[0].src = "audio/808s/chirp.wav"
+        event.currentTarget.children[0].src = "audio/808s/chirp.wav";
       }
+
+      event.currentTarget.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)"
 
       let audio = event.currentTarget.children[0];
 
@@ -190,7 +191,7 @@ class PadContainer extends React.Component {
     return (
       <div>
         <div id="pad-container">
-          <div className="drum-pad" id="pad-q" style={padPowered} onClick={this.padPress}>
+          <div className="drum-pad" id="pad-q" style={padPowered} onMouseDown={this.padPress}>
             <audio preload="auto" src="audio/808s/loaded.wav" className="clip" id="Q"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>Q</p>
