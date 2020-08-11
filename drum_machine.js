@@ -194,15 +194,15 @@ class PadContainer extends React.Component {
   handleKeyPress(event) {
     // KEY PRESS Q
     if(event.keyCode === 81) {
-      padPress(event);
+      this.padPress(event);
     }
   }
 
   componentDidMount() {
-    document.addEventListener("keydown", this.handleKeyPress);
+    document.addEventListener("keydown", this.handleKeyPress.bind(this));
   }
   componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKeyPress);
+    document.removeEventListener("keydown", this.handleKeyPress.bind(this));
   }
 
   render() {
