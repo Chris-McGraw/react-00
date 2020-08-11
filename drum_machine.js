@@ -150,6 +150,7 @@ class PadContainer extends React.Component {
   constructor(props) {
     super(props);
     this.padPress = this.padPress.bind(this);
+    this.padLift = this.padLift.bind(this);
   }
 
   padPress(event) {
