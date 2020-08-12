@@ -171,7 +171,7 @@ class PadContainer extends React.Component {
 
     if(this.props.power === "on") {
 
-      console.log("target = " + event.currentTarget);
+      console.log("target = " + event.currentTarget.id);
       console.log("key = " + event.key);
 
       // if(event.key) === undefined) {}
