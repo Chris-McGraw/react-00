@@ -176,7 +176,14 @@ class DisplayRight extends React.Component {
   }
 
   render() {
-    if(this.props.currentPad === "Q") {
+    if(this.props.currentPad === "") {
+      return (
+        <div>
+          <div id="display-right"></div>
+        </div>
+      );
+    }
+    else if(this.props.currentPad === "Q") {
       return (
         <div>
           <div id="display-right">Q</div>
