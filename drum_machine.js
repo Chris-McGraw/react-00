@@ -170,20 +170,23 @@ class PadContainer extends React.Component {
     // console.log(this.props.power);
 
     if(this.props.power === "on") {
-      if(this.props.currentKit === "kit-1") {
-        event.currentTarget.children[0].src = "audio/808s/loaded.wav";
-      }
-      else if(this.props.currentKit === "kit-2") {
-        event.currentTarget.children[0].src = "audio/808s/chirp.wav";
-      }
 
-      event.currentTarget.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+      console.log(event);
 
-      let audio = event.currentTarget.children[0];
-
-      audio.pause();
-      audio.currentTime = 0
-      audio.play();
+      // if(this.props.currentKit === "kit-1") {
+      //   event.currentTarget.children[0].src = "audio/808s/loaded.wav";
+      // }
+      // else if(this.props.currentKit === "kit-2") {
+      //   event.currentTarget.children[0].src = "audio/808s/chirp.wav";
+      // }
+      //
+      // event.currentTarget.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+      //
+      // let audio = event.currentTarget.children[0];
+      //
+      // audio.pause();
+      // audio.currentTime = 0
+      // audio.play();
     }
   }
 
