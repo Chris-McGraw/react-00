@@ -5,10 +5,12 @@ class DrumMachine extends React.Component {
     super(props);
     this.state = {
       power: "on",
-      currentKit: "kit-1"
+      currentKit: "kit-1",
+      currentPad: ""
     };
     this.togglePower = this.togglePower.bind(this);
     this.setCurrentKit = this.setCurrentKit.bind(this);
+    this.setCurrentPad = this.setCurrentPad.bind(this);
   }
 
   togglePower() {
@@ -40,14 +42,22 @@ class DrumMachine extends React.Component {
     }
   }
 
+  setCurrentPad(audioID) {
+    if(this.state.power === "on") {
+      this.setState({
+        currentPad: audioID
+      });
+    }
+  }
+
   render() {
     return (
       <div>
         <div id="drum-machine">
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} currentKit={this.state.currentKit} />
-          <DisplayRight power={this.state.power} />
-          <PadContainer power={this.state.power} currentKit={this.state.currentKit} />
+          <DisplayRight power={this.state.power} currentPad={this.state.currentPad}/>
+          <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad}/>
         </div>
       </div>
     );
@@ -166,11 +176,20 @@ class DisplayRight extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <div id="display-right"></div>
-      </div>
-    );
+    if(this.props.currentPad === "Q") {
+      return (
+        <div>
+          <div id="display-right">Q</div>
+        </div>
+      );
+    }
+    else if(this.props.currentPad === "W") {
+      return (
+        <div>
+          <div id="display-right">W</div>
+        </div>
+      );
+    }
   }
 }
 
@@ -193,6 +212,8 @@ class PadContainer extends React.Component {
       else if(event.currentTarget.id === undefined) {
         audioID = event.key.toUpperCase();
       }
+
+      this.props.setCurrentPad(audioID);
 
       let audio = document.getElementById(audioID);
 
