@@ -204,6 +204,8 @@ class PadContainer extends React.Component {
       audioID = event.currentTarget.children[0].id;
     }
     // PAD KEY UP
+    console.log(event.key);
+    
     else if(event.currentTarget.id === undefined) {
       audioID = event.key.toUpperCase();
     }
@@ -245,7 +247,8 @@ class PadContainer extends React.Component {
     return (
       <div>
         <div id="pad-container">
-          <div className="drum-pad" id="pad-q" style={padPowered} onMouseDown={this.padPress} onMouseUp={this.padLift}>
+          <div className="drum-pad" id="pad-q" style={padPowered}
+          onMouseDown={this.padPress} onMouseUp={this.padLift}>
             <audio preload="auto" src="audio/808s/loaded.wav" className="clip" id="Q"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>Q</p>
