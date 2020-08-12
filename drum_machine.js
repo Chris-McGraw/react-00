@@ -187,7 +187,7 @@ class PadContainer extends React.Component {
         audio.src = "audio/808s/loaded.wav";
       }
       else if(this.props.currentKit === "kit-2") {
-        console.log(sampleKits[1][Q]);
+        console.log(sampleKits[1][audioID]);
 
         audio.src = "audio/808s/chirp.wav";
       }
