@@ -192,7 +192,7 @@ class PadContainer extends React.Component {
         audio.src = "audio/808s/chirp.wav";
       }
 
-      audio.parentElement.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+      audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
 
       audio.pause();
       audio.currentTime = 0;
