@@ -173,14 +173,10 @@ class PadContainer extends React.Component {
       // PAD MOUSE DOWN
       if(event.key === undefined) {
         audioID = event.currentTarget.children[0].id;
-
-        console.log(audioID);
       }
       // PAD KEY DOWN
       else if(event.currentTarget.id === undefined) {
         audioID = event.key.toUpperCase();
-
-        console.log(audioID);
       }
 
       let audio = document.getElementById(audioID);
@@ -197,26 +193,24 @@ class PadContainer extends React.Component {
       audio.pause();
       audio.currentTime = 0;
       audio.play();
-
-      // if(this.props.currentKit === "kit-1") {
-      //   event.currentTarget.children[0].src = "audio/808s/loaded.wav";
-      // }
-      // else if(this.props.currentKit === "kit-2") {
-      //   event.currentTarget.children[0].src = "audio/808s/chirp.wav";
-      // }
-      //
-      // event.currentTarget.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
-      //
-      // let audio = event.currentTarget.children[0];
-      //
-      // audio.pause();
-      // audio.currentTime = 0
-      // audio.play();
     }
   }
 
   padLift(event) {
-    event.currentTarget.style.boxShadow = "8px 8px 8px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
+    let audioID = "";
+
+    // PAD MOUSE UP
+    if(event.key === undefined) {
+      audioID = event.currentTarget.children[0].id;
+    }
+    // PAD KEY UP
+    else if(event.currentTarget.id === undefined) {
+      audioID = event.key.toUpperCase();
+    }
+
+    let audio = document.getElementById(audioID);
+
+    audio.parentElement.style.boxShadow = "8px 8px 8px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
   }
 
   handleKeyPress(event) {
