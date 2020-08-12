@@ -182,12 +182,12 @@ class PadContainer extends React.Component {
       let audio = document.getElementById(audioID);
 
       if(this.props.currentKit === "kit-1") {
-        console.log(sampleKits[0]);
+        console.log(sampleKits[0].Q);
 
         audio.src = "audio/808s/loaded.wav";
       }
       else if(this.props.currentKit === "kit-2") {
-        console.log(sampleKits[1]);
+        console.log(sampleKits[1][Q]);
 
         audio.src = "audio/808s/chirp.wav";
       }
