@@ -171,8 +171,13 @@ class PadContainer extends React.Component {
 
     if(this.props.power === "on") {
 
-      console.log("target = " + event.currentTarget.id)
-      console.log("key = " + event.key.toUpperCase());
+      console.log("target = " + event.currentTarget.children[0].id)
+      console.log("key = " + event.key);
+
+      // if(event.key) === undefined) {}
+      // else if(event.currentTarget.children[0].id === undefined) {
+      //   console.log("key = " + event.key.toUpperCase());
+      // }
 
       // if(this.props.currentKit === "kit-1") {
       //   event.currentTarget.children[0].src = "audio/808s/loaded.wav";
