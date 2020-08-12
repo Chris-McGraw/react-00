@@ -46,6 +46,7 @@ class DrumMachine extends React.Component {
         <div id="drum-machine">
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} currentKit={this.state.currentKit} />
+          <DisplayRight power={this.state.power} />
           <PadContainer power={this.state.power} currentKit={this.state.currentKit} />
         </div>
       </div>
