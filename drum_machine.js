@@ -222,7 +222,7 @@ class PadContainer extends React.Component {
     }
   }
 
-  handleKeyLiftevent(event) {
+  handleKeyLift(event) {
     // KEY PRESS Q
     if(event.keyCode === 81) {
       this.padLift(event);
