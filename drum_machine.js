@@ -235,7 +235,7 @@ class PadContainer extends React.Component {
   }
   componentWillUnmount() {
     document.removeEventListener("keydown", this.handleKeyPress.bind(this));
-    document.addEventListener("keyup", this.handleKeyLift.bind(this));
+    document.removeEventListener("keyup", this.handleKeyLift.bind(this));
   }
 
   render() {
