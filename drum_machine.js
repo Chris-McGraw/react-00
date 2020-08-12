@@ -182,14 +182,10 @@ class PadContainer extends React.Component {
       let audio = document.getElementById(audioID);
 
       if(this.props.currentKit === "kit-1") {
-        console.log(sampleKits[0].Q);
-
-        audio.src = "audio/808s/loaded.wav";
+        audio.src = sampleKits[0][audioID];
       }
       else if(this.props.currentKit === "kit-2") {
-        console.log(sampleKits[1][audioID]);
-
-        audio.src = "audio/808s/chirp.wav";
+        audio.src = sampleKits[1][audioID];
       }
 
       audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
