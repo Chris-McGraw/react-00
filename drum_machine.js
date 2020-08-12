@@ -1,4 +1,6 @@
-'use strict';
+"use strict";
+
+import {sampleKits} from "sampleKits.js";
 
 class DrumMachine extends React.Component {
   constructor(props) {
