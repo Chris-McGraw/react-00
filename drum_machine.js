@@ -182,9 +182,13 @@ class PadContainer extends React.Component {
       let audio = document.getElementById(audioID);
 
       if(this.props.currentKit === "kit-1") {
+        console.log(sampleKits[0].audioID);
+
         audio.src = "audio/808s/loaded.wav";
       }
       else if(this.props.currentKit === "kit-2") {
+        console.log(sampleKits[1].audioID);
+
         audio.src = "audio/808s/chirp.wav";
       }
 
@@ -198,8 +202,6 @@ class PadContainer extends React.Component {
 
   padLift(event) {
     let audioID = "";
-
-    console.log(event.key);
 
     // PAD MOUSE UP
     if(event.key === undefined) {
