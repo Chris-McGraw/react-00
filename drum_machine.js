@@ -199,13 +199,13 @@ class PadContainer extends React.Component {
   padLift(event) {
     let audioID = "";
 
+    console.log(event.key);
+
     // PAD MOUSE UP
     if(event.key === undefined) {
       audioID = event.currentTarget.children[0].id;
     }
     // PAD KEY UP
-    console.log(event.key);
-    
     else if(event.currentTarget.id === undefined) {
       audioID = event.key.toUpperCase();
     }
