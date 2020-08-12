@@ -186,7 +186,7 @@ class DisplayRight extends React.Component {
     else {
       return (
         <div>
-          <div id="display-right">{sampleKits[0][audioID]}</div>
+          <div id="display-right">{sampleKits[0][this.props.currentPad]}</div>
         </div>
       );
     }
