@@ -159,6 +159,20 @@ class KitChoiceContainer extends React.Component {
   }
 }
 
+class DisplayRight extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div>
+        <div id="display-right"></div>
+      </div>
+    );
+  }
+}
+
 class PadContainer extends React.Component {
   constructor(props) {
     super(props);

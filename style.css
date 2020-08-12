@@ -207,6 +207,29 @@ html,body {
   user-select: none;
 }
 
+#display-right {
+  display: grid;
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  height: 10%;
+  width: 45%;
+  margin-top: 40px;
+  margin-right: 40px;
+  padding-left: 20px;
+
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+
+  background-color: black;
+
+  user-select: none;
+}
+
 #pad-container {
   position: absolute;
   bottom: 0;
