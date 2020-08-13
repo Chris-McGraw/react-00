@@ -257,25 +257,25 @@ class PlaybackControls extends React.Component {
       <div id="playback-controls">
         <div className="control-btn" id="record-button" style={btnPowered}>
           <div className="control-btn-glow" style={btnGlowPowered}>
-            <i class="fas fa-circle"></i>
+            <i className="fas fa-circle"></i>
           </div>
         </div>
 
         <div className="control-btn" id="stop-button" style={btnPowered}>
           <div className="control-btn-glow" style={btnGlowPowered}>
-            <i class="fas fa-stop"></i>
+            <i className="fas fa-stop"></i>
           </div>
         </div>
 
         <div className="control-btn" id="play-button" style={btnPowered}>
           <div className="control-btn-glow" style={btnGlowPowered}>
-            <i class="fas fa-play"></i>
+            <i className="fas fa-play"></i>
           </div>
         </div>
 
         <div className="control-btn" id="undo-button" style={btnPowered}>
           <div className="control-btn-glow" style={btnGlowPowered}>
-            <i class="fas fa-undo"></i>
+            <i className="fas fa-undo"></i>
           </div>
         </div>
       </div>
