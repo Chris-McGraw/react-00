@@ -55,6 +55,7 @@ class DrumMachine extends React.Component {
       <div>
         <div id="drum-machine">
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
+          <DisplayLeft power={this.state.power} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
           <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} />
@@ -170,6 +171,31 @@ class KitChoiceContainer extends React.Component {
   }
 }
 
+class DisplayLeft extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    if(this.props.power === "off") {
+      return (
+        <div>
+          <div id="display-left"></div>
+        </div>
+      );
+    }
+    else {
+      return (
+        <div>
+          <div id="display-left">
+            <div id="play-line"></div>
+          </div>
+        </div>
+      );
+    }
+  }
+}
+
 class DisplayRight extends React.Component {
   constructor(props) {
     super(props)
@@ -238,9 +264,9 @@ class PadContainer extends React.Component {
       audioID = event.key.toUpperCase();
     }
 
-    setTimeout(function() {
-      this.props.setCurrentPad("");
-    }.bind(this), 500);
+    // setTimeout(function() {
+    //   this.props.setCurrentPad("");
+    // }.bind(this), 1000);
 
     let audio = document.getElementById(audioID);
 

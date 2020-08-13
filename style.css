@@ -37,6 +37,35 @@ html,body {
   border: 1px solid black;
 }
 
+#display-left {
+  display: grid;
+  grid-template-rows: repeat(9, 1fr);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 40%;
+  width: 45%;
+  margin-top: 40px;
+  margin-left: 40px;
+
+  background-color: black;
+  overflow: hidden;
+
+  user-select: none;
+}
+
+#play-line {
+  position: absolute;
+  z-index: 20;
+
+  height: 100%;
+  width: 5px;
+
+  background-color: white;
+}
+
 #power-container {
   position: absolute;
   left: 60px;
