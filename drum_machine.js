@@ -180,7 +180,29 @@ class DisplayLeft extends React.Component {
     if(this.props.power === "off") {
       return (
         <div>
-          <div id="display-left"></div>
+          <div id="other-test">
+            <p>C</p>
+            <p>X</p>
+            <p>Z</p>
+            <p>D</p>
+            <p>S</p>
+            <p>A</p>
+            <p>E</p>
+            <p>W</p>
+            <p>Q</p>
+          </div>
+
+          <div id="display-left">
+            <div className="test-line" id="test-line-1"></div>
+            <div className="test-line" id="test-line-2"></div>
+            <div className="test-line" id="test-line-3"></div>
+            <div className="test-line" id="test-line-4"></div>
+            <div className="test-line" id="test-line-5"></div>
+            <div className="test-line" id="test-line-6"></div>
+            <div className="test-line" id="test-line-7"></div>
+            <div className="test-line" id="test-line-8"></div>
+            <div className="test-line" id="test-line-9"></div>
+          </div>
         </div>
       );
     }
