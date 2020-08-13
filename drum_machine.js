@@ -216,7 +216,6 @@ class DisplayRight extends React.Component {
   }
 
   render() {
-
     if(this.props.power === "off" || this.props.currentPad === "") {
       return (
         <div>
@@ -240,22 +239,36 @@ class PlaybackControls extends React.Component {
   }
 
   render() {
+    let btnPowered = {};
+    let btnGlowPowered = {};
+
+    if(this.props.power === "off") {
+      btnPowered = {
+        backgroundImage: "none",
+        backgroundColor: "#898F90"
+      }
+      btnGlowPowered = {
+        boxShadow: "none",
+        backgroundColor: "rgba(255,255,255, 0.0)"
+      }
+    }
+
     return (
       <div id="playback-controls">
-        <div className="control-btn" id="record-button">
-          <div className="control-btn-glow">
+        <div className="control-btn" id="record-button" style={btnPowered}>
+          <div className="control-btn-glow" style={btnGlowPowered}>
 
           </div>
         </div>
 
-        <div className="control-btn" id="stop-button">
-          <div className="control-btn-glow">
+        <div className="control-btn" id="stop-button" style={btnPowered}>
+          <div className="control-btn-glow" style={btnGlowPowered}>
 
           </div>
         </div>
 
-        <div className="control-btn" id="play-button">
-          <div className="control-btn-glow">
+        <div className="control-btn" id="play-button" style={btnPowered}>
+          <div className="control-btn-glow" style={btnGlowPowered}>
 
           </div>
         </div>
@@ -386,37 +399,37 @@ class PadContainer extends React.Component {
             <p>W</p>
           </div>
 
-          <div className="drum-pad" id="pad-e">
+          <div className="drum-pad" id="pad-e" style={padPowered}>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>E</p>
           </div>
 
-          <div className="drum-pad" id="pad-a">
+          <div className="drum-pad" id="pad-a" style={padPowered}>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>A</p>
           </div>
 
-          <div className="drum-pad" id="pad-s">
+          <div className="drum-pad" id="pad-s" style={padPowered}>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>S</p>
           </div>
 
-          <div className="drum-pad" id="pad-d">
+          <div className="drum-pad" id="pad-d" style={padPowered}>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>D</p>
           </div>
 
-          <div className="drum-pad" id="pad-z">
+          <div className="drum-pad" id="pad-z" style={padPowered}>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>Z</p>
           </div>
 
-          <div className="drum-pad" id="pad-x">
+          <div className="drum-pad" id="pad-x" style={padPowered}>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>X</p>
           </div>
 
-          <div className="drum-pad" id="pad-c">
+          <div className="drum-pad" id="pad-c" style={padPowered}>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>C</p>
           </div>
