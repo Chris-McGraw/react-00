@@ -240,7 +240,7 @@ class PadContainer extends React.Component {
 
     setTimeout(function() {
       this.props.setCurrentPad("");
-    }, 500);
+    }.bind(this), 500);
 
     let audio = document.getElementById(audioID);
 
