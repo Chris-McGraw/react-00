@@ -66,6 +66,16 @@ html,body {
   background-color: white;
 }
 
+.test-line {
+  grid-row: span 1;
+
+  border-bottom: 1px solid rgba(255,255,255, 0.5);
+}
+
+#test-line-9 {
+  border-bottom: none;
+}
+
 #power-container {
   position: absolute;
   left: 60px;

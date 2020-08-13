@@ -189,6 +189,16 @@ class DisplayLeft extends React.Component {
         <div>
           <div id="display-left">
             <div id="play-line"></div>
+
+            <div class="test-line" id="test-line-1"></div>
+            <div class="test-line" id="test-line-2"></div>
+            <div class="test-line" id="test-line-3"></div>
+            <div class="test-line" id="test-line-4"></div>
+            <div class="test-line" id="test-line-5"></div>
+            <div class="test-line" id="test-line-6"></div>
+            <div class="test-line" id="test-line-7"></div>
+            <div class="test-line" id="test-line-8"></div>
+            <div class="test-line" id="test-line-9"></div>
           </div>
         </div>
       );
