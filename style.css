@@ -37,6 +37,36 @@ html,body {
   border: 1px solid black;
 }
 
+#other-test {
+  display: grid;
+  grid-template-rows: repeat(9, 1fr);
+
+  position: absolute;
+  top: 0;
+  left: -20px;
+
+  height: 40%;
+  margin-top: 40px;
+  margin-left: 40px;
+
+  /* border: 1px dashed white; */
+}
+
+#other-test p {
+  display: grid;
+  grid-row: span 1;
+  justify-content: center;
+  align-items: center;
+
+  font-family: sans-serif;
+  font-size: 12px;
+  color: white;
+
+  user-select: none;
+
+  /* border-bottom: 1px solid rgba(255,255,255, 0.5); */
+}
+
 #display-left {
   display: grid;
   grid-template-rows: repeat(9, 1fr);
