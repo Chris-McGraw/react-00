@@ -36,7 +36,7 @@ class DrumMachine extends React.Component {
       }
       else if(event.currentTarget.id === "kit-btn-2") {
         this.setState({
-          currentKit: "kit-2"
+          currentKit: "kit2"
         });
       }
     }
