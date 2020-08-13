@@ -5,7 +5,7 @@ class DrumMachine extends React.Component {
     super(props);
     this.state = {
       power: "on",
-      currentKit: "kit-1",
+      currentKit: "kit1",
       currentPad: ""
     };
     this.togglePower = this.togglePower.bind(this);
@@ -17,7 +17,7 @@ class DrumMachine extends React.Component {
     if(this.state.power === "on") {
       this.setState({
         power: "off",
-        currentKit: "kit-1"
+        currentKit: "kit1"
       });
     }
     else {
@@ -31,7 +31,7 @@ class DrumMachine extends React.Component {
     if(this.state.power === "on") {
       if(event.currentTarget.id === "kit-btn-1") {
         this.setState({
-          currentKit: "kit-1"
+          currentKit: "kit1"
         });
       }
       else if(event.currentTarget.id === "kit-btn-2") {
@@ -218,7 +218,7 @@ class PadContainer extends React.Component {
 
       let audio = document.getElementById(audioID);
 
-      if(this.props.currentKit === "kit-1") {
+      if(this.props.currentKit === "kit1") {
         audio.src = sampleKits[0][audioID];
       }
       else if(this.props.currentKit === "kit-2") {
