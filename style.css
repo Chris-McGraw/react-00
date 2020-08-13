@@ -346,6 +346,34 @@ html,body {
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
+.fa-circle {
+  font-size: 18px;
+  color: red;
+
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+}
+
+.fa-play {
+  font-size: 18px;
+  color: black;
+
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+}
+
+.fa-stop {
+  font-size: 18px;
+  color: black;
+
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+}
+
+.fa-undo {
+  font-size: 18px;
+  color: black;
+
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+}
+
 #pad-container {
   position: absolute;
   bottom: 0;
