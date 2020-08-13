@@ -58,7 +58,7 @@ class DrumMachine extends React.Component {
           <DisplayLeft power={this.state.power} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
-          <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} currentPad={this.state.currentPad} />
+          <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} />
         </div>
       </div>
     );
@@ -318,10 +318,7 @@ class PadContainer extends React.Component {
   }
 
   render() {
-    let padPowered = {
-      backgroundImage: sampleKits[this.props.currentKit].Q.backgroundImg,
-      backgroundColor: sampleKits[this.props.currentKit].Q.backgroundColor
-    };
+    let padPowered = {};
     let padGlowPowered = {};
 
     if(this.props.power === "off") {
