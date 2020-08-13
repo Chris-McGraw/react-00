@@ -6,15 +6,21 @@ const sampleKits = {
     backgroundColor: "#ad020c"
     },
     W: {src: "audio/808s/starburst.wav",
-    desc: "808s - Starburst"
+    desc: "808s - Starburst",
+    backgroundImg: "radial-gradient(#fd6846, #ad020c)",
+    backgroundColor: "#ad020c"
     },
   },
   kit2: {
     Q: {src: "audio/808s/chirp.wav",
-    desc: "808s - Chirp"
+    desc: "808s - Chirp",
+    backgroundImg: "radial-gradient(#818bfa, #0530da)",
+    backgroundColor: "#0530da"
     },
     W: {src: "audio/808s/chirp.wav",
-    desc: "808s - Chirp"
+    desc: "808s - Chirp",
+    backgroundImg: "radial-gradient(#818bfa, #0530da)",
+    backgroundColor: "#0530da"
     },
   }
 };

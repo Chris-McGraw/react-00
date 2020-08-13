@@ -58,7 +58,7 @@ class DrumMachine extends React.Component {
           <DisplayLeft power={this.state.power} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
-          <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} />
+          <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} currentPad={this.state.currentPad} />
         </div>
       </div>
     );
@@ -352,37 +352,37 @@ class PadContainer extends React.Component {
             <p>W</p>
           </div>
 
-          <div className="drum-pad" id="pad-e" style={padPowered} onClick={this.padPress}>
+          <div className="drum-pad" id="pad-e">
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>E</p>
           </div>
 
-          <div className="drum-pad" id="pad-a" style={padPowered} onClick={this.padPress}>
+          <div className="drum-pad" id="pad-a">
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>A</p>
           </div>
 
-          <div className="drum-pad" id="pad-s" style={padPowered} onClick={this.padPress}>
+          <div className="drum-pad" id="pad-s">
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>S</p>
           </div>
 
-          <div className="drum-pad" id="pad-d" style={padPowered} onClick={this.padPress}>
+          <div className="drum-pad" id="pad-d">
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>D</p>
           </div>
 
-          <div className="drum-pad" id="pad-z" style={padPowered} onClick={this.padPress}>
+          <div className="drum-pad" id="pad-z">
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>Z</p>
           </div>
 
-          <div className="drum-pad" id="pad-x" style={padPowered} onClick={this.padPress}>
+          <div className="drum-pad" id="pad-x">
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>X</p>
           </div>
 
-          <div className="drum-pad" id="pad-c" style={padPowered} onClick={this.padPress}>
+          <div className="drum-pad" id="pad-c">
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>C</p>
           </div>
