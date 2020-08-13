@@ -58,6 +58,7 @@ class DrumMachine extends React.Component {
           <DisplayLeft power={this.state.power} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
+          <PlaybackControls power={this.state.power} />
           <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} />
         </div>
       </div>
@@ -230,6 +231,42 @@ class DisplayRight extends React.Component {
         </div>
       );
     }
+  }
+}
+
+class PlaybackControls extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div id="playback-controls">
+        <div className="control-btn" id="record-button">
+          <div className="control-btn-glow">
+
+          </div>
+        </div>
+
+        <div className="control-btn" id="stop-button">
+          <div className="control-btn-glow">
+
+          </div>
+        </div>
+
+        <div className="control-btn" id="play-button">
+          <div className="control-btn-glow">
+
+          </div>
+        </div>
+
+        <div className="control-btn" id="undo-button">
+          <div className="control-btn-glow">
+
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
