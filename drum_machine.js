@@ -176,7 +176,8 @@ class DisplayRight extends React.Component {
   }
 
   render() {
-    if(this.props.currentPad === "") {
+
+    if(this.props.power === "off" || this.props.currentPad === "") {
       return (
         <div>
           <div id="display-right"></div>
@@ -186,7 +187,7 @@ class DisplayRight extends React.Component {
     else {
       return (
         <div>
-          <div id="display-right">{sampleKits[0][this.props.currentPad]}</div>
+          <div id="display-right">{sampleKitsTest[this.props.currentKit][this.props.currentPad].desc}</div>
         </div>
       );
     }
