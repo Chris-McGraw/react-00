@@ -1,14 +1,3 @@
-const sampleKits = [
-  {
-    Q: "audio/808s/loaded.wav",
-    W: "audio/808s/starburst.wav"
-  },
-  {
-    Q: "audio/808s/chirp.wav",
-    W: "audio/808s/chirp.wav"
-  }
-];
-
 const sampleKits = {
   kit1: {
     Q: {src: "audio/808s/loaded.wav",
@@ -16,6 +5,14 @@ const sampleKits = {
     },
     W: {src: "audio/808s/starburst.wav",
     desc: "808s - Starburst"
+    },
+  },
+  kit2: {
+    Q: {src: "audio/808s/chirp.wav",
+    desc: "808s - Chirp"
+    },
+    W: {src: "audio/808s/chirp.wav",
+    desc: "808s - Chirp"
     },
   }
 };
