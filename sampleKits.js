@@ -9,7 +9,7 @@ const sampleKits = [
   }
 ];
 
-const sampleKitsTest = {
+const sampleKits = {
   kit1: {
     Q: {src: "audio/808s/loaded.wav",
     desc: "808s - Loaded"
@@ -19,5 +19,3 @@ const sampleKitsTest = {
     },
   }
 };
-
-console.log(sampleKitsTest.kit1.Q.src);

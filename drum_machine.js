@@ -56,8 +56,8 @@ class DrumMachine extends React.Component {
         <div id="drum-machine">
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
-          <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad}/>
-          <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad}/>
+          <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
+          <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} />
         </div>
       </div>
     );
@@ -187,7 +187,7 @@ class DisplayRight extends React.Component {
     else {
       return (
         <div>
-          <div id="display-right">{sampleKitsTest[this.props.currentKit][this.props.currentPad].desc}</div>
+          <div id="display-right">{sampleKits[this.props.currentKit][this.props.currentPad].desc}</div>
         </div>
       );
     }
@@ -218,15 +218,8 @@ class PadContainer extends React.Component {
 
       let audio = document.getElementById(audioID);
 
-      if(this.props.currentKit === "kit1") {
-        audio.src = sampleKits[0][audioID];
-      }
-      else if(this.props.currentKit === "kit-2") {
-        audio.src = sampleKits[1][audioID];
-      }
-
+      audio.src = sampleKits[this.props.currentKit][audioID].src;
       audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
-
       audio.pause();
       audio.currentTime = 0;
       audio.play();
