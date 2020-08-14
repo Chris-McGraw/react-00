@@ -223,7 +223,7 @@ class DisplayLeft extends React.Component {
     if(this.props.nowRecording === true) {
       movePlayLine = {
         transition: "transform 10s linear",
-        transform: "translateX(" + document.getElementById("display-left").offsetWidth + "px)"
+        transform: "translateX(" + (document.getElementById("display-left").offsetWidth - 5) + "px)"
       }
     }
 
