@@ -25,8 +25,10 @@ class DrumMachine extends React.Component {
         nowRecording: false
       });
 
-      clearTimeout(this.recordingTimeout);
-      console.log("RECORDING STOPPED");
+      if(this.state.nowRecording === true) {
+        clearTimeout(this.recordingTimeout);
+        console.log("RECORDING STOPPED");
+      }
     }
     else {
       this.setState({
