@@ -6,18 +6,21 @@ class DrumMachine extends React.Component {
     this.state = {
       power: "on",
       currentKit: "kit1",
-      currentPad: ""
+      currentPad: "",
+      nowRecording: false
     };
     this.togglePower = this.togglePower.bind(this);
     this.setCurrentKit = this.setCurrentKit.bind(this);
     this.setCurrentPad = this.setCurrentPad.bind(this);
+    this.startRecording = this.startRecording.bind(this);
   }
 
   togglePower() {
     if(this.state.power === "on") {
       this.setState({
         power: "off",
-        currentKit: "kit1"
+        currentKit: "kit1",
+        nowRecording: false
       });
     }
     else {
@@ -50,15 +53,23 @@ class DrumMachine extends React.Component {
     }
   }
 
+  startRecording() {
+    if(this.state.power === "on" && this.state.nowRecording === false) {
+      this.setState({
+        nowRecording: true
+      });
+    }
+  }
+
   render() {
     return (
       <div>
         <div id="drum-machine">
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
-          <DisplayLeft power={this.state.power} />
+          <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
-          <PlaybackControls power={this.state.power} />
+          <PlaybackControls power={this.state.power} startRecording={this.startRecording} />
           <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} />
         </div>
       </div>
@@ -178,6 +189,15 @@ class DisplayLeft extends React.Component {
   }
 
   render() {
+    let movePlayLine = {};
+
+    if(this.props.nowRecording === true) {
+      movePlayLine = {
+        transition: "transform 10s linear",
+        transform: "translateX(" + document.getElementById("display-left").offsetWidth + "px)"
+      }
+    }
+
     return (
       <div>
         <div id="other-test">
@@ -193,7 +213,7 @@ class DisplayLeft extends React.Component {
         </div>
 
         <div id="display-left">
-          <div id="play-line"></div>
+          <div id="play-line" style={movePlayLine}></div>
 
           <div className="test-line" id="test-line-1"></div>
           <div className="test-line" id="test-line-2"></div>
@@ -255,7 +275,7 @@ class PlaybackControls extends React.Component {
 
     return (
       <div id="playback-controls">
-        <div className="control-btn" id="record-button" style={btnPowered}>
+        <div className="control-btn" id="record-button" style={btnPowered} onMouseDown={this.props.startRecording}>
           <div className="control-btn-glow" style={btnGlowPowered}>
             <i className="fas fa-circle"></i>
           </div>
