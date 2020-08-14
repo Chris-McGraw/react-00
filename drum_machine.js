@@ -13,6 +13,7 @@ class DrumMachine extends React.Component {
     this.setCurrentKit = this.setCurrentKit.bind(this);
     this.setCurrentPad = this.setCurrentPad.bind(this);
     this.startRecording = this.startRecording.bind(this);
+    this.recordingTimeout = this.recordingTimeout.bind(this);
   }
 
   togglePower() {
@@ -53,6 +54,14 @@ class DrumMachine extends React.Component {
     }
   }
 
+  recordingTimeout = setTimeout(function() {
+    this.setState({
+      nowRecording: false
+    });
+
+    console.log("RECORDING FINISHED");
+  }.bind(this), 10000);
+
   startRecording() {
     if(this.state.power === "on" && this.state.nowRecording === false) {
       this.setState({
@@ -62,14 +71,34 @@ class DrumMachine extends React.Component {
       console.log("RECORDING STARTED");
     }
 
-    setTimeout(function() {
-      this.setState({
-        nowRecording: false
-      });
+    // setTimeout(function() {
+    //   this.setState({
+    //     nowRecording: false
+    //   });
+    //
+    //   console.log("RECORDING FINISHED");
+    // }.bind(this), 10000);
 
-      console.log("RECORDING FINISHED");
-    }.bind(this), 10000);
+    this.props.recordingTimeout();
   }
+
+  // stopRecording() {
+  //   if(this.state.power === "on" && this.state.nowRecording === true) {
+  //     this.setState({
+  //       nowRecording: false
+  //     });
+  //
+  //     console.log("RECORDING STOPPED");
+  //   }
+  //
+  //   setTimeout(function() {
+  //     this.setState({
+  //       nowRecording: false
+  //     });
+  //
+  //     console.log("RECORDING FINISHED");
+  //   }.bind(this), 10000);
+  // }
 
   render() {
     return (
@@ -79,7 +108,7 @@ class DrumMachine extends React.Component {
           <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
-          <PlaybackControls power={this.state.power} startRecording={this.startRecording} />
+          <PlaybackControls power={this.state.power} startRecording={this.startRecording} recordingTimeout={this.recordingTimeout} />
           <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} />
         </div>
       </div>
