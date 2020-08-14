@@ -14,6 +14,7 @@ class DrumMachine extends React.Component {
     this.setCurrentPad = this.setCurrentPad.bind(this);
     this.startRecording = this.startRecording.bind(this);
     this.recordingTimeout = null;
+    this.stop = this.stop.bind(this);
   }
 
   togglePower() {
@@ -25,6 +26,7 @@ class DrumMachine extends React.Component {
       });
 
       clearTimeout(this.recordingTimeout);
+      console.log("RECORDING STOPPED");
     }
     else {
       this.setState({
@@ -74,6 +76,18 @@ class DrumMachine extends React.Component {
     }
   }
 
+  stop() {
+    if(this.state.power === "on" && this.state.nowRecording === true) {
+      clearTimeout(this.recordingTimeout);
+
+      this.setState({
+        nowRecording: false
+      });
+
+      console.log("RECORDING STOPPED");
+    }
+  }
+
   render() {
     return (
       <div>
@@ -82,7 +96,7 @@ class DrumMachine extends React.Component {
           <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
-          <PlaybackControls power={this.state.power} startRecording={this.startRecording} />
+          <PlaybackControls power={this.state.power} startRecording={this.startRecording} stop={this.stop} />
           <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} />
         </div>
       </div>
@@ -294,7 +308,7 @@ class PlaybackControls extends React.Component {
           </div>
         </div>
 
-        <div className="control-btn" id="stop-button" style={btnPowered}>
+        <div className="control-btn" id="stop-button" style={btnPowered} onMouseDown={this.props.stop}>
           <div className="control-btn-glow" style={btnGlowPowered}>
             <i className="fas fa-stop"></i>
           </div>
