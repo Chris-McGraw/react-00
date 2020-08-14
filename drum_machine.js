@@ -13,13 +13,7 @@ class DrumMachine extends React.Component {
     this.setCurrentKit = this.setCurrentKit.bind(this);
     this.setCurrentPad = this.setCurrentPad.bind(this);
     this.startRecording = this.startRecording.bind(this);
-    this.recordingTimeout = setTimeout(function() {
-      this.setState({
-        nowRecording: false
-      });
-
-      console.log("RECORDING FINISHED");
-    }.bind(this), 10000);
+    this.recordingTimeout = null;
   }
 
   togglePower() {
@@ -30,7 +24,7 @@ class DrumMachine extends React.Component {
         nowRecording: false
       });
 
-      clearTimeout(recordingTimeout);
+      clearTimeout(this.recordingTimeout);
     }
     else {
       this.setState({
@@ -71,7 +65,13 @@ class DrumMachine extends React.Component {
       console.log("RECORDING STARTED");
     }
 
-    this.recordingTimeout();
+    this.recordingTimeout = setTimeout(function() {
+      this.setState({
+        nowRecording: false
+      });
+
+      console.log("RECORDING FINISHED");
+    }.bind(this), 10000);
   }
 
   render() {
