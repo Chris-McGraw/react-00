@@ -58,7 +58,17 @@ class DrumMachine extends React.Component {
       this.setState({
         nowRecording: true
       });
+
+      console.log("RECORDING STARTED");
     }
+
+    setTimeout(function() {
+      this.setState({
+        nowRecording: false
+      });
+
+      console.log("RECORDING FINISHED");
+    }.bind(this), 10000);
   }
 
   render() {
