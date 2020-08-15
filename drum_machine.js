@@ -101,30 +101,32 @@ class DrumMachine extends React.Component {
       console.log("PLAYBACK STARTED");
 
       this.state.playbackArr.forEach(function(i) {
-        playbackTimeouts.push( setTimeout(function() {
-          if(i.key === "Q") {
-            this.props.setCurrentPad(i.key);
 
-            let audio = document.getElementById(i.key);
-
-            audio.src = sampleKits[this.props.currentKit][audioID].src;
-            audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
-            audio.pause();
-            audio.currentTime = 0;
-            audio.play();
-          }
-          else if(i.key === "W") {
-            this.props.setCurrentPad(i.key);
-
-            let audio = document.getElementById(i.key);
-
-            audio.src = sampleKits[this.props.currentKit][audioID].src;
-            audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
-            audio.pause();
-            audio.currentTime = 0;
-            audio.play();
-          }
-        }, i.time) );
+        console.log(i)
+        // playbackTimeouts.push( setTimeout(function() {
+        //   if(i.key === "Q") {
+        //     this.props.setCurrentPad(i.key);
+        //
+        //     let audio = document.getElementById(i.key);
+        //
+        //     audio.src = sampleKits[this.props.currentKit][audioID].src;
+        //     audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+        //     audio.pause();
+        //     audio.currentTime = 0;
+        //     audio.play();
+        //   }
+        //   else if(i.key === "W") {
+        //     this.props.setCurrentPad(i.key);
+        //
+        //     let audio = document.getElementById(i.key);
+        //
+        //     audio.src = sampleKits[this.props.currentKit][audioID].src;
+        //     audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+        //     audio.pause();
+        //     audio.currentTime = 0;
+        //     audio.play();
+        //   }
+        // }, i.time) );
       });
     }
   }
