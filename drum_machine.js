@@ -7,7 +7,8 @@ class DrumMachine extends React.Component {
       power: "on",
       currentKit: "kit1",
       currentPad: "",
-      nowRecording: false
+      nowRecording: false,
+      playbackArr: [{key: "Q", time: 496}, {key: "Q", time: 1057}, {key: "Q", time: 1632}, {key: "Q", time: 2400}, {key: "W", time: 2783}]
     };
     this.togglePower = this.togglePower.bind(this);
     this.setCurrentKit = this.setCurrentKit.bind(this);
@@ -15,6 +16,7 @@ class DrumMachine extends React.Component {
     this.startRecording = this.startRecording.bind(this);
     this.recordingTimeout = null;
     this.stop = this.stop.bind(this);
+    this.startPlayback = this.startPlayback.bind(this);
   }
 
   togglePower() {
@@ -90,6 +92,12 @@ class DrumMachine extends React.Component {
     }
   }
 
+  startPlayback() {
+    if(this.state.power === "on" && this.state.nowRecording === false) {
+      console.log(this.props.playbackArr);
+    }
+  }
+
   render() {
     return (
       <div>
@@ -98,7 +106,7 @@ class DrumMachine extends React.Component {
           <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
-          <PlaybackControls power={this.state.power} startRecording={this.startRecording} stop={this.stop} />
+          <PlaybackControls power={this.state.power} startRecording={this.startRecording} stop={this.stop} startPlayback={this.startPlayback} />
           <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} />
         </div>
       </div>
@@ -316,7 +324,7 @@ class PlaybackControls extends React.Component {
           </div>
         </div>
 
-        <div className="control-btn" id="play-button" style={btnPowered}>
+        <div className="control-btn" id="play-button" style={btnPowered} onMouseDown={this.props.startPlayback}>
           <div className="control-btn-glow" style={btnGlowPowered}>
             <i className="fas fa-play"></i>
           </div>
