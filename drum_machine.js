@@ -101,7 +101,7 @@ class DrumMachine extends React.Component {
       console.log("PLAYBACK STARTED");
 
       this.state.playbackArr.forEach(function(i) {
-        playbackTimeouts.push( setTimeout(function() {
+        playbackTimeouts.push( setTimeout(function(this) {
           if(i.key === "Q") {
             this.setState({
               currentPad: i.key
