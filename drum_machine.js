@@ -15,7 +15,6 @@ class DrumMachine extends React.Component {
     this.setCurrentPad = this.setCurrentPad.bind(this);
     this.startRecording = this.startRecording.bind(this);
     this.recordingTimeout = null;
-    this.playbackTimeouts = [];
     this.stop = this.stop.bind(this);
     this.startPlayback = this.startPlayback.bind(this);
   }
@@ -97,12 +96,12 @@ class DrumMachine extends React.Component {
     if(this.state.power === "on" && this.state.nowRecording === false) {
       console.log(this.state.playbackArr);
 
-      this.playbackTimeouts = [];
+      let playbackTimeouts = [];
 
       console.log("PLAYBACK STARTED");
 
       this.state.playbackArr.forEach(function(i) {
-        this.playbackTimeouts.push( setTimeout(function() {
+        playbackTimeouts.push( setTimeout(function() {
           if(i.key === "Q") {
             this.props.setCurrentPad(i.key);
 
