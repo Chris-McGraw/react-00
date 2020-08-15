@@ -103,22 +103,22 @@ class DrumMachine extends React.Component {
       this.state.playbackArr.forEach(function(i) {
         playbackTimeouts.push( setTimeout(function() {
           if(i.key === "Q") {
-            this.setCurrentPad(i.key);
+            setCurrentPad(i.key);
 
             let audio = document.getElementById(i.key);
 
-            audio.src = sampleKits[this.state.currentKit][audioID].src;
+            audio.src = sampleKits[this.state.currentKit][i.key].src;
             audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
             audio.pause();
             audio.currentTime = 0;
             audio.play();
           }
           else if(i.key === "W") {
-            this.setCurrentPad(i.key);
+            setCurrentPad(i.key);
 
             let audio = document.getElementById(i.key);
 
-            audio.src = sampleKits[this.state.currentKit][audioID].src;
+            audio.src = sampleKits[this.state.currentKit][i.key].src;
             audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
             audio.pause();
             audio.currentTime = 0;
