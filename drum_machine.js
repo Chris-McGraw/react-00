@@ -15,7 +15,7 @@ class DrumMachine extends React.Component {
     this.setCurrentPad = this.setCurrentPad.bind(this);
     this.startRecording = this.startRecording.bind(this);
     this.recordingTimeout = null;
-    this.playbackTimeouts = null;
+    this.playbackTimeouts = [];
     this.stop = this.stop.bind(this);
     this.startPlayback = this.startPlayback.bind(this);
   }
