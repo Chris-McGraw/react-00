@@ -8,7 +8,8 @@ class DrumMachine extends React.Component {
       currentKit: "kit1",
       currentPad: "",
       nowRecording: false,
-      playbackArr: [{key: "Q", time: 496}, {key: "Q", time: 1057}, {key: "Q", time: 1632}, {key: "Q", time: 2400}, {key: "W", time: 2783}]
+      playbackArr: [{key: "Q", time: 496}, {key: "Q", time: 1057}, {key: "Q", time: 1632}, {key: "Q", time: 2400}, {key: "W", time: 2783}],
+      nowPlaying: false
     };
     this.togglePower = this.togglePower.bind(this);
     this.setCurrentKit = this.setCurrentKit.bind(this);
@@ -25,12 +26,17 @@ class DrumMachine extends React.Component {
       this.setState({
         power: "off",
         currentKit: "kit1",
-        nowRecording: false
+        nowRecording: false,
+        nowPlaying: false
       });
 
       if(this.state.nowRecording === true) {
         clearTimeout(this.recordingTimeout);
         console.log("RECORDING STOPPED");
+      }
+      if(this.state.nowPlaying === true) {
+        clearTimeout(this.playbackTimeouts);
+        console.log("PLAYBACK STOPPED");
       }
     }
     else {
@@ -64,7 +70,7 @@ class DrumMachine extends React.Component {
   }
 
   startRecording() {
-    if(this.state.power === "on" && this.state.nowRecording === false) {
+    if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
       this.setState({
         nowRecording: true
       });
@@ -91,10 +97,24 @@ class DrumMachine extends React.Component {
 
       console.log("RECORDING STOPPED");
     }
+
+    if(this.state.power === "on" && this.state.nowPlaying === true) {
+      clearTimeout(this.playbackTimeouts);
+
+      this.setState({
+        nowPlaying: false
+      });
+
+      console.log("PLAYBACK STOPPED");
+    }
   }
 
   startPlayback() {
-    if(this.state.power === "on" && this.state.nowRecording === false) {
+    if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
+      this.setState({
+        nowPlaying: true
+      });
+
       console.log(this.state.playbackArr);
 
       this.playbackTimeouts = [];
