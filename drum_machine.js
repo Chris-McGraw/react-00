@@ -17,6 +17,7 @@ class DrumMachine extends React.Component {
     this.recordingTimeout = null;
     this.stop = this.stop.bind(this);
     this.startPlayback = this.startPlayback.bind(this);
+    this.playbackTimeouts = null;
   }
 
   togglePower() {
@@ -96,7 +97,7 @@ class DrumMachine extends React.Component {
     if(this.state.power === "on" && this.state.nowRecording === false) {
       console.log(this.state.playbackArr);
 
-      let playbackTimeouts = [];
+      this.playbackTimeouts = [];
 
       console.log("PLAYBACK STARTED");
 
