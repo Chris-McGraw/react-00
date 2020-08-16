@@ -32,10 +32,14 @@ class DrumMachine extends React.Component {
 
       if(this.state.nowRecording === true) {
         clearTimeout(this.recordingTimeout);
+
         console.log("RECORDING STOPPED");
       }
       if(this.state.nowPlaying === true) {
-        clearTimeout(this.playbackTimeouts);
+        this.playbackTimeouts.forEach(function(i) {
+          clearTimeout(i);
+        }.bind(this));
+
         console.log("PLAYBACK STOPPED");
       }
     }
@@ -99,7 +103,9 @@ class DrumMachine extends React.Component {
     }
 
     if(this.state.power === "on" && this.state.nowPlaying === true) {
-      clearTimeout(this.playbackTimeouts);
+      this.playbackTimeouts.forEach(function(i) {
+        clearTimeout(i);
+      }.bind(this));
 
       this.setState({
         nowPlaying: false
