@@ -103,7 +103,7 @@ class DrumMachine extends React.Component {
       this.state.playbackArr.forEach(function(i) {
         playbackTimeouts.push( setTimeout(function() {
           if(i.key === "Q") {
-            // this.setCurrentPad(i.key);
+            this.setCurrentPad(i.key);
 
             let audio = document.getElementById(i.key);
 
@@ -114,7 +114,7 @@ class DrumMachine extends React.Component {
             audio.play();
           }
           else if(i.key === "W") {
-            // this.setCurrentPad(i.key);
+            this.setCurrentPad(i.key);
 
             let audio = document.getElementById(i.key);
 
@@ -125,7 +125,7 @@ class DrumMachine extends React.Component {
             audio.play();
           }
         }.bind(this), i.time) );
-      });
+      }.bind(this));
     }
   }
 
