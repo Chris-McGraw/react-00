@@ -159,42 +159,42 @@ class DrumMachine extends React.Component {
   }
 }
 
-class PowerContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    let switchSlide = {
-      transform: "translateY(0%)"
-    }
-    if(this.props.power === "off") {
-      switchSlide = {
-        transform: "translateY(100%)"
-      }
-    }
-
-    return (
-      <div>
-        <div id="power-container">
-          <div id="power-switch" style={switchSlide} onClick={this.props.togglePower}>
-            <div id="power-switch-indicator"></div>
-          </div>
-
-          <div id="slider-path"></div>
-
-          <div id="power-on-line">
-            <p>ON</p>
-          </div>
-
-          <div id="power-off-line">
-            <p>OFF</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+// class PowerContainer extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
+//
+//   render() {
+//     let switchSlide = {
+//       transform: "translateY(0%)"
+//     }
+//     if(this.props.power === "off") {
+//       switchSlide = {
+//         transform: "translateY(100%)"
+//       }
+//     }
+//
+//     return (
+//       <div>
+//         <div id="power-container">
+//           <div id="power-switch" style={switchSlide} onClick={this.props.togglePower}>
+//             <div id="power-switch-indicator"></div>
+//           </div>
+//
+//           <div id="slider-path"></div>
+//
+//           <div id="power-on-line">
+//             <p>ON</p>
+//           </div>
+//
+//           <div id="power-off-line">
+//             <p>OFF</p>
+//           </div>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
 
 class KitChoiceContainer extends React.Component {
   constructor(props) {
