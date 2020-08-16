@@ -127,32 +127,19 @@ class DrumMachine extends React.Component {
 
       console.log("PLAYBACK STARTED");
 
-      this.state.playbackArr.forEach(function(i) {
+      this.state.playbackArr.forEach( function(i) {
         this.playbackTimeouts.push( setTimeout(function() {
-          if(i.key === "Q") {
-            this.setCurrentPad(i.key);
+          this.setCurrentPad(i.key);
 
-            let audio = document.getElementById(i.key);
+          let audio = document.getElementById(i.key);
 
-            audio.src = sampleKits[this.state.currentKit][i.key].src;
-            audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
-            audio.pause();
-            audio.currentTime = 0;
-            audio.play();
-          }
-          else if(i.key === "W") {
-            this.setCurrentPad(i.key);
-
-            let audio = document.getElementById(i.key);
-
-            audio.src = sampleKits[this.state.currentKit][i.key].src;
-            audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
-            audio.pause();
-            audio.currentTime = 0;
-            audio.play();
-          }
+          audio.src = sampleKits[this.state.currentKit][i.key].src;
+          audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+          audio.pause();
+          audio.currentTime = 0;
+          audio.play();
         }.bind(this), i.time) );
-      }.bind(this));
+      }.bind(this) );
     }
   }
 
@@ -161,7 +148,7 @@ class DrumMachine extends React.Component {
       <div>
         <div id="drum-machine">
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
-          <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} />
+          <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
           <PlaybackControls power={this.state.power} startRecording={this.startRecording} stop={this.stop} startPlayback={this.startPlayback} />
@@ -286,7 +273,7 @@ class DisplayLeft extends React.Component {
   render() {
     let movePlayLine = {};
 
-    if(this.props.nowRecording === true) {
+    if(this.props.nowRecording === true || this.props.nowPlaying === true) {
       movePlayLine = {
         transition: "transform 10s linear",
         transform: "translateX(" + (document.getElementById("display-left").offsetWidth - 5) + "px)"
