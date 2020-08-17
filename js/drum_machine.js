@@ -118,7 +118,7 @@ class DrumMachine extends React.Component {
     noteBlock.setAttribute("style", "left:" + (noteBlockTiming.toFixed(1) * 10) + "%");
     noteBlock.setAttribute("style", "backgroundColor:" + sampleKits[this.props.currentKit][key].backgroundColor;
 
-    document.getElementById(sampleKits[this.props.currentKit][key].testLine).appendChild(noteBlock);
+    document.getElementById("test-line-9").appendChild(noteBlock);
   }
 
   startPlayback() {
