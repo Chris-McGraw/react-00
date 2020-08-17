@@ -111,15 +111,14 @@ class DrumMachine extends React.Component {
   }
 
   appendNoteToScreen(key, time) {
-    if(key === "Q") {
-      let noteBlock = document.createElement("DIV");
-      noteBlock.setAttribute("class", "note-block note-block-808");
+    let noteBlock = document.createElement("DIV");
+    let noteBlockTiming = time / 1000;
 
-      let noteBlockTiming = time / 1000;
-      noteBlock.setAttribute("style", "left:" + (noteBlockTiming.toFixed(1) * 10) + "%");
+    noteBlock.setAttribute("class", "note-block");
+    noteBlock.setAttribute("style", "left:" + (noteBlockTiming.toFixed(1) * 10) + "%");
+    noteBlock.setAttribute("style", "backgroundColor:" + sampleKits[this.props.currentKit][key].backgroundColor;
 
-      document.getElementById("test-line-9").appendChild(noteBlock);
-    }
+    document.getElementById(sampleKits[this.props.currentKit][key].testLine).appendChild(noteBlock);
   }
 
   startPlayback() {

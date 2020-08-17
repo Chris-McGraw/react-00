@@ -3,12 +3,14 @@ const sampleKits = {
     Q: {src: "audio/808s/loaded.wav",
     desc: "808s - Loaded",
     backgroundImg: "radial-gradient(#fd6846, #ad020c)",
-    backgroundColor: "#ad020c"
+    backgroundColor: "#ad020c",
+    testLine: "test-line-9"
     },
     W: {src: "audio/808s/starburst.wav",
     desc: "808s - Starburst",
     backgroundImg: "radial-gradient(#fd6846, #ad020c)",
-    backgroundColor: "#ad020c"
+    backgroundColor: "#ad020c",
+    testLine: "test-line-8"
     },
   },
   kit2: {
