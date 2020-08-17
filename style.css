@@ -106,6 +106,17 @@ html,body {
   border-bottom: none;
 }
 
+.note-block {
+  position: absolute;
+
+  width: 5px;
+  height: 31px;
+}
+
+.note-block-808 {
+  background-color: #fd6846;
+}
+
 #power-container {
   position: absolute;
   left: 60px;

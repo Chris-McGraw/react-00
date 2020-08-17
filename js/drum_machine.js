@@ -18,6 +18,7 @@ class DrumMachine extends React.Component {
     this.startRecording = this.startRecording.bind(this);
     this.recordingFinishTimeout = null;
     this.recordNote = this.recordNote.bind(this);
+    this.appendNoteToScreen = this.appendNoteToScreen.bind(this);
     this.stop = this.stop.bind(this);
     this.startPlayback = this.startPlayback.bind(this);
     this.playbackTimeouts = null;
@@ -104,6 +105,20 @@ class DrumMachine extends React.Component {
   recordNote(key) {
     if(this.state.nowRecording === true && event !== undefined) {
       this.setState({ playbackArr: [...this.state.playbackArr, {kit: this.state.currentKit, key:key, time:(Date.now() - this.state.recordingStartTime)}] });
+
+      this.appendNoteToScreen(key, (Date.now() - this.state.recordingStartTime));
+    }
+  }
+
+  appendNoteToScreen(key, time) {
+    if(key === "Q") {
+      let noteBlock = document.createElement("DIV");
+      noteBlock.setAttribute("class", "note-block note-block-808");
+
+      let noteBlockTiming = time / 1000;
+      noteBlock.setAttribute("style", "left:" + (noteBlockTiming.toFixed(1) * 10) + "%");
+
+      document.getElementById("test-line-9").appendChild(noteBlock);
     }
   }
 
