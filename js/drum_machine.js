@@ -80,6 +80,10 @@ class DrumMachine extends React.Component {
 
   startRecording() {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
+      if(this.state.playbackArr.length > 0) {
+        this.startPlayback();
+      }
+
       this.setState({
         nowRecording: true,
         recordingStartTime: Date.now()
@@ -100,32 +104,6 @@ class DrumMachine extends React.Component {
   recordNote(key) {
     if(this.state.nowRecording === true && event !== undefined) {
       this.setState({ playbackArr: [...this.state.playbackArr, {kit: this.state.currentKit, key:key, time:(Date.now() - this.state.recordingStartTime)}] });
-    }
-  }
-
-  stop() {
-    if(this.state.power === "on" && this.state.nowRecording === true) {
-      this.setState({
-        nowRecording: false
-      });
-
-      clearTimeout(this.recordingFinishTimeout);
-
-      console.log("RECORDING STOPPED");
-    }
-
-    if(this.state.power === "on" && this.state.nowPlaying === true) {
-      this.setState({
-        nowPlaying: false
-      });
-
-      this.playbackTimeouts.forEach(function(i) {
-        clearTimeout(i);
-      }.bind(this));
-
-      clearTimeout(this.playbackFinishTimeout);
-
-      console.log("PLAYBACK STOPPED");
     }
   }
 
@@ -162,6 +140,32 @@ class DrumMachine extends React.Component {
 
         console.log("PLAYBACK FINISHED");
       }.bind(this), 10000);
+    }
+  }
+
+  stop() {
+    if(this.state.power === "on" && this.state.nowRecording === true) {
+      this.setState({
+        nowRecording: false
+      });
+
+      clearTimeout(this.recordingFinishTimeout);
+
+      console.log("RECORDING STOPPED");
+    }
+
+    if(this.state.power === "on" && this.state.nowPlaying === true) {
+      this.setState({
+        nowPlaying: false
+      });
+
+      this.playbackTimeouts.forEach(function(i) {
+        clearTimeout(i);
+      }.bind(this));
+
+      clearTimeout(this.playbackFinishTimeout);
+
+      console.log("PLAYBACK STOPPED");
     }
   }
 
