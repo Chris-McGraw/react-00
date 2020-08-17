@@ -9,7 +9,7 @@ class DrumMachine extends React.Component {
       currentPad: "",
       nowRecording: false,
       recordingStartTime: 0,
-      playbackArr: [{key: "Q", time: 496}, {key: "Q", time: 1057}, {key: "Q", time: 1632}, {key: "Q", time: 2400}, {key: "W", time: 2783}],
+      playbackArr: [],
       nowPlaying: false
     };
     this.togglePower = this.togglePower.bind(this);
