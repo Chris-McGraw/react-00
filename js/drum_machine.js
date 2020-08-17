@@ -8,6 +8,7 @@ class DrumMachine extends React.Component {
       currentKit: "kit1",
       currentPad: "",
       nowRecording: false,
+      recordingStartTime: 0,
       playbackArr: [{key: "Q", time: 496}, {key: "Q", time: 1057}, {key: "Q", time: 1632}, {key: "Q", time: 2400}, {key: "W", time: 2783}],
       nowPlaying: false
     };
@@ -16,6 +17,7 @@ class DrumMachine extends React.Component {
     this.setCurrentPad = this.setCurrentPad.bind(this);
     this.startRecording = this.startRecording.bind(this);
     this.recordingTimeout = null;
+    this.recordNote = this.recordNote.bind(this);
     this.stop = this.stop.bind(this);
     this.startPlayback = this.startPlayback.bind(this);
     this.playbackTimeouts = null;
@@ -76,7 +78,8 @@ class DrumMachine extends React.Component {
   startRecording() {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
       this.setState({
-        nowRecording: true
+        nowRecording: true,
+        recordingStartTime: Date.now()
       });
 
       console.log("RECORDING STARTED");
@@ -88,6 +91,12 @@ class DrumMachine extends React.Component {
 
         console.log("RECORDING FINISHED");
       }.bind(this), 10000);
+    }
+  }
+
+  recordNote(key) {
+    if(this.state.nowRecording === true && event !== undefined) {
+      this.setState({ playbackArr: [...this.state.playbackArr, {key:key, time:(Date.now() - this.state.recordingStartTime)}] });
     }
   }
 
@@ -152,7 +161,7 @@ class DrumMachine extends React.Component {
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
           <PlaybackControls power={this.state.power} startRecording={this.startRecording} stop={this.stop} startPlayback={this.startPlayback} />
-          <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} />
+          <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} nowRecording={this.state.nowRecording} recordNote={this.recordNote} />
         </div>
       </div>
     );

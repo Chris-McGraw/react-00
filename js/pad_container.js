@@ -21,6 +21,10 @@ class PadContainer extends React.Component {
       }
 
       this.props.setCurrentPad(audioID);
+      
+      if(this.props.nowRecording === true) {
+        this.props.recordNote(audioID);
+      }
 
       let audio = document.getElementById(audioID);
 
