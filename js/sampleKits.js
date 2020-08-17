@@ -14,6 +14,13 @@ const sampleKits = {
     noteColor: "#fd6846",
     testLine: "test-line-8"
     },
+    A: {src: "audio/kicks/kick5.wav",
+    desc: "Kicks - Kick 5",
+    backgroundImg: "radial-gradient(#6be2fa, #0e839f)",
+    backgroundColor: "#0e839f",
+    noteColor: "#6be2fa",
+    testLine: "test-line-6"
+    },
   },
   kit2: {
     Q: {src: "audio/808s/chirp.wav",

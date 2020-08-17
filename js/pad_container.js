@@ -66,6 +66,10 @@ class PadContainer extends React.Component {
     else if(event.keyCode === 87) {
       this.padPress(event);
     }
+    // KEY PRESS A
+    else if(event.keyCode === 65) {
+      this.padPress(event);
+    }
   }
 
   handleKeyLift(event) {
@@ -75,6 +79,10 @@ class PadContainer extends React.Component {
     }
     // KEY PRESS W
     else if(event.keyCode === 87) {
+      this.padLift(event);
+    }
+    // KEY PRESS A
+    else if(event.keyCode === 65) {
       this.padLift(event);
     }
   }
@@ -125,7 +133,9 @@ class PadContainer extends React.Component {
             <p>E</p>
           </div>
 
-          <div className="drum-pad" id="pad-a" style={padPowered}>
+          <div className="drum-pad" id="pad-a" style={padPowered}
+          onMouseDown={this.padPress} onMouseUp={this.padLift}>
+            <audio preload="auto" src="audio/kicks/kick5.wav" className="clip" id="A"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>A</p>
           </div>
