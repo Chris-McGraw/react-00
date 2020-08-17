@@ -20,7 +20,7 @@ const sampleKits = {
     backgroundColor: "#0e839f",
     noteColor: "#6be2fa",
     testLine: "test-line-6"
-    },
+    }
   },
   kit2: {
     Q: {src: "audio/808s/chirp.wav",
@@ -33,5 +33,10 @@ const sampleKits = {
     backgroundImg: "radial-gradient(#818bfa, #0530da)",
     backgroundColor: "#0530da"
     },
+    A: {src: "audio/808s/chirp.wav",
+    desc: "808s - Chirp",
+    backgroundImg: "radial-gradient(#818bfa, #0530da)",
+    backgroundColor: "#0530da"
+    }
   }
 };
