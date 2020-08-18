@@ -22,7 +22,7 @@ class PlaybackControls extends React.Component {
       //
       // this.props.setCurrentKit(event);
 
-      console.log("fuck");
+      console.log(event.currentTarget);
     }
   }
 
