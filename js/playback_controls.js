@@ -19,8 +19,6 @@ class PlaybackControls extends React.Component {
       event.currentTarget.style.backgroundColor = "#dad9de";
       event.currentTarget.style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
-
-      this.props.setCurrentKit(event);
     }
   }
 
