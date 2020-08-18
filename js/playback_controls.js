@@ -46,6 +46,8 @@ class PlaybackControls extends React.Component {
         <div className="control-btn" id="record-button" style={btnPowered} onMouseDown={(event) => {
           this.ctrlBtnDown(event);
           this.props.startRecording();
+        }} onMouseUp={(event) => {
+          this.ctrlBtnUp(event);
         }}>
           <div className="control-btn-glow" style={btnGlowPowered}>
             <i className="fas fa-circle"></i>
