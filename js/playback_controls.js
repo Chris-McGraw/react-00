@@ -45,7 +45,7 @@ class PlaybackControls extends React.Component {
 
     return (
       <div id="playback-controls">
-        <div className="control-btn" id="record-button" style={btnPowered} onMouseDown={(this) => {
+        <div className="control-btn" id="record-button" style={btnPowered} onMouseDown={(event) => {
           this.ctrlBtnDown();
           this.props.startRecording();
         }}>
