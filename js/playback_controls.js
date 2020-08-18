@@ -9,18 +9,20 @@ class PlaybackControls extends React.Component {
 
   ctrlBtnDown(event) {
     if(this.props.power === "on") {
-      var ctrlBtns = document.getElementsByClassName("control-btn");
+      // var ctrlBtns = document.getElementsByClassName("control-btn");
+      //
+      // for(let n = 0; n < ctrlBtns.length; n++) {
+      //   ctrlBtns[n].style.backgroundColor = "#c0c7ca";
+      //   ctrlBtns[n].style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
+      // }
+      //
+      // event.currentTarget.style.backgroundColor = "#dad9de";
+      // event.currentTarget.style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
+      // event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+      //
+      // this.props.setCurrentKit(event);
 
-      for(let n = 0; n < ctrlBtns.length; n++) {
-        ctrlBtns[n].style.backgroundColor = "#c0c7ca";
-        ctrlBtns[n].style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
-      }
-
-      event.currentTarget.style.backgroundColor = "#dad9de";
-      event.currentTarget.style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
-      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
-
-      this.props.setCurrentKit(event);
+      console.log("fuck");
     }
   }
 
@@ -46,8 +48,8 @@ class PlaybackControls extends React.Component {
     return (
       <div id="playback-controls">
         <div className="control-btn" id="record-button" style={btnPowered} onMouseDown={() => {
-          this.ctrlBtnDown;
-          this.props.startRecording;
+          // this.ctrlBtnDown();
+          this.props.startRecording();
         }}>
           <div className="control-btn-glow" style={btnGlowPowered}>
             <i className="fas fa-circle"></i>
