@@ -9,58 +9,52 @@ class PlaybackControls extends React.Component {
 
   ctrlBtnDown(event) {
     if(this.props.power === "on") {
-      // var ctrlBtns = document.getElementsByClassName("control-btn");
-      //
-      // for(let n = 0; n < ctrlBtns.length; n++) {
-      //   if(ctrlBtns[n].id === "record-button" || ctrlBtns[n].id === "stop-button") {
-      //     ctrlBtns[n].style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
-      //     ctrlBtns[n].style.backgroundColor = "#c0c7ca";
-      //   }
-      //   else {
-      //     ctrlBtns[n].style.backgroundImage = "none";
-      //     ctrlBtns[n].style.backgroundColor = "#898f90";
-      //   }
-      // }
-      //
-      // event.currentTarget.style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
-      // event.currentTarget.style.backgroundColor = "#dad9de";
-      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
     }
   }
 
   ctrlBtnUp(event) {
-    event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
+    event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0)";
   }
 
   styleTest() {
     if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
-      return "control-btn ctrl-btn-on";
+      return "ctrl-btn ctrl-btn-on";
     }
     else if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === true) {
-      return "control-btn ctrl-btn-off";
+      return "ctrl-btn ctrl-btn-off";
     }
     else if(this.props.power === "on" && this.props.nowRecording === true) {
-      return "control-btn ctrl-btn-active";
+      return "ctrl-btn ctrl-btn-active";
     }
     else {
-      return "control-btn ctrl-btn-off"
+      return "ctrl-btn ctrl-btn-off"
+    }
+  }
+
+  glowStyleTest() {
+    if(this.props.power === "on" && this.props.nowPlaying === false) {
+      return "ctrl-glow ctrl-glow-on";
+    }
+    else {
+      return "ctrl-glow ctrl-glow-off"
     }
   }
 
   render() {
-    let btnPowered = {};
-    let btnGlowPowered = {};
-
-    if(this.props.power === "off") {
-      btnPowered = {
-        backgroundImage: "none",
-        backgroundColor: "#898F90"
-      }
-      btnGlowPowered = {
-        boxShadow: "none",
-        backgroundColor: "rgba(255,255,255, 0.0)"
-      }
-    }
+    // let btnPowered = {};
+    // let btnGlowPowered = {};
+    //
+    // if(this.props.power === "off") {
+    //   btnPowered = {
+    //     backgroundImage: "none",
+    //     backgroundColor: "#898F90"
+    //   }
+    //   btnGlowPowered = {
+    //     boxShadow: "none",
+    //     backgroundColor: "rgba(255,255,255, 0.0)"
+    //   }
+    // }
 
     return (
       <div id="playback-controls">
@@ -72,25 +66,25 @@ class PlaybackControls extends React.Component {
         onMouseUp={(event) => {
           this.ctrlBtnUp(event);
         }}>
-          <div className="control-btn-glow" style={btnGlowPowered}>
+          <div className={this.glowStyleTest()}>
             <i className="fas fa-circle"></i>
           </div>
         </div>
 
-        <div className="control-btn" id="stop-button" style={btnPowered} onMouseDown={this.props.stop}>
-          <div className="control-btn-glow" style={btnGlowPowered}>
+        <div className="ctrl-btn" id="stop-button" style={btnPowered} onMouseDown={this.props.stop}>
+          <div className="ctrl-btn-glow" style={btnGlowPowered}>
             <i className="fas fa-stop"></i>
           </div>
         </div>
 
-        <div className="control-btn" id="play-button" style={btnPowered} onMouseDown={this.props.startPlayback}>
-          <div className="control-btn-glow" style={btnGlowPowered}>
+        <div className="ctrl-btn" id="play-button" style={btnPowered} onMouseDown={this.props.startPlayback}>
+          <div className="ctrl-btn-glow" style={btnGlowPowered}>
             <i className="fas fa-play"></i>
           </div>
         </div>
 
-        <div className="control-btn" id="undo-button" style={btnPowered}>
-          <div className="control-btn-glow" style={btnGlowPowered}>
+        <div className="ctrl-btn" id="undo-button" style={btnPowered}>
+          <div className="ctrl-btn-glow" style={btnGlowPowered}>
             <i className="fas fa-undo"></i>
           </div>
         </div>
