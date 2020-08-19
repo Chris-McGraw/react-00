@@ -79,7 +79,7 @@ class DrumMachine extends React.Component {
     }
   }
 
-  startRecording() {
+  startRecording(event) {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
       if(this.state.playbackArr.length > 0) {
         this.startPlayback();
@@ -121,7 +121,7 @@ class DrumMachine extends React.Component {
     document.getElementById(sampleKits[this.state.currentKit][key].testLine).appendChild(noteBlock);
   }
 
-  startPlayback() {
+  startPlayback(event) {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
       this.setState({
         nowPlaying: true
@@ -158,7 +158,7 @@ class DrumMachine extends React.Component {
     }
   }
 
-  stop() {
+  stop(event) {
     if(this.state.power === "on" && this.state.nowRecording === true) {
       this.setState({
         nowRecording: false
