@@ -17,7 +17,7 @@ class PlaybackControls extends React.Component {
     event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0)";
   }
 
-  styleTest() {
+  recordBtnStyle() {
     if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
       return "ctrl-btn ctrl-btn-on";
     }
@@ -32,8 +32,26 @@ class PlaybackControls extends React.Component {
     }
   }
 
-  glowStyleTest() {
+  recordGlowStyle() {
     if(this.props.power === "on" && this.props.nowPlaying === false) {
+      return "ctrl-glow ctrl-glow-on";
+    }
+    else {
+      return "ctrl-glow ctrl-glow-off"
+    }
+  }
+
+  undoBtnStyle() {
+    if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
+      return "ctrl-btn ctrl-btn-on";
+    }
+    else {
+      return "ctrl-btn ctrl-btn-off"
+    }
+  }
+
+  undoGlowStyle() {
+    if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
       return "ctrl-glow ctrl-glow-on";
     }
     else {
@@ -58,7 +76,7 @@ class PlaybackControls extends React.Component {
 
     return (
       <div id="playback-controls">
-        <div id="record-button" className={this.styleTest()}
+        <div id="record-button" className={this.recordBtnStyle()}
         onMouseDown={(event) => {
           this.ctrlBtnDown(event);
           this.props.startRecording();
@@ -66,7 +84,7 @@ class PlaybackControls extends React.Component {
         onMouseUp={(event) => {
           this.ctrlBtnUp(event);
         }}>
-          <div className={this.glowStyleTest()}>
+          <div className={this.recordGlowStyle()}>
             <i className="fas fa-circle"></i>
           </div>
         </div>
@@ -85,8 +103,8 @@ class PlaybackControls extends React.Component {
           </div>
         </div>
 
-        <div id="undo-button" className="ctrl-btn">
-          <div className="ctrl-btn-glow">
+        <div id="undo-button" className={this.undoBtnStyle()}>
+          <div className={this.undoGlowStyle()}>
             <i className="fas fa-undo"></i>
           </div>
         </div>
