@@ -41,6 +41,24 @@ class PlaybackControls extends React.Component {
     }
   }
 
+  stopBtnStyle() {
+    if(this.props.power === "on") {
+      return "ctrl-btn ctrl-btn-on";
+    }
+    else {
+      return "ctrl-btn ctrl-btn-off"
+    }
+  }
+
+  stopGlowStyle() {
+    if(this.props.power === "on") {
+      return "ctrl-glow ctrl-glow-on";
+    }
+    else {
+      return "ctrl-glow ctrl-glow-off"
+    }
+  }
+
   playBtnStyle() {
     if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
       return "ctrl-btn ctrl-btn-on";
@@ -113,9 +131,9 @@ class PlaybackControls extends React.Component {
           </div>
         </div>
 
-        <div id="stop-button" className="ctrl-btn"
+        <div id="stop-button" className={this.stopBtnStyle()}
         onMouseDown={this.props.stop}>
-          <div className="ctrl-btn-glow">
+          <div className={this.stopGlowStyle()}>
             <i className="fas fa-stop"></i>
           </div>
         </div>
