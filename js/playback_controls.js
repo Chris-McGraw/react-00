@@ -112,21 +112,21 @@ class PlaybackControls extends React.Component {
     return (
       <div id="playback-controls">
         <div id="record-button" className={this.recordBtnStyle()}
-        onMouseDown={this.props.startRecording} onMouseUp={this.ctrlBtnUp}>
+        onMouseDown={this.props.startRecording} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
           <div className={this.recordGlowStyle()}>
             <i className="fas fa-circle"></i>
           </div>
         </div>
 
         <div id="stop-button" className={this.stopBtnStyle()}
-        onMouseDown={this.props.stop} onMouseUp={this.ctrlBtnUp}>
+        onMouseDown={this.props.stop} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
           <div className={this.stopGlowStyle()}>
             <i className="fas fa-stop"></i>
           </div>
         </div>
 
         <div id="play-button" className={this.playBtnStyle()}
-        onMouseDown={this.props.startPlayback} onMouseUp={this.ctrlBtnUp}>
+        onMouseDown={this.props.startPlayback} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
           <div className={this.playGlowStyle()}>
             <i className="fas fa-play"></i>
           </div>
