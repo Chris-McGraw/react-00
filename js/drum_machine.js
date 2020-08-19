@@ -82,7 +82,7 @@ class DrumMachine extends React.Component {
   startRecording(event) {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
       if(this.state.playbackArr.length > 0) {
-        this.startPlayback();
+        this.startPlayback(event);
       }
 
       this.setState({

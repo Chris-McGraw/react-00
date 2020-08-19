@@ -95,20 +95,6 @@ class PlaybackControls extends React.Component {
   }
 
   render() {
-    // let btnPowered = {};
-    // let btnGlowPowered = {};
-    //
-    // if(this.props.power === "off") {
-    //   btnPowered = {
-    //     backgroundImage: "none",
-    //     backgroundColor: "#898F90"
-    //   }
-    //   btnGlowPowered = {
-    //     boxShadow: "none",
-    //     backgroundColor: "rgba(255,255,255, 0.0)"
-    //   }
-    // }
-
     return (
       <div id="playback-controls">
         <div id="record-button" className={this.recordBtnStyle()}
