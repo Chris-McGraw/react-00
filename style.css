@@ -349,8 +349,8 @@ html,body {
 }
 
 .ctrl-btn-active {
-  background-image: radial-gradient(#e9e8eB, #dad9de);
-  background-color: #dad9de;
+  background-image: radial-gradient(#e9e8eB, #f0eff2);
+  background-color: #f0eff2;
 }
 
 .ctrl-glow {

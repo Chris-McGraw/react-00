@@ -7,14 +7,8 @@ class PlaybackControls extends React.Component {
     this.ctrlBtnUp = this.ctrlBtnUp.bind(this);
   }
 
-  ctrlBtnDown(event) {
-    if(this.props.power === "on") {
-      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
-    }
-  }
-
   ctrlBtnUp(event) {
-    event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0)";
+    event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
   }
 
   recordBtnStyle() {
@@ -119,27 +113,21 @@ class PlaybackControls extends React.Component {
     return (
       <div id="playback-controls">
         <div id="record-button" className={this.recordBtnStyle()}
-        onMouseDown={(event) => {
-          this.ctrlBtnDown(event);
-          this.props.startRecording();
-        }}
-        onMouseUp={(event) => {
-          this.ctrlBtnUp(event);
-        }}>
+        onMouseDown={this.props.startRecording} onMouseUp={this.ctrlBtnUp(event)}>
           <div className={this.recordGlowStyle()}>
             <i className="fas fa-circle"></i>
           </div>
         </div>
 
         <div id="stop-button" className={this.stopBtnStyle()}
-        onMouseDown={this.props.stop}>
+        onMouseDown={this.props.stop} onMouseUp={this.ctrlBtnUp(event)}>
           <div className={this.stopGlowStyle()}>
             <i className="fas fa-stop"></i>
           </div>
         </div>
 
         <div id="play-button" className={this.playBtnStyle()}
-        onMouseDown={this.props.startPlayback}>
+        onMouseDown={this.props.startPlayback} onMouseUp={this.ctrlBtnUp(event)}>
           <div className={this.playGlowStyle()}>
             <i className="fas fa-play"></i>
           </div>
