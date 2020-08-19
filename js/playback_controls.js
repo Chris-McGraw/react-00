@@ -35,10 +35,6 @@ class PlaybackControls extends React.Component {
   render() {
     let btnPowered = {};
     let btnGlowPowered = {};
-    let btnActive = {
-      backgroundImage: "radial-gradient(#E9E8EB, #dad9de)",
-      backgroundColor: "#dad9de"
-    };
 
     if(this.props.power === "off") {
       btnPowered = {
@@ -53,10 +49,13 @@ class PlaybackControls extends React.Component {
 
     return (
       <div id="playback-controls">
-        <div className="control-btn" id="record-button" style={this.props.nowRecording ? {btnActive} : {btnPowered}} onMouseDown={(event) => {
+        <div className={this.props.power === "on" ? "control-btn ctrl-btn-on" : "control-btn ctrl-btn-off"}
+        id="record-button"
+        onMouseDown={(event) => {
           this.ctrlBtnDown(event);
           this.props.startRecording();
-        }} onMouseUp={(event) => {
+        }}
+        onMouseUp={(event) => {
           this.ctrlBtnUp(event);
         }}>
           <div className="control-btn-glow" style={btnGlowPowered}>
