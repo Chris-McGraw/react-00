@@ -3,7 +3,6 @@
 class PlaybackControls extends React.Component {
   constructor(props) {
     super(props)
-    this.ctrlBtnDown = this.ctrlBtnDown.bind(this);
     this.ctrlBtnUp = this.ctrlBtnUp.bind(this);
   }
 
