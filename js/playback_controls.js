@@ -33,8 +33,11 @@ class PlaybackControls extends React.Component {
   }
 
   styleTest() {
-    if(this.props.power === "on" && this.props.nowRecording === false) {
+    if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
       return "control-btn ctrl-btn-on";
+    }
+    else if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === true) {
+      return "control-btn ctrl-btn-off";
     }
     else if(this.props.power === "on" && this.props.nowRecording === true) {
       return "control-btn ctrl-btn-active";
