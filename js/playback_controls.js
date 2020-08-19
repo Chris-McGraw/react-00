@@ -12,12 +12,18 @@ class PlaybackControls extends React.Component {
       var ctrlBtns = document.getElementsByClassName("control-btn");
 
       for(let n = 0; n < ctrlBtns.length; n++) {
-        ctrlBtns[n].style.backgroundColor = "#c0c7ca";
-        ctrlBtns[n].style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
+        if(ctrlBtns[n].id === "record-button" || ctrlBtns[n].id === "stop-button") {
+          ctrlBtns[n].style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
+          ctrlBtns[n].style.backgroundColor = "#c0c7ca";
+        }
+        else {
+          ctrlBtns[n].style.backgroundImage = "none";
+          ctrlBtns[n].style.backgroundColor = "#898f90";
+        }
       }
 
-      event.currentTarget.style.backgroundColor = "#dad9de";
       event.currentTarget.style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
+      event.currentTarget.style.backgroundColor = "#dad9de";
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
     }
   }
