@@ -90,7 +90,7 @@ class DrumMachine extends React.Component {
         recordingStartTime: Date.now()
       });
 
-      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
       console.log("RECORDING STARTED");
 
       this.recordingFinishTimeout = setTimeout(function() {
@@ -131,7 +131,7 @@ class DrumMachine extends React.Component {
 
       this.playbackTimeouts = [];
 
-      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
       console.log("PLAYBACK STARTED");
 
       this.state.playbackArr.forEach( function(i) {
