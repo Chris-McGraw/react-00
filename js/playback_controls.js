@@ -53,7 +53,7 @@ class PlaybackControls extends React.Component {
 
     return (
       <div id="playback-controls">
-        <div className="control-btn" id="record-button" style={this.props.nowRecording ? {btnActive} : {btnPowered}} onMouseDown={(event) => {
+        <div className="control-btn" id="record-button" style={(if(this.props.nowRecording){return {btnActive}})} onMouseDown={(event) => {
           this.ctrlBtnDown(event);
           this.props.startRecording();
         }} onMouseUp={(event) => {
