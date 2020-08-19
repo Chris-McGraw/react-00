@@ -71,20 +71,22 @@ class PlaybackControls extends React.Component {
           </div>
         </div>
 
-        <div className="ctrl-btn" id="stop-button" style={btnPowered} onMouseDown={this.props.stop}>
-          <div className="ctrl-btn-glow" style={btnGlowPowered}>
+        <div id="stop-button" className="ctrl-btn"
+        onMouseDown={this.props.stop}>
+          <div className="ctrl-btn-glow">
             <i className="fas fa-stop"></i>
           </div>
         </div>
 
-        <div className="ctrl-btn" id="play-button" style={btnPowered} onMouseDown={this.props.startPlayback}>
-          <div className="ctrl-btn-glow" style={btnGlowPowered}>
+        <div id="play-button" className="ctrl-btn"
+        onMouseDown={this.props.startPlayback}>
+          <div className="ctrl-btn-glow">
             <i className="fas fa-play"></i>
           </div>
         </div>
 
-        <div className="ctrl-btn" id="undo-button" style={btnPowered}>
-          <div className="ctrl-btn-glow" style={btnGlowPowered}>
+        <div id="undo-button" className="ctrl-btn">
+          <div className="ctrl-btn-glow">
             <i className="fas fa-undo"></i>
           </div>
         </div>
