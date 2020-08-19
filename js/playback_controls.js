@@ -32,6 +32,18 @@ class PlaybackControls extends React.Component {
     event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
   }
 
+  styleTest() {
+    if(this.props.power === "on" && this.props.nowRecording === false) {
+      return "control-btn ctrl-btn-on";
+    }
+    else if(this.props.power === "on" && this.props.nowRecording === true) {
+      return "control-btn ctrl-btn-active";
+    }
+    else {
+      return "control-btn ctrl-btn-off"
+    }
+  }
+
   render() {
     let btnPowered = {};
     let btnGlowPowered = {};
@@ -49,8 +61,7 @@ class PlaybackControls extends React.Component {
 
     return (
       <div id="playback-controls">
-        <div className={this.props.power === "on" ? "control-btn ctrl-btn-on" : "control-btn ctrl-btn-off"}
-        id="record-button"
+        <div id="record-button" className={this.styleTest()}
         onMouseDown={(event) => {
           this.ctrlBtnDown(event);
           this.props.startRecording();
