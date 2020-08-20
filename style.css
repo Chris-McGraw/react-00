@@ -94,8 +94,6 @@ html,body {
   width: 5px;
 
   background-color: white;
-
-  transition: opacity 0.4s ease-in-out, transform 10s linear;
 }
 
 .test-line {
