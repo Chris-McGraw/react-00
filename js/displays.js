@@ -6,8 +6,15 @@ class DisplayLeft extends React.Component {
   }
 
   render() {
-    let movePlayLine = {};
+    let movePlayLine = {
+      opacity: "1.0"
+    };
 
+    if(this.props.power === "off") {
+      movePlayLine = {
+        opacity: "0.0"
+      }
+    }
     if(this.props.nowRecording === true || this.props.nowPlaying === true) {
       movePlayLine = {
         transition: "transform 10s linear",
