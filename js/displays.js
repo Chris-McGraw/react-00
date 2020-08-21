@@ -22,7 +22,7 @@ class DisplayLeft extends React.Component {
       }
     }
 
-    let test = this.props.playbackArr.map(i => <div className="note-block" style={"left:" + ( (i.time / 1000).toFixed(1) * 10 ) + "%;"}></div>);
+    let test = this.props.playbackArr.map(i => <div key={i+1} className="note-block" style={{left: ( (i.time / 1000).toFixed(1) * 10 ) + "%"}}></div>);
 
     return (
       <div>
