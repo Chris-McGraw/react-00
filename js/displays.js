@@ -5,6 +5,12 @@ class DisplayLeft extends React.Component {
     super(props)
   }
 
+  test2() {
+    if() {
+
+    }
+  }
+
   render() {
     let movePlayLine = {
       opacity: "1.0"
@@ -22,7 +28,7 @@ class DisplayLeft extends React.Component {
       }
     }
 
-    let test = this.props.playbackArr.map(i => <div key={i.kit + i.key + i.time} className="note-block" style={{left: ( (i.time / 1000).toFixed(1) * 10 ) + "%"}}></div>);
+    let test9 = this.props.playbackArr.filter(i.key === "Q").map(i => <div key={i.kit + i.key + i.time} className="note-block" style={{left: ( (i.time / 1000).toFixed(1) * 10 ) + "%"}}></div>);
 
     return (
       <div>
@@ -41,7 +47,7 @@ class DisplayLeft extends React.Component {
         <div id="display-left">
           <div id="play-line" style={movePlayLine}></div>
 
-          <div className="test-line" id="test-line-1">{test}</div>
+          <div className="test-line" id="test-line-1"></div>
           <div className="test-line" id="test-line-2"></div>
           <div className="test-line" id="test-line-3"></div>
           <div className="test-line" id="test-line-4"></div>
@@ -49,7 +55,7 @@ class DisplayLeft extends React.Component {
           <div className="test-line" id="test-line-6"></div>
           <div className="test-line" id="test-line-7"></div>
           <div className="test-line" id="test-line-8"></div>
-          <div className="test-line" id="test-line-9"></div>
+          <div className="test-line" id="test-line-9">{test9}</div>
         </div>
       </div>
     );
