@@ -113,6 +113,16 @@ html,body {
   height: 31px;
 
   background-color: red;
+
+  transition: opacity 0.4s ease-in-out;
+}
+
+.note-block-on {
+  opacity: 1.0;
+}
+
+.note-block-off {
+  opacity: 0.0;
 }
 
 #power-container {
