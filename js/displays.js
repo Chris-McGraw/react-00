@@ -5,12 +5,6 @@ class DisplayLeft extends React.Component {
     super(props)
   }
 
-  test2() {
-    if() {
-
-    }
-  }
-
   render() {
     let movePlayLine = {
       opacity: "1.0"
