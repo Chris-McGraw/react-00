@@ -5,6 +5,24 @@ class TrackControls extends React.Component {
     super(props)
   }
 
+  track1BtnStyle() {
+    if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false && this.props.currentTrack === "track1") {
+      return "ctrl-btn ctrl-btn-on";
+    }
+    else {
+      return "ctrl-btn ctrl-btn-off"
+    }
+  }
+
+  track1GlowStyle() {
+    if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false && this.props.currentTrack === "track1") {
+      return "ctrl-glow ctrl-glow-on";
+    }
+    else {
+      return "ctrl-glow ctrl-glow-off"
+    }
+  }
+
   trackBtnStyle() {
     if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
       return "ctrl-btn ctrl-btn-on";
@@ -26,8 +44,8 @@ class TrackControls extends React.Component {
   render() {
     return (
       <div id="track-controls">
-        <div className={this.trackBtnStyle()}>
-          <div className={this.trackGlowStyle()}>
+        <div className={this.track1BtnStyle()}>
+          <div className={this.track1GlowStyle()}>
             <p>I</p>
           </div>
         </div>
