@@ -108,7 +108,7 @@ class DrumMachine extends React.Component {
     if(this.state.nowRecording === true && event !== undefined) {
       this.setState({ playbackArr: [...this.state.playbackArr, {kit: this.state.currentKit, key:key, time:(Date.now() - this.state.recordingStartTime)}] });
 
-      this.appendNoteToScreen(key, (Date.now() - this.state.recordingStartTime));
+      // this.appendNoteToScreen(key, (Date.now() - this.state.recordingStartTime));
     }
   }
 
@@ -192,7 +192,7 @@ class DrumMachine extends React.Component {
       <div>
         <div id="drum-machine">
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
-          <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} />
+          <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} playbackArr={this.state.playbackArr} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
           <TrackControls power={this.state.power} currentTrack={this.state.currentTrack} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} />
