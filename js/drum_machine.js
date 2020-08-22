@@ -85,6 +85,8 @@ class DrumMachine extends React.Component {
       this.setState({
         playbackArr: []
       });
+
+      console.log("RECORDING DELETED");
     }
   }
 
