@@ -7,7 +7,7 @@ class PlaybackControls extends React.Component {
   }
 
   ctrlBtnUp(event) {
-    event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0)";
+    event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
   }
 
   recordBtnStyle() {

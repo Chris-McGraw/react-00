@@ -86,7 +86,7 @@ class DrumMachine extends React.Component {
         playbackArr: []
       });
 
-      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
+      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
       console.log("RECORDING DELETED");
     }
   }
