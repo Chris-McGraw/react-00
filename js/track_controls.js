@@ -62,7 +62,8 @@ class TrackControls extends React.Component {
           </div>
         </div>
 
-        <div id="delete-button" className={this.trackBtnStyle()}>
+        <div id="delete-button" className={this.trackBtnStyle()}
+        onMouseDown={this.props.deleteRecording}>
           <div className={this.trackGlowStyle()}>
             <i className="fas fa-trash"></i>
           </div>

@@ -16,6 +16,7 @@ class DrumMachine extends React.Component {
     this.togglePower = this.togglePower.bind(this);
     this.setCurrentKit = this.setCurrentKit.bind(this);
     this.setCurrentPad = this.setCurrentPad.bind(this);
+    this.deleteRecording = this.deleteRecording.bind(this);
     this.startRecording = this.startRecording.bind(this);
     this.recordingFinishTimeout = null;
     this.recordNote = this.recordNote.bind(this);
@@ -75,6 +76,14 @@ class DrumMachine extends React.Component {
     if(this.state.power === "on") {
       this.setState({
         currentPad: audioID
+      });
+    }
+  }
+
+  deleteRecording() {
+    if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false && this.state.playbackArr.length > 0) {
+      this.setState({
+        playbackArr: []
       });
     }
   }
@@ -182,7 +191,7 @@ class DrumMachine extends React.Component {
           <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} playbackArr={this.state.playbackArr} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
-          <TrackControls power={this.state.power} currentTrack={this.state.currentTrack} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} />
+          <TrackControls power={this.state.power} currentTrack={this.state.currentTrack} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} deleteRecording={this.deleteRecording} />
           <PlaybackControls power={this.state.power} startRecording={this.startRecording} nowRecording={this.state.nowRecording} startPlayback={this.startPlayback} nowPlaying={this.state.nowPlaying} stop={this.stop} />
           <PadContainer power={this.state.power} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} nowRecording={this.state.nowRecording} recordNote={this.recordNote} />
         </div>
