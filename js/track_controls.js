@@ -2,7 +2,12 @@
 
 class TrackControls extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.ctrlBtnUp = this.ctrlBtnUp.bind(this);
+  }
+
+  ctrlBtnUp(event) {
+    event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0)";
   }
 
   track1BtnStyle() {
@@ -63,7 +68,7 @@ class TrackControls extends React.Component {
         </div>
 
         <div id="delete-button" className={this.trackBtnStyle()}
-        onMouseDown={this.props.deleteRecording}>
+        onMouseDown={this.props.deleteRecording} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
           <div className={this.trackGlowStyle()}>
             <i className="fas fa-trash"></i>
           </div>

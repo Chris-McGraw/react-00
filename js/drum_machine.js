@@ -80,12 +80,13 @@ class DrumMachine extends React.Component {
     }
   }
 
-  deleteRecording() {
+  deleteRecording(event) {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false && this.state.playbackArr.length > 0) {
       this.setState({
         playbackArr: []
       });
 
+      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
       console.log("RECORDING DELETED");
     }
   }
@@ -101,7 +102,7 @@ class DrumMachine extends React.Component {
         recordingStartTime: Date.now()
       });
 
-      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
+      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
       console.log("RECORDING STARTED");
 
       this.recordingFinishTimeout = setTimeout(function() {
