@@ -63,7 +63,7 @@ class DisplayLeft extends React.Component {
           <div className="test-line" id="test-line-4"></div>
           <div className="test-line" id="test-line-5"></div>
           <div className="test-line" id="test-line-6">{this.mapNoteBlocks("A")}</div>
-          <div className="test-line" id="test-line-7"></div>
+          <div className="test-line" id="test-line-7">{this.mapNoteBlocks("E")}</div>
           <div className="test-line" id="test-line-8">{this.mapNoteBlocks("W")}</div>
           <div className="test-line" id="test-line-9">{this.mapNoteBlocks("Q")}</div>
         </div>
