@@ -121,14 +121,14 @@ class PadContainer extends React.Component {
         <div id="pad-container">
           <div className="drum-pad" id="pad-q" style={padPowered}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLeave}>
-            <audio preload="auto" src="audio/808s/loaded.wav" className="clip" id="Q"></audio>
+            <audio preload="auto" src="audio/808s/loaded.mp3" className="clip" id="Q"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>Q</p>
           </div>
 
           <div className="drum-pad" id="pad-w" style={padPowered}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLeave}>
-            <audio preload="auto" src="audio/808s/starburst.wav" className="clip" id="W"></audio>
+            <audio preload="auto" src="audio/808s/starburst.mp3" className="clip" id="W"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>W</p>
           </div>
@@ -140,7 +140,7 @@ class PadContainer extends React.Component {
 
           <div className="drum-pad" id="pad-a" style={padPowered}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLeave}>
-            <audio preload="auto" src="audio/kicks/kick5.wav" className="clip" id="A"></audio>
+            <audio preload="auto" src="audio/kicks/kick5.mp3" className="clip" id="A"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>A</p>
           </div>
