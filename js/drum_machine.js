@@ -11,6 +11,7 @@ class DrumMachine extends React.Component {
       nowRecording: false,
       recordingStartTime: 0,
       playbackArrPrevious: [],
+      playbackArrUndone: [],
       playbackArr: [],
       nowPlaying: false
     };
@@ -97,6 +98,10 @@ class DrumMachine extends React.Component {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
       if(this.state.playbackArr.length > 0) {
         this.startPlayback(event);
+
+        this.setState({
+          playbackArrPrevious: this.state.playbackArr.slice()
+        });
       }
 
       this.setState({
@@ -112,9 +117,35 @@ class DrumMachine extends React.Component {
           nowRecording: false
         });
 
+        this.setPlaybackArrUndone();
+
         console.log("RECORDING FINISHED");
       }.bind(this), 10000);
     }
+  }
+
+  setPlaybackArrUndone() {
+    if(this.state.playbackArrPrevious.length === 0 && this.state.playbackArr.length > 0) {
+      this.setState({
+        playbackArrUndone: []
+      });
+    }
+    else if( arraysEqual(this.state.playbackArrPrevious, this.state.playbackArr) === false ) {
+      this.setState({
+        playbackArrUndone: this.state.playbackArrPrevious.slice()
+      });
+    }
+  }
+
+  arraysEqual(a, b) {
+    if (a === b) return true;
+    if (a == null || b == null) return false;
+    if (a.length !== b.length) return false;
+
+    for (var i = 0; i < a.length; ++i) {
+      if (a[i] !== b[i]) return false;
+    }
+    return true;
   }
 
   recordNote(key) {
@@ -130,11 +161,6 @@ class DrumMachine extends React.Component {
       });
 
       console.log(this.state.playbackArr);
-
-      this.setState({
-        playbackArrPrevious: this.state.playbackArr.slice()
-      });
-      console.log("well fuck");
 
       this.playbackTimeouts = [];
 
@@ -173,6 +199,8 @@ class DrumMachine extends React.Component {
 
       clearTimeout(this.recordingFinishTimeout);
 
+      this.setPlaybackArrUndone();
+
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
       console.log("RECORDING STOPPED");
     }
@@ -196,14 +224,14 @@ class DrumMachine extends React.Component {
   undo(event) {
     if(this.state.power === "on" && this.state.nowRecording === false
     && this.state.nowPlaying === false && this.state.playbackArr.length > 0) {
-      console.log(this.state.playbackArrPrevious);
+      if(arraysEqual(this.state.playbackArr, this.state.playbackArrUndone) === false) {
+        this.setState({
+          playbackArr: this.state.playbackArrUndone.slice()
+        });
 
-      this.setState({
-        playbackArr: this.state.playbackArrPrevious.slice()
-      });
-
-      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
-      console.log("UNDO");
+        event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
+        console.log("UNDO");
+      }
     }
   }
 
