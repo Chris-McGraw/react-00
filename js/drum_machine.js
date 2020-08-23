@@ -86,6 +86,8 @@ class DrumMachine extends React.Component {
   deleteRecording(event) {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false && this.state.playbackArr.length > 0) {
       this.setState({
+        playbackArrPrevious: [],
+        playbackArrUndone: [],
         playbackArr: []
       });
 
