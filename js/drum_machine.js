@@ -99,14 +99,6 @@ class DrumMachine extends React.Component {
         this.startPlayback(event);
       }
 
-      if(this.state.nowPlaying === true) {
-        this.setState({
-          playbackArrPrevious: this.state.playbackArr.slice()
-        });
-
-        console.log("well fuck");
-      }
-
       this.setState({
         nowRecording: true,
         recordingStartTime: Date.now()
@@ -138,6 +130,11 @@ class DrumMachine extends React.Component {
       });
 
       console.log(this.state.playbackArr);
+
+      this.setState({
+        playbackArrPrevious: this.state.playbackArr.slice()
+      });
+      console.log("well fuck");
 
       this.playbackTimeouts = [];
 
