@@ -130,7 +130,7 @@ class DrumMachine extends React.Component {
         playbackArrUndone: []
       });
     }
-    else if( arraysEqual(this.state.playbackArrPrevious, this.state.playbackArr) === false ) {
+    else if( this.arraysEqual(this.state.playbackArrPrevious, this.state.playbackArr) === false ) {
       this.setState({
         playbackArrUndone: this.state.playbackArrPrevious.slice()
       });
@@ -224,7 +224,7 @@ class DrumMachine extends React.Component {
   undo(event) {
     if(this.state.power === "on" && this.state.nowRecording === false
     && this.state.nowPlaying === false && this.state.playbackArr.length > 0) {
-      if(arraysEqual(this.state.playbackArr, this.state.playbackArrUndone) === false) {
+      if(this.arraysEqual(this.state.playbackArr, this.state.playbackArrUndone) === false) {
         this.setState({
           playbackArr: this.state.playbackArrUndone.slice()
         });
