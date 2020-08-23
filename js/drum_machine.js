@@ -195,8 +195,11 @@ class DrumMachine extends React.Component {
   }
 
   undo(event) {
-    if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
+    if(this.state.power === "on" && this.state.nowRecording === false
+    && this.state.nowPlaying === false && this.state.playbackArr.length > 0) {
       console.log(this.state.playbackArrPrevious);
+
+      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
     }
   }
 
