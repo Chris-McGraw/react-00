@@ -118,7 +118,8 @@ class PlaybackControls extends React.Component {
           </div>
         </div>
 
-        <div id="undo-button" className={this.undoBtnStyle()}>
+        <div id="undo-button" className={this.undoBtnStyle()}
+        onMouseDown={this.props.undo} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
           <div className={this.undoGlowStyle()}>
             <i className="fas fa-undo"></i>
           </div>
