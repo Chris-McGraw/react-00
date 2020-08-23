@@ -103,6 +103,8 @@ class DrumMachine extends React.Component {
         this.setState({
           playbackArrPrevious: this.state.playbackArr.slice()
         });
+
+        console.log("well fuck");
       }
 
       this.setState({
