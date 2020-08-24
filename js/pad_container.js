@@ -49,9 +49,9 @@ class PadContainer extends React.Component {
       audioID = event.key.toUpperCase();
     }
 
-    // setTimeout(function() {
-    //   this.props.setCurrentPad("");
-    // }.bind(this), 1000);
+    setTimeout(function() {
+      this.props.setCurrentPad("");
+    }.bind(this), 750;
 
     let audio = document.getElementById(audioID);
 
