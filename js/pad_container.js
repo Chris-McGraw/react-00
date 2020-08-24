@@ -5,7 +5,6 @@ class PadContainer extends React.Component {
     super(props);
     this.padPress = this.padPress.bind(this);
     this.padLift = this.padLift.bind(this);
-    this.padLeave = this.padLeave.bind(this);
   }
 
   padPress(event) {
@@ -56,10 +55,6 @@ class PadContainer extends React.Component {
     let audio = document.getElementById(audioID);
 
     audio.parentElement.style.boxShadow = "8px 8px 8px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
-  }
-
-  padLeave(event) {
-    event.currentTarget.style.boxShadow = "8px 8px 8px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
   }
 
   handleKeyPress(event) {
@@ -128,28 +123,28 @@ class PadContainer extends React.Component {
       <div>
         <div id="pad-container">
           <div className="drum-pad" id="pad-q" style={padPowered}
-          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLeave}>
+          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
             <audio preload="auto" src="audio/808s/loaded.mp3" className="clip" id="Q"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>Q</p>
           </div>
 
           <div className="drum-pad" id="pad-w" style={padPowered}
-          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLeave}>
+          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
             <audio preload="auto" src="audio/808s/starburst.mp3" className="clip" id="W"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>W</p>
           </div>
 
           <div className="drum-pad" id="pad-e" style={padPowered}
-          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLeave}>
+          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
             <audio preload="auto" src="audio/808s/lettuce.mp3" className="clip" id="E"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>E</p>
           </div>
 
           <div className="drum-pad" id="pad-a" style={padPowered}
-          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLeave}>
+          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
             <audio preload="auto" src="audio/kicks/kick5.mp3" className="clip" id="A"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>A</p>
