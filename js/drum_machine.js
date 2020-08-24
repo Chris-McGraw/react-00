@@ -34,6 +34,7 @@ class DrumMachine extends React.Component {
       this.setState({
         power: "off",
         currentKit: "kit1",
+        currentPad: "",
         nowRecording: false,
         nowPlaying: false
       });

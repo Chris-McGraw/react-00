@@ -5,10 +5,13 @@ class PadContainer extends React.Component {
     super(props);
     this.padPress = this.padPress.bind(this);
     this.padLift = this.padLift.bind(this);
+    this.padLiftTimeout = null;
   }
 
   padPress(event) {
     if(this.props.power === "on") {
+      clearTimeout(this.padLiftTimeout);
+
       let audioID = "";
 
       // PAD MOUSE DOWN
@@ -48,7 +51,7 @@ class PadContainer extends React.Component {
       audioID = event.key.toUpperCase();
     }
 
-    setTimeout(function() {
+    this.padLiftTimeout = setTimeout(function() {
       this.props.setCurrentPad("");
     }.bind(this), 750);
 
