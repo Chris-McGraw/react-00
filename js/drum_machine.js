@@ -171,7 +171,7 @@ class DrumMachine extends React.Component {
 
       this.state.playbackArr.forEach( function(i) {
         this.playbackTimeouts.push( setTimeout(function() {
-          this.setCurrentPad(i.key);
+          // this.setCurrentPad(i.key);
 
           let audio = document.getElementById(i.key);
 
