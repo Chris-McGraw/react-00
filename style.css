@@ -470,6 +470,8 @@ html,body {
   box-shadow: 8px 8px 8px rgba(0,0,0, 1.0);
 
   cursor: pointer;
+  user-select: none;
+
   transition: background-color 0.4s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
