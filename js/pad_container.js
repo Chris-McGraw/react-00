@@ -10,8 +10,6 @@ class PadContainer extends React.Component {
 
   padPress(event) {
     if(this.props.power === "on") {
-      clearTimeout(this.padLiftTimeout);
-
       let audioID = "";
 
       // PAD MOUSE DOWN
@@ -24,6 +22,7 @@ class PadContainer extends React.Component {
       }
 
       this.props.setCurrentPad(audioID);
+      clearTimeout(this.padLiftTimeout);
 
       if(this.props.nowRecording === true) {
         this.props.recordNote(audioID);
