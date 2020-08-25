@@ -159,6 +159,8 @@ class DrumMachine extends React.Component {
 
   startPlayback(event) {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
+      event.persist();
+
       this.setState({
         nowPlaying: true
       });
@@ -193,7 +195,7 @@ class DrumMachine extends React.Component {
 
         if(this.state.nowRecording === false) {
           setTimeout(function() {
-            this.startPlayback();
+            this.startPlayback(event);
           }.bind(this), 20);
         }
       }.bind(this), 10000);
