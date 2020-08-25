@@ -193,7 +193,7 @@ class DrumMachine extends React.Component {
 
         if(this.state.nowRecording === false) {
           setTimeout(function() {
-            startPlayback(event);
+            this.startPlayback(event).bind(this);
           }.bind(this), 20);
         }
       }.bind(this), 10000);
