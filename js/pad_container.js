@@ -22,7 +22,11 @@ class PadContainer extends React.Component {
       }
 
       this.props.setCurrentPad(audioID);
-      clearTimeout(this.padLiftTimeout);
+
+      if(this.padLiftTimeout) {
+        clearTimeout(this.padLiftTimeout);
+        this.padLiftTimeout = null;
+      }
 
       if(this.props.nowRecording === true) {
         this.props.recordNote(audioID);
@@ -48,6 +52,11 @@ class PadContainer extends React.Component {
     // PAD KEY UP
     else if(event.currentTarget.id === undefined) {
       audioID = event.key.toUpperCase();
+    }
+
+    if(this.padLiftTimeout) {
+      clearTimeout(this.padLiftTimeout);
+      this.padLiftTimeout = null;
     }
 
     this.padLiftTimeout = setTimeout(function() {
