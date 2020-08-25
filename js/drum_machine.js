@@ -190,6 +190,12 @@ class DrumMachine extends React.Component {
         });
 
         console.log("PLAYBACK FINISHED");
+
+        if(this.state.nowRecording === false) {
+          setTimeout(function() {
+            this.startPlayback(event);
+          }.bind(this), 20);
+        }
       }.bind(this), 10000);
     }
   }
