@@ -36,7 +36,7 @@ const sampleKits = {
     backgroundColor: "#0530da",
     noteColor: "#818bfa"
     },
-    Z: {src: "audio/hats/hithat8.mp3",
+    Z: {src: "audio/hats/hihat8.mp3",
     desc: "Hats - Hi Hat 8",
     backgroundImg: "radial-gradient(#ffeb99, #d6b002)",
     backgroundColor: "#d6b002",
