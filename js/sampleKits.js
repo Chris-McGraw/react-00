@@ -47,6 +47,12 @@ const sampleKits = {
     backgroundImg: "radial-gradient(#ffeb99, #d6b002)",
     backgroundColor: "#d6b002",
     noteColor: "#ffeb99"
+    },
+    C: {src: "audio/claps/clap1.mp3",
+    desc: "Claps - Clap 1",
+    backgroundImg: "radial-gradient(#2bef39, #0c810c)",
+    backgroundColor: "#0c810c",
+    noteColor: "#2bef39"
     }
   },
   kit2: {
@@ -93,6 +99,12 @@ const sampleKits = {
     noteColor: "#818bfa"
     },
     X: {src: "audio/808s/chirp.mp3",
+    desc: "808s - Chirp",
+    backgroundImg: "radial-gradient(#818bfa, #0530da)",
+    backgroundColor: "#0530da",
+    noteColor: "#818bfa"
+    },
+    C: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
     backgroundImg: "radial-gradient(#818bfa, #0530da)",
     backgroundColor: "#0530da",
