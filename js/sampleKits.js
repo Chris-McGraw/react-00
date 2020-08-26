@@ -41,6 +41,12 @@ const sampleKits = {
     backgroundImg: "radial-gradient(#ffeb99, #d6b002)",
     backgroundColor: "#d6b002",
     noteColor: "#ffeb99"
+    },
+    X: {src: "audio/hats/openhat1.mp3",
+    desc: "Hats - Open Hat 1",
+    backgroundImg: "radial-gradient(#ffeb99, #d6b002)",
+    backgroundColor: "#d6b002",
+    noteColor: "#ffeb99"
     }
   },
   kit2: {
@@ -81,6 +87,12 @@ const sampleKits = {
     noteColor: "#818bfa"
     },
     Z: {src: "audio/808s/chirp.mp3",
+    desc: "808s - Chirp",
+    backgroundImg: "radial-gradient(#818bfa, #0530da)",
+    backgroundColor: "#0530da",
+    noteColor: "#818bfa"
+    },
+    X: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
     backgroundImg: "radial-gradient(#818bfa, #0530da)",
     backgroundColor: "#0530da",
