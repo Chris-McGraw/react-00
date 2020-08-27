@@ -180,8 +180,6 @@ class DrumMachine extends React.Component {
 
       console.log(this.state.playbackArr);
 
-      console.log("test = " + localStorage.length);
-
       this.playbackTimeouts = [];
 
       if(event !== undefined) {
