@@ -183,7 +183,7 @@ class DrumMachine extends React.Component {
       console.log(this.state.playbackArr);
 
       console.log("test = " + localStorage.getItem("storageTest") );
-      console.log("length = " + localStorage.getItem("storageTest").length);
+      console.log("length = " + localStorage.length);
 
       this.playbackTimeouts = [];
 
