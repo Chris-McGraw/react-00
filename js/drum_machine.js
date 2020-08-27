@@ -192,7 +192,7 @@ class DrumMachine extends React.Component {
 
       console.log("PLAYBACK STARTED");
 
-      this.state.playbackArr.forEach( function(i) {
+      localStorage.getItem("storageTest").forEach( function(i) {
         this.playbackTimeouts.push( setTimeout(function() {
           // this.setCurrentPad(i.key);
 
