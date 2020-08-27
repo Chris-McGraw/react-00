@@ -74,7 +74,7 @@ class DrumMachine extends React.Component {
       for(let n = 0; n < 10; n++) {
         this.volumeTimeouts.push( setTimeout(function() {
           this.setState({
-            volume: (this.state.volume - 0.1)
+            volume: (this.state.volume + 0.1)
           });
         }.bind(this), (time + 100) ) );
       }
@@ -86,7 +86,7 @@ class DrumMachine extends React.Component {
       for(let n = 0; n < 10; n++) {
         this.volumeTimeouts.push( setTimeout(function() {
           this.setState({
-            volume: (this.state.volume + 0.1)
+            volume: (this.state.volume - 0.1)
           });
         }.bind(this), (time + 100) ) );
       }
