@@ -18,7 +18,6 @@ class DrumMachine extends React.Component {
     };
     this.togglePower = this.togglePower.bind(this);
     this.toggleVolume = this.toggleVolume.bind(this);
-    this.volumeTimeouts = null;
     this.setCurrentKit = this.setCurrentKit.bind(this);
     this.setCurrentPad = this.setCurrentPad.bind(this);
     this.deleteRecording = this.deleteRecording.bind(this);
@@ -65,31 +64,15 @@ class DrumMachine extends React.Component {
   }
 
   toggleVolume() {
-    let time = 0;
-
     if(this.state.volume === 1) {
-      clearTimeout(this.volumeTimeouts);
-      this.volumeTimeouts = [];
-
-      for(let n = 0; n < 10; n++) {
-        this.volumeTimeouts.push( setTimeout(function() {
-          this.setState({
-            volume: (this.state.volume + 0.1)
-          });
-        }.bind(this), (time + 100) ) );
-      }
+      this.setState({
+        volume: 0
+      });
     }
     else {
-      clearTimeout(this.volumeTimeouts);
-      this.volumeTimeouts = [];
-
-      for(let n = 0; n < 10; n++) {
-        this.volumeTimeouts.push( setTimeout(function() {
-          this.setState({
-            volume: (this.state.volume - 0.1)
-          });
-        }.bind(this), (time + 100) ) );
-      }
+      this.setState({
+        volume: 1
+      });
     }
   }
 
