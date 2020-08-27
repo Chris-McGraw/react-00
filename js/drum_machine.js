@@ -251,6 +251,7 @@ class DrumMachine extends React.Component {
     return (
       <div>
         <div id="drum-machine">
+          <VolumeContainer />
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
           <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} playbackArr={this.state.playbackArr} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
