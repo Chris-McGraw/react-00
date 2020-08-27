@@ -5,7 +5,7 @@ class DrumMachine extends React.Component {
     super(props);
     this.state = {
       power: "on",
-      volume: 100,
+      volume: 1,
       currentTrack: "track1",
       currentKit: "kit1",
       currentPad: "",
@@ -64,14 +64,14 @@ class DrumMachine extends React.Component {
   }
 
   toggleVolume() {
-    if(this.state.volume === 100) {
+    if(this.state.volume === 1) {
       this.setState({
         volume: 0
       });
     }
     else {
       this.setState({
-        volume: 100
+        volume: 1
       });
     }
   }
