@@ -170,8 +170,7 @@ class DrumMachine extends React.Component {
     if(this.state.nowRecording === true && event !== undefined) {
       this.setState({ playbackArr: [...this.state.playbackArr, {kit: this.state.currentKit, key:key, time:(Date.now() - this.state.recordingStartTime)}] });
 
-      localStorage.setItem("storageTest", JSON.stringify(this.state.playbackArr));
-      // localStorage.clear();
+      localStorage.clear();
     }
   }
 
@@ -183,10 +182,7 @@ class DrumMachine extends React.Component {
 
       console.log(this.state.playbackArr);
 
-      if(localStorage.getItem("storageTest") !== null) {
-        let track1Array = JSON.parse( localStorage.getItem("storageTest") )
-        console.log("test = " + track1Array);
-      }
+      console.log("test = " + localStorage.getItem("storageTest"));
 
       this.playbackTimeouts = [];
 
