@@ -183,6 +183,7 @@ class DrumMachine extends React.Component {
       console.log(this.state.playbackArr);
 
       console.log("test = " + localStorage.getItem("storageTest") );
+      console.log("length = " + localStorage.getItem("storageTest").length);
 
       this.playbackTimeouts = [];
 
@@ -192,9 +193,7 @@ class DrumMachine extends React.Component {
 
       console.log("PLAYBACK STARTED");
 
-      var track1 = JSON.parse( localStorage.getItem("storageTest") );
-
-      track1.forEach( function(i) {
+      this.state.playbackArr.forEach( function(i) {
         this.playbackTimeouts.push( setTimeout(function() {
           // this.setCurrentPad(i.key);
 
