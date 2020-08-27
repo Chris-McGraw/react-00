@@ -169,8 +169,6 @@ class DrumMachine extends React.Component {
   recordNote(key) {
     if(this.state.nowRecording === true && event !== undefined) {
       this.setState({ playbackArr: [...this.state.playbackArr, {kit: this.state.currentKit, key:key, time:(Date.now() - this.state.recordingStartTime)}] });
-
-      localStorage.clear();
     }
   }
 
@@ -182,7 +180,7 @@ class DrumMachine extends React.Component {
 
       console.log(this.state.playbackArr);
 
-      console.log("test = " + localStorage.getItem("storageTest"));
+      console.log("test = " + localStorage.length);
 
       this.playbackTimeouts = [];
 
