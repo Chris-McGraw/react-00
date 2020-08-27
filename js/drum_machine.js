@@ -192,7 +192,9 @@ class DrumMachine extends React.Component {
 
       console.log("PLAYBACK STARTED");
 
-      localStorage.getItem("storageTest").forEach( function(i) {
+      var track1 = JSON.parse( localStorage.getItem("storageTest") );
+
+      track1.forEach( function(i) {
         this.playbackTimeouts.push( setTimeout(function() {
           // this.setCurrentPad(i.key);
 
