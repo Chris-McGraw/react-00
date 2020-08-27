@@ -6,10 +6,19 @@ class VolumeContainer extends React.Component {
   }
 
   render() {
+    let knobTurn = {
+      transform: "rotate(0deg)"
+    }
+    if(this.props.volume === 0) {
+      knobTurn = {
+        transform: "rotate(-270deg)"
+      }
+    }
+
     return (
       <div>
         <div id="volume-container">
-          <div id="volume-knob">
+          <div id="volume-knob" style={knobTurn} onClick={this.props.toggleVolume}>
             <div id="volume-indicator"></div>
           </div>
 

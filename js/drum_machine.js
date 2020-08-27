@@ -5,6 +5,7 @@ class DrumMachine extends React.Component {
     super(props);
     this.state = {
       power: "on",
+      volume: 100,
       currentTrack: "track1",
       currentKit: "kit1",
       currentPad: "",
@@ -16,6 +17,7 @@ class DrumMachine extends React.Component {
       nowPlaying: false
     };
     this.togglePower = this.togglePower.bind(this);
+    this.toggleVolume = this.toggleVolume.bind(this);
     this.setCurrentKit = this.setCurrentKit.bind(this);
     this.setCurrentPad = this.setCurrentPad.bind(this);
     this.deleteRecording = this.deleteRecording.bind(this);
@@ -57,6 +59,19 @@ class DrumMachine extends React.Component {
     else {
       this.setState({
         power: "on"
+      });
+    }
+  }
+
+  toggleVolume() {
+    if(this.state.volume === 100) {
+      this.setState({
+        volume: 0
+      });
+    }
+    else {
+      this.setState({
+        volume: 100
       });
     }
   }
@@ -251,8 +266,8 @@ class DrumMachine extends React.Component {
     return (
       <div>
         <div id="drum-machine">
-          <VolumeContainer />
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
+          <VolumeContainer volume={this.state.volume} toggleVolume={this.toggleVolume} />
           <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} playbackArr={this.state.playbackArr} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
