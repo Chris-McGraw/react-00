@@ -32,7 +32,7 @@ class PadContainer extends React.Component {
         this.props.recordNote(audioID);
       }
 
-      let audio = document.getElementById(audioID);
+      let audio = document.getElementById(audioID).cloneNode(true);
 
       audio.src = sampleKits[this.props.currentKit][audioID].src;
       audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
