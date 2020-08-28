@@ -25,11 +25,11 @@ html,body {
 
 #drum-machine {
   position: absolute;
-  top: 80px;
+  top: 10%;
   left: 0;
   right: 0;
 
-  height: 768px;
+  height: 720px;
   width: 1280px;
   margin: auto;
 
