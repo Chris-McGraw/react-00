@@ -5,9 +5,18 @@ class DisplayLeft extends React.Component {
     super(props)
   }
 
-  mapNoteBlocks(key) {
+  mapNoteBlocks1(key) {
     return this.props.playbackArr.filter(i =>
       i.key === key && i.kit === "kit1").map(i =>
+        <div key={i.kit + i.key + i.time} className={this.noteBlockStyle()}
+        style={{left: ( (i.time / 1000).toFixed(1) * 10 ) + "%",
+        backgroundColor: sampleKits[i.kit][i.key].noteColor}}></div>
+    );
+  }
+
+  mapNoteBlocks2(key) {
+    return this.props.playbackArr.filter(i =>
+      i.key === key && i.kit === "kit2").map(i =>
         <div key={i.kit + i.key + i.time} className={this.noteBlockStyle()}
         style={{left: ( (i.time / 1000).toFixed(1) * 10 ) + "%",
         backgroundColor: sampleKits[i.kit][i.key].noteColor}}></div>
@@ -65,7 +74,10 @@ class DisplayLeft extends React.Component {
           <div className="test-line" id="test-line-6">{this.mapNoteBlocks("A")}</div>
           <div className="test-line" id="test-line-7">{this.mapNoteBlocks("E")}</div>
           <div className="test-line" id="test-line-8">{this.mapNoteBlocks("W")}</div>
-          <div className="test-line" id="test-line-9">{this.mapNoteBlocks("Q")}</div>
+          <div className="test-line" id="test-line-9">
+            <div>{this.mapNoteBlocks1("Q")}</div>
+            <div>{this.mapNoteBlocks2("Q")}</div>
+          </div>
         </div>
       </div>
     );
