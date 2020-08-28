@@ -66,14 +66,14 @@ class DisplayLeft extends React.Component {
         <div id="display-left">
           <div id="play-line" style={movePlayLine}></div>
 
-          <div className="test-line" id="test-line-1">{this.mapNoteBlocks("C")}</div>
-          <div className="test-line" id="test-line-2">{this.mapNoteBlocks("X")}</div>
-          <div className="test-line" id="test-line-3">{this.mapNoteBlocks("Z")}</div>
-          <div className="test-line" id="test-line-4">{this.mapNoteBlocks("D")}</div>
-          <div className="test-line" id="test-line-5">{this.mapNoteBlocks("S")}</div>
-          <div className="test-line" id="test-line-6">{this.mapNoteBlocks("A")}</div>
-          <div className="test-line" id="test-line-7">{this.mapNoteBlocks("E")}</div>
-          <div className="test-line" id="test-line-8">{this.mapNoteBlocks("W")}</div>
+          <div className="test-line" id="test-line-1">{this.mapNoteBlocks1("C")}</div>
+          <div className="test-line" id="test-line-2">{this.mapNoteBlocks1("X")}</div>
+          <div className="test-line" id="test-line-3">{this.mapNoteBlocks1("Z")}</div>
+          <div className="test-line" id="test-line-4">{this.mapNoteBlocks1("D")}</div>
+          <div className="test-line" id="test-line-5">{this.mapNoteBlocks1("S")}</div>
+          <div className="test-line" id="test-line-6">{this.mapNoteBlocks1("A")}</div>
+          <div className="test-line" id="test-line-7">{this.mapNoteBlocks1("E")}</div>
+          <div className="test-line" id="test-line-8">{this.mapNoteBlocks1("W")}</div>
           <div className="test-line" id="test-line-9">
             <div>{this.mapNoteBlocks1("Q")}</div>
             <div>{this.mapNoteBlocks2("Q")}</div>
