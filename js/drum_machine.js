@@ -194,7 +194,7 @@ class DrumMachine extends React.Component {
 
           let audio = document.getElementById(i.key).cloneNode(true);
 
-          // audio.src = sampleKits[i.kit][i.key].src;
+          audio.src = sampleKits[i.kit][i.key].src;
           // audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
           audio.pause();
           audio.currentTime = 0;
