@@ -25,12 +25,12 @@ html,body {
 
 #drum-machine {
   position: absolute;
-  top: 10%;
+  top: 40px;
   left: 0;
   right: 0;
 
-  height: 750px;
-  width: 1400px;
+  height: 845px;
+  width: 1280px;
   margin: auto;
 
   background-color: #2d2e2d;
