@@ -23,14 +23,12 @@ const sampleKits = {
     },
     S: {src: "audio/snares/dippy.mp3",
     desc: "Snares - Dippy",
-    backgroundImg: "radial-gradient(#818bfa, #0530da)",
-    backgroundColor: "#0530da",
+    padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
     D: {src: "audio/snares/doo.mp3",
     desc: "Snares - Doo",
-    backgroundImg: "radial-gradient(#818bfa, #0530da)",
-    backgroundColor: "#0530da",
+    padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
     Z: {src: "audio/hats/hihat8.mp3",
@@ -55,17 +53,17 @@ const sampleKits = {
   kit2: {
     Q: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    padStyle: "drum-pad-chirp",
+    padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
     W: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    padStyle: "drum-pad-chirp",
+    padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
     E: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    padStyle: "drum-pad-chirp",
+    padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
     A: {src: "audio/808s/chirp.mp3",
@@ -76,14 +74,12 @@ const sampleKits = {
     },
     S: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    backgroundImg: "radial-gradient(#818bfa, #0530da)",
-    backgroundColor: "#0530da",
+    padStyle: "drum-pad-808",
     noteColor: "#818bfa"
     },
     D: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    backgroundImg: "radial-gradient(#818bfa, #0530da)",
-    backgroundColor: "#0530da",
+    padStyle: "drum-pad-808",
     noteColor: "#818bfa"
     },
     Z: {src: "audio/808s/chirp.mp3",
