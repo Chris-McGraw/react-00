@@ -158,14 +158,13 @@ class PadContainer extends React.Component {
   }
 
   mapDrumPads() {
-    return sampleKits.filter(i =>
-      i.kit === "kit1").map(i =>
-        <div className="drum-pad" id="pad-q" style={padPowered}
-        onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-          <audio preload="auto" src={i.src} className="clip" id="Q"></audio>
-          <div className="pad-glow" style={padGlowPowered}></div>
-          <p>Q</p>
-        </div>
+    return sampleKits["kit1"].map(i =>
+      <div className="drum-pad" id="pad-q" style={padPowered}
+      onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
+        <audio preload="auto" src={i.src} className="clip" id="Q"></audio>
+        <div className="pad-glow" style={padGlowPowered}></div>
+        <p>Q</p>
+      </div>
     );
   }
 
