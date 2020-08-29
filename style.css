@@ -563,9 +563,19 @@ html,body {
   transition: background-color 0.4s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
-#pad-q {
+/* #pad-q {
   background-color: #ad020c;
   background-image: radial-gradient(#fd6846, #ad020c);
+} */
+
+.drum-pad-808 {
+  background-image: radial-gradient(#fd6846, #ad020c);
+  background-color: #ad020c;
+}
+
+.drum-pad-chirp {
+  background-image: radial-gradient(#818bfa, #0530da);
+  background-color: ##0530da;
 }
 
 #pad-w {
