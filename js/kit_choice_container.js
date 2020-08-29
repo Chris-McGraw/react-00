@@ -13,7 +13,7 @@ class KitChoiceContainer extends React.Component {
 
       for(let n = 0; n < kitBtns.length; n++) {
         kitBtns[n].style.backgroundColor = "#b6b4be";
-        kitBtns[n].style.backgroundImage = "radial-gradient( rgba(192, 199, 202, 0.8), rgba(182, 180, 190, 0.8) )";
+        kitBtns[n].style.backgroundImage = "radial-gradient( rgba(192, 199, 202, 0.6), rgba(182, 180, 190, 0.6) )";
       }
 
       event.currentTarget.style.backgroundColor = "#dad9de";

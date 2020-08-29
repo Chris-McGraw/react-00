@@ -340,7 +340,7 @@ html,body {
   height: 70px;
 
   background-color: #b6b4be;
-  background-image: radial-gradient( rgba(192, 199, 202, 0.8), rgba(182, 180, 190, 0.8) );
+  background-image: radial-gradient( rgba(192, 199, 202, 0.6), rgba(182, 180, 190, 0.6) );
   box-shadow: 6px 6px 6px rgba(0,0,0, 1.0);
 
   cursor: pointer;
@@ -470,7 +470,7 @@ html,body {
 }
 
 .ctrl-btn-on {
-  background-image: radial-gradient( rgba(192, 199, 202, 0.8), rgba(182, 180, 190, 0.8) );
+  background-image: radial-gradient( rgba(192, 199, 202, 0.6), rgba(182, 180, 190, 0.6) );
   background-color: #b6b4be;
 }
 
