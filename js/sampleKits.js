@@ -32,14 +32,12 @@ const sampleKits = {
     },
     Z: {src: "audio/hats/hihat8.mp3",
     desc: "Hats - Hi Hat 8",
-    backgroundImg: "radial-gradient(#ffeb99, #d6b002)",
-    backgroundColor: "#d6b002",
+    padStyle: "drum-pad-hat",
     noteColor: "#ffeb99"
     },
     X: {src: "audio/hats/openhat1.mp3",
     desc: "Hats - Open Hat 1",
-    backgroundImg: "radial-gradient(#ffeb99, #d6b002)",
-    backgroundColor: "#d6b002",
+    padStyle: "drum-pad-hat",
     noteColor: "#ffeb99"
     },
     C: {src: "audio/claps/clap1.mp3",
@@ -82,14 +80,12 @@ const sampleKits = {
     },
     Z: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    backgroundImg: "radial-gradient(#818bfa, #0530da)",
-    backgroundColor: "#0530da",
+    padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
     X: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    backgroundImg: "radial-gradient(#818bfa, #0530da)",
-    backgroundColor: "#0530da",
+    padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
     C: {src: "audio/808s/chirp.mp3",
