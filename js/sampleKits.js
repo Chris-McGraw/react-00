@@ -2,7 +2,7 @@ const sampleKits = {
   kit1: {
     Q: {src: "audio/808s/loaded.mp3",
     desc: "808s - Loaded",
-    backgroundImg: "radial-gradient(#fd6846, #ad020c)",
+    backgroundImg: "radial-gradient( rgba(253, 104, 70, 0.8), rgba(173, 2, 12, 0.8) )",
     backgroundColor: "#ad020c",
     noteColor: "#fd6846"
     },
@@ -58,7 +58,7 @@ const sampleKits = {
   kit2: {
     Q: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    backgroundImg: "radial-gradient(#818bfa, #0530da)",
+    backgroundImg: "radial-gradient( rgba(129, 139, 250, 0.8), rgba(5, 48, 218, 0.8) )",
     backgroundColor: "#0530da",
     noteColor: "#818bfa"
     },
