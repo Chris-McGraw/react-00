@@ -12,15 +12,12 @@ class KitChoiceContainer extends React.Component {
       var kitBtns = document.getElementsByClassName("kit-choice-btn");
 
       for(let n = 0; n < kitBtns.length; n++) {
-        // kitBtns[n].style.backgroundColor = "#c0c7ca";
         kitBtns[n].style.backgroundColor = "#b6b4be";
-        // kitBtns[n].style.backgroundImage = "radial-gradient(#b6b4be, #c0c7ca)";
         kitBtns[n].style.backgroundImage = "radial-gradient( rgba(192, 199, 202, 0.8), rgba(182, 180, 190, 0.8) )";
       }
 
       event.currentTarget.style.backgroundColor = "#dad9de";
-      // event.currentTarget.style.backgroundImage = "radial-gradient(#E9E8EB, #dad9de)";
-      event.currentTarget.style.backgroundImage = "radial-gradient( rgba(233, 232, 235, 0.5), rgba(218, 217, 222, 0.5) )";
+      event.currentTarget.style.backgroundImage = "radial-gradient( rgba(233, 232, 235, 0.8), rgba(218, 217, 222, 0.8) )";
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
 
       this.props.setCurrentKit(event);
