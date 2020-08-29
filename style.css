@@ -598,7 +598,7 @@ html,body {
   background-image: radial-gradient(#6be2fa, #0e839f);
 }
 
-#pad-s {
+/* #pad-s {
   background-color: #0530da;
   background-image: radial-gradient(#818bfa, #0530da);
 }
@@ -606,7 +606,7 @@ html,body {
 #pad-d {
   background-color: #0530da;
   background-image: radial-gradient(#818bfa, #0530da);
-}
+} */
 
 #pad-z {
   background-color: #d6b002;
