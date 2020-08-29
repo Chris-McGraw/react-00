@@ -563,21 +563,6 @@ html,body {
   transition: background-color 0.4s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
-/* #pad-q {
-  background-color: #ad020c;
-  background-image: radial-gradient(#fd6846, #ad020c);
-}
-
-#pad-w {
-  background-color: #ad020c;
-  background-image: radial-gradient(#fd6846, #ad020c);
-}
-
-#pad-e {
-  background-color: #ad020c;
-  background-image: radial-gradient(#fd6846, #ad020c);
-} */
-
 .drum-pad-off {
   backgroundImage: none;
   backgroundColor: #898F90;
@@ -607,37 +592,6 @@ html,body {
   background-image: radial-gradient( rgba(43, 239, 57, 0.8), rgba(12 ,129, 12, 0.8) );
   background-color: #0c810c;
 }
-
-
-/* #pad-a {
-  background-color: #0e839f;
-  background-image: radial-gradient(#6be2fa, #0e839f);
-}
-
-#pad-s {
-  background-color: #0530da;
-  background-image: radial-gradient(#818bfa, #0530da);
-}
-
-#pad-d {
-  background-color: #0530da;
-  background-image: radial-gradient(#818bfa, #0530da);
-}
-
-#pad-z {
-  background-color: #d6b002;
-  background-image: radial-gradient(#ffeb99, #d6b002);
-}
-
-#pad-x {
-  background-color: #d6b002;
-  background-image: radial-gradient(#ffeb99, #d6b002);
-}
-
-#pad-c {
-  background-color: #0c810c;
-  background-image: radial-gradient(#2bef39, #0c810c);
-} */
 
 .pad-glow {
   display: grid;
