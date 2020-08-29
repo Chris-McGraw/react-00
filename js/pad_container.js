@@ -158,7 +158,12 @@ class PadContainer extends React.Component {
   }
 
   drumPadStyle(key) {
-    return "drum-pad " + sampleKits[this.props.currentKit][key].style;
+    if(this.props.power === "on") {
+      return "drum-pad " + sampleKits[this.props.currentKit][key].padStyle;
+    }
+    else {
+      return "drum-pad drum-pad-off"
+    }
   }
 
   render() {
@@ -179,14 +184,14 @@ class PadContainer extends React.Component {
     return (
       <div>
         <div id="pad-container">
-          <div className="drum-pad" id="pad-q" style={{backgroundImage: sampleKits[this.props.currentKit]["Q"].backgroundImg, backgroundColor: sampleKits[this.props.currentKit]["Q"].backgroundColor}}
+          <div className={this.drumPadStyle("Q")} id="pad-q"
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
             <audio preload="auto" src="audio/808s/loaded.mp3" className="clip" id="Q"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>Q</p>
           </div>
 
-          <div className={this.drumPadStyle("W")} id="pad-w" style={padPowered}
+          <div className={this.drumPadStyle("W")} id="pad-w"
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
             <audio preload="auto" src="audio/808s/starburst.mp3" className="clip" id="W"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>

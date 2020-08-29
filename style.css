@@ -578,6 +578,11 @@ html,body {
   background-image: radial-gradient(#fd6846, #ad020c);
 }
 
+.drum-pad-off {
+  backgroundImage: none;
+  backgroundColor: #898F90;
+}
+
 .drum-pad-808 {
   background-image: radial-gradient( rgba(253, 104, 70, 0.8), rgba(173, 2, 12, 0.8) );
   background-color: #ad020c;

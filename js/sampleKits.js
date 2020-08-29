@@ -2,15 +2,12 @@ const sampleKits = {
   kit1: {
     Q: {src: "audio/808s/loaded.mp3",
     desc: "808s - Loaded",
-    backgroundImg: "radial-gradient( rgba(253, 104, 70, 0.8), rgba(173, 2, 12, 0.8) )",
-    backgroundColor: "#ad020c",
+    padStyle: "drum-pad-808",
     noteColor: "#fd6846"
     },
     W: {src: "audio/808s/starburst.mp3",
     desc: "808s - Starburst",
-    style: "drum-pad-808",
-    backgroundImg: "radial-gradient(#fd6846, #ad020c)",
-    backgroundColor: "#ad020c",
+    padStyle: "drum-pad-808",
     noteColor: "#fd6846"
     },
     E: {src: "audio/808s/lettuce.mp3",
@@ -59,15 +56,12 @@ const sampleKits = {
   kit2: {
     Q: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    backgroundImg: "radial-gradient( rgba(129, 139, 250, 0.8), rgba(5, 48, 218, 0.8) )",
-    backgroundColor: "#0530da",
+    padStyle: "drum-pad-chirp",
     noteColor: "#818bfa"
     },
     W: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    style: "drum-pad-chirp",
-    backgroundImg: "radial-gradient(#818bfa, #0530da)",
-    backgroundColor: "#0530da",
+    padStyle: "drum-pad-chirp",
     noteColor: "#818bfa"
     },
     E: {src: "audio/808s/chirp.mp3",
