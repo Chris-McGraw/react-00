@@ -198,7 +198,7 @@ class PadContainer extends React.Component {
             <p>W</p>
           </div>
 
-          <div className="drum-pad" id="pad-e" style={padPowered}
+          <div className={this.drumPadStyle("E")} id="pad-e"
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
             <audio preload="auto" src="audio/808s/lettuce.mp3" className="clip" id="E"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>

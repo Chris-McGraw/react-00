@@ -12,8 +12,7 @@ const sampleKits = {
     },
     E: {src: "audio/808s/lettuce.mp3",
     desc: "808s - Lettuce",
-    backgroundImg: "radial-gradient(#fd6846, #ad020c)",
-    backgroundColor: "#ad020c",
+    padStyle: "drum-pad-808",
     noteColor: "#fd6846"
     },
     A: {src: "audio/kicks/kick5.mp3",
@@ -66,8 +65,7 @@ const sampleKits = {
     },
     E: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    backgroundImg: "radial-gradient(#818bfa, #0530da)",
-    backgroundColor: "#0530da",
+    padStyle: "drum-pad-chirp",
     noteColor: "#818bfa"
     },
     A: {src: "audio/808s/chirp.mp3",

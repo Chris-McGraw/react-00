@@ -566,17 +566,17 @@ html,body {
 /* #pad-q {
   background-color: #ad020c;
   background-image: radial-gradient(#fd6846, #ad020c);
-} */
+}
 
-/* #pad-w {
+#pad-w {
   background-color: #ad020c;
   background-image: radial-gradient(#fd6846, #ad020c);
-} */
+}
 
 #pad-e {
   background-color: #ad020c;
   background-image: radial-gradient(#fd6846, #ad020c);
-}
+} */
 
 .drum-pad-off {
   backgroundImage: none;
