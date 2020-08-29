@@ -339,9 +339,10 @@ html,body {
 
   height: 70px;
 
-  background-color: #c0c7ca;
+  /* background-color: #c0c7ca; */
+  background-color: #b6b4be;
   /* background-image: radial-gradient(#b6b4be, #c0c7ca); */
-  background-image: radial-gradient( rgba(182, 180, 190, 0.5), rgb(192, 199, 202, 0.5) );
+  background-image: radial-gradient( rgba(192, 199, 202, 0.8), rgba(182, 180, 190, 0.8) );
   box-shadow: 6px 6px 6px rgba(0,0,0, 1.0);
 
   cursor: pointer;
@@ -352,7 +353,7 @@ html,body {
 #kit-btn-1 {
   background-color: #E9E8EB;
   /* background-image: radial-gradient(#E9E8EB, #dad9de); */
-  background-image: radial-gradient( rgba(233, 232, 235, 0.5), rgba(218, 217, 222, 0.5) );
+  background-image: radial-gradient( rgba(233, 232, 235, 0.8), rgba(218, 217, 222, 0.8) );
 }
 
 .kit-choice-btn-glow {
@@ -473,8 +474,9 @@ html,body {
 
 .ctrl-btn-on {
   /* background-image: radial-gradient(#b6b4be, #c0c7ca); */
-  background-image: radial-gradient( rgba(182, 180, 190, 0.5), rgb(192, 199, 202, 0.5) );
-  background-color: #c0c7ca;
+  background-image: radial-gradient( rgba(192, 199, 202, 0.8), rgba(182, 180, 190, 0.8) );
+  /* background-color: #c0c7ca; */
+  background-color: #b6b4be;
 }
 
 .ctrl-btn-active {
