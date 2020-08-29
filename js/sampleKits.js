@@ -8,6 +8,7 @@ const sampleKits = {
     },
     W: {src: "audio/808s/starburst.mp3",
     desc: "808s - Starburst",
+    style: "drum-pad-808",
     backgroundImg: "radial-gradient(#fd6846, #ad020c)",
     backgroundColor: "#ad020c",
     noteColor: "#fd6846"
@@ -64,6 +65,7 @@ const sampleKits = {
     },
     W: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
+    style: "drum-pad-chirp",
     backgroundImg: "radial-gradient(#818bfa, #0530da)",
     backgroundColor: "#0530da",
     noteColor: "#818bfa"

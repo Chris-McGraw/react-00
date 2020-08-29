@@ -157,6 +157,10 @@ class PadContainer extends React.Component {
     document.removeEventListener("keyup", this.handleKeyLift.bind(this));
   }
 
+  drumPadStyle(key) {
+    return "drum-pad " + sampleKits[this.props.currentKit][key].style;
+  }
+
   render() {
     let padPowered = {};
     let padGlowPowered = {};
@@ -182,7 +186,7 @@ class PadContainer extends React.Component {
             <p>Q</p>
           </div>
 
-          <div className="drum-pad" id="pad-w" style={padPowered}
+          <div className={drumPadStyle("W")} id="pad-w" style={padPowered}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
             <audio preload="auto" src="audio/808s/starburst.mp3" className="clip" id="W"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
