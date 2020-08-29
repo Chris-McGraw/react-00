@@ -17,8 +17,7 @@ const sampleKits = {
     },
     A: {src: "audio/kicks/kick5.mp3",
     desc: "Kicks - Kick 5",
-    backgroundImg: "radial-gradient(#6be2fa, #0e839f)",
-    backgroundColor: "#0e839f",
+    padStyle: "drum-pad-kick",
     noteColor: "#6be2fa"
     },
     S: {src: "audio/snares/dippy.mp3",
@@ -68,18 +67,17 @@ const sampleKits = {
     },
     A: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    backgroundImg: "radial-gradient(#818bfa, #0530da)",
-    backgroundColor: "#0530da",
+    padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
     S: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    padStyle: "drum-pad-808",
+    padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
     D: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    padStyle: "drum-pad-808",
+    padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
     Z: {src: "audio/808s/chirp.mp3",
