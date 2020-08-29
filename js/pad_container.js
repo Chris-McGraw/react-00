@@ -157,17 +157,6 @@ class PadContainer extends React.Component {
     document.removeEventListener("keyup", this.handleKeyLift.bind(this));
   }
 
-  mapDrumPads() {
-    return sampleKits["kit1"].map(i =>
-      <div className="drum-pad" id="pad-q" style={padPowered}
-      onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-        <audio preload="auto" src={i.src} className="clip" id="Q"></audio>
-        <div className="pad-glow" style={padGlowPowered}></div>
-        <p>Q</p>
-      </div>
-    );
-  }
-
   render() {
     let padPowered = {};
     let padGlowPowered = {};
@@ -186,69 +175,68 @@ class PadContainer extends React.Component {
     return (
       <div>
         <div id="pad-container">
-          {this.mapDrumPads()}
-          // <div className="drum-pad" id="pad-q" style={{backgroundImage: sampleKits[this.props.currentKit]["Q"].backgroundImg, backgroundColor: sampleKits[this.props.currentKit]["Q"].backgroundColor}}
-          // onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-          //   <audio preload="auto" src="audio/808s/loaded.mp3" className="clip" id="Q"></audio>
-          //   <div className="pad-glow" style={padGlowPowered}></div>
-          //   <p>Q</p>
-          // </div>
-          //
-          // <div className="drum-pad" id="pad-w" style={padPowered}
-          // onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-          //   <audio preload="auto" src="audio/808s/starburst.mp3" className="clip" id="W"></audio>
-          //   <div className="pad-glow" style={padGlowPowered}></div>
-          //   <p>W</p>
-          // </div>
-          //
-          // <div className="drum-pad" id="pad-e" style={padPowered}
-          // onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-          //   <audio preload="auto" src="audio/808s/lettuce.mp3" className="clip" id="E"></audio>
-          //   <div className="pad-glow" style={padGlowPowered}></div>
-          //   <p>E</p>
-          // </div>
-          //
-          // <div className="drum-pad" id="pad-a" style={padPowered}
-          // onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-          //   <audio preload="auto" src="audio/kicks/kick5.mp3" className="clip" id="A"></audio>
-          //   <div className="pad-glow" style={padGlowPowered}></div>
-          //   <p>A</p>
-          // </div>
-          //
-          // <div className="drum-pad" id="pad-s" style={padPowered}
-          // onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-          //   <audio preload="auto" src="audio/snares/dippy.mp3" className="clip" id="S"></audio>
-          //   <div className="pad-glow" style={padGlowPowered}></div>
-          //   <p>S</p>
-          // </div>
-          //
-          // <div className="drum-pad" id="pad-d" style={padPowered}
-          // onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-          //   <audio preload="auto" src="audio/snares/doo.mp3" className="clip" id="D"></audio>
-          //   <div className="pad-glow" style={padGlowPowered}></div>
-          //   <p>D</p>
-          // </div>
-          //
-          // <div className="drum-pad" id="pad-z" style={padPowered}
-          // onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-          //   <audio preload="auto" src="audio/hats/hihat8.mp3" className="clip" id="Z"></audio>
-          //   <div className="pad-glow" style={padGlowPowered}></div>
-          //   <p>Z</p>
-          // </div>
-          //
-          // <div className="drum-pad" id="pad-x" style={padPowered}
-          // onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-          //   <audio preload="auto" src="audio/hats/openhat1.mp3" className="clip" id="X"></audio>
-          //   <div className="pad-glow" style={padGlowPowered}></div>
-          //   <p>X</p>
-          // </div>
-          //
-          // <div className="drum-pad" id="pad-c" style={padPowered}
-          // onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-          //   <audio preload="auto" src="audio/claps/clap1.mp3" className="clip" id="C"></audio>
-          //   <div className="pad-glow" style={padGlowPowered}></div>
-          //   <p>C</p>
-          // </div>
+          <div className="drum-pad" id="pad-q" style={{backgroundImage: sampleKits[this.props.currentKit]["Q"].backgroundImg, backgroundColor: sampleKits[this.props.currentKit]["Q"].backgroundColor}}
+          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
+            <audio preload="auto" src="audio/808s/loaded.mp3" className="clip" id="Q"></audio>
+            <div className="pad-glow" style={padGlowPowered}></div>
+            <p>Q</p>
+          </div>
+
+          <div className="drum-pad" id="pad-w" style={padPowered}
+          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
+            <audio preload="auto" src="audio/808s/starburst.mp3" className="clip" id="W"></audio>
+            <div className="pad-glow" style={padGlowPowered}></div>
+            <p>W</p>
+          </div>
+
+          <div className="drum-pad" id="pad-e" style={padPowered}
+          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
+            <audio preload="auto" src="audio/808s/lettuce.mp3" className="clip" id="E"></audio>
+            <div className="pad-glow" style={padGlowPowered}></div>
+            <p>E</p>
+          </div>
+
+          <div className="drum-pad" id="pad-a" style={padPowered}
+          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
+            <audio preload="auto" src="audio/kicks/kick5.mp3" className="clip" id="A"></audio>
+            <div className="pad-glow" style={padGlowPowered}></div>
+            <p>A</p>
+          </div>
+
+          <div className="drum-pad" id="pad-s" style={padPowered}
+          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
+            <audio preload="auto" src="audio/snares/dippy.mp3" className="clip" id="S"></audio>
+            <div className="pad-glow" style={padGlowPowered}></div>
+            <p>S</p>
+          </div>
+
+          <div className="drum-pad" id="pad-d" style={padPowered}
+          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
+            <audio preload="auto" src="audio/snares/doo.mp3" className="clip" id="D"></audio>
+            <div className="pad-glow" style={padGlowPowered}></div>
+            <p>D</p>
+          </div>
+
+          <div className="drum-pad" id="pad-z" style={padPowered}
+          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
+            <audio preload="auto" src="audio/hats/hihat8.mp3" className="clip" id="Z"></audio>
+            <div className="pad-glow" style={padGlowPowered}></div>
+            <p>Z</p>
+          </div>
+
+          <div className="drum-pad" id="pad-x" style={padPowered}
+          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
+            <audio preload="auto" src="audio/hats/openhat1.mp3" className="clip" id="X"></audio>
+            <div className="pad-glow" style={padGlowPowered}></div>
+            <p>X</p>
+          </div>
+
+          <div className="drum-pad" id="pad-c" style={padPowered}
+          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
+            <audio preload="auto" src="audio/claps/clap1.mp3" className="clip" id="C"></audio>
+            <div className="pad-glow" style={padGlowPowered}></div>
+            <p>C</p>
+          </div>
         </div>
       </div>
     );
