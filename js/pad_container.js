@@ -159,8 +159,8 @@ class PadContainer extends React.Component {
 
   render() {
     let padPowered = {
-      backgroundImage: sampleKits[this.props.currentKit][target.children[0].id].backgroundImg,
-      backgroundColor: sampleKits[this.props.currentKit][target.children[0].id].backgroundColor
+      backgroundImage: sampleKits[this.props.currentKit][this.children[0].id].backgroundImg,
+      backgroundColor: sampleKits[this.props.currentKit][this.children[0].id].backgroundColor
     };
     let padGlowPowered = {};
 
