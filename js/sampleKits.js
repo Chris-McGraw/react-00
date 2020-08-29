@@ -42,8 +42,7 @@ const sampleKits = {
     },
     C: {src: "audio/claps/clap1.mp3",
     desc: "Claps - Clap 1",
-    backgroundImg: "radial-gradient(#2bef39, #0c810c)",
-    backgroundColor: "#0c810c",
+    padStyle: "drum-pad-clap",
     noteColor: "#2bef39"
     }
   },
@@ -90,8 +89,7 @@ const sampleKits = {
     },
     C: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    backgroundImg: "radial-gradient(#818bfa, #0530da)",
-    backgroundColor: "#0530da",
+    padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     }
   }

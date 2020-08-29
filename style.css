@@ -603,6 +603,12 @@ html,body {
   background-color: #d6b002;
 }
 
+.drum-pad-clap {
+  background-image: radial-gradient( rgba(43, 239, 57, 0.8), rgba(12 ,129, 12, 0.8) );
+  background-color: #0c810c;
+}
+
+
 /* #pad-a {
   background-color: #0e839f;
   background-image: radial-gradient(#6be2fa, #0e839f);
@@ -626,12 +632,12 @@ html,body {
 #pad-x {
   background-color: #d6b002;
   background-image: radial-gradient(#ffeb99, #d6b002);
-} */
+}
 
 #pad-c {
   background-color: #0c810c;
   background-image: radial-gradient(#2bef39, #0c810c);
-}
+} */
 
 .pad-glow {
   display: grid;

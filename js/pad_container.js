@@ -167,14 +167,9 @@ class PadContainer extends React.Component {
   }
 
   render() {
-    let padPowered = {};
     let padGlowPowered = {};
 
     if(this.props.power === "off") {
-      padPowered = {
-        backgroundImage: "none",
-        backgroundColor: "#898F90"
-      }
       padGlowPowered = {
         boxShadow: "none",
         backgroundColor: "rgba(255,255,255, 0.0)"
@@ -240,7 +235,7 @@ class PadContainer extends React.Component {
             <p>X</p>
           </div>
 
-          <div className="drum-pad" id="pad-c" style={padPowered}
+          <div className={this.drumPadStyle("C")} id="pad-c"
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
             <audio preload="auto" src="audio/claps/clap1.mp3" className="clip" id="C"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
