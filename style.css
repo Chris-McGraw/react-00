@@ -569,13 +569,13 @@ html,body {
 } */
 
 .drum-pad-808 {
-  background-image: radial-gradient(#fd6846, #ad020c);
+  background-image: radial-gradient( rgba(253, 104, 70, 0.5), rgba(173, 2, 12, 0.5) );
   background-color: #ad020c;
 }
 
 .drum-pad-chirp {
-  background-image: radial-gradient(#818bfa, #0530da);
-  background-color: ##0530da;
+  background-image: radial-gradient( rgba(129, 139, 250, 0.5), rgba(5, 48, 218, 0.5) );
+  background-color: #0530da;
 }
 
 #pad-w {
