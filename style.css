@@ -568,6 +568,16 @@ html,body {
   background-image: radial-gradient(#fd6846, #ad020c);
 } */
 
+/* #pad-w {
+  background-color: #ad020c;
+  background-image: radial-gradient(#fd6846, #ad020c);
+}
+
+#pad-e {
+  background-color: #ad020c;
+  background-image: radial-gradient(#fd6846, #ad020c);
+} */
+
 .drum-pad-808 {
   background-image: radial-gradient( rgba(253, 104, 70, 0.8), rgba(173, 2, 12, 0.8) );
   background-color: #ad020c;
@@ -576,16 +586,6 @@ html,body {
 .drum-pad-chirp {
   background-image: radial-gradient( rgba(129, 139, 250, 0.8), rgba(5, 48, 218, 0.8) );
   background-color: #0530da;
-}
-
-#pad-w {
-  background-color: #ad020c;
-  background-image: radial-gradient(#fd6846, #ad020c);
-}
-
-#pad-e {
-  background-color: #ad020c;
-  background-image: radial-gradient(#fd6846, #ad020c);
 }
 
 #pad-a {
