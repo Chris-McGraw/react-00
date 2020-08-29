@@ -175,7 +175,7 @@ class PadContainer extends React.Component {
     return (
       <div>
         <div id="pad-container">
-          <div className="drum-pad" id="pad-q" style={{backgroundImg: sampleKits[this.props.currentKit]["Q"].backgroundImg, backgroundColor: sampleKits[this.props.currentKit]["Q"].backgroundImg}, padPowered}
+          <div className="drum-pad" id="pad-q" style={{backgroundImage: sampleKits[this.props.currentKit]["Q"].backgroundImg, backgroundColor: sampleKits[this.props.currentKit]["Q"].backgroundColor}, padPowered}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
             <audio preload="auto" src="audio/808s/loaded.mp3" className="clip" id="Q"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
