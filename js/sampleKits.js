@@ -94,33 +94,33 @@ const sampleKits = {
     }
   },
   kit3: {
-    Q: {src: "audio/percs/chirp.mp3",
-    desc: "Percs - Chirp",
+    Q: {src: "audio/hats/hihatwork.mp3",
+    desc: "Hats - Hi Hat Work",
     padStyle: "drum-pad-hat",
     noteColor: "#ffeb99"
     },
-    W: {src: "audio/percs/chirp.mp3",
-    desc: "Percs - Chirp",
+    W: {src: "audio/hats/openhatreverse.mp3",
+    desc: "Hats - Open Hat Reverse",
     padStyle: "drum-pad-hat",
     noteColor: "#ffeb99"
     },
-    E: {src: "audio/percs/chirp.mp3",
-    desc: "Percs - Chirp",
+    E: {src: "audio/snare/drizzy.mp3",
+    desc: "Snares - Drizzy",
     padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
-    A: {src: "audio/percs/chirp.mp3",
-    desc: "Percs - Chirp",
+    A: {src: "audio/snare/sauce.mp3",
+    desc: "Snares - Sauce",
     padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
-    S: {src: "audio/percs/chirp.mp3",
-    desc: "Percs - Chirp",
+    S: {src: "audio/808s/kenny24.mp3",
+    desc: "808s - Kenny 24",
     padStyle: "drum-pad-808",
     noteColor: "#fd6846"
     },
-    D: {src: "audio/percs/chirp.mp3",
-    desc: "Percs - Chirp",
+    D: {src: "audio/kicks/kick36.mp3",
+    desc: "Kicks - Kick 36",
     padStyle: "drum-pad-kick",
     noteColor: "#6be2fa"
     },
