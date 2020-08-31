@@ -104,12 +104,12 @@ const sampleKits = {
     padStyle: "drum-pad-hat",
     noteColor: "#ffeb99"
     },
-    E: {src: "audio/snare/drizzy.mp3",
+    E: {src: "audio/snares/drizzy.mp3",
     desc: "Snares - Drizzy",
     padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
-    A: {src: "audio/snare/sauce.mp3",
+    A: {src: "audio/snares/sauce.mp3",
     desc: "Snares - Sauce",
     padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
