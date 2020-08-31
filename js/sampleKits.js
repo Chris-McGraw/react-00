@@ -47,18 +47,18 @@ const sampleKits = {
     }
   },
   kit2: {
-    Q: {src: "audio/808s/chirp.mp3",
-    desc: "808s - Chirp",
+    Q: {src: "audio/kicks/kick3.mp3",
+    desc: "Kicks - Kick 3",
     padStyle: "drum-pad-kick",
     noteColor: "#6be2fa"
     },
-    W: {src: "audio/808s/chirp.mp3",
-    desc: "808s - Chirp",
+    W: {src: "audio/snares/karen.mp3",
+    desc: "Snares - Karen",
     padStyle: "drum-pad-snare",
     noteColor: "#818bfa"
     },
-    E: {src: "audio/808s/chirp.mp3",
-    desc: "808s - Chirp",
+    E: {src: "audio/hats/openhat8.mp3",
+    desc: "Hats - Open Hat 8",
     padStyle: "drum-pad-hat",
     noteColor: "#ffeb99"
     },
