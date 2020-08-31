@@ -63,12 +63,12 @@ const sampleKits = {
     noteColor: "#ffeb99"
     },
     A: {src: "audio/percs/tamby.mp3",
-    desc: "808s - Tamby",
+    desc: "Percs - Tamby",
     padStyle: "drum-pad-perc",
     noteColor: "#b39dfb"
     },
     S: {src: "audio/percs/chirp.mp3",
-    desc: "808s - Chirp",
+    desc: "Percs - Chirp",
     padStyle: "drum-pad-perc",
     noteColor: "#b39dfb"
     },
@@ -91,6 +91,53 @@ const sampleKits = {
     desc: "808s - Money",
     padStyle: "drum-pad-808",
     noteColor: "#fd6846"
+    }
+  },
+  kit3: {
+    Q: {src: "audio/percs/chirp.mp3",
+    desc: "Percs - Chirp",
+    padStyle: "drum-pad-hat",
+    noteColor: "#ffeb99"
+    },
+    W: {src: "audio/percs/chirp.mp3",
+    desc: "Percs - Chirp",
+    padStyle: "drum-pad-hat",
+    noteColor: "#ffeb99"
+    },
+    E: {src: "audio/percs/chirp.mp3",
+    desc: "Percs - Chirp",
+    padStyle: "drum-pad-snare",
+    noteColor: "#818bfa"
+    },
+    A: {src: "audio/percs/chirp.mp3",
+    desc: "Percs - Chirp",
+    padStyle: "drum-pad-snare",
+    noteColor: "#818bfa"
+    },
+    S: {src: "audio/percs/chirp.mp3",
+    desc: "Percs - Chirp",
+    padStyle: "drum-pad-808",
+    noteColor: "#fd6846"
+    },
+    D: {src: "audio/percs/chirp.mp3",
+    desc: "Percs - Chirp",
+    padStyle: "drum-pad-kick",
+    noteColor: "#6be2fa"
+    },
+    Z: {src: "audio/percs/chirp.mp3",
+    desc: "Percs - Chirp",
+    padStyle: "drum-pad-clap",
+    noteColor: "#2bef39"
+    },
+    X: {src: "audio/percs/chirp.mp3",
+    desc: "Percs - Chirp",
+    padStyle: "drum-pad-perc",
+    noteColor: "#b39dfb"
+    },
+    C: {src: "audio/percs/chirp.mp3",
+    desc: "Percs - Chirp",
+    padStyle: "drum-pad-vocal",
+    noteColor: "#fe9a01"
     }
   }
 };
