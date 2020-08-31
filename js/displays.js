@@ -23,6 +23,15 @@ class DisplayLeft extends React.Component {
     );
   }
 
+  mapNoteBlocks3(key) {
+    return this.props.playbackArr.filter(i =>
+      i.key === key && i.kit === "kit3").map(i =>
+        <div key={i.kit + i.key + i.time} className={this.noteBlockStyle()}
+        style={{left: ( (i.time / 1000).toFixed(1) * 10 ) + "%",
+        backgroundColor: sampleKits[i.kit][i.key].noteColor}}></div>
+    );
+  }
+
   noteBlockStyle() {
     if(this.props.power === "on") {
       return "note-block note-block-on";
@@ -69,38 +78,47 @@ class DisplayLeft extends React.Component {
           <div className="test-line" id="test-line-1">
             <div>{this.mapNoteBlocks1("C")}</div>
             <div>{this.mapNoteBlocks2("C")}</div>
+            <div>{this.mapNoteBlocks3("C")}</div>
           </div>
           <div className="test-line" id="test-line-2">
             <div>{this.mapNoteBlocks1("X")}</div>
             <div>{this.mapNoteBlocks2("X")}</div>
+            <div>{this.mapNoteBlocks3("X")}</div>
           </div>
           <div className="test-line" id="test-line-3">
             <div>{this.mapNoteBlocks1("Z")}</div>
             <div>{this.mapNoteBlocks2("Z")}</div>
+            <div>{this.mapNoteBlocks3("Z")}</div>
           </div>
           <div className="test-line" id="test-line-4">
             <div>{this.mapNoteBlocks1("D")}</div>
             <div>{this.mapNoteBlocks2("D")}</div>
+            <div>{this.mapNoteBlocks3("D")}</div>
           </div>
           <div className="test-line" id="test-line-5">
             <div>{this.mapNoteBlocks1("S")}</div>
             <div>{this.mapNoteBlocks2("S")}</div>
+            <div>{this.mapNoteBlocks3("S")}</div>
           </div>
           <div className="test-line" id="test-line-6">
             <div>{this.mapNoteBlocks1("A")}</div>
             <div>{this.mapNoteBlocks2("A")}</div>
+            <div>{this.mapNoteBlocks3("A")}</div>
           </div>
           <div className="test-line" id="test-line-7">
             <div>{this.mapNoteBlocks1("E")}</div>
             <div>{this.mapNoteBlocks2("E")}</div>
+            <div>{this.mapNoteBlocks3("E")}</div>
           </div>
           <div className="test-line" id="test-line-8">
             <div>{this.mapNoteBlocks1("W")}</div>
             <div>{this.mapNoteBlocks2("W")}</div>
+            <div>{this.mapNoteBlocks3("W")}</div>
           </div>
           <div className="test-line" id="test-line-9">
             <div>{this.mapNoteBlocks1("Q")}</div>
             <div>{this.mapNoteBlocks2("Q")}</div>
+            <div>{this.mapNoteBlocks3("Q")}</div>
           </div>
         </div>
       </div>
