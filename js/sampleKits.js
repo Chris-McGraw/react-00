@@ -124,18 +124,18 @@ const sampleKits = {
     padStyle: "drum-pad-kick",
     noteColor: "#6be2fa"
     },
-    Z: {src: "audio/percs/chirp.mp3",
-    desc: "Percs - Chirp",
+    Z: {src: "audio/claps/kennyclap9.mp3",
+    desc: "Claps - Kenny Clap 9",
     padStyle: "drum-pad-clap",
     noteColor: "#2bef39"
     },
-    X: {src: "audio/percs/chirp.mp3",
-    desc: "Percs - Chirp",
+    X: {src: "audio/percs/kennyperc4.mp3",
+    desc: "Percs - Kenny Perc 4",
     padStyle: "drum-pad-perc",
     noteColor: "#b39dfb"
     },
-    C: {src: "audio/percs/chirp.mp3",
-    desc: "Percs - Chirp",
+    C: {src: "audio/vocals/toasty.mp3",
+    desc: "Vocals - Toasty",
     padStyle: "drum-pad-vocal",
     noteColor: "#fe9a01"
     }
