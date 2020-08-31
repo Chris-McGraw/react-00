@@ -62,33 +62,33 @@ const sampleKits = {
     padStyle: "drum-pad-hat",
     noteColor: "#ffeb99"
     },
-    A: {src: "audio/808s/chirp.mp3",
+    A: {src: "audio/percs/tamby.mp3",
+    desc: "808s - Tamby",
+    padStyle: "drum-pad-perc",
+    noteColor: "#b39dfb"
+    },
+    S: {src: "audio/percs/chirp.mp3",
     desc: "808s - Chirp",
     padStyle: "drum-pad-perc",
     noteColor: "#b39dfb"
     },
-    S: {src: "audio/808s/chirp.mp3",
-    desc: "808s - Chirp",
-    padStyle: "drum-pad-perc",
-    noteColor: "#b39dfb"
-    },
-    D: {src: "audio/808s/chirp.mp3",
-    desc: "808s - Chirp",
+    D: {src: "audio/vocals/out.mp3",
+    desc: "Vocals - Out",
     padStyle: "drum-pad-vocal",
     noteColor: "#fe9a01"
     },
-    Z: {src: "audio/808s/chirp.mp3",
-    desc: "808s - Chirp",
+    Z: {src: "audio/808s/808kenny.mp3",
+    desc: "808s - Kenny 808",
     padStyle: "drum-pad-808",
     noteColor: "#fd6846"
     },
-    X: {src: "audio/808s/chirp.mp3",
-    desc: "808s - Chirp",
+    X: {src: "audio/808s/kenny34.mp3",
+    desc: "808s - Kenny 34",
     padStyle: "drum-pad-808",
     noteColor: "#fd6846"
     },
-    C: {src: "audio/808s/chirp.mp3",
-    desc: "808s - Chirp",
+    C: {src: "audio/808s/money.mp3",
+    desc: "808s - Money",
     padStyle: "drum-pad-808",
     noteColor: "#fd6846"
     }
