@@ -49,8 +49,8 @@ const sampleKits = {
   kit2: {
     Q: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    padStyle: "drum-pad-snare",
-    noteColor: "#818bfa"
+    padStyle: "drum-pad-kick",
+    noteColor: "#6be2fa"
     },
     W: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
@@ -59,38 +59,38 @@ const sampleKits = {
     },
     E: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    padStyle: "drum-pad-snare",
-    noteColor: "#818bfa"
+    padStyle: "drum-pad-hat",
+    noteColor: "#ffeb99"
     },
     A: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    padStyle: "drum-pad-snare",
-    noteColor: "#818bfa"
+    padStyle: "drum-pad-perc",
+    noteColor: "#b39dfb"
     },
     S: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    padStyle: "drum-pad-snare",
-    noteColor: "#818bfa"
+    padStyle: "drum-pad-perc",
+    noteColor: "#b39dfb"
     },
     D: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    padStyle: "drum-pad-snare",
-    noteColor: "#818bfa"
+    padStyle: "drum-pad-vocal",
+    noteColor: "#fe9a01"
     },
     Z: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    padStyle: "drum-pad-snare",
-    noteColor: "#818bfa"
+    padStyle: "drum-pad-808",
+    noteColor: "#fd6846"
     },
     X: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    padStyle: "drum-pad-snare",
-    noteColor: "#818bfa"
+    padStyle: "drum-pad-808",
+    noteColor: "#fd6846"
     },
     C: {src: "audio/808s/chirp.mp3",
     desc: "808s - Chirp",
-    padStyle: "drum-pad-snare",
-    noteColor: "#818bfa"
+    padStyle: "drum-pad-808",
+    noteColor: "#fd6846"
     }
   }
 };

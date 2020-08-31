@@ -593,6 +593,16 @@ html,body {
   background-color: #0c810c;
 }
 
+.drum-pad-perc {
+  background-image: radial-gradient( rgba(179, 157, 251, 0.8), rgba(114, 63, 233, 0.8) );
+  background-color: #b39dfb;
+}
+
+.drum-pad-vocal {
+  background-image: radial-gradient( rgba(254, 154, 1, 0.8), rgba(240, 53, 0, 0.8) );
+  background-color: #fe9a01;
+}
+
 .pad-glow {
   display: grid;
   align-items: center;
