@@ -275,7 +275,7 @@ class DrumMachine extends React.Component {
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
           <VolumeContainer volume={this.state.volume} toggleVolume={this.toggleVolume} />
           <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} playbackArr={this.state.playbackArr} />
-          <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} />
+          <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} currentKit={this.state.currentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
           <TrackControls power={this.state.power} currentTrack={this.state.currentTrack} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} deleteRecording={this.deleteRecording} />
           <PlaybackControls power={this.state.power} startRecording={this.startRecording} nowRecording={this.state.nowRecording} startPlayback={this.startPlayback} nowPlaying={this.state.nowPlaying} stop={this.stop} undo={this.undo} />
