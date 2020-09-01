@@ -26,7 +26,7 @@ class KitChoiceContainer extends React.Component {
       this.props.setCurrentKit(event);
 
       this.setState({
-        kitBtnPressed: this.props.currentKit;
+        kitBtnPressed: this.props.currentKit
       });
     }
   }
@@ -35,7 +35,7 @@ class KitChoiceContainer extends React.Component {
     // event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0)";
 
     this.setState({
-      kitBtnPressed: "";
+      kitBtnPressed: ""
     });
   }
 
