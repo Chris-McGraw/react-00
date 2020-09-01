@@ -59,30 +59,30 @@ class KitChoiceContainer extends React.Component {
   handleKeyPress(event) {
     // KEY PRESS 1
     if(event.keyCode === 49) {
-      kitBtnDown(event);
+      this.kitBtnDown(event);
     }
     // KEY PRESS 2
     else if(event.keyCode === 50) {
-      kitBtnDown(event);
+      this.kitBtnDown(event);
     }
     // KEY PRESS 3
     else if(event.keyCode === 51) {
-      kitBtnDown(event);
+      this.kitBtnDown(event);
     }
   }
 
   handleKeyLift(event) {
     // KEY PRESS 1
     if(event.keyCode === 49) {
-      kitBtnUp(event);
+      this.kitBtnUp(event);
     }
     // KEY PRESS 2
     else if(event.keyCode === 50) {
-      kitBtnUp(event);
+      this.kitBtnUp(event);
     }
     // KEY PRESS 3
     else if(event.keyCode === 51) {
-      kitBtnUp(event);
+      this.kitBtnUp(event);
     }
   }
 
