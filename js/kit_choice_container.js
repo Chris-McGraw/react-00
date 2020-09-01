@@ -28,6 +28,30 @@ class KitChoiceContainer extends React.Component {
     event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0)";
   }
 
+  handleKeyPress(event) {
+    // KEY PRESS 1
+    if(event.keyCode === 49) {
+      this.props.setCurrentKit(event);
+    }
+    // KEY PRESS 2
+    else if(event.keyCode === 50) {
+      this.props.setCurrentKit(event);
+    }
+    // KEY PRESS 3
+    else if(event.keyCode === 51) {
+      this.props.setCurrentKit(event);
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyPress.bind(this));
+    // document.addEventListener("keyup", this.handleKeyLift.bind(this));
+  }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyPress.bind(this));
+    // document.removeEventListener("keyup", this.handleKeyLift.bind(this));
+  }
+
   render() {
     let btnPowered = {};
     let btnGlowPowered = {};
