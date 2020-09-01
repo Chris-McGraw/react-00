@@ -353,6 +353,10 @@ html,body {
   background-image: radial-gradient( rgba(233, 232, 235, 0.8), rgba(218, 217, 222, 0.8) );
 } */
 
+.kit-btn-pressed {
+  box-shadow: 4px 4px 6px rgba(0,0,0, 1.0);
+}
+
 .kit-choice-btn-glow {
   display: grid;
   align-items: center;
