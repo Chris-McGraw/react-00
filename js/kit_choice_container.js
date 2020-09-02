@@ -29,7 +29,7 @@ class KitChoiceContainer extends React.Component {
         this.setState({
           kitBtnPressed: this.props.currentKit
         });
-      }, bind(this), 0);
+      }.bind(this), 0);
     }
   }
 
