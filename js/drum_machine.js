@@ -1,5 +1,6 @@
 "use strict";
 
+localStorage.clear();
 console.log("ahhh! : " + localStorage.getItem("storedTrack1").length);
 
 class DrumMachine extends React.Component {
