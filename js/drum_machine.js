@@ -13,7 +13,7 @@ class DrumMachine extends React.Component {
       recordingStartTime: 0,
       playbackArrPrevious: [],
       playbackArrUndone: [],
-      playbackArr: [],
+      playbackArr: JSON.parse(localStorage.getItem("storedTrack1")),
       nowPlaying: false
     };
     this.togglePower = this.togglePower.bind(this);
