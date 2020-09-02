@@ -1,5 +1,7 @@
 "use strict";
 
+console.log(JSON.parse(localStorage.getItem("storedTrack1").length);
+
 class DrumMachine extends React.Component {
   constructor(props) {
     super(props);
