@@ -25,9 +25,11 @@ class KitChoiceContainer extends React.Component {
 
       this.props.setCurrentKit(event);
 
-      this.setState({
-        kitBtnPressed: this.props.currentKit
-      });
+      setTimeout(function() {
+        this.setState({
+          kitBtnPressed: this.props.currentKit
+        });
+      }, bind(this), 0);
     }
   }
 
