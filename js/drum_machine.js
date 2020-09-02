@@ -1,6 +1,6 @@
 "use strict";
 
-localStorage.clear();
+// localStorage.clear();
 if(localStorage.getItem("storedTrack1") === undefined || null) {
   let arr = [];
 
