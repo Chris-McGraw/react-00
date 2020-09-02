@@ -23,9 +23,11 @@ class KitChoiceContainer extends React.Component {
       // event.currentTarget.style.backgroundImage = "radial-gradient( rgba(233, 232, 235, 0.8), rgba(218, 217, 222, 0.8) )";
       // event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
 
-      let frig = this.setState({
-        kitBtnPressed: this.props.currentKit
-      });
+      let frig = function() {
+        this.setState({
+          kitBtnPressed: this.props.currentKit
+        });
+      }
 
       this.props.setCurrentKit(event, frig);
     }
