@@ -140,6 +140,8 @@ class DrumMachine extends React.Component {
           nowRecording: false
         });
 
+        localStorage.setItem("storedTrack1", this.state.playbackArr);
+
         this.setPlaybackArrUndone();
 
         console.log("RECORDING FINISHED");
@@ -182,6 +184,8 @@ class DrumMachine extends React.Component {
       this.setState({
         nowPlaying: true
       });
+
+      console.log( localStorage.getItem("storedTrack1") );
 
       console.log(this.state.playbackArr);
 
