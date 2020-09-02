@@ -1,13 +1,18 @@
 "use strict";
 
-// localStorage.clear();
-if(localStorage.getItem("storedTrack1") === null) {
-  let arr = [];
+localStorage.clear();
 
-  localStorage.setItem("storedTrack1", JSON.stringify(arr));
+let checkLocalStorage = function() {
+  if(localStorage.getItem("storedTrack1") === null) {
+    let arr = [];
 
-  console.log("ahhh! : " + localStorage.getItem("storedTrack1"));
+    localStorage.setItem("storedTrack1", JSON.stringify(arr));
+
+    console.log("ahhh! : " + localStorage.getItem("storedTrack1"));
+  }
 }
+
+checkLocalStorage():
 
 class DrumMachine extends React.Component {
   constructor(props) {
