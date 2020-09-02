@@ -140,7 +140,7 @@ class DrumMachine extends React.Component {
           nowRecording: false
         });
 
-        localStorage.setItem("storedTrack1", this.state.playbackArr);
+        localStorage.setItem("storedTrack1", JSON.stringify(this.state.playbackArr));
 
         this.setPlaybackArrUndone();
 
@@ -185,7 +185,7 @@ class DrumMachine extends React.Component {
         nowPlaying: true
       });
 
-      console.log( localStorage.getItem("storedTrack1") );
+      console.log( JSON.parse(localStorage.getItem("storedTrack1")) );
 
       console.log(this.state.playbackArr);
 
