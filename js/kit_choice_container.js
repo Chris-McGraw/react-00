@@ -12,17 +12,6 @@ class KitChoiceContainer extends React.Component {
 
   kitBtnDown(event) {
     if(this.props.power === "on") {
-      // var kitBtns = document.getElementsByClassName("kit-choice-btn");
-      //
-      // for(let n = 0; n < kitBtns.length; n++) {
-      //   kitBtns[n].style.backgroundColor = "#b6b4be";
-      //   kitBtns[n].style.backgroundImage = "radial-gradient( rgba(192, 199, 202, 0.6), rgba(182, 180, 190, 0.6) )";
-      // }
-      //
-      // event.currentTarget.style.backgroundColor = "#dad9de";
-      // event.currentTarget.style.backgroundImage = "radial-gradient( rgba(233, 232, 235, 0.8), rgba(218, 217, 222, 0.8) )";
-      // event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
-
       this.props.setCurrentKit(event);
 
       setTimeout(function() {
@@ -33,9 +22,7 @@ class KitChoiceContainer extends React.Component {
     }
   }
 
-  kitBtnUp(event) {
-    // event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0)";
-
+  kitBtnUp() {
     this.setState({
       kitBtnPressed: ""
     });
@@ -76,15 +63,15 @@ class KitChoiceContainer extends React.Component {
   handleKeyLift(event) {
     // KEY PRESS 1
     if(event.keyCode === 49) {
-      this.kitBtnUp(event);
+      this.kitBtnUp();
     }
     // KEY PRESS 2
     else if(event.keyCode === 50) {
-      this.kitBtnUp(event);
+      this.kitBtnUp();
     }
     // KEY PRESS 3
     else if(event.keyCode === 51) {
-      this.kitBtnUp(event);
+      this.kitBtnUp();
     }
   }
 
