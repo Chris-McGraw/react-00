@@ -1,6 +1,6 @@
 "use strict";
 
-localStorage.clear();
+// localStorage.clear();
 
 let checkLocalStorage = function() {
   if(localStorage.getItem("storedTrack1") === null) {
