@@ -1,6 +1,11 @@
 "use strict";
 
 localStorage.clear();
+if(localStorage.getItem("storedTrack1") === undefined || null) {
+  let arr = [];
+
+  localStorage.setItem("storedTrack1", JSON.stringify(arr));
+}
 console.log("ahhh! : " + localStorage.getItem("storedTrack1").length);
 
 class DrumMachine extends React.Component {
