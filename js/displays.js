@@ -5,27 +5,9 @@ class DisplayLeft extends React.Component {
     super(props)
   }
 
-  mapNoteBlocks1(key) {
+  mapNoteBlocks(key, kit) {
     return this.props.playbackArr.filter(i =>
-      i.key === key && i.kit === "kit1").map(i =>
-        <div key={i.kit + i.key + i.time} className={this.noteBlockStyle()}
-        style={{left: ( (i.time / 1000).toFixed(1) * 10 ) + "%",
-        backgroundColor: sampleKits[i.kit][i.key].noteColor}}></div>
-    );
-  }
-
-  mapNoteBlocks2(key) {
-    return this.props.playbackArr.filter(i =>
-      i.key === key && i.kit === "kit2").map(i =>
-        <div key={i.kit + i.key + i.time} className={this.noteBlockStyle()}
-        style={{left: ( (i.time / 1000).toFixed(1) * 10 ) + "%",
-        backgroundColor: sampleKits[i.kit][i.key].noteColor}}></div>
-    );
-  }
-
-  mapNoteBlocks3(key) {
-    return this.props.playbackArr.filter(i =>
-      i.key === key && i.kit === "kit3").map(i =>
+      i.key === key && i.kit === kit).map(i =>
         <div key={i.kit + i.key + i.time} className={this.noteBlockStyle()}
         style={{left: ( (i.time / 1000).toFixed(1) * 10 ) + "%",
         backgroundColor: sampleKits[i.kit][i.key].noteColor}}></div>
@@ -76,49 +58,49 @@ class DisplayLeft extends React.Component {
           <div id="play-line" style={movePlayLine}></div>
 
           <div className="test-line" id="test-line-1">
-            <div>{this.mapNoteBlocks1("C")}</div>
-            <div>{this.mapNoteBlocks2("C")}</div>
-            <div>{this.mapNoteBlocks3("C")}</div>
+            <div>{this.mapNoteBlocks("C", "kit1")}</div>
+            <div>{this.mapNoteBlocks("C", "kit2")}</div>
+            <div>{this.mapNoteBlocks("C", "kit3")}</div>
           </div>
           <div className="test-line" id="test-line-2">
-            <div>{this.mapNoteBlocks1("X")}</div>
-            <div>{this.mapNoteBlocks2("X")}</div>
-            <div>{this.mapNoteBlocks3("X")}</div>
+            <div>{this.mapNoteBlocks("X", "kit1")}</div>
+            <div>{this.mapNoteBlocks("X", "kit2")}</div>
+            <div>{this.mapNoteBlocks("X", "kit3")}</div>
           </div>
           <div className="test-line" id="test-line-3">
-            <div>{this.mapNoteBlocks1("Z")}</div>
-            <div>{this.mapNoteBlocks2("Z")}</div>
-            <div>{this.mapNoteBlocks3("Z")}</div>
+            <div>{this.mapNoteBlocks("Z", "kit1")}</div>
+            <div>{this.mapNoteBlocks("Z", "kit2")}</div>
+            <div>{this.mapNoteBlocks("Z", "kit3")}</div>
           </div>
           <div className="test-line" id="test-line-4">
-            <div>{this.mapNoteBlocks1("D")}</div>
-            <div>{this.mapNoteBlocks2("D")}</div>
-            <div>{this.mapNoteBlocks3("D")}</div>
+            <div>{this.mapNoteBlocks("D", "kit1")}</div>
+            <div>{this.mapNoteBlocks("D", "kit2")}</div>
+            <div>{this.mapNoteBlocks("D", "kit3")}</div>
           </div>
           <div className="test-line" id="test-line-5">
-            <div>{this.mapNoteBlocks1("S")}</div>
-            <div>{this.mapNoteBlocks2("S")}</div>
-            <div>{this.mapNoteBlocks3("S")}</div>
+            <div>{this.mapNoteBlocks("S", "kit1")}</div>
+            <div>{this.mapNoteBlocks("S", "kit2")}</div>
+            <div>{this.mapNoteBlocks("S", "kit3")}</div>
           </div>
           <div className="test-line" id="test-line-6">
-            <div>{this.mapNoteBlocks1("A")}</div>
-            <div>{this.mapNoteBlocks2("A")}</div>
-            <div>{this.mapNoteBlocks3("A")}</div>
+            <div>{this.mapNoteBlocks("A", "kit1")}</div>
+            <div>{this.mapNoteBlocks("A", "kit2")}</div>
+            <div>{this.mapNoteBlocks("A", "kit3")}</div>
           </div>
           <div className="test-line" id="test-line-7">
-            <div>{this.mapNoteBlocks1("E")}</div>
-            <div>{this.mapNoteBlocks2("E")}</div>
-            <div>{this.mapNoteBlocks3("E")}</div>
+            <div>{this.mapNoteBlocks("E", "kit1")}</div>
+            <div>{this.mapNoteBlocks("E", "kit2")}</div>
+            <div>{this.mapNoteBlocks("E", "kit3")}</div>
           </div>
           <div className="test-line" id="test-line-8">
-            <div>{this.mapNoteBlocks1("W")}</div>
-            <div>{this.mapNoteBlocks2("W")}</div>
-            <div>{this.mapNoteBlocks3("W")}</div>
+            <div>{this.mapNoteBlocks("W", "kit1")}</div>
+            <div>{this.mapNoteBlocks("W", "kit2")}</div>
+            <div>{this.mapNoteBlocks("W", "kit3")}</div>
           </div>
           <div className="test-line" id="test-line-9">
-            <div>{this.mapNoteBlocks1("Q")}</div>
-            <div>{this.mapNoteBlocks2("Q")}</div>
-            <div>{this.mapNoteBlocks3("Q")}</div>
+            <div>{this.mapNoteBlocks("Q", "kit1")}</div>
+            <div>{this.mapNoteBlocks("Q", "kit2")}</div>
+            <div>{this.mapNoteBlocks("Q", "kit3")}</div>
           </div>
         </div>
       </div>
