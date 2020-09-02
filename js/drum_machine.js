@@ -76,22 +76,22 @@ class DrumMachine extends React.Component {
     }
   }
 
-  setCurrentKit(event) {
+  setCurrentKit(event, frig) {
     if(this.state.power === "on") {
       if(event.currentTarget.id === "kit-btn-1" || event.key === "1") {
         this.setState({
           currentKit: "kit1"
-        });
+        }, frig());
       }
       else if(event.currentTarget.id === "kit-btn-2" || event.key === "2") {
         this.setState({
           currentKit: "kit2"
-        });
+        }, frig());
       }
       else if(event.currentTarget.id === "kit-btn-3" || event.key === "3") {
         this.setState({
           currentKit: "kit3"
-        });
+        }, frig());
       }
     }
   }
