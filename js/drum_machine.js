@@ -12,7 +12,7 @@ let checkLocalStorage = function() {
   }
 }
 
-checkLocalStorage():
+checkLocalStorage();
 
 class DrumMachine extends React.Component {
   constructor(props) {
