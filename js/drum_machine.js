@@ -2,7 +2,7 @@
 
 // localStorage.clear();
 
-let checkLocalStorage = function() {
+let initializeLocalStorage = function() {
   if(localStorage.getItem("storedTrack1") === null) {
     let arr = [];
 
@@ -12,7 +12,13 @@ let checkLocalStorage = function() {
   }
 }
 
-checkLocalStorage();
+let clearLocalStorage = function(track) {
+  let arr = [];
+
+  localStorage.setItem(track, JSON.stringify(arr));
+}
+
+initializeLocalStorage();
 
 class DrumMachine extends React.Component {
   constructor(props) {
@@ -125,6 +131,8 @@ class DrumMachine extends React.Component {
         playbackArrUndone: [],
         playbackArr: []
       });
+
+      clearLocalStorage("storedTrack1");
 
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
       console.log("RECORDING DELETED");
