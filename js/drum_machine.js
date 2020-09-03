@@ -197,7 +197,17 @@ class DrumMachine extends React.Component {
 
   recordNote(key) {
     if(this.state.nowRecording === true && event !== undefined) {
-      this.setState({ playbackArr: [...this.state.playbackArr, {kit: this.state.currentKit, key:key, time:(Date.now() - this.state.recordingStartTime)}] });
+      let arr = JSON.parse(localStorage.getItem("storedTrack1"));
+
+      arr.push({kit: this.state.currentKit, key:key, time:(Date.now() - this.state.recordingStartTime)});
+
+      localStorage.setItem("storedTrack1", JSON.stringify(arr));
+
+      this.setState({
+        playbackArr: JSON.parse(localStorage.getItem("storedTrack1"))
+      });
+
+      // this.setState({ playbackArr: [...this.state.playbackArr, {kit: this.state.currentKit, key:key, time:(Date.now() - this.state.recordingStartTime)}] });
     }
   }
 
