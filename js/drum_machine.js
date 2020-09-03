@@ -294,14 +294,13 @@ class DrumMachine extends React.Component {
     if(this.state.power === "on" && this.state.nowRecording === false
     && this.state.nowPlaying === false && this.state.playbackArr.length > 0) {
       if(this.arraysEqual(this.state.playbackArr, this.state.playbackArrUndone) === false) {
-        localStorage.setItem("storedTrack1", JSON.stringify(this.state.playbackArrUndone.slice()));
+        // localStorage.setItem("storedTrack1", JSON.stringify(this.state.playbackArrUndone.slice()));
 
-        this.setState({
-          playbackArr: JSON.parse(localStorage.getItem("storedTrack1"))
-        });
+        // this.setState({
+        //   playbackArr: JSON.parse(localStorage.getItem("storedTrack1"))
+        // });
 
-        console.log( "help : " +  this.state.playbackArrUndone.slice() );
-        console.log( "shit : " +  JSON.stringify(this.state.playbackArrUndone.slice()) );
+        console.log( "help : " +  this.state.playbackArr );
 
         event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
         console.log("UNDO");
