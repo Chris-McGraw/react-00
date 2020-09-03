@@ -129,7 +129,7 @@ class DrumMachine extends React.Component {
       this.setState({
         playbackArrPrevious: [],
         playbackArrUndone: [],
-        playbackArr: []
+        // playbackArr: []
       });
 
       clearLocalStorage("storedTrack1");
