@@ -213,8 +213,8 @@ class DrumMachine extends React.Component {
         nowPlaying: true
       });
 
-      console.log( JSON.parse(localStorage.getItem("storedTrack1")) );
-      console.log("kill me plz " + this.state.playbackArr);
+      // console.log( JSON.parse(localStorage.getItem("storedTrack1")) );
+      console.log(this.state.playbackArr);
 
       this.playbackTimeouts = [];
 
@@ -295,7 +295,8 @@ class DrumMachine extends React.Component {
           playbackArr: JSON.parse(localStorage.getItem("storedTrack1"))
         });
 
-        console.log("why???" + this.state.playbackArr);
+        console.log(this.state.playbackArr);
+        console.log(this.state.playbackArrUndone);
 
         event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
         console.log("UNDO");
