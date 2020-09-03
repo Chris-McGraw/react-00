@@ -7,8 +7,6 @@ let initializeLocalStorage = function() {
     let arr = [];
 
     localStorage.setItem("storedTrack1", JSON.stringify(arr));
-
-    console.log("ahhh! : " + localStorage.getItem("storedTrack1"));
   }
 }
 
@@ -161,8 +159,6 @@ class DrumMachine extends React.Component {
         this.setState({
           nowRecording: false
         });
-
-        localStorage.setItem("storedTrack1", JSON.stringify(this.state.playbackArr));
 
         this.setPlaybackArrUndone();
 
