@@ -292,7 +292,7 @@ class DrumMachine extends React.Component {
   undo(event) {
     if(this.state.power === "on" && this.state.nowRecording === false
     && this.state.nowPlaying === false && this.state.playbackArr.length > 0) {
-      if(this.arraysEqual(this.state.playbackArr, this.state.playbackArrUndone) === false) {
+      if(this.arraysEqual(this.state.playbackArr.sort(), this.state.playbackArrUndone.sort()) === false) {
         localStorage.setItem("storedTrack1", JSON.stringify(this.state.playbackArrUndone.slice()));
 
         this.setState({
