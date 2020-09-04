@@ -3,14 +3,7 @@
 class TrackControls extends React.Component {
   constructor(props) {
     super(props);
-    this.trackBtnDown = this.trackBtnDown.bind(this);
     this.ctrlBtnUp = this.ctrlBtnUp.bind(this);
-  }
-
-  trackBtnDown(track) {
-    console.log(track);
-
-    this.props.setCurrentTrack();
   }
 
   ctrlBtnUp(event) {
@@ -84,19 +77,19 @@ class TrackControls extends React.Component {
   render() {
     return (
       <div id="track-controls">
-        <div className={this.trackBtnStyle("track-btn-1")} onMouseDown={this.trackBtnDown("track1")}>
+        <div className={this.trackBtnStyle("track-btn-1")} onMouseDown={() => this.props.setCurrentTrack("track1")}>
           <div className={this.trackGlowStyle("track-btn-1")}>
             <p>I</p>
           </div>
         </div>
 
-        <div className={this.trackBtnStyle("track-btn-2")} onMouseDown={this.trackBtnDown("track2")}>
+        <div className={this.trackBtnStyle("track-btn-2")} onMouseDown={() => this.props.setCurrentTrack("track2")}>
           <div className={this.trackGlowStyle("track-btn-2")}>
             <p>II</p>
           </div>
         </div>
 
-        <div className={this.trackBtnStyle("track-btn-3")} onMouseDown={this.trackBtnDown("track3")}>
+        <div className={this.trackBtnStyle("track-btn-3")} onMouseDown={() => this.props.setCurrentTrack("track3")}>
           <div className={this.trackGlowStyle("track-btn-3")}>
             <p>III</p>
           </div>

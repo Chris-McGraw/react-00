@@ -96,13 +96,13 @@ class DrumMachine extends React.Component {
     }
   }
 
-  setCurrentTrack() {
+  setCurrentTrack(track) {
     if(this.state.power === "on") {
-      // this.setState({
-      //   currentTrack: track
-      // });
+      this.setState({
+        currentTrack: track
+      });
 
-      console.log("what???");
+      console.log("plz");
     }
   }
 
