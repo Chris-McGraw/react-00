@@ -7,7 +7,9 @@ class TrackControls extends React.Component {
   }
 
   trackBtnDown(track) {
-    this.props.setCurrentTrack(track);
+    console.log(track);
+    
+    this.props.setCurrentTrack();
   }
 
   ctrlBtnUp(event) {
