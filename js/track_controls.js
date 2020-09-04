@@ -56,24 +56,6 @@ class TrackControls extends React.Component {
     }
   }
 
-  // trackBtnStyle() {
-  //   if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
-  //     return "ctrl-btn ctrl-btn-on";
-  //   }
-  //   else {
-  //     return "ctrl-btn ctrl-btn-off"
-  //   }
-  // }
-
-  // trackGlowStyle() {
-  //   if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
-  //     return "ctrl-glow ctrl-glow-on";
-  //   }
-  //   else {
-  //     return "ctrl-glow ctrl-glow-off"
-  //   }
-  // }
-
   render() {
     return (
       <div id="track-controls">
