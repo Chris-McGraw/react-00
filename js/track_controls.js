@@ -3,12 +3,13 @@
 class TrackControls extends React.Component {
   constructor(props) {
     super(props);
+    this.trackBtnDown = this.trackBtnDown.bind(this);
     this.ctrlBtnUp = this.ctrlBtnUp.bind(this);
   }
 
   trackBtnDown(track) {
     console.log(track);
-    
+
     this.props.setCurrentTrack();
   }
 
