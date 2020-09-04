@@ -37,6 +37,7 @@ class DrumMachine extends React.Component {
     };
     this.togglePower = this.togglePower.bind(this);
     this.toggleVolume = this.toggleVolume.bind(this);
+    this.setCurrentTrack = this.setCurrentTrack.bind(this);
     this.setCurrentKit = this.setCurrentKit.bind(this);
     this.setCurrentPad = this.setCurrentPad.bind(this);
     this.deleteRecording = this.deleteRecording.bind(this);
@@ -98,7 +99,7 @@ class DrumMachine extends React.Component {
   setCurrentTrack(track) {
     if(this.state.power === "on") {
       this.setState({
-        currentKit: track
+        currentTrack: track
       });
     }
   }
