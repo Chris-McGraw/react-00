@@ -45,7 +45,7 @@ class TrackControls extends React.Component {
         return "ctrl-glow ctrl-glow-on";
       }
       else if(this.props.nowRecording === false && this.props.nowPlaying === false) {
-        return "ctrl-btn ctrl-glow-on";
+        return "ctrl-glow ctrl-glow-on";
       }
       else {
         return "ctrl-glow ctrl-glow-off"
