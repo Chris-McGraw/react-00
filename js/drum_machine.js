@@ -1,13 +1,13 @@
 "use strict";
 
-// localStorage.clear();
+localStorage.clear();
 console.log(localStorage);
 
 let initializeLocalStorage = function() {
-  if(localStorage.getItem("storedTrack1") === null) {
+  if(localStorage.getItem("track1") === null) {
     let arr = [];
 
-    localStorage.setItem("storedTrack1", JSON.stringify(arr));
+    localStorage.setItem("track1", JSON.stringify(arr));
   }
   if(localStorage.getItem("track2") === null) {
     let arr = [];
@@ -42,7 +42,7 @@ class DrumMachine extends React.Component {
       recordingStartTime: 0,
       playbackArrPrevious: [],
       playbackArrUndone: [],
-      playbackArr: JSON.parse(localStorage.getItem("storedTrack1")),
+      playbackArr: JSON.parse(localStorage.getItem("track1")),
       nowPlaying: false
     };
     this.togglePower = this.togglePower.bind(this);
@@ -109,19 +109,10 @@ class DrumMachine extends React.Component {
 
   setCurrentTrack(track, event) {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
-
-      if(track === "track1") {
-        this.setState({
-          currentTrack: track,
-          playbackArr: JSON.parse(localStorage.getItem("storedTrack1"))
-        });
-      }
-      else {
-        this.setState({
-          currentTrack: track,
-          playbackArr: JSON.parse(localStorage.getItem(track))
-        });
-      }
+      this.setState({
+        currentTrack: track,
+        playbackArr: JSON.parse(localStorage.getItem(track))
+      });
 
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
     }
@@ -157,12 +148,12 @@ class DrumMachine extends React.Component {
 
   deleteRecording(event) {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false && this.state.playbackArr.length > 0) {
-      clearLocalStorage("storedTrack1");
+      clearLocalStorage(this.state.currentTrack);
 
       this.setState({
         playbackArrPrevious: [],
         playbackArrUndone: [],
-        playbackArr: JSON.parse(localStorage.getItem("storedTrack1"))
+        playbackArr: JSON.parse(localStorage.getItem(this.state.currentTrack))
       });
 
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
@@ -228,14 +219,14 @@ class DrumMachine extends React.Component {
 
   recordNote(key) {
     if(this.state.nowRecording === true && event !== undefined) {
-      let arr = JSON.parse(localStorage.getItem("storedTrack1"));
+      let arr = JSON.parse(localStorage.getItem(this.state.currentTrack));
 
       arr.push({kit: this.state.currentKit, key:key, time:(Date.now() - this.state.recordingStartTime)});
 
-      localStorage.setItem("storedTrack1", JSON.stringify(arr));
+      localStorage.setItem(this.state.currentTrack, JSON.stringify(arr));
 
       this.setState({
-        playbackArr: JSON.parse(localStorage.getItem("storedTrack1"))
+        playbackArr: JSON.parse(localStorage.getItem(this.state.currentTrack))
       });
 
       // this.setState({ playbackArr: [...this.state.playbackArr, {kit: this.state.currentKit, key:key, time:(Date.now() - this.state.recordingStartTime)}] });
