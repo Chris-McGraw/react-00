@@ -1,13 +1,23 @@
 "use strict";
 
 // localStorage.clear();
-// console.log(localStorage);
+console.log(localStorage);
 
 let initializeLocalStorage = function() {
   if(localStorage.getItem("storedTrack1") === null) {
     let arr = [];
 
     localStorage.setItem("storedTrack1", JSON.stringify(arr));
+  }
+  if(localStorage.getItem("track2") === null) {
+    let arr = [];
+
+    localStorage.setItem("track2", JSON.stringify(arr));
+  }
+  if(localStorage.getItem("track3") === null) {
+    let arr = [];
+
+    localStorage.setItem("track3", JSON.stringify(arr));
   }
 }
 
@@ -99,9 +109,19 @@ class DrumMachine extends React.Component {
 
   setCurrentTrack(track, event) {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
-      this.setState({
-        currentTrack: track
-      });
+
+      if(track === "track1") {
+        this.setState({
+          currentTrack: track,
+          playbackArr: JSON.parse(localStorage.getItem("storedTrack1"))
+        });
+      }
+      else {
+        this.setState({
+          currentTrack: track,
+          playbackArr: JSON.parse(localStorage.getItem(track))
+        });
+      }
 
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
     }
