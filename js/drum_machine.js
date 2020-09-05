@@ -69,6 +69,7 @@ class DrumMachine extends React.Component {
         currentKit: "kit1",
         currentPad: "",
         nowRecording: false,
+        playbackArr: JSON.parse(localStorage.getItem("track1")),
         nowPlaying: false
       });
 
