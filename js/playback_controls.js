@@ -78,7 +78,12 @@ class PlaybackControls extends React.Component {
 
   undoBtnStyle() {
     if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
-      return "ctrl-btn ctrl-btn-on";
+      if(JSON.stringify(this.props.playbackArr) !== JSON.stringify(this.props.playbackArrUndone)) {
+        return "ctrl-btn ctrl-btn-on";
+      }
+      else {
+        return "ctrl-btn ctrl-btn-off"
+      }
     }
     else {
       return "ctrl-btn ctrl-btn-off"
