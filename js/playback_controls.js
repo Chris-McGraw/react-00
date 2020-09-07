@@ -92,7 +92,12 @@ class PlaybackControls extends React.Component {
 
   undoGlowStyle() {
     if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
-      return "ctrl-glow ctrl-glow-on";
+      if(JSON.stringify(this.props.playbackArr) !== JSON.stringify(this.props.playbackArrUndone)) {
+        return "ctrl-glow ctrl-glow-on";
+      }
+      else {
+        return "ctrl-glow ctrl-glow-off"
+      }
     }
     else {
       return "ctrl-glow ctrl-glow-off"
