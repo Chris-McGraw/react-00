@@ -41,7 +41,7 @@ class DrumMachine extends React.Component {
       nowRecording: false,
       recordingStartTime: 0,
       playbackArrPrevious: [],
-      playbackArrUndone: [],
+      playbackArrUndone: JSON.parse(localStorage.getItem("track1")),
       playbackArr: JSON.parse(localStorage.getItem("track1")),
       nowPlaying: false
     };
@@ -69,6 +69,7 @@ class DrumMachine extends React.Component {
         currentKit: "kit1",
         currentPad: "",
         nowRecording: false,
+        playbackArrUndone: JSON.parse(localStorage.getItem("track1")),
         playbackArr: JSON.parse(localStorage.getItem("track1")),
         nowPlaying: false
       });
@@ -112,7 +113,8 @@ class DrumMachine extends React.Component {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
       this.setState({
         currentTrack: track,
-        playbackArr: JSON.parse(localStorage.getItem(track))
+        playbackArr: JSON.parse(localStorage.getItem(track)),
+        playbackArrUndone: JSON.parse(localStorage.getItem(track))
       });
 
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
@@ -152,7 +154,6 @@ class DrumMachine extends React.Component {
       clearLocalStorage(this.state.currentTrack);
 
       this.setState({
-        playbackArrPrevious: [],
         playbackArrUndone: [],
         playbackArr: JSON.parse(localStorage.getItem(this.state.currentTrack))
       });
@@ -316,12 +317,8 @@ class DrumMachine extends React.Component {
     if(this.state.power === "on" && this.state.nowRecording === false
     && this.state.nowPlaying === false && this.state.playbackArr.length > 0) {
       if( JSON.stringify(this.state.playbackArr) !== JSON.stringify(this.state.playbackArrUndone) ) {
-        // localStorage.setItem("storedTrack1", JSON.stringify(this.state.playbackArrUndone.slice()));
         localStorage.setItem(this.state.currentTrack, JSON.stringify(this.state.playbackArrUndone.slice()));
 
-        // this.setState({
-        //   playbackArr: JSON.parse(localStorage.getItem("storedTrack1"))
-        // });
         this.setState({
           playbackArr: JSON.parse(localStorage.getItem(this.state.currentTrack))
         });
