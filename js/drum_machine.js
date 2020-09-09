@@ -117,7 +117,7 @@ class DrumMachine extends React.Component {
         playbackArrUndone: JSON.parse(localStorage.getItem(track))
       });
 
-      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
+      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
     }
   }
 
@@ -167,15 +167,12 @@ class DrumMachine extends React.Component {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
       if(this.state.playbackArr.length > 0) {
         this.startPlayback(event);
-
-        this.setState({
-          playbackArrPrevious: this.state.playbackArr.slice()
-        });
       }
 
       this.setState({
         nowRecording: true,
-        recordingStartTime: Date.now()
+        recordingStartTime: Date.now(),
+        playbackArrPrevious: this.state.playbackArr.slice()
       });
 
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
