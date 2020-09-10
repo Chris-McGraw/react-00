@@ -310,20 +310,14 @@ class DrumMachine extends React.Component {
     }
   }
 
-  undo(event) {
-    if(this.state.power === "on" && this.state.nowRecording === false
-    && this.state.nowPlaying === false && this.state.playbackArr.length > 0) {
-      if( JSON.stringify(this.state.playbackArr) !== JSON.stringify(this.state.playbackArrUndone) ) {
-        localStorage.setItem(this.state.currentTrack, JSON.stringify(this.state.playbackArrUndone.slice()));
+  undo() {
+    localStorage.setItem(this.state.currentTrack, JSON.stringify(this.state.playbackArrUndone.slice()));
 
-        this.setState({
-          playbackArr: JSON.parse(localStorage.getItem(this.state.currentTrack))
-        });
+    this.setState({
+      playbackArr: JSON.parse(localStorage.getItem(this.state.currentTrack))
+    });
 
-        event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
-        console.log("UNDO");
-      }
-    }
+    console.log("UNDO");
   }
 
   render() {

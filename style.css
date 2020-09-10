@@ -477,6 +477,10 @@ html,body {
   background-color: #dad9de;
 }
 
+.ctrl-btn-pressed {
+  box-shadow: 4px 4px 6px rgba(0,0,0, 1.0) !important;
+}
+
 .ctrl-glow {
   display: grid;
   align-items: center;

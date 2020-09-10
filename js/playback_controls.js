@@ -3,10 +3,18 @@
 class PlaybackControls extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      undoBtnDown: false
+    };
+    this.undoBtnPress = this.undoBtnPress.bind(this);
     this.ctrlBtnUp = this.ctrlBtnUp.bind(this);
   }
 
   ctrlBtnUp(event) {
+    this.setState({
+      undoBtnDown: false
+    });
+
     event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
   }
 
@@ -76,17 +84,40 @@ class PlaybackControls extends React.Component {
     }
   }
 
+  undoBtnPress(event) {
+    if(this.props.power === "on" && this.props.nowRecording === false
+    && this.props.nowPlaying === false && this.props.playbackArr.length > 0) {
+      if( JSON.stringify(this.props.playbackArr) !== JSON.stringify(this.props.playbackArrUndone) ) {
+        this.setState({
+          undoBtnDown: true
+        });
+
+        this.props.undo();
+      }
+    }
+  }
+
   undoBtnStyle() {
     if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
       if(JSON.stringify(this.props.playbackArr) !== JSON.stringify(this.props.playbackArrUndone)) {
-        return "ctrl-btn ctrl-btn-on";
+        if(this.state.undoBtnDown === true) {
+          return "ctrl-btn ctrl-btn-pressed ctrl-btn-active";
+        }
+        else {
+          return "ctrl-btn ctrl-btn-on";
+        }
       }
       else {
-        return "ctrl-btn ctrl-btn-off"
+        if(this.state.undoBtnDown === true) {
+          return "ctrl-btn ctrl-btn-pressed ctrl-btn-active";
+        }
+        else {
+          return "ctrl-btn ctrl-btn-off";
+        }
       }
     }
     else {
-      return "ctrl-btn ctrl-btn-off"
+      return "ctrl-btn ctrl-btn-off";
     }
   }
 
@@ -96,11 +127,16 @@ class PlaybackControls extends React.Component {
         return "ctrl-glow ctrl-glow-on";
       }
       else {
-        return "ctrl-glow ctrl-glow-off"
+        if(this.state.undoBtnDown === true) {
+          return "ctrl-glow ctrl-glow-on";
+        }
+        else {
+          return "ctrl-glow ctrl-glow-off";
+        }
       }
     }
     else {
-      return "ctrl-glow ctrl-glow-off"
+      return "ctrl-glow ctrl-glow-off";
     }
   }
 
@@ -129,7 +165,7 @@ class PlaybackControls extends React.Component {
         </div>
 
         <div id="undo-button" className={this.undoBtnStyle()}
-        onMouseDown={this.props.undo} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
+        onMouseDown={this.undoBtnPress} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
           <div className={this.undoGlowStyle()}>
             <i className="fas fa-undo"></i>
           </div>
