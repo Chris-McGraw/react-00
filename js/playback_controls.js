@@ -84,7 +84,7 @@ class PlaybackControls extends React.Component {
     }
   }
 
-  undoBtnPress(event) {
+  undoBtnPress() {
     if(this.props.power === "on" && this.props.nowRecording === false
     && this.props.nowPlaying === false && this.props.playbackArr.length > 0) {
       if( JSON.stringify(this.props.playbackArr) !== JSON.stringify(this.props.playbackArrUndone) ) {
