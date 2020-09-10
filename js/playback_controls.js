@@ -7,14 +7,11 @@ class PlaybackControls extends React.Component {
       undoBtnDown: false
     };
     this.undoBtnPress = this.undoBtnPress.bind(this);
+    this.undoBtnLift = this.undoBtnLift.bind(this);
     this.ctrlBtnUp = this.ctrlBtnUp.bind(this);
   }
 
   ctrlBtnUp(event) {
-    this.setState({
-      undoBtnDown: false
-    });
-
     event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
   }
 
@@ -97,6 +94,15 @@ class PlaybackControls extends React.Component {
     }
   }
 
+  undoBtnLift() {
+    if(this.props.power === "on" && this.props.nowRecording === false
+    && this.props.nowPlaying === false) {
+      this.setState({
+        undoBtnDown: false
+      });
+    }
+  }
+
   undoBtnStyle() {
     if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
       if(JSON.stringify(this.props.playbackArr) !== JSON.stringify(this.props.playbackArrUndone)) {
@@ -165,7 +171,7 @@ class PlaybackControls extends React.Component {
         </div>
 
         <div id="undo-button" className={this.undoBtnStyle()}
-        onMouseDown={this.undoBtnPress} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
+        onMouseDown={this.undoBtnPress} onMouseUp={this.undoBtnLift} onMouseLeave={this.undoBtnLift}>
           <div className={this.undoGlowStyle()}>
             <i className="fas fa-undo"></i>
           </div>
