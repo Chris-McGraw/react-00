@@ -6,14 +6,20 @@ class Metronome extends React.Component {
     this.state = {
       metroBPM: 100
     };
+    this.metroBtnUp = this.metroBtnUp.bind(this);
     this.metronomeToggle = this.metronomeToggle.bind(this);
     this.metronomeTimeout = null;
-    this.metroSpeedDown = this.metroSpeedDown.bind(this);
-    this.metroSpeedUp = this.metroSpeedUp.bind(this);
+    this.metroTempoDown = this.metroTempoDown.bind(this);
+    this.metroTempoUp = this.metroTempoUp.bind(this);
+    this.metroTempoTimeout = null;
   }
 
   metroBtnUp(event) {
-    event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
+    if(event !== undefined) {
+      clearTimeout(this.metroTempoTimeout);
+
+      event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
+    }
   }
 
   metronomeToggle(event) {
@@ -56,23 +62,35 @@ class Metronome extends React.Component {
     }
   }
 
-  metroSpeedDown(event) {
+  metroTempoDown(event) {
     if(this.props.power === "on" && this.props.metronomePlaying === false) {
       this.setState({
         metroBPM: this.state.metroBPM - 1
       });
 
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
+
+      this.metroTempoTimeout = setInterval(function() {
+        this.setState({
+          metroBPM: this.state.metroBPM - 1
+        });
+      }.bind(this), 200);
     }
   }
 
-  metroSpeedUp(event) {
+  metroTempoUp(event) {
     if(this.props.power === "on" && this.props.metronomePlaying === false) {
       this.setState({
         metroBPM: this.state.metroBPM + 1
       });
 
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
+
+      this.metroTempoTimeout = setInterval(function() {
+        this.setState({
+          metroBPM: this.state.metroBPM + 1
+        });
+      }.bind(this), 200);
     }
   }
 
@@ -114,14 +132,14 @@ class Metronome extends React.Component {
             <audio preload="auto" src="audio/percs/tamby.mp3" id="metroAudio"></audio>
           </div>
 
-          <div className={this.metroBtnStyle()} onMouseDown={this.metroSpeedDown}
+          <div className={this.metroBtnStyle()} onMouseDown={this.metroTempoDown}
           onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
             <div className={this.metroGlowStyle()}>
               <i className="fas fa-caret-down"></i>
             </div>
           </div>
 
-          <div className={this.metroBtnStyle()} onMouseDown={this.metroSpeedUp}
+          <div className={this.metroBtnStyle()} onMouseDown={this.metroTempoUp}
           onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
             <div className={this.metroGlowStyle()}>
               <i className="fas fa-caret-up"></i>
