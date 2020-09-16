@@ -63,7 +63,7 @@ class Metronome extends React.Component {
   }
 
   metroTempoDown(event) {
-    if(this.props.power === "on" && this.props.metronomePlaying === false) {
+    if(this.props.power === "on" && this.props.metronomePlaying === false && this.state.metroBPM > 40) {
       this.setState({
         metroBPM: this.state.metroBPM - 1
       });
@@ -71,15 +71,17 @@ class Metronome extends React.Component {
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
 
       this.metroTempoTimeout = setInterval(function() {
-        this.setState({
-          metroBPM: this.state.metroBPM - 1
-        });
+        if(this.state.metroBPM > 40) {
+          this.setState({
+            metroBPM: this.state.metroBPM - 1
+          });
+        }
       }.bind(this), 200);
     }
   }
 
   metroTempoUp(event) {
-    if(this.props.power === "on" && this.props.metronomePlaying === false) {
+    if(this.props.power === "on" && this.props.metronomePlaying === false && this.state.metroBPM < 200) {
       this.setState({
         metroBPM: this.state.metroBPM + 1
       });
@@ -87,9 +89,11 @@ class Metronome extends React.Component {
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
 
       this.metroTempoTimeout = setInterval(function() {
-        this.setState({
-          metroBPM: this.state.metroBPM + 1
-        });
+        if(this.state.metroBPM < 200) {
+          this.setState({
+            metroBPM: this.state.metroBPM + 1
+          });
+        }
       }.bind(this), 200);
     }
   }
