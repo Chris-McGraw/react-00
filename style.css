@@ -135,7 +135,7 @@ html,body {
   justify-content: center;
 
   position: absolute;
-  left: 310px;
+  left: 200px;
   bottom: 150px;
 
   width: 150px;
@@ -223,7 +223,7 @@ html,body {
 
 #power-container {
   position: absolute;
-  left: 80px;
+  left: 40px;
   bottom: 150px;
 
   width: 100px;
@@ -319,6 +319,111 @@ html,body {
   color: white;
 
   user-select: none;
+}
+
+#metronome-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+
+  position: absolute;
+  left: 370px;
+  bottom: 150px;
+
+  width: 250px;
+  height: 200px;
+
+  /* border: 1px dashed white; */
+}
+
+#metro-display {
+  display: grid;
+  grid-column: span 3;
+  align-items: center;
+  justify-content: flex-start;
+
+  height: 50px;
+  padding-left: 20px;
+
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+
+  background-color: black;
+
+  user-select: none;
+}
+
+.metro-btn {
+  display: grid;
+  grid-column: span 1;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  top: -45px;
+
+  height: 35px;
+
+  background-image: none;
+  background-color: #898F90;
+  box-shadow: 6px 6px 6px rgba(0,0,0, 1.0);
+
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.4s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.metro-btn-off {
+  background-image: none;
+  background-color: #898f90;
+}
+
+.metro-btn-on {
+  background-image: radial-gradient( rgba(192, 199, 202, 0.6), rgba(182, 180, 190, 0.6) );
+  background-color: #b6b4be;
+}
+
+.metro-btn-active {
+  background-image: radial-gradient( rgba(233, 232, 235, 0.8), rgba(218, 217, 222, 0.8) );
+  background-color: #dad9de;
+}
+
+.metro-glow {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 100%;
+
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.metro-glow-off {
+  background-color: rgba(255,255,255, 0.0);
+  box-shadow: none;
+}
+
+.metro-glow-on {
+  background-color: rgba(255,255,255, 0.2);
+  box-shadow: 0 0 25px rgba(255,255,255, 0.5);
+}
+
+.metro-glow p {
+  font-family: sans-serif;
+  font-size: 18px;
+  color: black;
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+  text-align: center;
+}
+
+.metro-glow i {
+  font-size: 26px;
+  color: black;
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
 }
 
 #kit-choice-container {

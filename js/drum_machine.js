@@ -38,6 +38,7 @@ class DrumMachine extends React.Component {
       currentTrack: "track1",
       currentKit: "kit1",
       currentPad: "",
+      metronomePlaying: false,
       nowRecording: false,
       recordingStartTime: 0,
       playbackArrPrevious: [],
@@ -47,6 +48,7 @@ class DrumMachine extends React.Component {
     };
     this.togglePower = this.togglePower.bind(this);
     this.toggleVolume = this.toggleVolume.bind(this);
+    this.toggleMetronomePlaying = this.toggleMetronomePlaying.bind(this);
     this.setCurrentTrack = this.setCurrentTrack.bind(this);
     this.setCurrentKit = this.setCurrentKit.bind(this);
     this.setCurrentPad = this.setCurrentPad.bind(this);
@@ -65,6 +67,7 @@ class DrumMachine extends React.Component {
     if(this.state.power === "on") {
       this.setState({
         power: "off",
+        metronomePlaying: false,
         currentTrack: "track1",
         currentKit: "kit1",
         currentPad: "",
@@ -105,6 +108,19 @@ class DrumMachine extends React.Component {
     else {
       this.setState({
         volume: 1
+      });
+    }
+  }
+
+  toggleMetronomePlaying() {
+    if(this.state.metronomePlaying === false) {
+      this.setState({
+        metronomePlaying: true
+      });
+    }
+    else {
+      this.setState({
+        metronomePlaying: false
       });
     }
   }
@@ -326,6 +342,7 @@ class DrumMachine extends React.Component {
         <div id="drum-machine">
           <PowerContainer power={this.state.power} togglePower={this.togglePower} />
           <VolumeContainer volume={this.state.volume} toggleVolume={this.toggleVolume} />
+          <Metronome power={this.state.power} volume={this.state.volume} metronomePlaying={this.state.metronomePlaying} toggleMetronomePlaying={this.toggleMetronomePlaying} />
           <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} playbackArr={this.state.playbackArr} />
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} currentKit={this.state.currentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
