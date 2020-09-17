@@ -4,7 +4,8 @@ class Metronome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      metroBPM: 100
+      metroBPM: 100,
+      btnRepeatSpeed: 200
     };
     this.metroBtnUp = this.metroBtnUp.bind(this);
     this.metronomeToggle = this.metronomeToggle.bind(this);
@@ -17,6 +18,10 @@ class Metronome extends React.Component {
   metroBtnUp(event) {
     if(event !== undefined) {
       clearTimeout(this.metroTempoTimeout);
+
+      this.setState({
+        btnRepeatSpeed: 200
+      });
 
       event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
     }
@@ -64,37 +69,47 @@ class Metronome extends React.Component {
 
   metroTempoDown(event) {
     if(this.props.power === "on" && this.props.metronomePlaying === false && this.state.metroBPM > 40) {
+      if(event !== undefined) {
+        event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
+      }
+      else if(this.state.btnRepeatSpeed > 20) {
+        this.setState({
+          btnRepeatSpeed: this.state.btnRepeatSpeed - 20
+        });
+      }
+
       this.setState({
         metroBPM: this.state.metroBPM - 1
       });
 
-      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
-
-      this.metroTempoTimeout = setInterval(function() {
+      this.metroTempoTimeout = setTimeout(function() {
         if(this.state.metroBPM > 40) {
-          this.setState({
-            metroBPM: this.state.metroBPM - 1
-          });
+          this.metroTempoDown();
         }
-      }.bind(this), 200);
+      }.bind(this), this.state.btnRepeatSpeed);
     }
   }
 
   metroTempoUp(event) {
     if(this.props.power === "on" && this.props.metronomePlaying === false && this.state.metroBPM < 200) {
+      if(event !== undefined) {
+        event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
+      }
+      else if(this.state.btnRepeatSpeed > 20) {
+        this.setState({
+          btnRepeatSpeed: this.state.btnRepeatSpeed - 20
+        });
+      }
+
       this.setState({
         metroBPM: this.state.metroBPM + 1
       });
 
-      event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
-
-      this.metroTempoTimeout = setInterval(function() {
+      this.metroTempoTimeout = setTimeout(function() {
         if(this.state.metroBPM < 200) {
-          this.setState({
-            metroBPM: this.state.metroBPM + 1
-          });
+          this.metroTempoUp();
         }
-      }.bind(this), 200);
+      }.bind(this), this.state.btnRepeatSpeed);
     }
   }
 
