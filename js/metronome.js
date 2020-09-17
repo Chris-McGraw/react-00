@@ -98,6 +98,15 @@ class Metronome extends React.Component {
     }
   }
 
+  metroDisplayStyle() {
+    if(this.props.power === "on") {
+      return "metro-display metro-display-on";
+    }
+    else {
+      return "metro-display metro-display-off"
+    }
+  }
+
   metroBtnStyle(btn) {
     if(this.props.power === "on" && this.props.metronomePlaying === true && btn === "metro-toggle-btn") {
       return "metro-btn metro-btn-on metro-btn-active";
@@ -126,7 +135,9 @@ class Metronome extends React.Component {
     return (
       <div>
         <div id="metronome-container">
-          <div id="metro-display">{this.state.metroBPM} BPM</div>
+          <div id="metro-display">
+            <p className={this.metroDisplayStyle()}>{this.state.metroBPM} BPM</p>
+          </div>
 
           <div className={this.metroBtnStyle("metro-toggle-btn")} onMouseDown={this.metronomeToggle}
           onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>

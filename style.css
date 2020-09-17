@@ -345,13 +345,26 @@ html,body {
   height: 50px;
   padding-left: 20px;
 
+  background-color: black;
+
+  user-select: none;
+}
+
+#metro-display p {
   font-family: sans-serif;
   font-size: 16px;
   color: white;
 
-  background-color: black;
-
   user-select: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.metro-display-on {
+  opacity: 1.0;
+}
+
+.metro-display-off {
+  opacity: 0.0;
 }
 
 .metro-btn {
