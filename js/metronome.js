@@ -157,7 +157,9 @@ class Metronome extends React.Component {
           <div className={this.metroBtnStyle("metro-toggle-btn")} onMouseDown={this.metronomeToggle}
           onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
             <div className={this.metroGlowStyle("metro-toggle-btn")}>
-              <p>M</p>
+              <span id="metro-play-stop-span">
+                <i className="fas fa-play"></i> <span id="metro-slash-span">/</span> <i className="fas fa-stop"></i>
+              </span>
             </div>
             <audio preload="auto" src="audio/percs/tamby.mp3" id="metroAudio"></audio>
           </div>
