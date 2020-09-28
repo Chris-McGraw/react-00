@@ -177,7 +177,7 @@ class PadContainer extends React.Component {
     }
 
     return (
-      <div>
+      <div id="pad-section">
         <div id="pad-container">
           <div className={this.drumPadStyle("Q")} id="pad-q"
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>

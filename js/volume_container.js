@@ -16,7 +16,7 @@ class VolumeContainer extends React.Component {
     }
 
     return (
-      <div>
+      <div id="volume-section">
         <div id="volume-container">
           <p id="volume-text">Volume</p>
 

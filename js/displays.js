@@ -41,7 +41,7 @@ class DisplayLeft extends React.Component {
     }
 
     return (
-      <div>
+      <div id="display-left-section">
         <div id="other-test">
           <p>C</p>
           <p>X</p>
@@ -116,14 +116,14 @@ class DisplayRight extends React.Component {
   render() {
     if(this.props.power === "off" || this.props.currentPad === "") {
       return (
-        <div>
+        <div id="display-right-section">
           <div id="display-right"></div>
         </div>
       );
     }
     else {
       return (
-        <div>
+        <div id="display-right-section">
           <div id="display-right">{sampleKits[this.props.currentKit][this.props.currentPad].desc}</div>
         </div>
       );

@@ -58,32 +58,34 @@ class TrackControls extends React.Component {
 
   render() {
     return (
-      <div id="track-controls">
-        <div className={this.trackBtnStyle("track-btn-1")} onMouseDown={(event) => this.props.setCurrentTrack("track1", event)}
-        onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
-          <div className={this.trackGlowStyle("track-btn-1")}>
-            <p>I</p>
+      <div id="track-controls-section">
+        <div id="track-controls">
+          <div className={this.trackBtnStyle("track-btn-1")} onMouseDown={(event) => this.props.setCurrentTrack("track1", event)}
+          onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
+            <div className={this.trackGlowStyle("track-btn-1")}>
+              <p>I</p>
+            </div>
           </div>
-        </div>
 
-        <div className={this.trackBtnStyle("track-btn-2")} onMouseDown={(event) => this.props.setCurrentTrack("track2", event)}
-        onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
-          <div className={this.trackGlowStyle("track-btn-2")}>
-            <p>II</p>
+          <div className={this.trackBtnStyle("track-btn-2")} onMouseDown={(event) => this.props.setCurrentTrack("track2", event)}
+          onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
+            <div className={this.trackGlowStyle("track-btn-2")}>
+              <p>II</p>
+            </div>
           </div>
-        </div>
 
-        <div className={this.trackBtnStyle("track-btn-3")} onMouseDown={(event) => this.props.setCurrentTrack("track3", event)}
-        onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
-          <div className={this.trackGlowStyle("track-btn-3")}>
-            <p>III</p>
+          <div className={this.trackBtnStyle("track-btn-3")} onMouseDown={(event) => this.props.setCurrentTrack("track3", event)}
+          onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
+            <div className={this.trackGlowStyle("track-btn-3")}>
+              <p>III</p>
+            </div>
           </div>
-        </div>
 
-        <div id="delete-button" className={this.trackBtnStyle()}
-        onMouseDown={this.props.deleteRecording} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
-          <div className={this.trackGlowStyle()}>
-            <i className="fas fa-trash"></i>
+          <div id="delete-button" className={this.trackBtnStyle()}
+          onMouseDown={this.props.deleteRecording} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
+            <div className={this.trackGlowStyle()}>
+              <i className="fas fa-trash"></i>
+            </div>
           </div>
         </div>
       </div>
