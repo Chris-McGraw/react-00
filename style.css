@@ -62,7 +62,7 @@ html,body {
 
 #machine-controls {
   display: grid;
-  grid-row: 11 / 18;
+  grid-row: 11 / 17;
   grid-column: 1;
   grid-template-columns: repeat(8, 1fr);
   grid-column-gap: 20px;
@@ -76,7 +76,9 @@ html,body {
   display: grid;
   grid-column: span 2;
 
-  /* border: 1px dashed white; */
+  position: relative;
+
+  /* border: 1px dashed yellow; */
 }
 
 #volume-section {
@@ -85,7 +87,7 @@ html,body {
 
   position: relative;
 
-  /* border: 1px dashed white; */
+  /* border: 1px dashed yellow; */
 }
 
 #metronome-section {
@@ -94,12 +96,12 @@ html,body {
 
   position: relative;
 
-  /* border: 1px dashed white; */
+  /* border: 1px dashed yellow; */
 }
 
 #kit-choice-section {
   display: grid;
-  grid-row: 18 / 21;
+  grid-row: 17 / 21;
   grid-column: 1;
 
   /* border: 1px dashed white; */
@@ -226,9 +228,65 @@ html,body {
 
 /* ---------------------------- POWER CONTAINER ---------------------------- */
 #power-container {
+  display: grid;
+  align-self: flex-end;
+
   position: relative;
 
+  height: 76.5%;
+
+  /* border: 1px dashed white; */
+}
+
+#power-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 20px;
+
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+
+  /* border: 1px dashed red; */
+}
+
+/* #line-test-top {
+  position: absolute;
+  z-index: 100;
+  top: 40px;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  border: 1px dashed blue;
+}
+
+#line-test-bottom {
+  position: absolute;
+  z-index: 100;
+  bottom: 31px;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  border: 1px dashed blue;
+} */
+
+#power-switch-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+
   height: 100%;
+  margin-left: 0;
+  margin-right: 34px;
+
+  /* border: 1px dashed white; */
 }
 
 #power-switch {
@@ -241,7 +299,8 @@ html,body {
   left: 0;
   right: 0;
 
-  width: 33%;
+  width: 45%;
+  min-width: 25px;
   height: 50%;
   margin: auto;
 
@@ -249,7 +308,6 @@ html,body {
   box-shadow: 6px 6px 6px rgba(0,0,0, 1.0);
 
   cursor: pointer;
-
   transition: transform 0.4s ease-in-out;
 }
 
@@ -329,22 +387,25 @@ html,body {
 /* ---------------------------- VOLUME CONTAINER ---------------------------- */
 #volume-container {
   display: grid;
-  align-items: center;
-  justify-content: center;
 
   position: relative;
 
   width: 100%;
 }
 
-#volume-text {
+#volume-header {
   position: absolute;
   top: 0;
   left: 0;
 
+  width: 100%;
+  height: 20px;
+
   font-family: sans-serif;
   font-size: 16px;
   color: white;
+
+  /* border: 1px dashed red; */
 
   user-select: none;
 }
@@ -352,20 +413,18 @@ html,body {
 #volume-knob {
   position: absolute;
   z-index: 20;
+  top: 40px;
   left: 0;
   right: 0;
 
-  width: 85%;
-  height: 0;
-  padding-bottom: 85%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 105px;
+  height: 105px;
+  margin: auto;
 
   background-color: silver;
   border-radius: 100%;
 
   cursor: pointer;
-
   transition: transform 1s ease-out;
 }
 
@@ -384,14 +443,13 @@ html,body {
 
 #volume-knob-shadow {
   position: absolute;
+  top: 40px;
   left: 0;
   right: 0;
 
-  width: 85%;
-  height: 0;
-  padding-bottom: 85%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 105px;
+  height: 105px;
+  margin: auto;
 
   background-color: rgba(0,0,0,0);
   border-radius: 100%;
@@ -426,10 +484,41 @@ html,body {
 /* -------------------------- METRONOME CONTAINER -------------------------- */
 #metronome-container {
   display: grid;
-  grid-template-rows: 25% 17%;
+  align-items: center;
+
+  position: relative;
+
+  /* border: 1px dashed white; */
+}
+
+#metro-container-inner {
+  display: grid;
+  grid-template-rows: 56% 38%;
   grid-row-gap: 15px;
 
   position: relative;
+
+  width: 100%;
+  height: 53%;
+
+  /* border: 1px dashed white; */
+}
+
+#metro-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 20px;
+
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+
+  user-select: none;
+
+  /* border: 1px dashed red; */
 }
 
 #metro-display {
@@ -573,16 +662,21 @@ html,body {
   position: relative;
 }
 
-#kit-choice-text {
+#kit-choice-header {
   position: absolute;
-  top: -25px;
-  left: 0px;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 20px;
 
   font-family: sans-serif;
   font-size: 16px;
   color: white;
 
   user-select: none;
+
+  /* border: 1px dashed red; */
 }
 
 .kit-choice-btn {
@@ -592,6 +686,8 @@ html,body {
   justify-content: center;
 
   position: relative;
+
+  margin-top: 40px;
 
   background-color: #898f90;
   box-shadow: 6px 6px 6px rgba(0,0,0, 1.0);
@@ -802,7 +898,6 @@ html,body {
 
   cursor: pointer;
   user-select: none;
-
   transition: background-color 0.4s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
@@ -943,7 +1038,30 @@ html,body {
     grid-column-gap: 15px;
   }
 
-  #metronome-container {
+  /* #line-test-top {
+    top: 30px;
+  }
+
+  #line-test-bottom {
+    bottom: 24px;
+  } */
+
+  #volume-knob {
+    top: 30px;
+
+    width: 76px;
+    height: 76px;
+    padding-bottom: 0;
+  }
+
+  #volume-knob-shadow {
+    top: 30px;
+
+    width: 76px;
+    height: 76px;
+  }
+
+  #metro-container-inner {
     grid-row-gap: 10px;
   }
 
@@ -953,6 +1071,10 @@ html,body {
 
   #kit-choice-container {
     grid-column-gap: 15px;
+  }
+
+  .kit-choice-btn {
+    margin-top: 35px;
   }
 
   #track-controls {
@@ -982,11 +1104,33 @@ html,body {
     /* background-color: red; */
   }
 
+  /* #line-test-top {
+    top: 24px;
+  }
+
+  #line-test-bottom {
+    bottom: 23px;
+  } */
+
   #machine-controls {
     grid-column-gap: 10px;
   }
 
-  #metronome-container {
+  #volume-knob {
+    top: 24px;
+
+    width: 61px;
+    height: 61px;
+  }
+
+  #volume-knob-shadow {
+    top: 24px;
+
+    width: 61px;
+    height: 61px;
+  }
+
+  #metro-container-inner {
     grid-row-gap: 5px;
   }
 
@@ -996,6 +1140,10 @@ html,body {
 
   #kit-choice-container {
     grid-column-gap: 10px;
+  }
+
+  .kit-choice-btn {
+    margin-top: 30px;
   }
 
   #track-controls {
@@ -1016,10 +1164,11 @@ html,body {
 /* -------------------------- MEDIA QUERY <= 850 -------------------------- */
 @media screen and (max-width: 850px) {
   #drum-machine {
-    grid-template: repeat(40, 1fr) / 1fr;
+    grid-template: repeat(47, 1fr) / 1fr;
 
     width: 65%;
-    height: 720px;
+    height: 820px;
+    max-height: 820px;
 
     /* background-color: #2d2e2d; */
   }
@@ -1034,12 +1183,39 @@ html,body {
   }
 
   #machine-controls {
-    grid-row: 31 / 38;
+    grid-row-gap: 10px;
+    grid-row: 31 / 45;
     grid-column: 1;
   }
 
+  #power-section {
+    grid-column: span 4;
+  }
+
+  #volume-section {
+    grid-column: span 4;
+  }
+
+  #volume-knob {
+    width: 35%;
+    min-width: 55px;
+    min-height: 55px;
+    padding-bottom: 35%;
+  }
+
+  #volume-knob-shadow {
+    width: 35%;
+    min-width: 55px;
+    min-height: 55px;
+    padding-bottom: 35%;
+  }
+
+  #metronome-section {
+    grid-column: span 8;
+  }
+
   #kit-choice-section {
-    grid-row: 38 / 41;
+    grid-row: 45 / 48;
     grid-column: 1;
   }
 

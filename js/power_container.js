@@ -17,12 +17,16 @@ class PowerContainer extends React.Component {
 
     return (
       <div id="power-section">
-        <div id="power-container">
-          <div id="power-switch" style={switchSlide} onClick={this.props.togglePower}>
-            <div id="power-switch-indicator"></div>
-          </div>
+        <p id="power-header">Power</p>
 
-          <div id="slider-path"></div>
+        <div id="power-container">
+          <div id="power-switch-container">
+            <div id="power-switch" style={switchSlide} onClick={this.props.togglePower}>
+              <div id="power-switch-indicator"></div>
+            </div>
+
+            <div id="slider-path"></div>
+          </div>
 
           <div id="power-on-line">
             <p>ON</p>
