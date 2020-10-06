@@ -1163,18 +1163,11 @@ html,body {
 /* -------------------------- MEDIA QUERY <= 850 -------------------------- */
 @media screen and (max-width: 850px) {
   #drum-machine {
-    /* grid-template: repeat(47, 1fr) / 1fr; */
-    grid-template: repeat(49, 1fr) / 1fr;
+    grid-template: repeat(41, 1fr) / 1fr;
 
     width: 65%;
-    /* height: 820px;
-    max-height: 820px; */
-
-    height: 830px;
-    max-height: 830px;
-    padding-bottom: 20px;
-
-    /* background-color: #2d2e2d; */
+    height: 800px;
+    max-height: 800px;
   }
 
   #display-left-section {
@@ -1187,73 +1180,12 @@ html,body {
   }
 
   #machine-controls {
-    grid-row-gap: 10px;
-    /* grid-row: 31 / 45; */
-    grid-row: 36 / 50;
+    grid-row: 35 / 42;
     grid-column: 1;
-
-    height: 192px;
-  }
-
-  #metronome-container {
-    display: block;
-  }
-
-  #power-section {
-    grid-column: span 4;
-    order: 2;
-
-    height: 90px;
-  }
-
-  #volume-section {
-    grid-column: span 4;
-    order: 3;
-
-    height: 90px;
-  }
-
-  #volume-knob {
-    top: 20px;
-
-    width: 60px;
-    height: 60px;
-  }
-
-  #volume-knob-shadow {
-    top: 20px;
-
-    width: 60px;
-    height: 60px;
-  }
-
-  #metronome-section {
-    grid-column: span 8;
-    order: 1;
-
-    height: 90px;
-  }
-
-  #metro-container-inner {
-    display: block;
-
-    margin-top: 25px;
-
-    height: auto;
-  }
-
-  #metro-display {
-    height: 34px;
-  }
-
-  .metro-btn {
-    height: 22px;
-    margin-top: 5px;
   }
 
   #kit-choice-section {
-    /* grid-row: 45 / 48; */
-    grid-row: 31 / 36;
+    grid-row: 31 / 35;
     grid-column: 1;
   }
 
@@ -1287,9 +1219,111 @@ html,body {
 }
 
 
-/* -------------------------- MEDIA QUERY <= 550 -------------------------- */
-  @media screen and (max-width: 550px) {
+/* -------------------------- MEDIA QUERY <= 580 -------------------------- */
+  @media screen and (max-width: 580px) {
     #drum-machine {
+      grid-template: repeat(49, 1fr) / 1fr;
+
       width: 85%;
+      height: 830px;
+      max-height: 830px;
+      padding-bottom: 20px;
+    }
+
+    #machine-controls {
+      grid-row-gap: 10px;
+      grid-row: 36 / 50;
+      grid-column: 1;
+
+      height: 192px;
+    }
+
+    #metronome-container {
+      display: block;
+    }
+
+    #power-section {
+      grid-column: span 4;
+      order: 2;
+
+      height: 90px;
+    }
+
+    #power-switch {
+      max-width: 45px;
+    }
+
+    #volume-section {
+      grid-column: span 4;
+      order: 3;
+
+      height: 90px;
+    }
+
+    #volume-knob {
+      top: 20px;
+
+      width: 60px;
+      height: 60px;
+    }
+
+    #volume-knob-shadow {
+      top: 20px;
+
+      width: 60px;
+      height: 60px;
+    }
+
+    #metronome-section {
+      grid-column: span 8;
+      order: 1;
+
+      height: 90px;
+    }
+
+    #metro-container-inner {
+      display: block;
+
+      margin-top: 25px;
+
+      height: auto;
+    }
+
+    #metro-display {
+      height: 34px;
+    }
+
+    .metro-btn {
+      height: 22px;
+      margin-top: 5px;
+    }
+
+    #kit-choice-section {
+      grid-row: 31 / 36;
+      grid-column: 1;
+    }
+
+    #display-right-section {
+      grid-row: 1 / 4;
+      grid-column: 1;
+    }
+
+    #track-controls-section {
+      grid-row: 4 / 6;
+      grid-column: 1;
+    }
+
+    #playback-controls-section {
+      grid-row: 6 / 8;
+      grid-column: 1;
+    }
+
+    #pad-section {
+      grid-row: 18 / 31;
+      grid-column: 1;
+    }
+
+    #footer {
+      display: none;
     }
   }
