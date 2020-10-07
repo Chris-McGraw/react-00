@@ -180,7 +180,7 @@ class PadContainer extends React.Component {
       <div id="pad-section">
         <div id="pad-container">
           <div className={this.drumPadStyle("Q")} id="pad-q"
-          onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
+          onTouchStart={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
             <audio preload="auto" src="audio/808s/loaded.mp3" className="clip" id="Q"></audio>
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>Q</p>
