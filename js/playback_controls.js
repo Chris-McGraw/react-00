@@ -165,7 +165,7 @@ class PlaybackControls extends React.Component {
           </div>
 
           <div id="play-button" className={this.playBtnStyle()}
-          onMouseDown={this.props.startPlayback} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
+          onMouseDown={this.props.startPlayback} onTouchStart={this.props.startPlayback} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
             <div className={this.playGlowStyle()}>
               <i className="fas fa-play"></i>
             </div>
