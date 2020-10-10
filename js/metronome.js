@@ -30,7 +30,7 @@ class Metronome extends React.Component {
   metronomeToggle(event) {
     if(this.props.power === "on") {
 
-      let audio = document.getElementById("metroAudio");
+      let audio = document.getElementById("metroAudio").cloneNode(true);
       audio.volume = this.props.volume;
       audio.muted = true;
       audio.play();
