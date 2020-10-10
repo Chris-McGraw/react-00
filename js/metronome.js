@@ -30,40 +30,48 @@ class Metronome extends React.Component {
   metronomeToggle(event) {
     if(this.props.power === "on") {
 
-      let audio = document.getElementById("metroAudio").cloneNode(true);
+      let audio = document.getElementById("metroAudio");
       audio.muted = true;
+      audio.currentTime = 0;
 
-      if(this.props.metronomePlaying === false && event !== undefined) {
-        this.props.toggleMetronomePlaying();
-
-        audio.muted = false;
-        audio.volume = this.props.volume;
-        audio.play();
-        console.log("metronome ticked");
-
-        event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
-
-        this.metronomeTimeout = setTimeout(function() {
-          this.metronomeToggle();
-        }.bind(this), ((60 / this.state.metroBPM) * 1000) );
+      let iHateThis = undefined;
+      if(event !== undefined) {
+        iHateThis = event.currentTarget;
       }
-      else if(this.props.metronomePlaying === true && event === undefined) {
-        audio.muted = false;
-        audio.volume = this.props.volume;
-        audio.play();
-        console.log("metronome ticked");
 
-        this.metronomeTimeout = setTimeout(function() {
-          this.metronomeToggle();
-        }.bind(this), ((60 / this.state.metroBPM) * 1000) );
-      }
-      else if(this.props.metronomePlaying === true && event !== undefined) {
-        clearTimeout(this.metronomeTimeout);
+      setTimeout(function() {
+        if(this.props.metronomePlaying === false && iHateThis !== undefined) {
+          this.props.toggleMetronomePlaying();
 
-        this.props.toggleMetronomePlaying();
+          audio.muted = false;
+          audio.volume = this.props.volume;
+          audio.play();
+          console.log("metronome ticked");
 
-        event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
-      }
+          iHateThis.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
+
+          this.metronomeTimeout = setTimeout(function() {
+            this.metronomeToggle();
+          }.bind(this), ((60 / this.state.metroBPM) * 1000) );
+        }
+        else if(this.props.metronomePlaying === true && iHateThis === undefined) {
+          audio.muted = false;
+          audio.volume = this.props.volume;
+          audio.play();
+          console.log("metronome ticked");
+
+          this.metronomeTimeout = setTimeout(function() {
+            this.metronomeToggle();
+          }.bind(this), ((60 / this.state.metroBPM) * 1000) );
+        }
+        else if(this.props.metronomePlaying === true && iHateThis !== undefined) {
+          clearTimeout(this.metronomeTimeout);
+
+          this.props.toggleMetronomePlaying();
+
+          iHateThis.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
+        }
+      }.bind(this), 0);
 
     }
   }
