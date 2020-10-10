@@ -33,6 +33,8 @@ class Metronome extends React.Component {
       let audio = document.getElementById("metroAudio");
       audio.volume = this.props.volume;
       audio.muted = true;
+      audio.play();
+      audio.pause();
       audio.currentTime = 0;
 
       let iHateThis = undefined;
