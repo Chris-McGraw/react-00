@@ -32,6 +32,7 @@ class Metronome extends React.Component {
 
       let audio = document.getElementById("metroAudio").cloneNode(true);
       audio.volume = this.props.volume;
+      audio.muted = true;
       audio.play();
       audio.pause();
       audio.currentTime = 0;
@@ -45,6 +46,7 @@ class Metronome extends React.Component {
         if(this.props.metronomePlaying === false && iHateThis !== undefined) {
           this.props.toggleMetronomePlaying();
 
+          audio.muted = false;
           audio.play();
           console.log("metronome ticked");
 
@@ -55,6 +57,7 @@ class Metronome extends React.Component {
           }.bind(this), ((60 / this.state.metroBPM) * 1000) );
         }
         else if(this.props.metronomePlaying === true && iHateThis === undefined) {
+          audio.muted = false;
           audio.play();
           console.log("metronome ticked");
 
