@@ -38,7 +38,7 @@ class Metronome extends React.Component {
 
         audio.volume = this.props.volume;
         audio.play();
-        console.log("metronome ticked");
+        // console.log("metronome ticked");
 
         event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
 
@@ -51,7 +51,7 @@ class Metronome extends React.Component {
 
         audio.volume = this.props.volume;
         audio.play();
-        console.log("metronome ticked");
+        // console.log("metronome ticked");
 
         this.metronomeTimeout = setTimeout(function() {
           this.metronomeToggle();
