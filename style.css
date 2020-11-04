@@ -18,7 +18,16 @@
 }
 
 html,body {
-  height:100%;
+  height: 100%;
+}
+
+body {
+  display: grid;
+  align-items: center;
+
+  position: relative;
+
+  padding-bottom: 56px;
 
   background-color: black;
 }
@@ -31,17 +40,13 @@ html,body {
   grid-row-gap: 20px;
   grid-column-gap: 40px;
 
-  position: absolute;
-  top: 5%;
+  position: relative;
   left: 0;
   right: 0;
 
-  height: 85%;
-  min-height: 640px;
-  max-width: 1280px;
-  max-height: 720px;
-
   width: 90%;
+  max-width: 1280px;
+  height: 720px;
   padding: 40px;
   margin: auto;
 
@@ -986,6 +991,8 @@ html,body {
   font-family: sans-serif;
   text-align: center;
   color: gray;
+
+  /* border: 1px dashed red; */
 }
 
 #footer-copyright {
@@ -1028,10 +1035,7 @@ html,body {
     grid-row-gap: 15px;
     grid-column-gap: 30px;
 
-    height: 65%;
-    min-height: 540px;
-
-    /* background-color: blue; */
+    height: 550px;
   }
 
   #machine-controls {
@@ -1097,10 +1101,7 @@ html,body {
     grid-row-gap: 10px;
     grid-column-gap: 20px;
 
-    height: 55%;
-    min-height: 450px;
-
-    /* background-color: red; */
+    height: 480px;
   }
 
   /* #line-test-top {
@@ -1162,12 +1163,20 @@ html,body {
 
 /* -------------------------- MEDIA QUERY <= 850 -------------------------- */
 @media screen and (max-width: 850px) {
+  body {
+    display: block;
+
+    padding-bottom: 0;
+  }
+
   #drum-machine {
     grid-template: repeat(41, 1fr) / 1fr;
 
+    position: absolute;
+    top: 5%;
+
     width: 65%;
     height: 800px;
-    max-height: 800px;
   }
 
   #display-left-section {
@@ -1229,7 +1238,6 @@ html,body {
 
       width: 85%;
       height: 830px;
-      max-height: 830px;
       padding-bottom: 20px;
     }
 
