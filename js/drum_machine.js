@@ -1,6 +1,6 @@
 "use strict";
 
-localStorage.clear();
+// localStorage.clear();
 console.log(localStorage);
 
 let initializeLocalStorage = function() {
