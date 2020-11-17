@@ -1,6 +1,6 @@
 "use strict";
 
-localStorage.clear();
+// localStorage.clear();
 console.log(localStorage);
 
 let initializeLocalStorage = function() {
@@ -274,6 +274,7 @@ class DrumMachine extends React.Component {
 
           let audio = clearedAudio.cloneNode(true);
 
+          audio.muted = false;
           audio.src = sampleKits[i.kit][i.key].src;
           audio.currentTime = 0;
           audio.volume = this.state.volume;
