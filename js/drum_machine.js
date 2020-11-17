@@ -1,6 +1,6 @@
 "use strict";
 
-localStorage.clear();
+// localStorage.clear();
 console.log(localStorage);
 
 let initializeLocalStorage = function() {
@@ -266,15 +266,14 @@ class DrumMachine extends React.Component {
       console.log("PLAYBACK STARTED");
 
       this.state.playbackArr.forEach( function(i) {
-        let clearedAudio = document.getElementById(i.key);
-        clearedAudio.muted = true;
-
         this.playbackTimeouts.push( setTimeout(function() {
           // this.setCurrentPad(i.key);
 
-          let audio = clearedAudio.cloneNode(true);
+          let audio = document.getElementById(i.key).cloneNode(true);
 
           audio.src = sampleKits[i.kit][i.key].src;
+          // audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+          audio.pause();
           audio.currentTime = 0;
           audio.volume = this.state.volume;
           audio.play();
