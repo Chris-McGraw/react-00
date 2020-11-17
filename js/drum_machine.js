@@ -266,19 +266,19 @@ class DrumMachine extends React.Component {
       console.log("PLAYBACK STARTED");
 
       this.state.playbackArr.forEach( function(i) {
-        let clearedAudio = document.getElementById(i.key);
-        clearedAudio.muted = true;
+        let audio = document.getElementById(i.key);
+        // clearedAudio.muted = true;
 
         this.playbackTimeouts.push( setTimeout(function() {
           // this.setCurrentPad(i.key);
 
-          let audio = clearedAudio.cloneNode(true);
+          // let audio = clearedAudio.cloneNode(true);
 
-          audio.muted = false;
           audio.src = sampleKits[i.kit][i.key].src;
           audio.currentTime = 0;
           audio.volume = this.state.volume;
           audio.play();
+          audio.muted = false;
         }.bind(this), i.time) );
       }.bind(this) );
 
