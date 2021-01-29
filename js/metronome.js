@@ -5,60 +5,69 @@ class Metronome extends React.Component {
     super(props);
     this.state = {
       metroBPM: 100,
+      lookahead: 25,          // scheduler function callback frequency (0.025 seconds)
+      scheduleAheadTime: 0.1, // how far ahead to schedule audio (0.100 seconds)
+      nextNoteTime: 0.0,      // when the next note is due
       btnRepeatSpeed: 200
     };
     this.metroBtnUp = this.metroBtnUp.bind(this);
     this.metronomeToggle = this.metronomeToggle.bind(this);
-    this.metronomeTimeout = null;
+    this.metronomeInterval = null;
     this.metroTempoDown = this.metroTempoDown.bind(this);
     this.metroTempoUp = this.metroTempoUp.bind(this);
     this.metroTempoTimeout = null;
   }
 
-  metroBtnUp(event) {
-    if(event !== undefined) {
-      clearTimeout(this.metroTempoTimeout);
+  nextNote() {
+    // Advance current note and time by a quarter note
+    var secondsPerBeat = 60 / this.state.metroBPM;
 
-      this.setState({
-        btnRepeatSpeed: 200
-      });
+    this.setState({
+      nextNoteTime: this.state.nextNoteTime + secondsPerBeat
+    });
+  }
 
-      event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
+  playSample(audioContext, audioBuffer, time) {
+    const sampleSource = audioContext.createBufferSource();
+    sampleSource.buffer = audioBuffer;
+    sampleSource.connect(audioContext.destination)
+    sampleSource.start(time);
+    return sampleSource;
+  }
+
+  scheduler() {
+    if(this.props.power === "on") {
+      // while there are notes that will need to play before the next interval, schedule them and advance the pointer.
+      while (this.state.nextNoteTime < this.props.audioCtx.currentTime + this.state.scheduleAheadTime ) {
+        // console.log("metronome ticked");
+        this.playSample(this.props.audioCtx, this.props.audioSamples[0], this.state.nextNoteTime);
+        this.nextNote();
+      }
+    }
+    else {
+      clearInterval(this.metronomeInterval);
     }
   }
 
   metronomeToggle(event) {
     if(this.props.power === "on") {
       if(this.props.metronomePlaying === false && event !== undefined) {
-        clearTimeout(this.metronomeTimeout);
+        clearInterval(this.metronomeInterval);
 
         this.props.toggleMetronomePlaying();
 
-        let audio = document.getElementById("metroAudio").cloneNode(true);
-
-        audio.volume = this.props.volume;
-        audio.play();
-        // console.log("metronome ticked");
+        this.setState({
+          nextNoteTime: this.props.audioCtx.currentTime + 0.05
+        });
 
         event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
 
-        this.metronomeTimeout = setTimeout(function() {
-          this.metronomeToggle();
-        }.bind(this), ((60 / this.state.metroBPM) * 1000) );
-      }
-      else if(this.props.metronomePlaying === true && event === undefined) {
-        let audio = document.getElementById("metroAudio").cloneNode(true);
-
-        audio.volume = this.props.volume;
-        audio.play();
-        // console.log("metronome ticked");
-
-        this.metronomeTimeout = setTimeout(function() {
-          this.metronomeToggle();
-        }.bind(this), ((60 / this.state.metroBPM) * 1000) );
+        this.metronomeInterval = setInterval(function() {
+          this.scheduler();
+        }.bind(this), this.state.lookahead);
       }
       else if(this.props.metronomePlaying === true && event !== undefined) {
-        clearTimeout(this.metronomeTimeout);
+        clearInterval(this.metronomeInterval);
 
         this.props.toggleMetronomePlaying();
 
@@ -113,6 +122,18 @@ class Metronome extends React.Component {
     }
   }
 
+  metroBtnUp(event) {
+    if(event !== undefined) {
+      clearTimeout(this.metroTempoTimeout);
+
+      this.setState({
+        btnRepeatSpeed: 200
+      });
+
+      event.currentTarget.style.boxShadow = "6px 6px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
+    }
+  }
+
   metroDisplayStyle() {
     if(this.props.power === "on") {
       return "metro-display metro-display-on";
@@ -158,24 +179,23 @@ class Metronome extends React.Component {
             </div>
 
             <div id="metro-controls">
-              <div className={this.metroBtnStyle("metro-toggle-btn")} onMouseDown={this.metronomeToggle}
-              onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
+              <div className={this.metroBtnStyle("metro-toggle-btn")} onTouchStart={this.metronomeToggle} onTouchEnd={this.metroBtnUp}
+              onMouseDown={this.metronomeToggle} onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
                 <div className={this.metroGlowStyle("metro-toggle-btn")}></div>
                 <div id="metro-play-stop-span">
-                   <i className="fas fa-play"></i> <span id="metro-slash-span">/</span> <i className="fas fa-stop"></i>
-                 </div>
-                <audio preload="auto" src="audio/percs/tamby.mp3" id="metroAudio"></audio>
+                  <i className="fas fa-play"></i> <span id="metro-slash-span">/</span> <i className="fas fa-stop"></i>
+                </div>
               </div>
 
-              <div className={this.metroBtnStyle()} onMouseDown={this.metroTempoDown}
-              onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
+              <div className={this.metroBtnStyle()} onTouchStart={this.metroTempoDown} onTouchEnd={this.metroBtnUp}
+              onMouseDown={this.metroTempoDown} onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
                 <div className={this.metroGlowStyle()}>
                   <i className="fas fa-caret-down"></i>
                 </div>
               </div>
 
-              <div className={this.metroBtnStyle()} onMouseDown={this.metroTempoUp}
-              onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
+              <div className={this.metroBtnStyle()} onTouchStart={this.metroTempoUp} onTouchEnd={this.metroBtnUp}
+              onMouseDown={this.metroTempoUp} onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
                 <div className={this.metroGlowStyle()}>
                   <i className="fas fa-caret-up"></i>
                 </div>
