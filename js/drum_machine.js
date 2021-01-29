@@ -1,5 +1,10 @@
 "use strict";
 
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const audioCtx = new AudioContext();
+
+const audioKitTest = ["audio/percs/tamby.mp3", "audio/kicks/kick5.mp3", "audio/claps/clap1.mp3"];
+
 // localStorage.clear();
 console.log(localStorage);
 
@@ -33,6 +38,8 @@ class DrumMachine extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      audioCtx: audioCtx,
+      audioSamples: "",
       power: "on",
       volume: 1,
       currentTrack: "track1",
@@ -61,6 +68,25 @@ class DrumMachine extends React.Component {
     this.playbackTimeouts = null;
     this.playbackFinishTimeout = null;
     this.undo = this.undo.bind(this);
+  }
+
+  async getAudioKitFiles(audioContext, audioKit) {
+    const audioBufferArray = [];
+
+    for(const filepath of audioKit) {
+      const response = await fetch(filepath);
+      const arrayBuffer = await response.arrayBuffer();
+      const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+
+      audioBufferArray.push(audioBuffer);
+    }
+
+    return audioBufferArray;
+  }
+
+  async setupSampleArray() {
+    const sampleArray = await this.getAudioKitFiles(this.state.audioCtx, audioKitTest);
+    return sampleArray;
   }
 
   togglePower() {
@@ -336,6 +362,21 @@ class DrumMachine extends React.Component {
     console.log("UNDO");
   }
 
+  componentDidMount() {
+    ReactDOM.findDOMNode(this).addEventListener("touchstart",(event)=> {
+      event.preventDefault();
+    });
+
+    this.setupSampleArray().then((sampleArray) => {
+      this.setState({
+        audioSamples: sampleArray
+      });
+
+      console.log("audio sample array files loaded");
+      console.log(this.state.audioSamples);
+    });
+  }
+
   render() {
     return (
       <div>
@@ -348,7 +389,7 @@ class DrumMachine extends React.Component {
 
             <PowerContainer power={this.state.power} togglePower={this.togglePower} />
             <VolumeContainer volume={this.state.volume} toggleVolume={this.toggleVolume} />
-            <Metronome power={this.state.power} volume={this.state.volume} metronomePlaying={this.state.metronomePlaying} toggleMetronomePlaying={this.toggleMetronomePlaying} />
+            <Metronome audioCtx={this.state.audioCtx} audioSamples={this.state.audioSamples} power={this.state.power} volume={this.state.volume} metronomePlaying={this.state.metronomePlaying} toggleMetronomePlaying={this.toggleMetronomePlaying} />
           </div>
 
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} currentKit={this.state.currentKit} />
