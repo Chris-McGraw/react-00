@@ -5,6 +5,7 @@ class Metronome extends React.Component {
     super(props);
     this.state = {
       metroBPM: 100,
+      currentQuarterNote: 0,
       lookahead: 25,          // scheduler function callback frequency (0.025 seconds)
       scheduleAheadTime: 0.1, // how far ahead to schedule audio (0.100 seconds)
       nextNoteTime: 0.0,      // when the next note is due
@@ -18,21 +19,46 @@ class Metronome extends React.Component {
     this.metroTempoTimeout = null;
   }
 
+  // nextNote() {
+  //   // Advance current note and time by a quarter note
+  //   var secondsPerBeat = 60 / this.state.metroBPM;
+  //
+  //   this.setState({
+  //     nextNoteTime: this.state.nextNoteTime + secondsPerBeat
+  //   });
+  // }
+
   nextNote() {
     // Advance current note and time by a quarter note
     var secondsPerBeat = 60 / this.state.metroBPM;
 
     this.setState({
-      nextNoteTime: this.state.nextNoteTime + secondsPerBeat
+      nextNoteTime: this.state.nextNoteTime + secondsPerBeat,
+      currentQuarterNote: this.state.currentQuarterNote + 1
     });
+
+    if(this.state.currentQuarterNote === 4) {
+      this.setState({
+        currentQuarterNote: 0
+      });
+    }
   }
 
-  playSample(audioContext, audioBuffer, time) {
-    const sampleSource = audioContext.createBufferSource();
-    sampleSource.buffer = audioBuffer;
-    sampleSource.connect(audioContext.destination)
-    sampleSource.start(time);
-    return sampleSource;
+  playSample(audioContext, time) {
+    // create an oscillator
+    const osc = audioContext.createOscillator();
+    const envelope = audioContext.createGain();
+
+    osc.frequency.value = (this.state.currentQuarterNote % 4 == 0) ? 1000 : 800;
+    envelope.gain.value = 1;
+    envelope.gain.exponentialRampToValueAtTime(1, time + 0.001);
+    envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.02);
+
+    osc.connect(envelope);
+    envelope.connect(audioContext.destination);
+
+    osc.start(time);
+    osc.stop(time + 0.03);
   }
 
   scheduler() {
@@ -40,7 +66,7 @@ class Metronome extends React.Component {
       // while there are notes that will need to play before the next interval, schedule them and advance the pointer.
       while (this.state.nextNoteTime < this.props.audioCtx.currentTime + this.state.scheduleAheadTime ) {
         // console.log("metronome ticked");
-        this.playSample(this.props.audioCtx, this.props.audioSamples[0], this.state.nextNoteTime);
+        this.playSample(this.props.audioCtx, this.state.nextNoteTime);
         this.nextNote();
       }
     }
@@ -57,6 +83,7 @@ class Metronome extends React.Component {
         this.props.toggleMetronomePlaying();
 
         this.setState({
+          currentQuarterNote: 0,
           nextNoteTime: this.props.audioCtx.currentTime + 0.05
         });
 
