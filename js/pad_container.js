@@ -44,7 +44,7 @@ class PadContainer extends React.Component {
         this.props.recordNote(audioID);
       }
 
-      // document.getElementById(audioID).parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+      document.getElementById("pad-" + audioID.toLowerCase()).style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
 
       // let audio = document.getElementById(audioID).cloneNode(true);
 
@@ -98,7 +98,7 @@ class PadContainer extends React.Component {
 
     // PAD MOUSE UP
     if(event.key === undefined) {
-      audioID = event.currentTarget.children[0].id;
+      audioID = event.currentTarget.children[1].innerHTML;
     }
     // PAD KEY UP
     else if(event.currentTarget.id === undefined) {
@@ -114,9 +114,7 @@ class PadContainer extends React.Component {
       this.props.setCurrentPad("");
     }.bind(this), 750);
 
-    let audio = document.getElementById(audioID);
-
-    // audio.parentElement.style.boxShadow = "8px 8px 8px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
+    document.getElementById("pad-" + audioID.toLowerCase()).style.boxShadow = "8px 8px 8px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
   }
 
   handleKeyPress(event) {
