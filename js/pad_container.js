@@ -6,6 +6,15 @@ class PadContainer extends React.Component {
     this.padPress = this.padPress.bind(this);
     this.padLift = this.padLift.bind(this);
     this.padLiftTimeout = null;
+    this.playSample = this.playSample.bind(this);
+  }
+
+  playSample(audioContext, audioBuffer, time) {
+    const sampleSource = audioContext.createBufferSource();
+    sampleSource.buffer = audioBuffer;
+    sampleSource.connect(audioContext.destination)
+    sampleSource.start(time);
+    return sampleSource;
   }
 
   padPress(event) {
@@ -14,7 +23,10 @@ class PadContainer extends React.Component {
 
       // PAD MOUSE DOWN
       if(event.key === undefined) {
-        audioID = event.currentTarget.children[0].id;
+        // audioID = event.currentTarget.children[0].id;
+
+        // console.log(event.currentTarget.children[2].innerHTML);
+        audioID = event.currentTarget.children[1].innerHTML;
       }
       // PAD KEY DOWN
       else if(event.currentTarget.id === undefined) {
@@ -32,15 +44,52 @@ class PadContainer extends React.Component {
         this.props.recordNote(audioID);
       }
 
-      document.getElementById(audioID).parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
+      // document.getElementById(audioID).parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
 
-      let audio = document.getElementById(audioID).cloneNode(true);
+      // let audio = document.getElementById(audioID).cloneNode(true);
 
-      audio.src = sampleKits[this.props.currentKit][audioID].src;
-      audio.pause();
-      audio.currentTime = 0;
-      audio.volume = this.props.volume;
-      audio.play();
+      // audio.src = sampleKits[this.props.currentKit][audioID].src;
+      // audio.pause();
+      // audio.currentTime = 0;
+      // audio.volume = this.props.volume;
+      // audio.play();
+
+
+
+
+      // WEB AUDIO PAD TEST
+      switch(audioID) {
+        case "Q":
+         this.playSample(this.props.audioCtx, this.props.audioSamples[1], 0);
+          break;
+        case "W":
+         this.playSample(this.props.audioCtx, this.props.audioSamples[2], 0);
+          break;
+        case "E":
+         this.playSample(this.props.audioCtx, this.props.audioSamples[3], 0);
+          break;
+        case "A":
+         this.playSample(this.props.audioCtx, this.props.audioSamples[4], 0);
+          break;
+        case "S":
+         this.playSample(this.props.audioCtx, this.props.audioSamples[5], 0);
+          break;
+        case "D":
+         this.playSample(this.props.audioCtx, this.props.audioSamples[6], 0);
+          break;
+        case "Z":
+         this.playSample(this.props.audioCtx, this.props.audioSamples[7], 0);
+          break;
+        case "X":
+         this.playSample(this.props.audioCtx, this.props.audioSamples[8], 0);
+          break;
+        case "C":
+         this.playSample(this.props.audioCtx, this.props.audioSamples[9], 0);
+          break;
+        default:
+          break;
+      }
+
     }
   }
 
@@ -67,7 +116,7 @@ class PadContainer extends React.Component {
 
     let audio = document.getElementById(audioID);
 
-    audio.parentElement.style.boxShadow = "8px 8px 8px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
+    // audio.parentElement.style.boxShadow = "8px 8px 8px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
   }
 
   handleKeyPress(event) {
@@ -182,7 +231,7 @@ class PadContainer extends React.Component {
           <div className={this.drumPadStyle("Q")} id="pad-q"
           onTouchStart={this.padPress} onTouchEnd={this.padLift}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-            <audio preload="auto" src="audio/808s/loaded.mp3" className="clip" id="Q"></audio>
+            {/* <audio preload="auto" src="audio/808s/loaded.mp3" className="clip" id="Q"></audio> */}
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>Q</p>
           </div>
@@ -190,7 +239,7 @@ class PadContainer extends React.Component {
           <div className={this.drumPadStyle("W")} id="pad-w"
           onTouchStart={this.padPress} onTouchEnd={this.padLift}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-            <audio preload="auto" src="audio/808s/starburst.mp3" className="clip" id="W"></audio>
+            {/* <audio preload="auto" src="audio/808s/starburst.mp3" className="clip" id="W"></audio> */}
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>W</p>
           </div>
@@ -198,7 +247,7 @@ class PadContainer extends React.Component {
           <div className={this.drumPadStyle("E")} id="pad-e"
           onTouchStart={this.padPress} onTouchEnd={this.padLift}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-            <audio preload="auto" src="audio/808s/lettuce.mp3" className="clip" id="E"></audio>
+            {/* <audio preload="auto" src="audio/808s/lettuce.mp3" className="clip" id="E"></audio> */}
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>E</p>
           </div>
@@ -206,7 +255,7 @@ class PadContainer extends React.Component {
           <div className={this.drumPadStyle("A")} id="pad-a"
           onTouchStart={this.padPress} onTouchEnd={this.padLift}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-            <audio preload="auto" src="audio/kicks/kick5.mp3" className="clip" id="A"></audio>
+            {/* <audio preload="auto" src="audio/kicks/kick5.mp3" className="clip" id="A"></audio> */}
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>A</p>
           </div>
@@ -214,7 +263,7 @@ class PadContainer extends React.Component {
           <div className={this.drumPadStyle("S")} id="pad-s"
           onTouchStart={this.padPress} onTouchEnd={this.padLift}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-            <audio preload="auto" src="audio/snares/dippy.mp3" className="clip" id="S"></audio>
+            {/* <audio preload="auto" src="audio/snares/dippy.mp3" className="clip" id="S"></audio> */}
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>S</p>
           </div>
@@ -222,7 +271,7 @@ class PadContainer extends React.Component {
           <div className={this.drumPadStyle("D")} id="pad-d"
           onTouchStart={this.padPress} onTouchEnd={this.padLift}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-            <audio preload="auto" src="audio/snares/doo.mp3" className="clip" id="D"></audio>
+            {/* <audio preload="auto" src="audio/snares/doo.mp3" className="clip" id="D"></audio> */}
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>D</p>
           </div>
@@ -230,7 +279,7 @@ class PadContainer extends React.Component {
           <div className={this.drumPadStyle("Z")} id="pad-z"
           onTouchStart={this.padPress} onTouchEnd={this.padLift}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-            <audio preload="auto" src="audio/hats/hihat8.mp3" className="clip" id="Z"></audio>
+            {/* <audio preload="auto" src="audio/hats/hihat8.mp3" className="clip" id="Z"></audio> */}
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>Z</p>
           </div>
@@ -238,7 +287,7 @@ class PadContainer extends React.Component {
           <div className={this.drumPadStyle("X")} id="pad-x"
           onTouchStart={this.padPress} onTouchEnd={this.padLift}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-            <audio preload="auto" src="audio/hats/openhat1.mp3" className="clip" id="X"></audio>
+            {/* <audio preload="auto" src="audio/hats/openhat1.mp3" className="clip" id="X"></audio> */}
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>X</p>
           </div>
@@ -246,7 +295,7 @@ class PadContainer extends React.Component {
           <div className={this.drumPadStyle("C")} id="pad-c"
           onTouchStart={this.padPress} onTouchEnd={this.padLift}
           onMouseDown={this.padPress} onMouseUp={this.padLift} onMouseLeave={this.padLift}>
-            <audio preload="auto" src="audio/claps/clap1.mp3" className="clip" id="C"></audio>
+            {/* <audio preload="auto" src="audio/claps/clap1.mp3" className="clip" id="C"></audio> */}
             <div className="pad-glow" style={padGlowPowered}></div>
             <p>C</p>
           </div>
