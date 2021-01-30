@@ -3,7 +3,11 @@
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioCtx = new AudioContext();
 
-const audioKitTest = ["audio/percs/tamby.mp3", "audio/kicks/kick5.mp3", "audio/claps/clap1.mp3"];
+// const audioKitTest = ["audio/percs/tamby.mp3", "audio/kicks/kick5.mp3", "audio/claps/clap1.mp3"];
+
+const audioKitTest = ["audio/percs/tamby.mp3", "audio/808s/loaded.mp3", "audio/808s/starburst.mp3",
+"audio/808s/lettuce.mp3", "audio/kicks/kick5.mp3", "audio/snares/dippy.mp3", "audio/snares/doo.mp3",
+"audio/hats/hihat8.mp3", "audio/hats/openhat1.mp3", "audio/claps/clap1.mp3"];
 
 // localStorage.clear();
 console.log(localStorage);
@@ -396,7 +400,7 @@ class DrumMachine extends React.Component {
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
           <TrackControls power={this.state.power} setCurrentTrack={this.setCurrentTrack} currentTrack={this.state.currentTrack} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} deleteRecording={this.deleteRecording} />
           <PlaybackControls power={this.state.power} playbackArr={this.state.playbackArr} playbackArrUndone={this.state.playbackArrUndone} startRecording={this.startRecording} nowRecording={this.state.nowRecording} startPlayback={this.startPlayback} nowPlaying={this.state.nowPlaying} stop={this.stop} undo={this.undo} />
-          <PadContainer power={this.state.power} volume={this.state.volume} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} nowRecording={this.state.nowRecording} recordNote={this.recordNote} />
+          <PadContainer audioCtx={this.state.audioCtx} audioSamples={this.state.audioSamples} power={this.state.power} volume={this.state.volume} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} nowRecording={this.state.nowRecording} recordNote={this.recordNote} />
         </div>
       </div>
     );
