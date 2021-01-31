@@ -3,11 +3,17 @@
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioCtx = new AudioContext();
 
-// const audioKitTest = ["audio/percs/tamby.mp3", "audio/kicks/kick5.mp3", "audio/claps/clap1.mp3"];
-
-const audioKitTest = ["audio/percs/tamby.mp3", "audio/808s/loaded.mp3", "audio/808s/starburst.mp3",
-"audio/808s/lettuce.mp3", "audio/kicks/kick5.mp3", "audio/snares/dippy.mp3", "audio/snares/doo.mp3",
+const audioKitSourceArray1 = ["audio/808s/loaded.mp3", "audio/808s/starburst.mp3", "audio/808s/lettuce.mp3",
+"audio/kicks/kick5.mp3", "audio/snares/dippy.mp3", "audio/snares/doo.mp3",
 "audio/hats/hihat8.mp3", "audio/hats/openhat1.mp3", "audio/claps/clap1.mp3"];
+
+const audioKitSourceArray2 = ["audio/kicks/kick3.mp3", "audio/snares/karen.mp3", "audio/hats/openhat8.mp3",
+"audio/percs/tamby.mp3", "audio/percs/chirp.mp3", "audio/vocals/out.mp3",
+"audio/808s/808kenny.mp3", "audio/808s/kenny34.mp3", "audio/808s/money.mp3"];
+
+const audioKitSourceArray3 = ["audio/hats/hihatwork.mp3", "audio/hats/openhatreverse.mp3", "audio/snares/drizzy.mp3",
+"audio/snares/sauce.mp3", "audio/808s/kenny24.mp3", "audio/kicks/kick36.mp3",
+"audio/claps/kennyclap9.mp3", "audio/percs/kennyperc4.mp3", "audio/vocals/toasty.mp3"];
 
 // localStorage.clear();
 console.log(localStorage);
@@ -43,7 +49,9 @@ class DrumMachine extends React.Component {
     super(props);
     this.state = {
       audioCtx: audioCtx,
-      audioSamples: "",
+      audioSampleKit1: "",
+      audioSampleKit2: "",
+      audioSampleKit3: "",
       power: "on",
       volume: 1,
       currentTrack: "track1",
@@ -88,8 +96,18 @@ class DrumMachine extends React.Component {
     return audioBufferArray;
   }
 
-  async setupSampleArray() {
-    const sampleArray = await this.getAudioKitFiles(this.state.audioCtx, audioKitTest);
+  async setupAudioSampleKit1() {
+    const sampleArray = await this.getAudioKitFiles(this.state.audioCtx, audioKitSourceArray1);
+    return sampleArray;
+  }
+
+  async setupAudioSampleKit2() {
+    const sampleArray = await this.getAudioKitFiles(this.state.audioCtx, audioKitSourceArray2);
+    return sampleArray;
+  }
+
+  async setupAudioSampleKit3() {
+    const sampleArray = await this.getAudioKitFiles(this.state.audioCtx, audioKitSourceArray3);
     return sampleArray;
   }
 
@@ -371,13 +389,31 @@ class DrumMachine extends React.Component {
       event.preventDefault();
     });
 
-    this.setupSampleArray().then((sampleArray) => {
+    this.setupAudioSampleKit1().then((sampleArray) => {
       this.setState({
-        audioSamples: sampleArray
+        audioSampleKit1: sampleArray
       });
 
-      console.log("audio sample array files loaded");
-      console.log(this.state.audioSamples);
+      console.log("audio sample kit 1 files loaded");
+      console.log(this.state.audioSampleKit1);
+    });
+
+    this.setupAudioSampleKit2().then((sampleArray) => {
+      this.setState({
+        audioSampleKit2: sampleArray
+      });
+
+      console.log("audio sample kit 2 files loaded");
+      console.log(this.state.audioSampleKit2);
+    });
+
+    this.setupAudioSampleKit3().then((sampleArray) => {
+      this.setState({
+        audioSampleKit3: sampleArray
+      });
+
+      console.log("audio sample kit 3 files loaded");
+      console.log(this.state.audioSampleKit3);
     });
   }
 
@@ -393,14 +429,14 @@ class DrumMachine extends React.Component {
 
             <PowerContainer power={this.state.power} togglePower={this.togglePower} />
             <VolumeContainer volume={this.state.volume} toggleVolume={this.toggleVolume} />
-            <Metronome audioCtx={this.state.audioCtx} audioSamples={this.state.audioSamples} power={this.state.power} volume={this.state.volume} metronomePlaying={this.state.metronomePlaying} toggleMetronomePlaying={this.toggleMetronomePlaying} />
+            <Metronome audioCtx={this.state.audioCtx} power={this.state.power} volume={this.state.volume} metronomePlaying={this.state.metronomePlaying} toggleMetronomePlaying={this.toggleMetronomePlaying} />
           </div>
 
           <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} currentKit={this.state.currentKit} />
           <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
           <TrackControls power={this.state.power} setCurrentTrack={this.setCurrentTrack} currentTrack={this.state.currentTrack} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} deleteRecording={this.deleteRecording} />
           <PlaybackControls power={this.state.power} playbackArr={this.state.playbackArr} playbackArrUndone={this.state.playbackArrUndone} startRecording={this.startRecording} nowRecording={this.state.nowRecording} startPlayback={this.startPlayback} nowPlaying={this.state.nowPlaying} stop={this.stop} undo={this.undo} />
-          <PadContainer audioCtx={this.state.audioCtx} audioSamples={this.state.audioSamples} power={this.state.power} volume={this.state.volume} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} nowRecording={this.state.nowRecording} recordNote={this.recordNote} />
+          <PadContainer audioCtx={this.state.audioCtx} audioSampleKit1={this.state.audioSampleKit1} audioSampleKit2={this.state.audioSampleKit2} audioSampleKit3={this.state.audioSampleKit3} power={this.state.power} volume={this.state.volume} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} nowRecording={this.state.nowRecording} recordNote={this.recordNote} />
         </div>
       </div>
     );

@@ -60,31 +60,103 @@ class PadContainer extends React.Component {
       // WEB AUDIO PAD TEST
       switch(audioID) {
         case "Q":
-         this.playSample(this.props.audioCtx, this.props.audioSamples[1], 0);
+          if(this.props.currentKit === "kit1") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit1[0], 0);
+          }
+          else if(this.props.currentKit === "kit2") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit2[0], 0);
+          }
+          else if(this.props.currentKit === "kit3") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit3[0], 0);
+          }
           break;
         case "W":
-         this.playSample(this.props.audioCtx, this.props.audioSamples[2], 0);
+          if(this.props.currentKit === "kit1") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit1[1], 0);
+          }
+          else if(this.props.currentKit === "kit2") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit2[1], 0);
+          }
+          else if(this.props.currentKit === "kit3") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit3[1], 0);
+          }
           break;
         case "E":
-         this.playSample(this.props.audioCtx, this.props.audioSamples[3], 0);
+          if(this.props.currentKit === "kit1") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit1[2], 0);
+          }
+          else if(this.props.currentKit === "kit2") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit2[2], 0);
+          }
+          else if(this.props.currentKit === "kit3") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit3[2], 0);
+          }
           break;
         case "A":
-         this.playSample(this.props.audioCtx, this.props.audioSamples[4], 0);
+          if(this.props.currentKit === "kit1") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit1[3], 0);
+          }
+          else if(this.props.currentKit === "kit2") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit2[3], 0);
+          }
+          else if(this.props.currentKit === "kit3") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit3[3], 0);
+          }
           break;
         case "S":
-         this.playSample(this.props.audioCtx, this.props.audioSamples[5], 0);
+          if(this.props.currentKit === "kit1") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit1[4], 0);
+          }
+          else if(this.props.currentKit === "kit2") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit2[4], 0);
+          }
+          else if(this.props.currentKit === "kit3") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit3[4], 0);
+          }
           break;
         case "D":
-         this.playSample(this.props.audioCtx, this.props.audioSamples[6], 0);
+          if(this.props.currentKit === "kit1") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit1[5], 0);
+          }
+          else if(this.props.currentKit === "kit2") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit2[5], 0);
+          }
+          else if(this.props.currentKit === "kit3") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit3[5], 0);
+          }
           break;
         case "Z":
-         this.playSample(this.props.audioCtx, this.props.audioSamples[7], 0);
+          if(this.props.currentKit === "kit1") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit1[6], 0);
+          }
+          else if(this.props.currentKit === "kit2") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit2[6], 0);
+          }
+          else if(this.props.currentKit === "kit3") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit3[6], 0);
+          }
           break;
         case "X":
-         this.playSample(this.props.audioCtx, this.props.audioSamples[8], 0);
+          if(this.props.currentKit === "kit1") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit1[7], 0);
+          }
+          else if(this.props.currentKit === "kit2") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit2[7], 0);
+          }
+          else if(this.props.currentKit === "kit3") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit3[7], 0);
+          }
           break;
         case "C":
-         this.playSample(this.props.audioCtx, this.props.audioSamples[9], 0);
+          if(this.props.currentKit === "kit1") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit1[8], 0);
+          }
+          else if(this.props.currentKit === "kit2") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit2[8], 0);
+          }
+          else if(this.props.currentKit === "kit3") {
+            this.playSample(this.props.audioCtx, this.props.audioSampleKit3[8], 0);
+          }
           break;
         default:
           break;

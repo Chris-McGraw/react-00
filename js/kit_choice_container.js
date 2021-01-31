@@ -100,18 +100,21 @@ class KitChoiceContainer extends React.Component {
           <p id="kit-choice-header">Page</p>
 
           <div className={this.kitBtnStyle("kit1")} id="kit-btn-1"
+          onTouchStart={this.kitBtnDown} onTouchEnd={this.kitBtnUp}
           onMouseDown={this.kitBtnDown} onMouseUp={this.kitBtnUp} onMouseLeave={this.kitBtnUp}>
             <div className="kit-choice-btn-glow" style={btnGlowPowered}></div>
             <p>1</p>
           </div>
 
           <div className={this.kitBtnStyle("kit2")} id="kit-btn-2"
+          onTouchStart={this.kitBtnDown} onTouchEnd={this.kitBtnUp}
           onMouseDown={this.kitBtnDown} onMouseUp={this.kitBtnUp} onMouseLeave={this.kitBtnUp}>
             <div className="kit-choice-btn-glow" style={btnGlowPowered}></div>
             <p>2</p>
           </div>
 
           <div className={this.kitBtnStyle("kit3")} id="kit-btn-3"
+          onTouchStart={this.kitBtnDown} onTouchEnd={this.kitBtnUp}
           onMouseDown={this.kitBtnDown} onMouseUp={this.kitBtnUp} onMouseLeave={this.kitBtnUp}>
             <div className="kit-choice-btn-glow" style={btnGlowPowered}></div>
             <p>3</p>
