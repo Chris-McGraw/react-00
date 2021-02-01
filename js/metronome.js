@@ -78,8 +78,6 @@ class Metronome extends React.Component {
   metronomeToggle(event) {
     if(this.props.power === "on") {
       if(this.props.metronomePlaying === false && event !== undefined) {
-        clearInterval(this.metronomeInterval);
-
         this.props.toggleMetronomePlaying();
 
         this.setState({
@@ -87,11 +85,11 @@ class Metronome extends React.Component {
           nextNoteTime: this.props.audioCtx.currentTime + 0.05
         });
 
-        event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
-
         this.metronomeInterval = setInterval(function() {
           this.scheduler();
         }.bind(this), this.state.lookahead);
+
+        event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
       }
       else if(this.props.metronomePlaying === true && event !== undefined) {
         clearInterval(this.metronomeInterval);
