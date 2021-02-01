@@ -60,6 +60,12 @@ class DrumMachine extends React.Component {
       metronomePlaying: false,
       nowRecording: false,
       recordingStartTime: 0,
+      currentNoteNumber: 0,
+      lookahead: 25,           // scheduler function callback frequency (0.025 seconds)
+      scheduleAheadTime: 0.1,  // how far ahead to schedule audio (0.100 seconds)
+      previousNoteTime: 0.0,
+      nextNoteTime: 0.0,       // when the next note is due
+      playbackArrCopy: [],
       playbackArrPrevious: [],
       playbackArrUndone: JSON.parse(localStorage.getItem("track1")),
       playbackArr: JSON.parse(localStorage.getItem("track1")),
@@ -77,8 +83,10 @@ class DrumMachine extends React.Component {
     this.recordNote = this.recordNote.bind(this);
     this.stop = this.stop.bind(this);
     this.startPlayback = this.startPlayback.bind(this);
-    this.playbackTimeouts = null;
-    this.playbackFinishTimeout = null;
+    this.getSampleKitAudio = this.getSampleKitAudio.bind(this);
+    this.playbackInterval = null;
+    this.iterateCurrentNoteNumber = this.iterateCurrentNoteNumber.bind(this);
+    this.letLoop = this.letLoop.bind(this);
     this.undo = this.undo.bind(this);
   }
 
@@ -131,12 +139,6 @@ class DrumMachine extends React.Component {
         console.log("RECORDING STOPPED");
       }
       if(this.state.nowPlaying === true) {
-        this.playbackTimeouts.forEach(function(i) {
-          clearTimeout(i);
-        }.bind(this));
-
-        clearTimeout(this.playbackFinishTimeout);
-
         console.log("PLAYBACK STOPPED");
       }
     }
@@ -296,51 +298,161 @@ class DrumMachine extends React.Component {
     }
   }
 
+  sortByTime(a, b) {
+    if (a.time < b.time) {
+      return -1;
+    }
+    if (a.time > b.time) {
+      return 1;
+    }
+    return 0;
+  }
+
+  getSampleKitAudio(kit, pad) {
+    let padNumID = "";
+
+    switch(pad) {
+      case "Q":
+        padNumID = 0;
+        break;
+      case "W":
+        padNumID = 1;
+        break;
+      case "E":
+        padNumID = 2;
+        break;
+      case "A":
+        padNumID = 3;
+        break;
+      case "S":
+        padNumID = 4;
+        break;
+      case "D":
+        padNumID = 5;
+        break;
+      case "Z":
+        padNumID = 6;
+        break;
+      case "X":
+        padNumID = 7;
+        break;
+      case "C":
+        padNumID = 8;
+        break;
+      default:
+        break;
+    }
+
+    switch(kit) {
+      case "kit1":
+        return this.state.audioSampleKit1[padNumID];
+        break;
+      case "kit2":
+        return this.state.audioSampleKit2[padNumID];
+        break;
+      case "kit3":
+        return this.state.audioSampleKit3[padNumID];
+        break;
+      default:
+        break;
+    }
+  }
+
+  iterateCurrentNoteNumber() {
+    this.setState({
+      previousNoteTime: (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000),
+      currentNoteNumber: this.state.currentNoteNumber + 1,
+    });
+  }
+
+  nextNote() {
+    this.iterateCurrentNoteNumber();
+
+    // LOOP PLAYBACK
+    if(this.state.currentNoteNumber === this.state.playbackArrCopy.length
+    && this.state.nowRecording === false) {
+      this.letLoop();
+
+      this.setState({
+        nowPlaying: true,
+        previousNoteTime: this.state.audioCtx.currentTime + 0.1 + (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000),
+        nextNoteTime: this.state.audioCtx.currentTime + 0.1 + (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000)
+      });
+    }
+    else if(this.state.currentNoteNumber < this.state.playbackArrCopy.length) {
+      this.setState({
+        nextNoteTime: this.state.nextNoteTime + ( (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000) - this.state.previousNoteTime)
+      });
+    }
+    // RECORDING FINISHED
+    else {
+      this.setState({
+        nowRecording: false,
+        nowPlaying: false
+      });
+
+      clearInterval(this.playbackInterval);
+    }
+  }
+
+  letLoop() {
+    this.setState({
+      nowPlaying: false,
+      currentNoteNumber: 0,
+    });
+  }
+
+  playSample(audioContext, audioBuffer, time) {
+    const sampleSource = audioContext.createBufferSource();
+    sampleSource.buffer = audioBuffer;
+    sampleSource.connect(audioContext.destination);
+
+    // console.log("tick");
+    // console.log(this.state.currentNoteNumber);
+
+    sampleSource.start(time);
+    return sampleSource;
+  }
+
+  scheduler() {
+    if(this.state.power === "on") {
+      // while there are notes that will need to play before the next interval, schedule them and advance the pointer.
+      while (this.state.nextNoteTime < this.state.audioCtx.currentTime + this.state.scheduleAheadTime &&
+      this.state.currentNoteNumber < this.state.playbackArrCopy.length) {
+        this.playSample(this.state.audioCtx, this.getSampleKitAudio(this.state.playbackArrCopy[this.state.currentNoteNumber].kit, this.state.playbackArrCopy[this.state.currentNoteNumber].key), this.state.nextNoteTime);
+        this.nextNote();
+      }
+    }
+    else {
+      clearInterval(this.playbackInterval);
+    }
+  }
+
   startPlayback(event) {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
       this.setState({
-        nowPlaying: true
+        nowPlaying: true,
+        currentNoteNumber: 0,
+        playbackArrCopy: this.state.playbackArr.slice().sort(this.sortByTime)
       });
 
-      // console.log( JSON.parse(localStorage.getItem("storedTrack1")) );
-      console.log(this.state.playbackArr);
+      console.log("PLAYBACK STARTED");
+      console.log( this.state.playbackArr.sort(this.sortByTime) );
 
-      this.playbackTimeouts = [];
+      setTimeout(function() {
+        this.setState({
+          previousNoteTime: this.state.audioCtx.currentTime + (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000),
+          nextNoteTime: this.state.audioCtx.currentTime + (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000)
+        });
+      }.bind(this), 0);
 
       if(event !== undefined) {
         event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
       }
 
-      console.log("PLAYBACK STARTED");
-
-      this.state.playbackArr.forEach( function(i) {
-        this.playbackTimeouts.push( setTimeout(function() {
-          // this.setCurrentPad(i.key);
-
-          let audio = document.getElementById(i.key).cloneNode(true);
-
-          audio.src = sampleKits[i.kit][i.key].src;
-          // audio.parentElement.style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
-          audio.pause();
-          audio.currentTime = 0;
-          audio.volume = this.state.volume;
-          audio.play();
-        }.bind(this), i.time) );
-      }.bind(this) );
-
-      this.playbackFinishTimeout = setTimeout(function() {
-        this.setState({
-          nowPlaying: false
-        });
-
-        console.log("PLAYBACK FINISHED");
-
-        if(this.state.nowRecording === false) {
-          setTimeout(function() {
-            this.startPlayback();
-          }.bind(this), 20);
-        }
-      }.bind(this), 10000);
+      this.playbackInterval = setInterval(function() {
+        this.scheduler();
+      }.bind(this), this.state.lookahead);
     }
   }
 
@@ -363,11 +475,7 @@ class DrumMachine extends React.Component {
         nowPlaying: false
       });
 
-      this.playbackTimeouts.forEach(function(i) {
-        clearTimeout(i);
-      }.bind(this));
-
-      clearTimeout(this.playbackFinishTimeout);
+      clearInterval(this.playbackInterval);
 
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
       console.log("PLAYBACK STOPPED");
