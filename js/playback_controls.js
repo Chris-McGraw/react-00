@@ -151,6 +151,7 @@ class PlaybackControls extends React.Component {
       <div id="playback-controls-section">
         <div id="playback-controls">
           <div id="record-button" className={this.recordBtnStyle()}
+          onTouchStart={this.props.startRecording} onTouchEnd={this.ctrlBtnUp}
           onMouseDown={this.props.startRecording} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
             <div className={this.recordGlowStyle()}>
               <i className="fas fa-circle"></i>
@@ -158,6 +159,7 @@ class PlaybackControls extends React.Component {
           </div>
 
           <div id="stop-button" className={this.stopBtnStyle()}
+          onTouchStart={this.props.stop} onTouchEnd={this.ctrlBtnUp}
           onMouseDown={this.props.stop} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
             <div className={this.stopGlowStyle()}>
               <i className="fas fa-stop"></i>
@@ -165,6 +167,7 @@ class PlaybackControls extends React.Component {
           </div>
 
           <div id="play-button" className={this.playBtnStyle()}
+          onTouchStart={this.props.startPlayback} onTouchEnd={this.ctrlBtnUp}
           onMouseDown={this.props.startPlayback} onMouseUp={this.ctrlBtnUp} onMouseLeave={this.ctrlBtnUp}>
             <div className={this.playGlowStyle()}>
               <i className="fas fa-play"></i>
@@ -172,6 +175,7 @@ class PlaybackControls extends React.Component {
           </div>
 
           <div id="undo-button" className={this.undoBtnStyle()}
+          onTouchStart={this.undoBtnPress} onTouchEnd={this.undoBtnLift}
           onMouseDown={this.undoBtnPress} onMouseUp={this.undoBtnLift} onMouseLeave={this.undoBtnLift}>
             <div className={this.undoGlowStyle()}>
               <i className="fas fa-undo"></i>
