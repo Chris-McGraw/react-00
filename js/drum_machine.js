@@ -86,7 +86,6 @@ class DrumMachine extends React.Component {
     this.getSampleKitAudio = this.getSampleKitAudio.bind(this);
     this.playbackInterval = null;
     this.iterateCurrentNoteNumber = this.iterateCurrentNoteNumber.bind(this);
-    this.letLoop = this.letLoop.bind(this);
     this.undo = this.undo.bind(this);
   }
 
@@ -231,28 +230,31 @@ class DrumMachine extends React.Component {
 
   startRecording(event) {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
-      if(this.state.playbackArr.length > 0) {
-        this.startPlayback(event);
-      }
-
       this.setState({
         nowRecording: true,
-        recordingStartTime: Date.now(),
+        recordingStartTime: this.state.audioCtx.currentTime,
         playbackArrPrevious: this.state.playbackArr.slice()
       });
 
+      if(this.state.playbackArr.length === 0) {
+        this.recordingFinishTimeout = setTimeout(function() {
+          this.setState({
+            nowRecording: false
+          });
+
+          this.setPlaybackArrUndone();
+
+          // console.log("recording time end: " + this.state.audioCtx.currentTime);
+          console.log("RECORDING FINISHED");
+        }.bind(this), 10000);
+      }
+      else if(this.state.playbackArr.length > 0) {
+        this.startPlayback(event);
+      }
+
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
       console.log("RECORDING STARTED");
-
-      this.recordingFinishTimeout = setTimeout(function() {
-        this.setState({
-          nowRecording: false
-        });
-
-        this.setPlaybackArrUndone();
-
-        console.log("RECORDING FINISHED");
-      }.bind(this), 10000);
+      // console.log("recording time start: " + this.state.audioCtx.currentTime);
     }
   }
 
@@ -286,15 +288,13 @@ class DrumMachine extends React.Component {
     if(this.state.nowRecording === true && event !== undefined) {
       let arr = JSON.parse(localStorage.getItem(this.state.currentTrack));
 
-      arr.push({kit: this.state.currentKit, key:key, time:(Date.now() - this.state.recordingStartTime)});
+      arr.push({kit: this.state.currentKit, key:key, time:(this.state.audioCtx.currentTime - this.state.recordingStartTime) * 1000});
 
       localStorage.setItem(this.state.currentTrack, JSON.stringify(arr));
 
       this.setState({
         playbackArr: JSON.parse(localStorage.getItem(this.state.currentTrack))
       });
-
-      // this.setState({ playbackArr: [...this.state.playbackArr, {kit: this.state.currentKit, key:key, time:(Date.now() - this.state.recordingStartTime)}] });
     }
   }
 
@@ -368,38 +368,11 @@ class DrumMachine extends React.Component {
   nextNote() {
     this.iterateCurrentNoteNumber();
 
-    // LOOP PLAYBACK
-    if(this.state.currentNoteNumber === this.state.playbackArrCopy.length
-    && this.state.nowRecording === false) {
-      this.letLoop();
-
-      this.setState({
-        nowPlaying: true,
-        previousNoteTime: this.state.audioCtx.currentTime + 0.1 + (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000),
-        nextNoteTime: this.state.audioCtx.currentTime + 0.1 + (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000)
-      });
-    }
-    else if(this.state.currentNoteNumber < this.state.playbackArrCopy.length) {
+    if(this.state.currentNoteNumber < this.state.playbackArrCopy.length) {
       this.setState({
         nextNoteTime: this.state.nextNoteTime + ( (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000) - this.state.previousNoteTime)
       });
     }
-    // RECORDING FINISHED
-    else {
-      this.setState({
-        nowRecording: false,
-        nowPlaying: false
-      });
-
-      clearInterval(this.playbackInterval);
-    }
-  }
-
-  letLoop() {
-    this.setState({
-      nowPlaying: false,
-      currentNoteNumber: 0,
-    });
   }
 
   playSample(audioContext, audioBuffer, time) {
@@ -429,30 +402,63 @@ class DrumMachine extends React.Component {
   }
 
   startPlayback(event) {
-    if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false) {
-      this.setState({
-        nowPlaying: true,
-        currentNoteNumber: 0,
-        playbackArrCopy: this.state.playbackArr.slice().sort(this.sortByTime)
-      });
-
-      console.log("PLAYBACK STARTED");
-      console.log( this.state.playbackArr.sort(this.sortByTime) );
-
-      setTimeout(function() {
-        this.setState({
-          previousNoteTime: this.state.audioCtx.currentTime + (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000),
-          nextNoteTime: this.state.audioCtx.currentTime + (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000)
-        });
-      }.bind(this), 0);
-
+    if(this.state.power === "on" && this.state.nowRecording === false
+    && this.state.nowPlaying === false && this.state.playbackArr.length > 0) {
       if(event !== undefined) {
         event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
       }
 
-      this.playbackInterval = setInterval(function() {
-        this.scheduler();
-      }.bind(this), this.state.lookahead);
+      this.setState({
+        currentNoteNumber: 0,
+        playbackArrCopy: this.state.playbackArr.slice().sort(this.sortByTime)
+      }, () => {
+        this.setState({
+          nowPlaying: true,
+          previousNoteTime: this.state.audioCtx.currentTime + (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000),
+          nextNoteTime: this.state.audioCtx.currentTime + (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000)
+        });
+
+        console.log("PLAYBACK STARTED");
+        console.log( this.state.playbackArrCopy );
+        // console.log("start time:" + this.state.audioCtx.currentTime);
+
+        let startTime = this.state.audioCtx.currentTime;
+        let targetTime = this.state.audioCtx.currentTime + 10.0;
+
+        this.playbackInterval = setInterval(function() {
+          // ***** PLAYBACK CONTINUES *****
+          if(this.state.audioCtx.currentTime < targetTime) {
+            this.scheduler();
+          }
+          // ***** PLAYBACK FINISHED ******
+          else {
+            clearInterval(this.playbackInterval);
+            // console.log("end time:" + this.state.audioCtx.currentTime);
+            console.log("PLAYBACK FINISHED");
+
+            // ***** LOOP PLAYBACK ******
+            if(this.state.nowRecording === false) {
+              this.setState({
+                nowPlaying: false,
+                currentNoteNumber: 0
+              }, () => {
+                  this.startPlayback();
+              });
+            }
+            // ***** END PLAYBACK ******
+            else {
+              this.setState({
+                nowRecording: false,
+                nowPlaying: false,
+              });
+
+              this.setPlaybackArrUndone();
+
+              console.log("RECORDING FINISHED");
+            }
+          }
+        }.bind(this), this.state.lookahead);
+      });
     }
   }
 

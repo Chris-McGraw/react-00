@@ -58,13 +58,16 @@ class PlaybackControls extends React.Component {
   }
 
   playBtnStyle() {
-    if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === false) {
+    if(this.props.power === "on" && this.props.nowRecording === false
+    && this.props.nowPlaying === false && this.props.playbackArr.length > 0) {
       return "ctrl-btn ctrl-btn-on";
     }
-    else if(this.props.power === "on" && this.props.nowRecording === true && this.props.nowPlaying === true) {
+    else if(this.props.power === "on" && this.props.nowRecording === true
+    && this.props.nowPlaying === true) {
       return "ctrl-btn ctrl-btn-off";
     }
-    else if(this.props.power === "on" && this.props.nowRecording === false && this.props.nowPlaying === true) {
+    else if(this.props.power === "on" && this.props.nowRecording === false
+    && this.props.nowPlaying === true && this.props.playbackArr.length > 0) {
       return "ctrl-btn ctrl-btn-active";
     }
     else {
@@ -73,7 +76,8 @@ class PlaybackControls extends React.Component {
   }
 
   playGlowStyle() {
-    if(this.props.power === "on" && this.props.nowRecording === false) {
+    if(this.props.power === "on" && this.props.nowRecording === false
+    && this.props.playbackArr.length > 0) {
       return "ctrl-glow ctrl-glow-on";
     }
     else {
