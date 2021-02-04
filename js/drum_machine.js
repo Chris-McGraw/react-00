@@ -378,7 +378,18 @@ class DrumMachine extends React.Component {
   playSample(audioContext, audioBuffer, time) {
     const sampleSource = audioContext.createBufferSource();
     sampleSource.buffer = audioBuffer;
-    sampleSource.connect(audioContext.destination);
+
+    const envelope = audioContext.createGain();
+
+    sampleSource.connect(envelope);
+    envelope.connect(audioContext.destination);
+
+    if(this.state.volume === 1) {
+      envelope.gain.setValueAtTime(0.3, time);
+    }
+    else {
+      envelope.gain.setValueAtTime(0, time);
+    }
 
     // console.log("tick");
     // console.log(this.state.currentNoteNumber);

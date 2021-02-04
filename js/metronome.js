@@ -50,9 +50,14 @@ class Metronome extends React.Component {
     const envelope = audioContext.createGain();
 
     osc.frequency.value = (this.state.currentQuarterNote % 4 == 0) ? 1000 : 800;
-    envelope.gain.value = 1;
-    envelope.gain.exponentialRampToValueAtTime(1, time + 0.001);
-    envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.02);
+
+    if(this.props.volume === 1) {
+      envelope.gain.exponentialRampToValueAtTime(1, time);
+      envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.02);
+    }
+    else {
+      envelope.gain.setValueAtTime(0, time);
+    }
 
     osc.connect(envelope);
     envelope.connect(audioContext.destination);

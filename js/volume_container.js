@@ -20,7 +20,8 @@ class VolumeContainer extends React.Component {
         <div id="volume-container">
           <p id="volume-header">Volume</p>
 
-          <div id="volume-knob" style={knobTurn} onClick={this.props.toggleVolume}>
+          <div id="volume-knob" style={knobTurn} onTouchStart={this.props.toggleVolume}
+          onClick={this.props.toggleVolume}>
             <div id="volume-indicator"></div>
           </div>
 

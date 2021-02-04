@@ -21,7 +21,8 @@ class PowerContainer extends React.Component {
 
         <div id="power-container">
           <div id="power-switch-container">
-            <div id="power-switch" style={switchSlide} onClick={this.props.togglePower}>
+            <div id="power-switch" style={switchSlide} onTouchStart={this.props.togglePower}
+            onClick={this.props.togglePower}>
               <div id="power-switch-indicator"></div>
             </div>
 
