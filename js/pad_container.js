@@ -12,7 +12,19 @@ class PadContainer extends React.Component {
   playSample(audioContext, audioBuffer, time) {
     const sampleSource = audioContext.createBufferSource();
     sampleSource.buffer = audioBuffer;
-    sampleSource.connect(audioContext.destination)
+
+    const envelope = audioContext.createGain();
+
+    sampleSource.connect(envelope);
+    envelope.connect(audioContext.destination);
+
+    if(this.props.volume === 1) {
+      envelope.gain.setValueAtTime(0.3, time);
+    }
+    else {
+      envelope.gain.setValueAtTime(0, time);
+    }
+
     sampleSource.start(time);
     return sampleSource;
   }
@@ -23,9 +35,6 @@ class PadContainer extends React.Component {
 
       // PAD MOUSE DOWN
       if(event.key === undefined) {
-        // audioID = event.currentTarget.children[0].id;
-
-        // console.log(event.currentTarget.children[2].innerHTML);
         audioID = event.currentTarget.children[1].innerHTML;
       }
       // PAD KEY DOWN
@@ -45,17 +54,6 @@ class PadContainer extends React.Component {
       }
 
       document.getElementById("pad-" + audioID.toLowerCase()).style.boxShadow = "4px 4px 8px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.2)";
-
-      // let audio = document.getElementById(audioID).cloneNode(true);
-
-      // audio.src = sampleKits[this.props.currentKit][audioID].src;
-      // audio.pause();
-      // audio.currentTime = 0;
-      // audio.volume = this.props.volume;
-      // audio.play();
-
-
-
 
       // WEB AUDIO PAD TEST
       switch(audioID) {
