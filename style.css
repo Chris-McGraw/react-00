@@ -32,6 +32,31 @@ body {
   background-color: black;
 }
 
+#react-container:empty {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: 0;
+  right: 0;
+
+  width: 50px;
+  height: 50px;
+  margin: auto;
+
+  border: 5px solid white;
+  border-left: 5px solid black;
+  border-radius: 50%;
+
+  animation: loadspin 1.5s infinite linear;
+}
+
+@keyframes loadspin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 /* ------------------------------ DRUM MACHINE ------------------------------ */
 #drum-machine {
