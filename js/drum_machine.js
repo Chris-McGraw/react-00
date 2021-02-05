@@ -15,6 +15,8 @@ const audioKitSourceArray3 = ["audio/hats/hihatwork.mp3", "audio/hats/openhatrev
 "audio/snares/sauce.mp3", "audio/808s/kenny24.mp3", "audio/kicks/kick36.mp3",
 "audio/claps/kennyclap9.mp3", "audio/percs/kennyperc4.mp3", "audio/vocals/toasty.mp3"];
 
+const masterAudioKitSourceArray = [audioKitSourceArray1, audioKitSourceArray2, audioKitSourceArray3];
+
 // localStorage.clear();
 console.log(localStorage);
 
@@ -52,6 +54,7 @@ class DrumMachine extends React.Component {
       audioSampleKit1: "",
       audioSampleKit2: "",
       audioSampleKit3: "",
+      audioLoaded: false,
       power: "on",
       volume: 1,
       currentTrack: "track1",
@@ -103,19 +106,15 @@ class DrumMachine extends React.Component {
     return audioBufferArray;
   }
 
-  async setupAudioSampleKit1() {
-    const sampleArray = await this.getAudioKitFiles(this.state.audioCtx, audioKitSourceArray1);
-    return sampleArray;
-  }
+  async setupAudioSampleKits(masterAudioKitSourceArray) {
+    const masterSampleKitArray = [];
 
-  async setupAudioSampleKit2() {
-    const sampleArray = await this.getAudioKitFiles(this.state.audioCtx, audioKitSourceArray2);
-    return sampleArray;
-  }
+    for(const sourceArray of masterAudioKitSourceArray) {
+      const sampleArray = await this.getAudioKitFiles(this.state.audioCtx, sourceArray);
+      masterSampleKitArray.push(sampleArray);
+    }
 
-  async setupAudioSampleKit3() {
-    const sampleArray = await this.getAudioKitFiles(this.state.audioCtx, audioKitSourceArray3);
-    return sampleArray;
+    return masterSampleKitArray;
   }
 
   togglePower() {
@@ -510,61 +509,55 @@ class DrumMachine extends React.Component {
   }
 
   componentDidMount() {
-    ReactDOM.findDOMNode(this).addEventListener("touchstart",(event)=> {
-      event.preventDefault();
-    });
-
-    this.setupAudioSampleKit1().then((sampleArray) => {
+    this.setupAudioSampleKits(masterAudioKitSourceArray).then((masterSampleKitArray) => {
       this.setState({
-        audioSampleKit1: sampleArray
+        audioSampleKit1: masterSampleKitArray[0],
+        audioSampleKit2: masterSampleKitArray[1],
+        audioSampleKit3: masterSampleKitArray[2],
+        audioLoaded: true
+      }, () => {
+          ReactDOM.findDOMNode(this).addEventListener("touchstart", (event)=> {
+            event.preventDefault();
+          });
+
+          console.log("audio sample kit files loaded");
+          // console.log(this.state.audioSampleKit1);
+          // console.log(this.state.audioSampleKit2);
+          // console.log(this.state.audioSampleKit3);
       });
-
-      console.log("audio sample kit 1 files loaded");
-      console.log(this.state.audioSampleKit1);
-    });
-
-    this.setupAudioSampleKit2().then((sampleArray) => {
-      this.setState({
-        audioSampleKit2: sampleArray
-      });
-
-      console.log("audio sample kit 2 files loaded");
-      console.log(this.state.audioSampleKit2);
-    });
-
-    this.setupAudioSampleKit3().then((sampleArray) => {
-      this.setState({
-        audioSampleKit3: sampleArray
-      });
-
-      console.log("audio sample kit 3 files loaded");
-      console.log(this.state.audioSampleKit3);
     });
   }
 
   render() {
-    return (
-      <div>
-        <div id="drum-machine">
-          <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} playbackArr={this.state.playbackArr} />
+    const audioLoaded = this.state.audioLoaded;
 
-          <div id="machine-controls">
-            {/* <div id="line-test-top"></div>
-            <div id="line-test-bottom"></div> */}
+    if(audioLoaded === false) {
+      return null;
+    }
+    else {
+      return (
+        <div>
+          <div id="drum-machine">
+            <DisplayLeft power={this.state.power} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} playbackArr={this.state.playbackArr} />
 
-            <PowerContainer power={this.state.power} togglePower={this.togglePower} />
-            <VolumeContainer volume={this.state.volume} toggleVolume={this.toggleVolume} />
-            <Metronome audioCtx={this.state.audioCtx} power={this.state.power} volume={this.state.volume} metronomePlaying={this.state.metronomePlaying} toggleMetronomePlaying={this.toggleMetronomePlaying} />
+            <div id="machine-controls">
+              {/* <div id="line-test-top"></div>
+              <div id="line-test-bottom"></div> */}
+
+              <PowerContainer power={this.state.power} togglePower={this.togglePower} />
+              <VolumeContainer volume={this.state.volume} toggleVolume={this.toggleVolume} />
+              <Metronome audioCtx={this.state.audioCtx} power={this.state.power} volume={this.state.volume} metronomePlaying={this.state.metronomePlaying} toggleMetronomePlaying={this.toggleMetronomePlaying} />
+            </div>
+
+            <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} currentKit={this.state.currentKit} />
+            <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
+            <TrackControls power={this.state.power} setCurrentTrack={this.setCurrentTrack} currentTrack={this.state.currentTrack} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} deleteRecording={this.deleteRecording} />
+            <PlaybackControls power={this.state.power} playbackArr={this.state.playbackArr} playbackArrUndone={this.state.playbackArrUndone} startRecording={this.startRecording} nowRecording={this.state.nowRecording} startPlayback={this.startPlayback} nowPlaying={this.state.nowPlaying} stop={this.stop} undo={this.undo} />
+            <PadContainer audioCtx={this.state.audioCtx} audioSampleKit1={this.state.audioSampleKit1} audioSampleKit2={this.state.audioSampleKit2} audioSampleKit3={this.state.audioSampleKit3} power={this.state.power} volume={this.state.volume} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} nowRecording={this.state.nowRecording} recordNote={this.recordNote} />
           </div>
-
-          <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} currentKit={this.state.currentKit} />
-          <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
-          <TrackControls power={this.state.power} setCurrentTrack={this.setCurrentTrack} currentTrack={this.state.currentTrack} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} deleteRecording={this.deleteRecording} />
-          <PlaybackControls power={this.state.power} playbackArr={this.state.playbackArr} playbackArrUndone={this.state.playbackArrUndone} startRecording={this.startRecording} nowRecording={this.state.nowRecording} startPlayback={this.startPlayback} nowPlaying={this.state.nowPlaying} stop={this.stop} undo={this.undo} />
-          <PadContainer audioCtx={this.state.audioCtx} audioSampleKit1={this.state.audioSampleKit1} audioSampleKit2={this.state.audioSampleKit2} audioSampleKit3={this.state.audioSampleKit3} power={this.state.power} volume={this.state.volume} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} nowRecording={this.state.nowRecording} recordNote={this.recordNote} />
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
