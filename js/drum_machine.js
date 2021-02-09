@@ -527,7 +527,9 @@ class DrumMachine extends React.Component {
         audioLoaded: true
       }, () => {
           ReactDOM.findDOMNode(this).addEventListener("touchstart", (event)=> {
-            event.preventDefault();
+            if(event.target.className.indexOf("slider") === -1) {
+              event.preventDefault();
+            }
           });
 
           console.log("audio sample kit files loaded");
