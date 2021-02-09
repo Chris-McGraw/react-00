@@ -12,18 +12,22 @@ class PadContainer extends React.Component {
   playSample(audioContext, audioBuffer, time) {
     const sampleSource = audioContext.createBufferSource();
     sampleSource.buffer = audioBuffer;
+    sampleSource.playbackRate.value = this.props.currentPitch ** ((62 - 60) / 12);
 
     const envelope = audioContext.createGain();
-
-    sampleSource.connect(envelope);
-    envelope.connect(audioContext.destination);
-
     if(this.props.volume === 1) {
       envelope.gain.setValueAtTime(0.3, time);
     }
     else {
       envelope.gain.setValueAtTime(0, time);
     }
+
+    // let lowpass = audioCtx.createBiquadFilter();
+    // lowpass.type = "lowpass";
+    // lowpass.frequency.value = 800;
+
+    sampleSource.connect(envelope).connect(audioContext.destination);
+    // sampleSource.connect(lowpass).connect(envelope).connect(audioContext.destination);
 
     sampleSource.start(time);
     return sampleSource;

@@ -60,6 +60,7 @@ class DrumMachine extends React.Component {
       currentTrack: "track1",
       currentKit: "kit1",
       currentPad: "",
+      currentPitch: 1,
       metronomePlaying: false,
       nowRecording: false,
       recordingStartTime: 0,
@@ -80,6 +81,7 @@ class DrumMachine extends React.Component {
     this.setCurrentTrack = this.setCurrentTrack.bind(this);
     this.setCurrentKit = this.setCurrentKit.bind(this);
     this.setCurrentPad = this.setCurrentPad.bind(this);
+    this.setCurrentPitch = this.setCurrentPitch.bind(this);
     this.deleteRecording = this.deleteRecording.bind(this);
     this.startRecording = this.startRecording.bind(this);
     this.recordingFinishTimeout = null;
@@ -213,6 +215,12 @@ class DrumMachine extends React.Component {
     }
   }
 
+  setCurrentPitch(pitchValue) {
+    this.setState({
+      currentPitch: pitchValue
+    });
+  }
+
   deleteRecording(event) {
     if(this.state.power === "on" && this.state.nowRecording === false && this.state.nowPlaying === false && this.state.playbackArr.length > 0) {
       clearLocalStorage(this.state.currentTrack);
@@ -287,7 +295,7 @@ class DrumMachine extends React.Component {
     if(this.state.nowRecording === true && event !== undefined) {
       let arr = JSON.parse(localStorage.getItem(this.state.currentTrack));
 
-      arr.push({kit: this.state.currentKit, key:key, time:(this.state.audioCtx.currentTime - this.state.recordingStartTime) * 1000});
+      arr.push({kit: this.state.currentKit, key:key, pitch:this.state.currentPitch, time:(this.state.audioCtx.currentTime - this.state.recordingStartTime) * 1000});
 
       localStorage.setItem(this.state.currentTrack, JSON.stringify(arr));
 
@@ -374,21 +382,23 @@ class DrumMachine extends React.Component {
     }
   }
 
-  playSample(audioContext, audioBuffer, time) {
+  playSample(audioContext, audioBuffer, pitch, time) {
     const sampleSource = audioContext.createBufferSource();
     sampleSource.buffer = audioBuffer;
+    if(pitch === undefined) {
+      pitch = 1;
+    }
+    sampleSource.playbackRate.value = pitch ** ((62 - 60) / 12);
 
     const envelope = audioContext.createGain();
-
-    sampleSource.connect(envelope);
-    envelope.connect(audioContext.destination);
-
     if(this.state.volume === 1) {
       envelope.gain.setValueAtTime(0.3, time);
     }
     else {
       envelope.gain.setValueAtTime(0, time);
     }
+
+    sampleSource.connect(envelope).connect(audioContext.destination);
 
     // console.log("tick");
     // console.log(this.state.currentNoteNumber);
@@ -402,7 +412,7 @@ class DrumMachine extends React.Component {
       // while there are notes that will need to play before the next interval, schedule them and advance the pointer.
       while (this.state.nextNoteTime < this.state.audioCtx.currentTime + this.state.scheduleAheadTime &&
       this.state.currentNoteNumber < this.state.playbackArrCopy.length) {
-        this.playSample(this.state.audioCtx, this.getSampleKitAudio(this.state.playbackArrCopy[this.state.currentNoteNumber].kit, this.state.playbackArrCopy[this.state.currentNoteNumber].key), this.state.nextNoteTime);
+        this.playSample(this.state.audioCtx, this.getSampleKitAudio(this.state.playbackArrCopy[this.state.currentNoteNumber].kit, this.state.playbackArrCopy[this.state.currentNoteNumber].key), this.state.playbackArrCopy[this.state.currentNoteNumber].pitch, this.state.nextNoteTime);
         this.nextNote();
       }
     }
@@ -553,7 +563,8 @@ class DrumMachine extends React.Component {
             <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
             <TrackControls power={this.state.power} setCurrentTrack={this.setCurrentTrack} currentTrack={this.state.currentTrack} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} deleteRecording={this.deleteRecording} />
             <PlaybackControls power={this.state.power} playbackArr={this.state.playbackArr} playbackArrUndone={this.state.playbackArrUndone} startRecording={this.startRecording} nowRecording={this.state.nowRecording} startPlayback={this.startPlayback} nowPlaying={this.state.nowPlaying} stop={this.stop} undo={this.undo} />
-            <PadContainer audioCtx={this.state.audioCtx} audioSampleKit1={this.state.audioSampleKit1} audioSampleKit2={this.state.audioSampleKit2} audioSampleKit3={this.state.audioSampleKit3} power={this.state.power} volume={this.state.volume} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} nowRecording={this.state.nowRecording} recordNote={this.recordNote} />
+            <PadContainer audioCtx={this.state.audioCtx} audioSampleKit1={this.state.audioSampleKit1} audioSampleKit2={this.state.audioSampleKit2} audioSampleKit3={this.state.audioSampleKit3} power={this.state.power} volume={this.state.volume} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} currentPitch={this.state.currentPitch} nowRecording={this.state.nowRecording} recordNote={this.recordNote} />
+            <PitchControl audioCtx={this.state.audioCtx} power={this.state.power} setCurrentPitch={this.setCurrentPitch} />
           </div>
         </div>
       );
