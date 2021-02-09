@@ -32,6 +32,63 @@ body {
   background-color: black;
 }
 
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+
+  background: black;
+
+  cursor: pointer;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+
+  background: black;
+
+  cursor: pointer;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: black;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+
+  width: 6.6%;
+  height: 60px;
+  margin-top: -26px;
+
+  background: silver;
+  box-shadow: 4px 4px 4px rgba(0,0,0, 1.0);
+
+  cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 6.6%;
+  height: 60px;
+  margin-top: -26px;
+
+  background: silver;
+  box-shadow: 4px 4px 4px rgba(0,0,0, 1.0);
+
+  cursor: pointer;
+}
+
+
+/* ---------------------------- LOADING SPINNER ---------------------------- */
 #react-container:empty {
   position: absolute;
   top: calc(50% - 50px);
@@ -58,10 +115,11 @@ body {
   }
 }
 
+
 /* ------------------------------ DRUM MACHINE ------------------------------ */
 #drum-machine {
   display: grid;
-  grid-template: repeat(20, 1fr) / repeat(2, 1fr);
+  grid-template: repeat(23, 1fr) / repeat(2, 1fr);
   grid-row-gap: 20px;
   grid-column-gap: 40px;
 
@@ -80,9 +138,33 @@ body {
 
 
 /* ------------------------------ CHANGE LATER ------------------------------ */
+#display-right-section {
+  display: grid;
+  grid-row: 1 / 4;
+  grid-column: 1;
+
+  /* border: 1px dashed red; */
+}
+
+#track-controls-section {
+  display: grid;
+  grid-row: 4 / 6;
+  grid-column: 1;
+
+  /* border: 1px dashed blue; */
+}
+
+#playback-controls-section {
+  display: grid;
+  grid-row: 6 / 8;
+  grid-column: 1;
+
+  /* border: 1px dashed pink; */
+}
+
 #display-left-section {
   display: grid;
-  grid-row: 1 / 11;
+  grid-row: 8 / 18;
   grid-column: 1;
 
   position: relative;
@@ -92,7 +174,7 @@ body {
 
 #machine-controls {
   display: grid;
-  grid-row: 11 / 17;
+  grid-row: 18 / 24;
   grid-column: 1;
   grid-template-columns: repeat(8, 1fr);
   grid-column-gap: 20px;
@@ -129,44 +211,31 @@ body {
   /* border: 1px dashed yellow; */
 }
 
+#pad-section {
+  display: grid;
+  grid-row: 1 / 14;
+  grid-column: 2;
+
+  /* border: 1px dashed orange; */
+}
+
 #kit-choice-section {
   display: grid;
-  grid-row: 17 / 21;
-  grid-column: 1;
+  grid-row: 14 / 18;
+  grid-column: 2;
 
   /* border: 1px dashed white; */
 }
 
-#display-right-section {
+#pitch-control-section {
   display: grid;
-  grid-row: 1 / 4;
+  grid-row: 18 / 24;
   grid-column: 2;
+  /* justify-content: center; */
+
+  position: relative;
 
   /* border: 1px dashed red; */
-}
-
-#track-controls-section {
-  display: grid;
-  grid-row: 4 / 6;
-  grid-column: 2;
-
-  /* border: 1px dashed blue; */
-}
-
-#playback-controls-section {
-  display: grid;
-  grid-row: 6 / 8;
-  grid-column: 2;
-
-  /* border: 1px dashed pink; */
-}
-
-#pad-section {
-  display: grid;
-  grid-row: 8 / 21;
-  grid-column: 2;
-
-  /* border: 1px dashed orange; */
 }
 
 
@@ -1002,6 +1071,55 @@ body {
 }
 
 
+/* ----------------------------- PITCH CONTROL ----------------------------- */
+#pitch-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+#pitch-slider {
+  -webkit-appearance: none;  /* Hides the slider so that custom slider can be made */
+  width: 100%;               /* Specific width is required for Firefox. */
+  background: transparent;   /* Otherwise white in Chrome */
+
+  /* border: 1px dashed white; */
+}
+
+.range-tick-container {
+  z-index: 0;
+
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  height: 20px;
+
+  /* border: 1px dashed blue; */
+}
+
+.range-tick {
+  display: grid;
+  grid-column: span 1;
+  justify-content: center;
+
+  height: 100%;
+
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+
+  /* border: 1px dashed yellow; */
+}
+
+
 /* --------------------------------- FOOTER --------------------------------- */
 #footer {
   z-index: 10;
@@ -1195,36 +1313,13 @@ body {
   }
 
   #drum-machine {
-    grid-template: repeat(41, 1fr) / 1fr;
+    grid-template: repeat(47, 1fr) / 1fr;
 
     position: absolute;
     top: 5%;
 
     width: 65%;
-    height: 800px;
-  }
-
-  #display-left-section {
-    grid-row: 8 / 18;
-    grid-column: 1;
-  }
-
-  #other-test {
-    padding-top: 0;
-  }
-
-  #machine-controls {
-    grid-row: 35 / 42;
-    grid-column: 1;
-  }
-
-  #kit-choice-section {
-    grid-row: 31 / 35;
-    grid-column: 1;
-  }
-
-  .kit-choice-btn {
-    margin-top: 25px;
+    height: 900px;
   }
 
   #display-right-section {
@@ -1242,8 +1337,41 @@ body {
     grid-column: 1;
   }
 
+  #display-left-section {
+    grid-row: 8 / 18;
+    grid-column: 1;
+  }
+
+  #other-test {
+    padding-top: 0;
+  }
+
   #pad-section {
     grid-row: 18 / 31;
+    grid-column: 1;
+  }
+
+  #kit-choice-section {
+    grid-row: 31 / 35;
+    grid-column: 1;
+  }
+
+  .kit-choice-btn {
+    margin-top: 25px;
+  }
+
+  #pitch-control-section {
+    grid-row: 35 / 41;
+    grid-column: 1;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    height: 40px;
+    margin-top: -16px;
+  }
+
+  #machine-controls {
+    grid-row: 41 / 48;
     grid-column: 1;
   }
 
@@ -1251,7 +1379,7 @@ body {
     top: 5%;
     bottom: auto;
 
-    margin-top: 840px;
+    margin-top: 940px;
   }
 }
 
@@ -1259,17 +1387,47 @@ body {
 /* -------------------------- MEDIA QUERY <= 580 -------------------------- */
   @media screen and (max-width: 580px) {
     #drum-machine {
-      grid-template: repeat(49, 1fr) / 1fr;
+      grid-template: repeat(55, 1fr) / 1fr;
 
       width: 85%;
-      height: 830px;
+      height: 930px;
       padding-bottom: 20px;
     }
 
-    #machine-controls {
-      grid-row-gap: 10px;
-      grid-row: 36 / 50;
+    #display-right-section {
+      grid-row: 1 / 4;
       grid-column: 1;
+    }
+
+    #track-controls-section {
+      grid-row: 4 / 6;
+      grid-column: 1;
+    }
+
+    #playback-controls-section {
+      grid-row: 6 / 8;
+      grid-column: 1;
+    }
+
+    #pad-section {
+      grid-row: 18 / 31;
+      grid-column: 1;
+    }
+
+    #kit-choice-section {
+      grid-row: 31 / 36;
+      grid-column: 1;
+    }
+
+    #pitch-control-section {
+      grid-row: 36 / 42;
+      grid-column: 1;
+    }
+
+    #machine-controls {
+      grid-row: 42 / 56;
+      grid-column: 1;
+      grid-row-gap: 10px;
 
       height: 192px;
     }
@@ -1334,32 +1492,7 @@ body {
       margin-top: 5px;
     }
 
-    #kit-choice-section {
-      grid-row: 31 / 36;
-      grid-column: 1;
-    }
-
-    #display-right-section {
-      grid-row: 1 / 4;
-      grid-column: 1;
-    }
-
-    #track-controls-section {
-      grid-row: 4 / 6;
-      grid-column: 1;
-    }
-
-    #playback-controls-section {
-      grid-row: 6 / 8;
-      grid-column: 1;
-    }
-
-    #pad-section {
-      grid-row: 18 / 31;
-      grid-column: 1;
-    }
-
     #footer {
-      margin-top: 870px;
+      margin-top: 970px;
     }
   }
