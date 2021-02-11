@@ -10,10 +10,12 @@ class PadContainer extends React.Component {
   }
 
   playSample(audioContext, audioBuffer, time) {
+    // SET UP SAMPLE SOURCE BUFFER
     const sampleSource = audioContext.createBufferSource();
     sampleSource.buffer = audioBuffer;
     sampleSource.playbackRate.value = this.props.currentPitch ** ((62 - 60) / 12);
 
+    // SET UP GAIN ENVELOPE
     const envelope = audioContext.createGain();
     if(this.props.volume === 1) {
       envelope.gain.setValueAtTime(0.3, time);
@@ -22,12 +24,39 @@ class PadContainer extends React.Component {
       envelope.gain.setValueAtTime(0, time);
     }
 
-    // let lowpass = audioCtx.createBiquadFilter();
-    // lowpass.type = "lowpass";
-    // lowpass.frequency.value = 800;
+    // let panNode = audioCtx.createStereoPanner();
+    // panNode.pan.value = 1;
+    // sampleSource.connect(panNode).connect(envelope).connect(audioContext.destination);
 
-    sampleSource.connect(envelope).connect(audioContext.destination);
-    // sampleSource.connect(lowpass).connect(envelope).connect(audioContext.destination);
+    //  SET UP PASS FILTERS
+    if(this.props.currentHighPass === 0 && this.props.currentLowPass === 0) {
+      sampleSource.connect(envelope).connect(audioContext.destination);
+    }
+    else if(this.props.currentHighPass !== 0 && this.props.currentLowPass !== 0) {
+      let highpass = audioCtx.createBiquadFilter();
+      highpass.type = "highpass";
+      highpass.frequency.value = this.props.currentHighPass;
+
+      let lowpass = audioCtx.createBiquadFilter();
+      lowpass.type = "lowpass";
+      lowpass.frequency.value = this.props.currentLowPass;
+
+      sampleSource.connect(highpass).connect(lowpass).connect(envelope).connect(audioContext.destination);
+    }
+    else if(this.props.currentHighPass !== 0) {
+      let highpass = audioCtx.createBiquadFilter();
+      highpass.type = "highpass";
+      highpass.frequency.value = this.props.currentHighPass;
+
+      sampleSource.connect(highpass).connect(envelope).connect(audioContext.destination);
+    }
+    else if(this.props.currentLowPass !== 0) {
+      let lowpass = audioCtx.createBiquadFilter();
+      lowpass.type = "lowpass";
+      lowpass.frequency.value = this.props.currentLowPass;
+
+      sampleSource.connect(lowpass).connect(envelope).connect(audioContext.destination);
+    }
 
     sampleSource.start(time);
     return sampleSource;

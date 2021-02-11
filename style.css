@@ -66,9 +66,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
 
-  width: 6.6%;
-  height: 60px;
-  margin-top: -26px;
+  width: 20px;
+  height: 40px;
+  margin-top: -16px;  /* range thumb height minus range track height divided by 2 */
 
   background: silver;
   box-shadow: 4px 4px 4px rgba(0,0,0, 1.0);
@@ -77,14 +77,41 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 input[type=range]::-moz-range-thumb {
-  width: 6.6%;
-  height: 60px;
-  margin-top: -26px;
+  width: 20px;
+  height: 40px;
+  margin-top: -16px;  /* range thumb height minus range track height divided by 2 */
 
   background: silver;
   box-shadow: 4px 4px 4px rgba(0,0,0, 1.0);
 
   cursor: pointer;
+}
+
+.range-tick-container {
+  display: flex;
+  justify-content: space-between;
+
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  height: 20px;
+
+  user-select: none;
+}
+
+.range-tick {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  width: 1px;
+  height: 100%;
+  padding: 0 10px;  /* half of range thumb width */
+
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
 }
 
 
@@ -119,7 +146,7 @@ input[type=range]::-moz-range-thumb {
 /* ------------------------------ DRUM MACHINE ------------------------------ */
 #drum-machine {
   display: grid;
-  grid-template: repeat(23, 1fr) / repeat(2, 1fr);
+  grid-template: repeat(24, 1fr) / repeat(2, 1fr);
   grid-row-gap: 20px;
   grid-column-gap: 40px;
 
@@ -142,46 +169,36 @@ input[type=range]::-moz-range-thumb {
   display: grid;
   grid-row: 1 / 4;
   grid-column: 1;
-
-  /* border: 1px dashed red; */
 }
 
 #track-controls-section {
   display: grid;
   grid-row: 4 / 6;
   grid-column: 1;
-
-  /* border: 1px dashed blue; */
 }
 
 #playback-controls-section {
   display: grid;
   grid-row: 6 / 8;
   grid-column: 1;
-
-  /* border: 1px dashed pink; */
 }
 
 #display-left-section {
   display: grid;
-  grid-row: 8 / 18;
+  grid-row: 8 / 19;
   grid-column: 1;
 
   position: relative;
-
-  /* border: 1px dashed yellow; */
 }
 
 #machine-controls {
   display: grid;
-  grid-row: 18 / 24;
+  grid-row: 19 / 25;
   grid-column: 1;
   grid-template-columns: repeat(8, 1fr);
   grid-column-gap: 20px;
 
   position: relative;
-
-  /* border: 1px dashed cyan; */
 }
 
 #power-section {
@@ -189,8 +206,6 @@ input[type=range]::-moz-range-thumb {
   grid-column: span 2;
 
   position: relative;
-
-  /* border: 1px dashed yellow; */
 }
 
 #volume-section {
@@ -198,8 +213,6 @@ input[type=range]::-moz-range-thumb {
   grid-column: span 2;
 
   position: relative;
-
-  /* border: 1px dashed yellow; */
 }
 
 #metronome-section {
@@ -207,35 +220,35 @@ input[type=range]::-moz-range-thumb {
   grid-column: span 4;
 
   position: relative;
-
-  /* border: 1px dashed yellow; */
 }
 
 #pad-section {
   display: grid;
-  grid-row: 1 / 14;
+  grid-row: 1 / 13;
   grid-column: 2;
-
-  /* border: 1px dashed orange; */
 }
 
 #kit-choice-section {
   display: grid;
-  grid-row: 14 / 18;
+  grid-row: 13 / 17;
   grid-column: 2;
-
-  /* border: 1px dashed white; */
 }
 
 #pitch-control-section {
   display: grid;
-  grid-row: 18 / 24;
+  grid-row: 17 / 21;
   grid-column: 2;
-  /* justify-content: center; */
 
   position: relative;
+}
 
-  /* border: 1px dashed red; */
+#pass-filter-section {
+  display: grid;
+  grid-row: 21 / 25;
+  grid-column: 2;
+  grid-template-columns: repeat(15, 1fr);
+
+  position: relative;
 }
 
 
@@ -1080,43 +1093,56 @@ input[type=range]::-moz-range-thumb {
   font-family: sans-serif;
   font-size: 16px;
   color: white;
+
+  cursor: default;
+  user-select: none;
 }
 
 #pitch-slider {
   -webkit-appearance: none;  /* Hides the slider so that custom slider can be made */
   width: 100%;               /* Specific width is required for Firefox. */
   background: transparent;   /* Otherwise white in Chrome */
-
-  /* border: 1px dashed white; */
 }
 
-.range-tick-container {
-  z-index: 0;
 
-  display: grid;
-  grid-template-columns: repeat(15, 1fr);
-
+/* ------------------------------ PASS FILTER ------------------------------ */
+.pass-title {
   position: absolute;
-  bottom: 0;
-
-  width: 100%;
-  height: 20px;
-
-  /* border: 1px dashed blue; */
-}
-
-.range-tick {
-  display: grid;
-  grid-column: span 1;
-  justify-content: center;
-
-  height: 100%;
+  top: 0;
+  left: 0;
 
   font-family: sans-serif;
   font-size: 16px;
   color: white;
 
-  /* border: 1px dashed yellow; */
+  cursor: default;
+  user-select: none;
+}
+
+#high-pass-container {
+  display: grid;
+  grid-column: 1 / 8;
+
+  position: relative;
+}
+
+#high-pass-slider {
+  -webkit-appearance: none;  /* Hides the slider so that custom slider can be made */
+  width: 100%;               /* Specific width is required for Firefox. */
+  background: transparent;   /* Otherwise white in Chrome */
+}
+
+#low-pass-container {
+  display: grid;
+  grid-column: 9 / 16;
+
+  position: relative;
+}
+
+#low-pass-slider {
+  -webkit-appearance: none;  /* Hides the slider so that custom slider can be made */
+  width: 100%;               /* Specific width is required for Firefox. */
+  background: transparent;   /* Otherwise white in Chrome */
 }
 
 
@@ -1178,7 +1204,7 @@ input[type=range]::-moz-range-thumb {
     grid-row-gap: 15px;
     grid-column-gap: 30px;
 
-    height: 550px;
+    height: 650px;
   }
 
   #machine-controls {
@@ -1235,6 +1261,16 @@ input[type=range]::-moz-range-thumb {
     grid-column-gap: 15px;
     grid-row-gap: 15px;
   }
+
+  input[type=range]::-webkit-slider-thumb {
+    height: 36px;
+    margin-top: -14px;  /* range thumb height minus range track height divided by 2 */
+  }
+
+  input[type=range]::-moz-range-thumb {
+    height: 36px;
+    margin-top: -14px;  /* range thumb height minus range track height divided by 2 */
+  }
 }
 
 
@@ -1244,7 +1280,7 @@ input[type=range]::-moz-range-thumb {
     grid-row-gap: 10px;
     grid-column-gap: 20px;
 
-    height: 480px;
+    height: 580px;
   }
 
   /* #line-test-top {
@@ -1301,6 +1337,16 @@ input[type=range]::-moz-range-thumb {
     grid-column-gap: 10px;
     grid-row-gap: 10px;
   }
+
+  input[type=range]::-webkit-slider-thumb {
+    height: 32px;
+    margin-top: -12px;  /* range thumb height minus range track height divided by 2 */
+  }
+
+  input[type=range]::-moz-range-thumb {
+    height: 32px;
+    margin-top: -12px;  /* range thumb height minus range track height divided by 2 */
+  }
 }
 
 
@@ -1313,13 +1359,14 @@ input[type=range]::-moz-range-thumb {
   }
 
   #drum-machine {
-    grid-template: repeat(47, 1fr) / 1fr;
+    grid-template: repeat(51, 1fr) / 1fr;
 
     position: absolute;
     top: 5%;
 
-    width: 65%;
-    height: 900px;
+    max-width: 550px;
+    width: 75%;
+    height: 1000px;
   }
 
   #display-right-section {
@@ -1361,17 +1408,17 @@ input[type=range]::-moz-range-thumb {
   }
 
   #pitch-control-section {
-    grid-row: 35 / 41;
+    grid-row: 35 / 40;
     grid-column: 1;
   }
 
-  input[type=range]::-webkit-slider-thumb {
-    height: 40px;
-    margin-top: -16px;
+  #pass-filter-section {
+    grid-row: 40 / 45;
+    grid-column: 1;
   }
 
   #machine-controls {
-    grid-row: 41 / 48;
+    grid-row: 45 / 52;
     grid-column: 1;
   }
 
@@ -1379,7 +1426,7 @@ input[type=range]::-moz-range-thumb {
     top: 5%;
     bottom: auto;
 
-    margin-top: 940px;
+    margin-top: 1040px;
   }
 }
 
@@ -1387,11 +1434,15 @@ input[type=range]::-moz-range-thumb {
 /* -------------------------- MEDIA QUERY <= 580 -------------------------- */
   @media screen and (max-width: 580px) {
     #drum-machine {
-      grid-template: repeat(55, 1fr) / 1fr;
+      grid-template: repeat(59, 1fr) / 1fr;
 
-      width: 85%;
-      height: 930px;
-      padding-bottom: 20px;
+      position: absolute;
+      top: 0;
+
+      max-width: 100%;
+      width: 450px;
+      height: 1030px;
+      padding-bottom: 100px;
     }
 
     #display-right-section {
@@ -1420,12 +1471,35 @@ input[type=range]::-moz-range-thumb {
     }
 
     #pitch-control-section {
-      grid-row: 36 / 42;
+      grid-row: 36 / 41;
       grid-column: 1;
     }
 
+    #pass-filter-section {
+      grid-row: 41 / 46;
+      grid-column: 1;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      width: 16px;
+      height: 26px;
+
+      margin-top: -9px;  /* range thumb height minus range track height divided by 2 */
+    }
+
+    input[type=range]::-moz-range-thumb {
+      width: 16px;
+      height: 26px;
+
+      margin-top: -9px;  /* range thumb height minus range track height divided by 2 */
+    }
+
+    .range-tick {
+      padding: 0 8px;  /* half of range thumb width */
+    }
+
     #machine-controls {
-      grid-row: 42 / 56;
+      grid-row: 46 / 60;
       grid-column: 1;
       grid-row-gap: 10px;
 
@@ -1493,6 +1567,6 @@ input[type=range]::-moz-range-thumb {
     }
 
     #footer {
-      margin-top: 970px;
+      margin-top: 930px;
     }
   }

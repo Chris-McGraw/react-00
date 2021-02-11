@@ -72,21 +72,21 @@ class PitchControl extends React.Component {
         defaultValue="0" onChange={this.getPitchSliderValue} />
 
         <div className="range-tick-container">
-          <div className="range-tick tick-0">-7</div>
-          <div className="range-tick tick-1">-6</div>
-          <div className="range-tick tick-2">-5</div>
-          <div className="range-tick tick-3">-4</div>
-          <div className="range-tick tick-4">-3</div>
-          <div className="range-tick tick-5">-2</div>
-          <div className="range-tick tick-6">-1</div>
-          <div className="range-tick tick-middle">0</div>
-          <div className="range-tick tick-7">+1</div>
-          <div className="range-tick tick-8">+2</div>
-          <div className="range-tick tick-9">+3</div>
-          <div className="range-tick tick-10">+4</div>
-          <div className="range-tick tick-11">+5</div>
-          <div className="range-tick tick-12">+6</div>
-          <div className="range-tick tick-13">+7</div>
+          <div className="range-tick">-7</div>
+          <div className="range-tick">-6</div>
+          <div className="range-tick">-5</div>
+          <div className="range-tick">-4</div>
+          <div className="range-tick">-3</div>
+          <div className="range-tick">-2</div>
+          <div className="range-tick">-1</div>
+          <div className="range-tick">0</div>
+          <div className="range-tick">+1</div>
+          <div className="range-tick">+2</div>
+          <div className="range-tick">+3</div>
+          <div className="range-tick">+4</div>
+          <div className="range-tick">+5</div>
+          <div className="range-tick">+6</div>
+          <div className="range-tick">+7</div>
         </div>
       </div>
     );
