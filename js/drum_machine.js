@@ -589,7 +589,7 @@ class DrumMachine extends React.Component {
         audioLoaded: true
       }, () => {
           ReactDOM.findDOMNode(this).addEventListener("touchstart", (event)=> {
-            if(event.target.className.indexOf("slider") === -1) {
+            if(event.target.id !== "drum-machine" && event.target.className.indexOf("slider") === -1) {
               event.preventDefault();
             }
           });
