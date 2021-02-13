@@ -17,12 +17,7 @@ class PadContainer extends React.Component {
 
     // SET UP GAIN ENVELOPE
     const envelope = audioContext.createGain();
-    if(this.props.volume === 1) {
-      envelope.gain.setValueAtTime(0.3, time);
-    }
-    else {
-      envelope.gain.setValueAtTime(0, time);
-    }
+    envelope.gain.setValueAtTime(0.6 * this.props.volume, time);
 
     // let panNode = audioCtx.createStereoPanner();
     // panNode.pan.value = 1;

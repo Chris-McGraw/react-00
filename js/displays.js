@@ -42,7 +42,7 @@ class DisplayLeft extends React.Component {
 
     return (
       <div id="display-left-section">
-        <div id="other-test">
+        <div id="note-line-label-container">
           <p>C</p>
           <p>X</p>
           <p>Z</p>
@@ -57,51 +57,56 @@ class DisplayLeft extends React.Component {
         <div id="display-left">
           <div id="play-line" style={movePlayLine}></div>
 
-          <div className="test-line" id="test-line-1">
+          <div className="note-line" id="note-line-1">
             <div>{this.mapNoteBlocks("C", "kit1")}</div>
             <div>{this.mapNoteBlocks("C", "kit2")}</div>
             <div>{this.mapNoteBlocks("C", "kit3")}</div>
           </div>
-          <div className="test-line" id="test-line-2">
+          <div className="note-line" id="note-line-2">
             <div>{this.mapNoteBlocks("X", "kit1")}</div>
             <div>{this.mapNoteBlocks("X", "kit2")}</div>
             <div>{this.mapNoteBlocks("X", "kit3")}</div>
           </div>
-          <div className="test-line" id="test-line-3">
+          <div className="note-line" id="note-line-3">
             <div>{this.mapNoteBlocks("Z", "kit1")}</div>
             <div>{this.mapNoteBlocks("Z", "kit2")}</div>
             <div>{this.mapNoteBlocks("Z", "kit3")}</div>
           </div>
-          <div className="test-line" id="test-line-4">
+          <div className="note-line" id="note-line-4">
             <div>{this.mapNoteBlocks("D", "kit1")}</div>
             <div>{this.mapNoteBlocks("D", "kit2")}</div>
             <div>{this.mapNoteBlocks("D", "kit3")}</div>
           </div>
-          <div className="test-line" id="test-line-5">
+          <div className="note-line" id="note-line-5">
             <div>{this.mapNoteBlocks("S", "kit1")}</div>
             <div>{this.mapNoteBlocks("S", "kit2")}</div>
             <div>{this.mapNoteBlocks("S", "kit3")}</div>
           </div>
-          <div className="test-line" id="test-line-6">
+          <div className="note-line" id="note-line-6">
             <div>{this.mapNoteBlocks("A", "kit1")}</div>
             <div>{this.mapNoteBlocks("A", "kit2")}</div>
             <div>{this.mapNoteBlocks("A", "kit3")}</div>
           </div>
-          <div className="test-line" id="test-line-7">
+          <div className="note-line" id="note-line-7">
             <div>{this.mapNoteBlocks("E", "kit1")}</div>
             <div>{this.mapNoteBlocks("E", "kit2")}</div>
             <div>{this.mapNoteBlocks("E", "kit3")}</div>
           </div>
-          <div className="test-line" id="test-line-8">
+          <div className="note-line" id="note-line-8">
             <div>{this.mapNoteBlocks("W", "kit1")}</div>
             <div>{this.mapNoteBlocks("W", "kit2")}</div>
             <div>{this.mapNoteBlocks("W", "kit3")}</div>
           </div>
-          <div className="test-line" id="test-line-9">
+          <div className="note-line" id="note-line-9">
             <div>{this.mapNoteBlocks("Q", "kit1")}</div>
             <div>{this.mapNoteBlocks("Q", "kit2")}</div>
             <div>{this.mapNoteBlocks("Q", "kit3")}</div>
           </div>
+        </div>
+
+        <div id="display-time-container">
+          <p id="display-start-time">0<span className="seconds-span">s</span></p>
+          <p id="display-end-time">10<span className="seconds-span">s</span></p>
         </div>
       </div>
     );
