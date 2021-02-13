@@ -19,15 +19,6 @@ class Metronome extends React.Component {
     this.metroTempoTimeout = null;
   }
 
-  // nextNote() {
-  //   // Advance current note and time by a quarter note
-  //   var secondsPerBeat = 60 / this.state.metroBPM;
-  //
-  //   this.setState({
-  //     nextNoteTime: this.state.nextNoteTime + secondsPerBeat
-  //   });
-  // }
-
   nextNote() {
     // Advance current note and time by a quarter note
     var secondsPerBeat = 60 / this.state.metroBPM;
@@ -45,22 +36,21 @@ class Metronome extends React.Component {
   }
 
   playSample(audioContext, time) {
-    // create an oscillator
+    // SET UP OSCILLATOR
     const osc = audioContext.createOscillator();
-    const envelope = audioContext.createGain();
-
     osc.frequency.value = (this.state.currentQuarterNote % 4 == 0) ? 1000 : 800;
 
-    if(this.props.volume === 1) {
-      envelope.gain.exponentialRampToValueAtTime(1, time);
+    // SET UP GAIN ENVELOPE
+    const envelope = audioContext.createGain();
+    if(this.props.volume > 0) {
+      envelope.gain.exponentialRampToValueAtTime(1 * this.props.volume, time);
       envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.02);
     }
     else {
       envelope.gain.setValueAtTime(0, time);
     }
 
-    osc.connect(envelope);
-    envelope.connect(audioContext.destination);
+    osc.connect(envelope).connect(audioContext.destination);
 
     osc.start(time);
     osc.stop(time + 0.03);
@@ -200,35 +190,33 @@ class Metronome extends React.Component {
   render() {
     return (
       <div id="metronome-section">
-        <div id="metronome-container">
-          <p id="metro-header">Metronome</p>
+        <p id="metro-header">Metronome</p>
 
-          <div id="metro-container-inner">
-            <div id="metro-display">
-              <p className={this.metroDisplayStyle()}>{this.state.metroBPM} BPM</p>
+        <div id="metro-container-inner">
+          <div id="metro-display">
+            <p className={this.metroDisplayStyle()}>{this.state.metroBPM} BPM</p>
+          </div>
+
+          <div id="metro-controls">
+            <div className={this.metroBtnStyle("metro-toggle-btn")} onTouchStart={this.metronomeToggle} onTouchEnd={this.metroBtnUp}
+            onMouseDown={this.metronomeToggle} onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
+              <div className={this.metroGlowStyle("metro-toggle-btn")}></div>
+              <div id="metro-play-stop-span">
+                <i className="fas fa-play"></i> <span id="metro-slash-span">/</span> <i className="fas fa-stop"></i>
+              </div>
             </div>
 
-            <div id="metro-controls">
-              <div className={this.metroBtnStyle("metro-toggle-btn")} onTouchStart={this.metronomeToggle} onTouchEnd={this.metroBtnUp}
-              onMouseDown={this.metronomeToggle} onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
-                <div className={this.metroGlowStyle("metro-toggle-btn")}></div>
-                <div id="metro-play-stop-span">
-                  <i className="fas fa-play"></i> <span id="metro-slash-span">/</span> <i className="fas fa-stop"></i>
-                </div>
+            <div className={this.metroBtnStyle()} onTouchStart={this.metroTempoDown} onTouchEnd={this.metroBtnUp}
+            onMouseDown={this.metroTempoDown} onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
+              <div className={this.metroGlowStyle()}>
+                <i className="fas fa-caret-down"></i>
               </div>
+            </div>
 
-              <div className={this.metroBtnStyle()} onTouchStart={this.metroTempoDown} onTouchEnd={this.metroBtnUp}
-              onMouseDown={this.metroTempoDown} onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
-                <div className={this.metroGlowStyle()}>
-                  <i className="fas fa-caret-down"></i>
-                </div>
-              </div>
-
-              <div className={this.metroBtnStyle()} onTouchStart={this.metroTempoUp} onTouchEnd={this.metroBtnUp}
-              onMouseDown={this.metroTempoUp} onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
-                <div className={this.metroGlowStyle()}>
-                  <i className="fas fa-caret-up"></i>
-                </div>
+            <div className={this.metroBtnStyle()} onTouchStart={this.metroTempoUp} onTouchEnd={this.metroBtnUp}
+            onMouseDown={this.metroTempoUp} onMouseUp={this.metroBtnUp} onMouseLeave={this.metroBtnUp}>
+              <div className={this.metroGlowStyle()}>
+                <i className="fas fa-caret-up"></i>
               </div>
             </div>
           </div>

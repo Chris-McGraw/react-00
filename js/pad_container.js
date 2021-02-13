@@ -17,12 +17,7 @@ class PadContainer extends React.Component {
 
     // SET UP GAIN ENVELOPE
     const envelope = audioContext.createGain();
-    if(this.props.volume === 1) {
-      envelope.gain.setValueAtTime(0.3, time);
-    }
-    else {
-      envelope.gain.setValueAtTime(0, time);
-    }
+    envelope.gain.setValueAtTime(0.6 * this.props.volume, time);
 
     // let panNode = audioCtx.createStereoPanner();
     // panNode.pan.value = 1;
@@ -64,6 +59,10 @@ class PadContainer extends React.Component {
 
   padPress(event) {
     if(this.props.power === "on") {
+      if(event.altKey) {
+        return;
+      }
+
       let audioID = "";
 
       // PAD MOUSE DOWN
@@ -217,7 +216,9 @@ class PadContainer extends React.Component {
       this.props.setCurrentPad("");
     }.bind(this), 750);
 
-    document.getElementById("pad-" + audioID.toLowerCase()).style.boxShadow = "8px 8px 8px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
+    if(document.getElementById("pad-" + audioID.toLowerCase()) !== null) {
+      document.getElementById("pad-" + audioID.toLowerCase()).style.boxShadow = "8px 8px 8px rgba(0,0,0, 1.0), inset 0 0 0 0 rgba(255, 255, 255, 0.0)";
+    }
   }
 
   handleKeyPress(event) {

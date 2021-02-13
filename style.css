@@ -73,7 +73,11 @@ input[type=range]::-webkit-slider-thumb {
   background: silver;
   box-shadow: 4px 4px 4px rgba(0,0,0, 1.0);
 
-  cursor: pointer;
+  cursor: grab;
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+  cursor: grabbing;
 }
 
 input[type=range]::-moz-range-thumb {
@@ -84,7 +88,11 @@ input[type=range]::-moz-range-thumb {
   background: silver;
   box-shadow: 4px 4px 4px rgba(0,0,0, 1.0);
 
-  cursor: pointer;
+  cursor: grab;
+}
+
+input[type=range]::-moz-range-thumb:active {
+  cursor: grabbing;
 }
 
 .range-tick-container {
@@ -146,7 +154,7 @@ input[type=range]::-moz-range-thumb {
 /* ------------------------------ DRUM MACHINE ------------------------------ */
 #drum-machine {
   display: grid;
-  grid-template: repeat(24, 1fr) / repeat(2, 1fr);
+  grid-template: repeat(27, 1fr) / repeat(2, 1fr);
   grid-row-gap: 20px;
   grid-column-gap: 40px;
 
@@ -165,27 +173,21 @@ input[type=range]::-moz-range-thumb {
 
 
 /* ------------------------------ CHANGE LATER ------------------------------ */
-#display-right-section {
-  display: grid;
-  grid-row: 1 / 4;
-  grid-column: 1;
-}
-
 #track-controls-section {
   display: grid;
-  grid-row: 4 / 6;
+  grid-row: 1 / 3;
   grid-column: 1;
 }
 
 #playback-controls-section {
   display: grid;
-  grid-row: 6 / 8;
+  grid-row: 3 / 5;
   grid-column: 1;
 }
 
 #display-left-section {
   display: grid;
-  grid-row: 8 / 19;
+  grid-row: 5 / 18;
   grid-column: 1;
 
   position: relative;
@@ -193,9 +195,10 @@ input[type=range]::-moz-range-thumb {
 
 #machine-controls {
   display: grid;
-  grid-row: 19 / 25;
+  grid-row: 18 / 28;
   grid-column: 1;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template: repeat(5, 1fr) / repeat(8, 1fr);
+  grid-row-gap: 20px;
   grid-column-gap: 20px;
 
   position: relative;
@@ -203,40 +206,52 @@ input[type=range]::-moz-range-thumb {
 
 #power-section {
   display: grid;
-  grid-column: span 2;
+  grid-row: 1 / 6;
+  grid-column: 1 / 3;
 
   position: relative;
-}
-
-#volume-section {
-  display: grid;
-  grid-column: span 2;
-
-  position: relative;
+  padding-top: 30px;
 }
 
 #metronome-section {
   display: grid;
-  grid-column: span 4;
+  grid-row: 1 / 4;
+  grid-column: 3 / 9;
+
+  position: relative;
+
+  padding-top: 30px;
+}
+
+#volume-section {
+  display: grid;
+  grid-row: 4 / 6;
+  grid-column:  3 / 9;
 
   position: relative;
 }
 
+#display-right-section {
+  display: grid;
+  grid-row: 1 / 4;
+  grid-column: 2;
+}
+
 #pad-section {
   display: grid;
-  grid-row: 1 / 13;
+  grid-row: 4 / 16;
   grid-column: 2;
 }
 
 #kit-choice-section {
   display: grid;
-  grid-row: 13 / 17;
+  grid-row: 16 / 20;
   grid-column: 2;
 }
 
 #pitch-control-section {
   display: grid;
-  grid-row: 17 / 21;
+  grid-row: 20 / 24;
   grid-column: 2;
 
   position: relative;
@@ -244,7 +259,7 @@ input[type=range]::-moz-range-thumb {
 
 #pass-filter-section {
   display: grid;
-  grid-row: 21 / 25;
+  grid-row: 24 / 28;
   grid-column: 2;
   grid-template-columns: repeat(15, 1fr);
 
@@ -253,17 +268,18 @@ input[type=range]::-moz-range-thumb {
 
 
 /* ------------------------------ DISPLAY LEFT ------------------------------ */
-#other-test {
+#note-line-label-container {
   display: grid;
   grid-template-rows: repeat(9, 1fr);
 
   position: absolute;
   left: -20px;
+  padding-bottom: 25px;
 
   height: 100%;
 }
 
-#other-test p {
+#note-line-label-container p {
   display: grid;
   grid-row: span 1;
   justify-content: center;
@@ -274,8 +290,34 @@ input[type=range]::-moz-range-thumb {
   color: white;
 
   user-select: none;
+}
 
-  /* border-bottom: 1px solid rgba(255,255,255, 0.5); */
+#display-time-container {
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  height: 20px;
+
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+#display-start-time {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#display-end-time {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.seconds-span {
+  font-size: 12px !important;
 }
 
 #display-left {
@@ -283,6 +325,7 @@ input[type=range]::-moz-range-thumb {
   grid-template-rows: repeat(9, 1fr);
 
   position: relative;
+  margin-bottom: 25px;
 
   background-color: black;
   overflow: hidden;
@@ -300,7 +343,7 @@ input[type=range]::-moz-range-thumb {
   background-color: white;
 }
 
-.test-line {
+.note-line {
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   grid-row: span 1;
@@ -310,11 +353,11 @@ input[type=range]::-moz-range-thumb {
   border-bottom: 1px solid rgba(255,255,255, 0.5);
 }
 
-.test-line div {
+.note-line div {
   grid-row: span 1;
 }
 
-#test-line-9 {
+#note-line-9 {
   border-bottom: none;
 }
 
@@ -339,17 +382,6 @@ input[type=range]::-moz-range-thumb {
 
 
 /* ---------------------------- POWER CONTAINER ---------------------------- */
-#power-container {
-  display: grid;
-  align-self: flex-end;
-
-  position: relative;
-
-  height: 76.5%;
-
-  /* border: 1px dashed white; */
-}
-
 #power-header {
   position: absolute;
   top: 0;
@@ -361,33 +393,14 @@ input[type=range]::-moz-range-thumb {
   font-family: sans-serif;
   font-size: 16px;
   color: white;
-
-  /* border: 1px dashed red; */
 }
 
-/* #line-test-top {
-  position: absolute;
-  z-index: 100;
-  top: 40px;
-  left: 0;
+#power-container {
+  position: relative;
 
   width: 100%;
-  height: 1px;
-
-  border: 1px dashed blue;
+  height: 100%;
 }
-
-#line-test-bottom {
-  position: absolute;
-  z-index: 100;
-  bottom: 31px;
-  left: 0;
-
-  width: 100%;
-  height: 1px;
-
-  border: 1px dashed blue;
-} */
 
 #power-switch-container {
   position: absolute;
@@ -397,8 +410,6 @@ input[type=range]::-moz-range-thumb {
   height: 100%;
   margin-left: 0;
   margin-right: 34px;
-
-  /* border: 1px dashed white; */
 }
 
 #power-switch {
@@ -474,7 +485,7 @@ input[type=range]::-moz-range-thumb {
 #power-off-line {
   position: absolute;
   z-index: 0;
-  bottom: 25%;
+  bottom: 24.5%;
 
   width: 100%;
   height: 1px;
@@ -522,98 +533,23 @@ input[type=range]::-moz-range-thumb {
   user-select: none;
 }
 
-#volume-knob {
-  position: absolute;
-  z-index: 20;
-  top: 40px;
-  left: 0;
-  right: 0;
-
-  width: 105px;
-  height: 105px;
-  margin: auto;
-
-  background-color: silver;
-  border-radius: 100%;
-
-  cursor: pointer;
-  transition: transform 1s ease-out;
-}
-
-#volume-indicator {
-  position: absolute;
-
-  top: 72.5%;
-  left: 72.5%;
-
-  width: 8%;
-  height: 8%;
-
-  background-color: white;
-  border-radius: 100%;
-}
-
-#volume-knob-shadow {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  right: 0;
-
-  width: 105px;
-  height: 105px;
-  margin: auto;
-
-  background-color: rgba(0,0,0,0);
-  border-radius: 100%;
-  box-shadow: 5px 5px 5px rgba(0,0,0, 1.0);
-}
-
-#volume-0-text {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
-  font-family: sans-serif;
-  font-size: 16px;
-  color: white;
-
-  user-select: none;
-}
-
-#volume-100-text {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-
-  font-family: sans-serif;
-  font-size: 16px;
-  color: white;
-
-  user-select: none;
+#volume-slider {
+  -webkit-appearance: none;  /* Hides the slider so that custom slider can be made */
+  width: 100%;               /* Specific width is required for Firefox. */
+  background: transparent;   /* Otherwise white in Chrome */
 }
 
 
 /* -------------------------- METRONOME CONTAINER -------------------------- */
-#metronome-container {
-  display: grid;
-  align-items: center;
-
-  position: relative;
-
-  /* border: 1px dashed white; */
-}
-
 #metro-container-inner {
   display: grid;
-  grid-template-rows: 56% 38%;
+  grid-template-rows: repeat(5, 1fr);
   grid-row-gap: 15px;
 
   position: relative;
 
   width: 100%;
-  height: 53%;
-
-  /* border: 1px dashed white; */
+  height: 100%;
 }
 
 #metro-header {
@@ -629,12 +565,11 @@ input[type=range]::-moz-range-thumb {
   color: white;
 
   user-select: none;
-
-  /* border: 1px dashed red; */
 }
 
 #metro-display {
   display: grid;
+  grid-row: span 3;
   align-items: center;
 
   position: relative;
@@ -666,6 +601,7 @@ input[type=range]::-moz-range-thumb {
 
 #metro-controls {
   display: grid;
+  grid-row: span 2;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 15px;
 
@@ -787,8 +723,6 @@ input[type=range]::-moz-range-thumb {
   color: white;
 
   user-select: none;
-
-  /* border: 1px dashed red; */
 }
 
 .kit-choice-btn {
@@ -799,7 +733,7 @@ input[type=range]::-moz-range-thumb {
 
   position: relative;
 
-  margin-top: 40px;
+  margin-top: 30px;
 
   background-color: #898f90;
   box-shadow: 6px 6px 6px rgba(0,0,0, 1.0);
@@ -1208,29 +1142,8 @@ input[type=range]::-moz-range-thumb {
   }
 
   #machine-controls {
+    grid-row-gap: 15px;
     grid-column-gap: 15px;
-  }
-
-  /* #line-test-top {
-    top: 30px;
-  }
-
-  #line-test-bottom {
-    bottom: 24px;
-  } */
-
-  #volume-knob {
-    top: 30px;
-
-    width: 76px;
-    height: 76px;
-  }
-
-  #volume-knob-shadow {
-    top: 30px;
-
-    width: 76px;
-    height: 76px;
   }
 
   #metro-container-inner {
@@ -1283,30 +1196,9 @@ input[type=range]::-moz-range-thumb {
     height: 580px;
   }
 
-  /* #line-test-top {
-    top: 24px;
-  }
-
-  #line-test-bottom {
-    bottom: 23px;
-  } */
-
   #machine-controls {
+    grid-row-gap: 10px;
     grid-column-gap: 10px;
-  }
-
-  #volume-knob {
-    top: 24px;
-
-    width: 61px;
-    height: 61px;
-  }
-
-  #volume-knob-shadow {
-    top: 24px;
-
-    width: 61px;
-    height: 61px;
   }
 
   #metro-container-inner {
@@ -1359,14 +1251,14 @@ input[type=range]::-moz-range-thumb {
   }
 
   #drum-machine {
-    grid-template: repeat(51, 1fr) / 1fr;
+    grid-template: repeat(55, 1fr) / 1fr;
 
     position: absolute;
     top: 5%;
 
     max-width: 550px;
     width: 75%;
-    height: 1000px;
+    height: 1100px;
   }
 
   #display-right-section {
@@ -1385,21 +1277,21 @@ input[type=range]::-moz-range-thumb {
   }
 
   #display-left-section {
-    grid-row: 8 / 18;
+    grid-row: 8 / 19;
     grid-column: 1;
   }
 
-  #other-test {
+  #note-line-label-container {
     padding-top: 0;
   }
 
   #pad-section {
-    grid-row: 18 / 31;
+    grid-row: 19 / 32;
     grid-column: 1;
   }
 
   #kit-choice-section {
-    grid-row: 31 / 35;
+    grid-row: 32 / 36;
     grid-column: 1;
   }
 
@@ -1408,25 +1300,38 @@ input[type=range]::-moz-range-thumb {
   }
 
   #pitch-control-section {
-    grid-row: 35 / 40;
+    grid-row: 36 / 41;
     grid-column: 1;
   }
 
   #pass-filter-section {
-    grid-row: 40 / 45;
+    grid-row: 41 / 46;
     grid-column: 1;
   }
 
   #machine-controls {
-    grid-row: 45 / 52;
+    grid-row: 46 / 56;
     grid-column: 1;
+    grid-template: repeat(4, 1fr) / repeat(8, 1fr);
+  }
+
+  #power-section {
+    grid-row: 1 / 5;
+  }
+
+  #metronome-section {
+    grid-row: 1 / 3;
+  }
+
+  #volume-section {
+    grid-row: 3 / 5;
   }
 
   #footer {
     top: 5%;
     bottom: auto;
 
-    margin-top: 1040px;
+    margin-top: 1140px;
   }
 }
 
@@ -1434,50 +1339,54 @@ input[type=range]::-moz-range-thumb {
 /* -------------------------- MEDIA QUERY <= 580 -------------------------- */
   @media screen and (max-width: 580px) {
     #drum-machine {
-      grid-template: repeat(59, 1fr) / 1fr;
+      grid-template: repeat(58, 1fr) / 1fr;
 
       position: absolute;
       top: 0;
 
       max-width: 100%;
       width: 450px;
-      height: 1030px;
+      height: 1100px;
       padding-bottom: 100px;
     }
 
-    #display-right-section {
-      grid-row: 1 / 4;
-      grid-column: 1;
-    }
-
-    #track-controls-section {
-      grid-row: 4 / 6;
-      grid-column: 1;
-    }
-
-    #playback-controls-section {
-      grid-row: 6 / 8;
-      grid-column: 1;
-    }
-
-    #pad-section {
-      grid-row: 18 / 31;
-      grid-column: 1;
-    }
-
     #kit-choice-section {
-      grid-row: 31 / 36;
+      grid-row: 32 / 37;
       grid-column: 1;
     }
 
     #pitch-control-section {
-      grid-row: 36 / 41;
+      grid-row: 37 / 42;
       grid-column: 1;
     }
 
     #pass-filter-section {
-      grid-row: 41 / 46;
+      grid-row: 42 / 47;
       grid-column: 1;
+    }
+
+    #machine-controls {
+      grid-row: 47 / 59;
+      grid-column: 1;
+      grid-row-gap: 10px;
+
+      grid-template: repeat(12, 1fr) / repeat(8, 1fr);
+    }
+
+    #power-section {
+      grid-row: 1 / 13;
+    }
+
+    #metronome-section {
+      grid-row: 1 / 8;
+    }
+
+    #volume-section {
+      grid-row: 8 / 13;
+    }
+
+    #footer {
+      margin-top: 1000px;
     }
 
     input[type=range]::-webkit-slider-thumb {
@@ -1496,77 +1405,5 @@ input[type=range]::-moz-range-thumb {
 
     .range-tick {
       padding: 0 8px;  /* half of range thumb width */
-    }
-
-    #machine-controls {
-      grid-row: 46 / 60;
-      grid-column: 1;
-      grid-row-gap: 10px;
-
-      height: 192px;
-    }
-
-    #metronome-container {
-      display: block;
-    }
-
-    #power-section {
-      grid-column: span 4;
-      order: 2;
-
-      height: 90px;
-    }
-
-    #power-switch {
-      max-width: 45px;
-    }
-
-    #volume-section {
-      grid-column: span 4;
-      order: 3;
-
-      height: 90px;
-    }
-
-    #volume-knob {
-      top: 20px;
-
-      width: 60px;
-      height: 60px;
-    }
-
-    #volume-knob-shadow {
-      top: 20px;
-
-      width: 60px;
-      height: 60px;
-    }
-
-    #metronome-section {
-      grid-column: span 8;
-      order: 1;
-
-      height: 90px;
-    }
-
-    #metro-container-inner {
-      display: block;
-
-      margin-top: 25px;
-
-      height: auto;
-    }
-
-    #metro-display {
-      height: 34px;
-    }
-
-    .metro-btn {
-      height: 22px;
-      margin-top: 5px;
-    }
-
-    #footer {
-      margin-top: 930px;
     }
   }

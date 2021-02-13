@@ -3,32 +3,29 @@
 class VolumeContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.getVolumeSliderValue = this.getVolumeSliderValue.bind(this);
+  }
+
+  getVolumeSliderValue() {
+    let value = document.getElementById("volume-slider").value / 100;
+    // console.log(value);
+
+    this.props.setMasterVolume(value);
   }
 
   render() {
-    let knobTurn = {
-      transform: "rotate(0deg)"
-    }
-    if(this.props.volume === 0) {
-      knobTurn = {
-        transform: "rotate(-270deg)"
-      }
-    }
-
     return (
       <div id="volume-section">
         <div id="volume-container">
-          <p id="volume-header">Volume</p>
+          <p id="volume-header">Master Volume</p>
 
-          <div id="volume-knob" style={knobTurn} onTouchStart={this.props.toggleVolume}
-          onClick={this.props.toggleVolume}>
-            <div id="volume-indicator"></div>
+          <input name="volume-slider" id="volume-slider" className="slider" type="range" min="0" max="100" step="1"
+          defaultValue="100" onChange={this.getVolumeSliderValue} />
+
+          <div className="range-tick-container">
+            <div className="range-tick">0</div>
+            <div className="range-tick">100</div>
           </div>
-
-          <div id="volume-knob-shadow"></div>
-
-          <p id="volume-0-text">0</p>
-          <p id="volume-100-text">100</p>
         </div>
       </div>
     );
