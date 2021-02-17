@@ -96,9 +96,9 @@ class KitChoiceContainer extends React.Component {
 
     return (
       <div id="kit-choice-section">
-        <div id="kit-choice-container">
-          <p id="kit-choice-header">Page</p>
+        <p id="kit-choice-header">Page</p>
 
+        <div id="kit-choice-container">
           <div className={this.kitBtnStyle("kit1")} id="kit-btn-1"
           onTouchStart={this.kitBtnDown} onTouchEnd={this.kitBtnUp}
           onMouseDown={this.kitBtnDown} onMouseUp={this.kitBtnUp} onMouseLeave={this.kitBtnUp}>

@@ -60,6 +60,7 @@ class DrumMachine extends React.Component {
       currentTrack: "track1",
       currentKit: "kit1",
       currentPad: "",
+      currentGain: 1,
       currentPitch: 1,
       currentHighPass: 0,
       currentLowPass: 0,
@@ -83,6 +84,7 @@ class DrumMachine extends React.Component {
     this.setCurrentTrack = this.setCurrentTrack.bind(this);
     this.setCurrentKit = this.setCurrentKit.bind(this);
     this.setCurrentPad = this.setCurrentPad.bind(this);
+    this.setCurrentGain = this.setCurrentGain.bind(this);
     this.setCurrentPitch = this.setCurrentPitch.bind(this);
     this.setCurrentHighPass =this.setCurrentHighPass.bind(this);
     this.setCurrentLowPass =this.setCurrentLowPass.bind(this);
@@ -212,6 +214,12 @@ class DrumMachine extends React.Component {
     }
   }
 
+  setCurrentGain(gainValue) {
+    this.setState({
+      currentGain: gainValue
+    });
+  }
+
   setCurrentPitch(pitchValue) {
     this.setState({
       currentPitch: pitchValue
@@ -304,7 +312,8 @@ class DrumMachine extends React.Component {
     if(this.state.nowRecording === true && event !== undefined) {
       let arr = JSON.parse(localStorage.getItem(this.state.currentTrack));
 
-      arr.push({kit: this.state.currentKit, key:key, pitch:this.state.currentPitch,
+      arr.push({kit: this.state.currentKit, key:key,
+        pitch:this.state.currentPitch, noteGain:this.state.currentGain,
         highPass:this.state.currentHighPass, lowPass:this.state.currentLowPass,
         time:(this.state.audioCtx.currentTime - this.state.recordingStartTime) * 1000
       });
@@ -394,7 +403,7 @@ class DrumMachine extends React.Component {
     }
   }
 
-  playSample(audioContext, audioBuffer, pitch, highPass, lowPass, time) {
+  playSample(audioContext, audioBuffer, pitch, noteGain, highPass, lowPass, time) {
     // SET UP SAMPLE SOURCE BUFFER
     const sampleSource = audioContext.createBufferSource();
     sampleSource.buffer = audioBuffer;
@@ -405,7 +414,10 @@ class DrumMachine extends React.Component {
 
     // SET UP GAIN ENVELOPE
     const envelope = audioContext.createGain();
-    envelope.gain.setValueAtTime(0.6 * this.state.volume, time);
+    if(noteGain === undefined) {
+      noteGain = 1.0;
+    }
+    envelope.gain.setValueAtTime( (0.6 * this.state.volume) * noteGain, time);
 
     //  SET UP PASS FILTERS
     if(highPass === undefined) {
@@ -456,9 +468,11 @@ class DrumMachine extends React.Component {
       // while there are notes that will need to play before the next interval, schedule them and advance the pointer.
       while (this.state.nextNoteTime < this.state.audioCtx.currentTime + this.state.scheduleAheadTime &&
       this.state.currentNoteNumber < this.state.playbackArrCopy.length) {
-        this.playSample(this.state.audioCtx,
+        this.playSample(
+          this.state.audioCtx,
           this.getSampleKitAudio(this.state.playbackArrCopy[this.state.currentNoteNumber].kit, this.state.playbackArrCopy[this.state.currentNoteNumber].key),
           this.state.playbackArrCopy[this.state.currentNoteNumber].pitch,
+          this.state.playbackArrCopy[this.state.currentNoteNumber].noteGain,
           this.state.playbackArrCopy[this.state.currentNoteNumber].highPass,
           this.state.playbackArrCopy[this.state.currentNoteNumber].lowPass,
           this.state.nextNoteTime
@@ -608,11 +622,21 @@ class DrumMachine extends React.Component {
               <Metronome audioCtx={this.state.audioCtx} power={this.state.power} volume={this.state.volume} metronomePlaying={this.state.metronomePlaying} toggleMetronomePlaying={this.toggleMetronomePlaying} />
             </div>
 
+            <NoteModSpacerTop />
+            <NoteGainControl audioCtx={this.state.audioCtx} setCurrentGain={this.setCurrentGain} />
+            <NoteModSpacerBtm />
+
             <KitChoiceContainer power={this.state.power} setCurrentKit={this.setCurrentKit} currentKit={this.state.currentKit} />
             <DisplayRight power={this.state.power} currentKit={this.state.currentKit} currentPad={this.state.currentPad} />
             <TrackControls power={this.state.power} setCurrentTrack={this.setCurrentTrack} currentTrack={this.state.currentTrack} nowRecording={this.state.nowRecording} nowPlaying={this.state.nowPlaying} deleteRecording={this.deleteRecording} />
             <PlaybackControls power={this.state.power} playbackArr={this.state.playbackArr} playbackArrUndone={this.state.playbackArrUndone} startRecording={this.startRecording} nowRecording={this.state.nowRecording} startPlayback={this.startPlayback} nowPlaying={this.state.nowPlaying} stop={this.stop} undo={this.undo} />
-            <PadContainer audioCtx={this.state.audioCtx} audioSampleKit1={this.state.audioSampleKit1} audioSampleKit2={this.state.audioSampleKit2} audioSampleKit3={this.state.audioSampleKit3} power={this.state.power} volume={this.state.volume} currentKit={this.state.currentKit} setCurrentPad={this.setCurrentPad} currentPitch={this.state.currentPitch} currentHighPass={this.state.currentHighPass} currentLowPass={this.state.currentLowPass} nowRecording={this.state.nowRecording} recordNote={this.recordNote} />
+            <PadContainer audioCtx={this.state.audioCtx} audioSampleKit1={this.state.audioSampleKit1}
+              audioSampleKit2={this.state.audioSampleKit2} audioSampleKit3={this.state.audioSampleKit3}
+              power={this.state.power} volume={this.state.volume} currentKit={this.state.currentKit}
+              setCurrentPad={this.setCurrentPad} currentGain={this.state.currentGain} currentPitch={this.state.currentPitch}
+              currentHighPass={this.state.currentHighPass} currentLowPass={this.state.currentLowPass}
+              nowRecording={this.state.nowRecording} recordNote={this.recordNote}
+            />
             <PitchControl audioCtx={this.state.audioCtx} power={this.state.power} setCurrentPitch={this.setCurrentPitch} />
             <PassFilter audioCtx={this.state.audioCtx} power={this.state.power} setCurrentHighPass={this.setCurrentHighPass} setCurrentLowPass={this.setCurrentLowPass} />
           </div>

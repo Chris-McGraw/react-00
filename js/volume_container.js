@@ -17,7 +17,7 @@ class VolumeContainer extends React.Component {
     return (
       <div id="volume-section">
         <div id="volume-container">
-          <p id="volume-header">Master Volume</p>
+          <p className="range-header">Master Volume</p>
 
           <input name="volume-slider" id="volume-slider" className="slider" type="range" min="0" max="100" step="1"
           defaultValue="100" onChange={this.getVolumeSliderValue} />

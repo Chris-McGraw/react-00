@@ -17,11 +17,7 @@ class PadContainer extends React.Component {
 
     // SET UP GAIN ENVELOPE
     const envelope = audioContext.createGain();
-    envelope.gain.setValueAtTime(0.6 * this.props.volume, time);
-
-    // let panNode = audioCtx.createStereoPanner();
-    // panNode.pan.value = 1;
-    // sampleSource.connect(panNode).connect(envelope).connect(audioContext.destination);
+    envelope.gain.setValueAtTime( (0.6 * this.props.volume) * this.props.currentGain, time);
 
     //  SET UP PASS FILTERS
     if(this.props.currentHighPass === 0 && this.props.currentLowPass === 0) {
