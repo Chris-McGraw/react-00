@@ -300,6 +300,8 @@ input[type=range]::-moz-range-thumb:active {
   position: relative;
 
   text-align: center;
+
+  user-select: none;
 }
 
 #note-mod-spacer-btm-section {
@@ -329,6 +331,150 @@ input[type=range]::-moz-range-thumb:active {
   grid-template-columns: repeat(15, 1fr);
 
   position: relative;
+}
+
+
+/* ----------------------------- DISPLAY RIGHT ----------------------------- */
+#display-right {
+  display: grid;
+  align-items: center;
+
+  position: relative;
+
+  padding-left: 20px;
+
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+
+  background-color: black;
+
+  user-select: none;
+}
+
+
+/* ----------------------------- TRACK CONTROLS ----------------------------- */
+#track-controls {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: var(--grid-gap-lg);
+
+  position: relative;
+}
+
+#track-controls p {
+  font-family: serif;
+  font-weight: bold;
+  font-size: 18px;
+
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+}
+
+.fa-trash {
+  font-size: 18px;
+  color: black;
+
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+}
+
+
+/* --------------------------- PLAYBACK CONTROLS --------------------------- */
+#playback-controls {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: var(--grid-gap-lg);
+
+  position: relative;
+}
+
+.ctrl-btn {
+  display: grid;
+  grid-column: span 1;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  box-shadow: 6px 6px 6px rgba(0,0,0, 1.0);
+
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.4s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.ctrl-btn-off {
+  background-image: none;
+  background-color: #898f90;
+}
+
+.ctrl-btn-on {
+  background-image: radial-gradient( rgba(192, 199, 202, 0.6), rgba(182, 180, 190, 0.6) );
+  background-color: #b6b4be;
+}
+
+.ctrl-btn-active {
+  background-image: radial-gradient( rgba(233, 232, 235, 0.8), rgba(218, 217, 222, 0.8) );
+  background-color: #dad9de;
+}
+
+.ctrl-btn-pressed {
+  box-shadow: 4px 4px 6px rgba(0,0,0, 1.0) !important;
+}
+
+.ctrl-glow {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  width: 35%;
+  height: 90%;
+  margin: 5% auto;
+
+  border-radius: 100%;
+
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.ctrl-glow-off {
+  background-color: rgba(255,255,255, 0.0);
+  box-shadow: none;
+}
+
+.ctrl-glow-on {
+  background-color: rgba(255,255,255, 0.2);
+  box-shadow: 0 0 25px rgba(255,255,255, 0.5);
+}
+
+.fa-circle {
+  font-size: 18px;
+  color: red;
+
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+}
+
+.fa-play {
+  font-size: 18px;
+  color: black;
+
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+}
+
+.fa-stop {
+  font-size: 18px;
+  color: black;
+
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+}
+
+.fa-undo {
+  font-size: 18px;
+  color: black;
+
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
 }
 
 
@@ -367,6 +513,8 @@ input[type=range]::-moz-range-thumb:active {
   font-family: sans-serif;
   font-size: 16px;
   color: white;
+
+  user-select: none;
 }
 
 #display-start-time {
@@ -574,22 +722,6 @@ input[type=range]::-moz-range-thumb:active {
 }
 
 
-/* ---------------------------- VOLUME CONTAINER ---------------------------- */
-#volume-container {
-  display: grid;
-
-  position: relative;
-
-  width: 100%;
-}
-
-#volume-slider {
-  -webkit-appearance: none;  /* Hides the slider so that custom slider can be made */
-  width: 100%;               /* Specific width is required for Firefox. */
-  background: transparent;   /* Otherwise white in Chrome */
-}
-
-
 /* -------------------------- METRONOME CONTAINER -------------------------- */
 #metro-container-inner {
   display: grid;
@@ -751,223 +883,19 @@ input[type=range]::-moz-range-thumb:active {
 }
 
 
-/* -------------------------- KIT CHOICE CONTAINER -------------------------- */
-#kit-choice-container {
+/* ---------------------------- VOLUME CONTAINER ---------------------------- */
+#volume-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: var(--grid-gap-lg);
 
   position: relative;
-}
-
-#kit-choice-header {
-  position: absolute;
-  top: 0;
-  left: 0;
 
   width: 100%;
-  height: 20px;
-
-  font-family: sans-serif;
-  font-size: 16px;
-  color: white;
-
-  user-select: none;
 }
 
-.kit-choice-btn {
-  z-index: 20;
-
-  display: grid;
-  grid-column: span 1;
-  align-items: center;
-  justify-content: center;
-
-  position: relative;
-
-  background-color: #898f90;
-  box-shadow: 6px 6px 6px rgba(0,0,0, 1.0);
-
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.4s ease-in-out, box-shadow 0.1s ease-in-out;
-}
-
-.kit-btn-pressed {
-  box-shadow: 4px 4px 6px rgba(0,0,0, 1.0);
-}
-
-.kit-choice-btn-glow {
-  position: absolute;
-  left: 0;
-  right: 0;
-
-  width: 35%;
-  height: 90%;
-  margin: 5% auto;
-
-  background-color: rgba(255,255,255, 0.2);
-  border-radius: 100%;
-  box-shadow: 0 0 40px rgba(255,255,255, 0.5);
-
-  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.kit-choice-btn > p {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-
-  font-family: sans-serif;
-  font-size: 16px;
-  color: black;
-  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
-
-  user-select: none;
-}
-
-
-/* ----------------------------- DISPLAY RIGHT ----------------------------- */
-#display-right {
-  display: grid;
-  align-items: center;
-
-  position: relative;
-
-  padding-left: 20px;
-
-  font-family: sans-serif;
-  font-size: 16px;
-  color: white;
-
-  background-color: black;
-
-  user-select: none;
-}
-
-
-/* ----------------------------- TRACK CONTROLS ----------------------------- */
-#track-controls {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: var(--grid-gap-lg);
-
-  position: relative;
-}
-
-#track-controls p {
-  font-family: serif;
-  font-weight: bold;
-  font-size: 18px;
-
-  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
-}
-
-.fa-trash {
-  font-size: 18px;
-  color: black;
-
-  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
-}
-
-
-/* --------------------------- PLAYBACK CONTROLS --------------------------- */
-#playback-controls {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: var(--grid-gap-lg);
-
-  position: relative;
-}
-
-.ctrl-btn {
-  display: grid;
-  grid-column: span 1;
-  align-items: center;
-  justify-content: center;
-
-  position: relative;
-
-  box-shadow: 6px 6px 6px rgba(0,0,0, 1.0);
-
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.4s ease-in-out, box-shadow 0.1s ease-in-out;
-}
-
-.ctrl-btn-off {
-  background-image: none;
-  background-color: #898f90;
-}
-
-.ctrl-btn-on {
-  background-image: radial-gradient( rgba(192, 199, 202, 0.6), rgba(182, 180, 190, 0.6) );
-  background-color: #b6b4be;
-}
-
-.ctrl-btn-active {
-  background-image: radial-gradient( rgba(233, 232, 235, 0.8), rgba(218, 217, 222, 0.8) );
-  background-color: #dad9de;
-}
-
-.ctrl-btn-pressed {
-  box-shadow: 4px 4px 6px rgba(0,0,0, 1.0) !important;
-}
-
-.ctrl-glow {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-
-  width: 35%;
-  height: 90%;
-  margin: 5% auto;
-
-  border-radius: 100%;
-
-  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.ctrl-glow-off {
-  background-color: rgba(255,255,255, 0.0);
-  box-shadow: none;
-}
-
-.ctrl-glow-on {
-  background-color: rgba(255,255,255, 0.2);
-  box-shadow: 0 0 25px rgba(255,255,255, 0.5);
-}
-
-.fa-circle {
-  font-size: 18px;
-  color: red;
-
-  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
-}
-
-.fa-play {
-  font-size: 18px;
-  color: black;
-
-  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
-}
-
-.fa-stop {
-  font-size: 18px;
-  color: black;
-
-  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
-}
-
-.fa-undo {
-  font-size: 18px;
-  color: black;
-
-  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+#volume-slider {
+  -webkit-appearance: none;  /* Hides the slider so that custom slider can be made */
+  width: 100%;               /* Specific width is required for Firefox. */
+  background: transparent;   /* Otherwise white in Chrome */
 }
 
 
@@ -1068,6 +996,82 @@ input[type=range]::-moz-range-thumb:active {
 }
 
 
+/* -------------------------- KIT CHOICE CONTAINER -------------------------- */
+#kit-choice-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: var(--grid-gap-lg);
+
+  position: relative;
+}
+
+#kit-choice-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 20px;
+
+  font-family: sans-serif;
+  font-size: 16px;
+  color: white;
+
+  user-select: none;
+}
+
+.kit-choice-btn {
+  z-index: 20;
+
+  display: grid;
+  grid-column: span 1;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  background-color: #898f90;
+  box-shadow: 6px 6px 6px rgba(0,0,0, 1.0);
+
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.4s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.kit-btn-pressed {
+  box-shadow: 4px 4px 6px rgba(0,0,0, 1.0);
+}
+
+.kit-choice-btn-glow {
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  width: 35%;
+  height: 90%;
+  margin: 5% auto;
+
+  background-color: rgba(255,255,255, 0.2);
+  border-radius: 100%;
+  box-shadow: 0 0 40px rgba(255,255,255, 0.5);
+
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.kit-choice-btn > p {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  font-family: sans-serif;
+  font-size: 16px;
+  color: black;
+  text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+
+  user-select: none;
+}
+
+
 /* ---------------------------- N0TE MOD SPACERS ---------------------------- */
 #note-mod-spacer-top-section p {
   z-index: 10;
@@ -1103,16 +1107,16 @@ input[type=range]::-moz-range-thumb:active {
 }
 
 
-/* ------------------------------ GAIN CONTROL ------------------------------ */
-#gain-slider {
+/* ----------------------------- PITCH CONTROL ----------------------------- */
+#pitch-slider {
   -webkit-appearance: none;  /* Hides the slider so that custom slider can be made */
   width: 100%;               /* Specific width is required for Firefox. */
   background: transparent;   /* Otherwise white in Chrome */
 }
 
 
-/* ----------------------------- PITCH CONTROL ----------------------------- */
-#pitch-slider {
+/* ------------------------------ GAIN CONTROL ------------------------------ */
+#gain-slider {
   -webkit-appearance: none;  /* Hides the slider so that custom slider can be made */
   width: 100%;               /* Specific width is required for Firefox. */
   background: transparent;   /* Otherwise white in Chrome */
@@ -1216,16 +1220,16 @@ input[type=range]::-moz-range-thumb:active {
     padding-top: var(--section-header-btm-pad-md);
   }
 
-  #kit-choice-section {
-    padding-top: var(--section-header-btm-pad-md);
-  }
-
   #metro-container-inner {
     grid-row-gap: var(--grid-gap-sm);
   }
 
   #metro-controls {
     grid-column-gap: var(--grid-gap-sm);
+  }
+
+  #kit-choice-section {
+    padding-top: var(--section-header-btm-pad-md);
   }
 
   input[type=range]::-webkit-slider-thumb {
@@ -1263,16 +1267,16 @@ input[type=range]::-moz-range-thumb:active {
     padding-top: var(--section-header-btm-pad-md);
   }
 
-  #kit-choice-section {
-    padding-top: var(--section-header-btm-pad-md);
-  }
-
   #metro-container-inner {
     grid-row-gap: var(--grid-gap-sm);
   }
 
   #metro-controls {
     grid-column-gap: var(--grid-gap-sm);
+  }
+
+  #kit-choice-section {
+    padding-top: var(--section-header-btm-pad-md);
   }
 
   input[type=range]::-webkit-slider-thumb {
@@ -1306,6 +1310,14 @@ input[type=range]::-moz-range-thumb:active {
     /* background-color: red; */
   }
 
+  #track-controls {
+    grid-column-gap: var(--grid-gap-sm);
+  }
+
+  #playback-controls {
+    grid-column-gap: var(--grid-gap-sm);
+  }
+
   #machine-controls {
     grid-row-gap: var(--grid-gap-sm);
     grid-column-gap: var(--grid-gap-sm);
@@ -1319,21 +1331,13 @@ input[type=range]::-moz-range-thumb:active {
     grid-column-gap: var(--grid-gap-xs);
   }
 
-  #kit-choice-container {
-    grid-column-gap: var(--grid-gap-sm);
-  }
-
-  #track-controls {
-    grid-column-gap: var(--grid-gap-sm);
-  }
-
-  #playback-controls {
-    grid-column-gap: var(--grid-gap-sm);
-  }
-
   #pad-container {
     grid-column-gap: var(--grid-gap-sm);
     grid-row-gap: var(--grid-gap-sm);
+  }
+
+  #kit-choice-container {
+    grid-column-gap: var(--grid-gap-sm);
   }
 
   input[type=range]::-webkit-slider-thumb {
@@ -1367,6 +1371,14 @@ input[type=range]::-moz-range-thumb:active {
     /* background-color: red; */
   }
 
+  #track-controls {
+    grid-column-gap: var(--grid-gap-sm);
+  }
+
+  #playback-controls {
+    grid-column-gap: var(--grid-gap-sm);
+  }
+
   #machine-controls {
     grid-row-gap: var(--grid-gap-sm);
     grid-column-gap: var(--grid-gap-sm);
@@ -1380,21 +1392,13 @@ input[type=range]::-moz-range-thumb:active {
     grid-column-gap: var(--grid-gap-xs);
   }
 
-  #kit-choice-container {
-    grid-column-gap: var(--grid-gap-sm);
-  }
-
-  #track-controls {
-    grid-column-gap: var(--grid-gap-sm);
-  }
-
-  #playback-controls {
-    grid-column-gap: var(--grid-gap-sm);
-  }
-
   #pad-container {
     grid-column-gap: var(--grid-gap-sm);
     grid-row-gap: var(--grid-gap-sm);
+  }
+
+  #kit-choice-container {
+    grid-column-gap: var(--grid-gap-sm);
   }
 
   input[type=range]::-webkit-slider-thumb {
