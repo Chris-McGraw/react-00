@@ -66,7 +66,7 @@ class PitchControl extends React.Component {
   render() {
     return (
       <div id="pitch-control-section">
-        <div id="pitch-title">Pitch</div>
+        <p className="range-header">Pitch</p>
 
         <input name="pitch-slider" id="pitch-slider" className="slider" type="range" min="-7" max="7" step="1"
         defaultValue="0" onChange={this.getPitchSliderValue} />

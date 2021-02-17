@@ -71,7 +71,7 @@ class PassFilter extends React.Component {
     return (
       <div id="pass-filter-section">
         <div id="high-pass-container">
-          <div className="pass-title">High Pass (kHz)</div>
+          <p className="range-header">High Pass (kHz)</p>
 
           <input name="high-pass-slider" id="high-pass-slider" className="slider" type="range" min="0" max="5" step="1"
           defaultValue="0" onChange={this.getHighPassSliderValue} />
@@ -87,7 +87,7 @@ class PassFilter extends React.Component {
         </div>
 
         <div id="low-pass-container">
-          <div className="pass-title">Low Pass (kHz)</div>
+          <p className="range-header">Low Pass (kHz)</p>
 
           <input name="low-pass-slider" id="low-pass-slider" className="slider" type="range" min="0" max="5" step="1"
           defaultValue="0" onChange={this.getLowPassSliderValue} />
