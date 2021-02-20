@@ -66,3 +66,22 @@ const playbackExample = [
 
   {kit: "kit3", key: "C", time: 6837}
 ];
+
+// const playbackTestArray = [
+//   {kit: "kit3", key: "D", time: 0, pitch: 32}, {kit: "kit3", key: "D", time: 1452, pitch: 32},
+//   {kit: "kit3", key: "D", time: 3630, pitch: 32}, {kit: "kit3", key: "D", time: 3872, pitch: 32},
+//   {kit: "kit3", key: "D", time: 5082, pitch: 32}, {kit: "kit3", key: "D", time: 5324, pitch: 32},
+//   {kit: "kit3", key: "D", time: 6292, pitch: 32}, {kit: "kit3", key: "D", time: 7260, pitch: 32},
+//
+//   {kit: "kit3", key: "E", time: 968, pitch: 0.25, noteGain: 0.7}, {kit: "kit3", key: "E", time: 2904, pitch: 0.25, noteGain: 0.7}, {kit: "kit3", key: "E", time: 4840, pitch: 0.25, noteGain: 0.7}, {kit: "kit3", key: "E", time: 6776, pitch: 0.25, noteGain: 0.7},
+//
+//   {kit: "kit1", key: "Z", time: 0, pitch: 0.125, noteGain: 0.8}, {kit: "kit1", key: "Z", time: 242, pitch: 0.125, noteGain: 0.8}, {kit: "kit1", key: "Z", time: 363, pitch: 0.125, noteGain: 0.8}, {kit: "kit1", key: "Z", time: 484, pitch: 0.125, noteGain: 0.8}, {kit: "kit1", key: "Z", time: 726, pitch: 0.125, noteGain: 0.8},
+//   {kit: "kit1", key: "Z", time: 968, pitch: 0.125}, {kit: "kit1", key: "Z", time: 1210, pitch: 0.125}, {kit: "kit1", key: "Z", time: 1452, pitch: 0.125}, {kit: "kit1", key: "Z", time: 1694, pitch: 0.125},
+//   {kit: "kit1", key: "Z", time: 1936, pitch: 0.125}, {kit: "kit1", key: "Z", time: 2178, pitch: 0.125}, {kit: "kit1", key: "Z", time: 2420, pitch: 0.125}, {kit: "kit1", key: "Z", time: 2662, pitch: 0.125}, {kit: "kit1", key: "Z", time: 2722, pitch: 0.125}, {kit: "kit1", key: "Z", time: 2783, pitch: 0.125},
+//   {kit: "kit1", key: "Z", time: 2904, pitch: 0.125}, {kit: "kit1", key: "Z", time: 3146, pitch: 0.125}, {kit: "kit1", key: "Z", time: 3388, pitch: 0.0625}, {kit: "kit1", key: "Z", time: 3630, pitch: 0.0625},
+// // -- measure 2
+//   {kit: "kit1", key: "Z", time: 3872, pitch: 0.125}, {kit: "kit1", key: "Z", time: 4114, pitch: 0.125}, {kit: "kit1", key: "Z", time: 4235, pitch: 0.125}, {kit: "kit1", key: "Z", time: 4356, pitch: 0.125}, {kit: "kit1", key: "Z", time: 4598, pitch: 0.125},
+//   {kit: "kit1", key: "Z", time: 4840, pitch: 0.125}, {kit: "kit1", key: "Z", time: 5082, pitch: 0.125}, {kit: "kit1", key: "Z", time: 5324, pitch: 0.125}, {kit: "kit1", key: "Z", time: 5566, pitch: 0.25},          {kit: "kit1", key: "Z", time: 5626, pitch: 0.25}, {kit: "kit1", key: "Z", time: 5687, pitch: 0.25}, {kit: "kit1", key: "Z", time: 5747, pitch: 0.25},
+//   {kit: "kit1", key: "Z", time: 5808, pitch: 0.125}, {kit: "kit1", key: "Z", time: 6050, pitch: 0.125}, {kit: "kit1", key: "Z", time: 6292, pitch: 0.125}, {kit: "kit1", key: "Z", time: 6534, pitch: 0.125},
+//   {kit: "kit1", key: "Z", time: 6776, pitch: 0.125}, {kit: "kit1", key: "Z", time: 7018, pitch: 0.125}, {kit: "kit1", key: "Z", time: 7260, pitch: 0.125}, {kit: "kit1", key: "Z", time: 7381, pitch: 0.0625}, {kit: "kit1", key: "Z", time: 7502, pitch: 0.125}, {kit: "kit1", key: "Z", time: 7623, pitch: 0.03125}
+// ];
