@@ -518,31 +518,62 @@ input[type=range]::-moz-range-thumb:active {
 }
 
 #display-time-container {
+  display: flex;
+  justify-content: space-between;
+
   position: absolute;
   bottom: 0;
 
   width: 100%;
   height: 20px;
 
+  user-select: none;
+}
+
+.display-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1px;
+  height: 100%;
+  padding: 0 2px;  /* half of play line width */
+
   font-family: var(--font-fam-main);
   font-size: var(--font-size-main-accent);
   font-weight: var(--font-weight-main-light);
   line-height: var(--line-height-main);
-  color: white;
-
-  user-select: none;
+  color: gray;
 }
 
 #display-start-time {
   position: absolute;
   bottom: 0;
   left: 0;
+
+  font-family: var(--font-fam-main);
+  font-size: var(--font-size-main-accent);
+  font-weight: var(--font-weight-main-light);
+  line-height: var(--line-height-main);
+  color: white;
+}
+
+#display-mid-time {
+  align-items: flex-end;
+
+  color: white;
 }
 
 #display-end-time {
   position: absolute;
   bottom: 0;
   right: 0;
+
+  font-family: var(--font-fam-main);
+  font-size: var(--font-size-main-accent);
+  font-weight: var(--font-weight-main-light);
+  line-height: var(--line-height-main);
+  color: white;
 }
 
 .seconds-span {
@@ -567,7 +598,7 @@ input[type=range]::-moz-range-thumb:active {
   z-index: 20;
 
   height: 100%;
-  width: 5px;
+  width: 4px;
 
   background-color: white;
 }
@@ -593,7 +624,7 @@ input[type=range]::-moz-range-thumb:active {
 .note-block {
   position: absolute;
 
-  width: 5px;
+  width: 4px;
   height: 33.33%;
 
   background-color: red;

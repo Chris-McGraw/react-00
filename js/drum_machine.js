@@ -270,7 +270,7 @@ class DrumMachine extends React.Component {
 
           // console.log("recording time end: " + this.state.audioCtx.currentTime);
           console.log("RECORDING FINISHED");
-        }.bind(this), 10000);
+        }.bind(this), 16000);
       }
       else if(this.state.playbackArr.length > 0) {
         this.startPlayback(event);
@@ -507,7 +507,7 @@ class DrumMachine extends React.Component {
         // console.log("start time:" + this.state.audioCtx.currentTime);
 
         let startTime = this.state.audioCtx.currentTime;
-        let targetTime = this.state.audioCtx.currentTime + 10.0;
+        let targetTime = this.state.audioCtx.currentTime + 16.0;
 
         this.playbackInterval = setInterval(function() {
           // ***** PLAYBACK CONTINUES *****

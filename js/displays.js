@@ -9,7 +9,7 @@ class DisplayLeft extends React.Component {
     return this.props.playbackArr.filter(i =>
       i.key === key && i.kit === kit).map(i =>
         <div key={i.kit + i.key + i.time} className={this.noteBlockStyle()}
-        style={{left: ( (i.time / 1000).toFixed(1) * 10 ) + "%",
+        style={{left: ( (i.time / 1600).toFixed(1) * 10 ) + "%",
         backgroundColor: sampleKits[i.kit][i.key].noteColor}}></div>
     );
   }
@@ -35,8 +35,8 @@ class DisplayLeft extends React.Component {
     }
     if(this.props.nowRecording === true || this.props.nowPlaying === true) {
       movePlayLine = {
-        transition: "transform 10s linear",
-        transform: "translateX(" + (document.getElementById("display-left").offsetWidth - 5) + "px)"
+        transition: "transform 16s linear",
+        transform: "translateX(" + (document.getElementById("display-left").offsetWidth - 4) + "px)"
       }
     }
 
@@ -105,8 +105,29 @@ class DisplayLeft extends React.Component {
         </div>
 
         <div id="display-time-container">
-          <p id="display-start-time">0<span className="seconds-span">s</span></p>
-          <p id="display-end-time">10<span className="seconds-span">s</span></p>
+          <div id="display-start-time">
+            <p>0<span className="seconds-span">s</span></p>
+          </div>
+
+          <div className="display-time"></div>
+
+          <div className="display-time">
+            l
+          </div>
+
+          <div id="display-mid-time" className="display-time">
+            <p>8<span className="seconds-span">s</span></p>
+          </div>
+
+          <div className="display-time">
+            l
+          </div>
+
+          <div className="display-time"></div>
+
+          <div id="display-end-time">
+            <p>16<span className="seconds-span">s</span></p>
+          </div>
         </div>
       </div>
     );
