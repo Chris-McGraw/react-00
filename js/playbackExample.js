@@ -68,14 +68,15 @@ const playbackExample = [
 ];
 
 const playbackTestArray = [
-  // {kit: "kit3", key: "D", time: 242, pitch: 32}, {kit: "kit3", key: "D", time: 1694, pitch: 32},
-  {kit: "kit3", key: "D", time: 1694, pitch: 32, noteGain: 0.8},
-  {kit: "kit3", key: "D", time: 2662, pitch: 32, noteGain: 0.8},
+  {kit: "kit3", key: "D", time: 1694, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 2662, pitch: 32, noteGain: 0.8},
   {kit: "kit3", key: "D", time: 3872, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 4114, pitch: 32, noteGain: 0.8},
-  {kit: "kit3", key: "D", time: 5324, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 5566, pitch: 32, noteGain: 0.8},
-  {kit: "kit3", key: "D", time: 6534, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 7502, pitch: 32, noteGain: 0.8},
+  {kit: "kit3", key: "D", time: 5324, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 5566, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 6534, pitch: 32, noteGain: 0.8},
+  {kit: "kit3", key: "D", time: 7502, pitch: 32, noteGain: 0.8},
 
-  {kit: "kit3", key: "E", time: 1210, pitch: 0.25, noteGain: 0.5}, {kit: "kit3", key: "E", time: 3146, pitch: 0.25, noteGain: 0.5}, {kit: "kit3", key: "E", time: 5082, pitch: 0.25, noteGain: 0.5}, {kit: "kit3", key: "E", time: 7018, pitch: 0.25, noteGain: 0.5},
+  {kit: "kit3", key: "E", time: 1210, pitch: 0.25, noteGain: 0.5},
+  {kit: "kit3", key: "E", time: 3146, pitch: 0.25, noteGain: 0.5},
+  {kit: "kit3", key: "E", time: 5082, pitch: 0.25, noteGain: 0.5},
+  {kit: "kit3", key: "E", time: 7018, pitch: 0.25, noteGain: 0.5},
 
   {kit: "kit3", key: "Q", time: 2420, pitch: 0.5, noteGain: 0.6}, {kit: "kit3", key: "Q", time: 2480, pitch: 0.5, noteGain: 0.6}, {kit: "kit3", key: "Q", time: 2541, pitch: 0.5, noteGain: 0.6}, {kit: "kit3", key: "Q", time: 2601, pitch: 0.5, noteGain: 0.6},
   {kit: "kit3", key: "Q", time: 7260, pitch: 2, noteGain: 0.5}, {kit: "kit3", key: "Q", time: 7290, pitch: 2, noteGain: 0.5}, {kit: "kit3", key: "Q", time: 7320, pitch: 2, noteGain: 0.5}, {kit: "kit3", key: "Q", time: 7350, pitch: 2, noteGain: 0.5},
@@ -83,34 +84,32 @@ const playbackTestArray = [
   {kit: "kit1", key: "X", time: 2904, pitch: 0.5, noteGain: 0.8},
   {kit: "kit1", key: "X", time: 6776, pitch: 0.5, noteGain: 0.8},
 
-  // {kit: "kit2", key: "C", time: 242, pitch: 32}, {kit: "kit2", key: "C", time: 968, pitch: 8}, {kit: "kit2", key: "C", time: 1694, pitch: 2}, {kit: "kit2", key: "C", time: 2662, pitch: 2},
   {kit: "kit2", key: "C", time: 1694, pitch: 2, highPass: 500, lowPass: 2000}, {kit: "kit2", key: "C", time: 2662, pitch: 2, highPass: 500, lowPass: 2000},
   {kit: "kit2", key: "C", time: 3872, pitch: 1, highPass: 500, lowPass: 2000}, {kit: "kit2", key: "C", time: 4114, pitch: 2, highPass: 500, lowPass: 2000},
   {kit: "kit2", key: "C", time: 5566, pitch: 2, highPass: 500, lowPass: 2000}, {kit: "kit2", key: "C", time: 6534, pitch: 2, highPass: 500, lowPass: 2000},
-  // {kit: "kit1", key: "E", time: 7140, pitch: 0.125}, {kit: "kit1", key: "E", time: 7200, pitch: 0.125}, {kit: "kit1", key: "E", time: 7260, pitch: 0.125},
-  // {kit: "kit1", key: "E", time: 7502, pitch: 0.5}, {kit: "kit1", key: "E", time: 7744, pitch: 8},
 
   {kit: "kit1", key: "Z", time: 242, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 403, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 564, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 726, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 968, pitch: 0.125, noteGain: 0.8, lowPass: 5000},
   {kit: "kit1", key: "Z", time: 1210, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 1452, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 1694, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 1936, pitch: 0.125, noteGain: 0.8, lowPass: 5000},
   {kit: "kit1", key: "Z", time: 2178, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 2420, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 2662, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 2904, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 2964, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 3025, pitch: 0.125, noteGain: 0.8, lowPass: 5000},
   {kit: "kit1", key: "Z", time: 3146, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 3388, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 3630, pitch: 0.0625, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 3872, pitch: 0.0625, noteGain: 0.8, lowPass: 5000},
-// // -- measure 2
+  // -- pattern switch
   {kit: "kit1", key: "Z", time: 4114, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 4275, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 4436, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 4598, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 4840, pitch: 0.125, noteGain: 0.8, lowPass: 5000},
   {kit: "kit1", key: "Z", time: 5082, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 5324, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 5566, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 5808, pitch: 0.25, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 5868, pitch: 0.25, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 5929, pitch: 0.25, noteGain: 0.8, lowPass: 5000},
     {kit: "kit1", key: "Z", time: 5989, pitch: 0.25, noteGain: 0.8, lowPass: 5000},
   {kit: "kit1", key: "Z", time: 6050, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 6292, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 6534, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 6776, pitch: 0.125, noteGain: 0.8, lowPass: 5000},
   {kit: "kit1", key: "Z", time: 7018, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 7260, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 7502, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 7623, pitch: 0.0625, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 7744, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 7865, pitch: 0.03125, noteGain: 0.8, lowPass: 5000},
 //
-// -- REPEAT PATTERN
+// -- PHRASE 2
 //
-  {kit: "kit3", key: "D", time: 7986, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 9438, pitch: 32, noteGain: 0.8},
-  {kit: "kit3", key: "D", time: 10406, pitch: 32, noteGain: 0.8},
+  {kit: "kit3", key: "D", time: 7986, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 9438, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 10406, pitch: 32, noteGain: 0.8},
   {kit: "kit3", key: "D", time: 11616, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 11858, pitch: 32, noteGain: 0.8},
-  {kit: "kit3", key: "D", time: 13068, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 13310, pitch: 32, noteGain: 0.8},
-  {kit: "kit3", key: "D", time: 14278, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 15246, pitch: 32, noteGain: 0.8},
-  // {kit: "kit3", key: "D", time: 14278, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 15488, pitch: 32, noteGain: 0.8},
+  {kit: "kit3", key: "D", time: 13068, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 13310, pitch: 32, noteGain: 0.8}, {kit: "kit3", key: "D", time: 14278, pitch: 32, noteGain: 0.8},
+  {kit: "kit3", key: "D", time: 15246, pitch: 32, noteGain: 0.8},
 
-  {kit: "kit3", key: "E", time: 8954, pitch: 0.25, noteGain: 0.5}, {kit: "kit3", key: "E", time: 10890, pitch: 0.25, noteGain: 0.5}, {kit: "kit3", key: "E", time: 12826, pitch: 0.25, noteGain: 0.5}, {kit: "kit3", key: "E", time: 14762, pitch: 0.25, noteGain: 0.5},
+  {kit: "kit3", key: "E", time: 8954, pitch: 0.25, noteGain: 0.5},
+  {kit: "kit3", key: "E", time: 10890, pitch: 0.25, noteGain: 0.5},
+  {kit: "kit3", key: "E", time: 12826, pitch: 0.25, noteGain: 0.5},
+  {kit: "kit3", key: "E", time: 14762, pitch: 0.25, noteGain: 0.5},
 
   {kit: "kit3", key: "Q", time: 10164, pitch: 0.5, noteGain: 0.6}, {kit: "kit3", key: "Q", time: 10224, pitch: 0.5, noteGain: 0.6}, {kit: "kit3", key: "Q", time: 10285, pitch: 0.5, noteGain: 0.6}, {kit: "kit3", key: "Q", time: 10345, pitch: 0.5, noteGain: 0.6},
   {kit: "kit3", key: "Q", time: 15004, pitch: 2, noteGain: 0.5}, {kit: "kit3", key: "Q", time: 15034, pitch: 2, noteGain: 0.5}, {kit: "kit3", key: "Q", time: 15064, pitch: 2, noteGain: 0.5}, {kit: "kit3", key: "Q", time: 15094, pitch: 2, noteGain: 0.5},
@@ -118,18 +117,16 @@ const playbackTestArray = [
   {kit: "kit1", key: "X", time: 10648, pitch: 0.5, noteGain: 0.8},
   {kit: "kit1", key: "X", time: 14520, pitch: 0.5, noteGain: 0.8},
 
-  {kit: "kit2", key: "C", time: 7986, pitch: 32, highPass: 500, lowPass: 2000}, {kit: "kit2", key: "C", time: 8712, pitch: 8, highPass: 500, lowPass: 2000}, {kit: "kit2", key: "C", time: 9438, pitch: 2, highPass: 500, lowPass: 2000}, {kit: "kit2", key: "C", time: 10406, pitch: 2, highPass: 500, lowPass: 2000},
+  {kit: "kit2", key: "C", time: 7986, pitch: 32, highPass: 500, lowPass: 2000}, {kit: "kit2", key: "C", time: 8712, pitch: 8, highPass: 500, lowPass: 2000},
+  {kit: "kit2", key: "C", time: 9438, pitch: 2, highPass: 500, lowPass: 2000}, {kit: "kit2", key: "C", time: 10406, pitch: 2, highPass: 500, lowPass: 2000},
   {kit: "kit2", key: "C", time: 11616, pitch: 1, highPass: 500, lowPass: 2000}, {kit: "kit2", key: "C", time: 11858, pitch: 2, highPass: 500, lowPass: 2000},
   {kit: "kit2", key: "C", time: 13310, pitch: 2, highPass: 500, lowPass: 2000}, {kit: "kit2", key: "C", time: 14278, pitch: 2, highPass: 500, lowPass: 2000},
-  // {kit: "kit2", key: "C", time: 14762, pitch: 0.125}, {kit: "kit2", key: "C", time: 14883, pitch: 0.125}, {kit: "kit2", key: "C", time: 15004, pitch: 0.125},
-  // {kit: "kit2", key: "C", time: 15246, pitch: 0.5}, {kit: "kit2", key: "C", time: 15488, pitch: 8},
-
 
   {kit: "kit1", key: "Z", time: 7986, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 8147, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 8308, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 8470, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 8712, pitch: 0.125, noteGain: 0.8, lowPass: 5000},
   {kit: "kit1", key: "Z", time: 8954, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 9196, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 9438, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 9680, pitch: 0.125, noteGain: 0.8, lowPass: 5000},
   {kit: "kit1", key: "Z", time: 9922, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 10164, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 10406, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 10648, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 10708, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 10769, pitch: 0.125, noteGain: 0.8, lowPass: 5000},
   {kit: "kit1", key: "Z", time: 10890, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 11132, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 11374, pitch: 0.0625, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 11616, pitch: 0.0625, noteGain: 0.8, lowPass: 5000},
-// // -- measure 2?
+  // -- pattern switch
   {kit: "kit1", key: "Z", time: 11858, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 12019, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 12180, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 12342, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 12584, pitch: 0.125, noteGain: 0.8, lowPass: 5000},
   {kit: "kit1", key: "Z", time: 12826, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 13068, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 13310, pitch: 0.125, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 13552, pitch: 0.25, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 13612, pitch: 0.25, noteGain: 0.8, lowPass: 5000}, {kit: "kit1", key: "Z", time: 13673, pitch: 0.25, noteGain: 0.8, lowPass: 5000},
     {kit: "kit1", key: "Z", time: 13733, pitch: 0.25, noteGain: 0.8, lowPass: 5000},
