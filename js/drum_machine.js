@@ -18,6 +18,7 @@ const audioKitSourceArray3 = ["audio/hats/hihatwork.mp3", "audio/hats/openhatrev
 const masterAudioKitSourceArray = [audioKitSourceArray1, audioKitSourceArray2, audioKitSourceArray3];
 
 // localStorage.clear();
+// localStorage.removeItem("track1");
 console.log(localStorage);
 
 let initializeLocalStorage = function() {
