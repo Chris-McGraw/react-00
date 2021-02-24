@@ -513,6 +513,11 @@ class DrumMachine extends React.Component {
         this.playbackInterval = setInterval(function() {
           // ***** PLAYBACK CONTINUES *****
           if(this.state.audioCtx.currentTime < targetTime) {
+            // check if context is in suspended state (autoplay policy)
+            if(this.state.audioCtx.state === "suspended") {
+              this.state.audioCtx.resume();
+            }
+
             this.scheduler();
           }
           // ***** PLAYBACK FINISHED ******
