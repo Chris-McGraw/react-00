@@ -18,15 +18,21 @@ const audioKitSourceArray3 = ["audio/hats/hihatwork.mp3", "audio/hats/openhatrev
 const masterAudioKitSourceArray = [audioKitSourceArray1, audioKitSourceArray2, audioKitSourceArray3];
 
 // localStorage.clear();
-// localStorage.removeItem("track1");
+localStorage.removeItem("track1");
 console.log(localStorage);
 
 let initializeLocalStorage = function() {
+  // if(localStorage.getItem("track1") === null) {
+  //   let arr = playbackExample;
+  //
+  //   localStorage.setItem("track1", JSON.stringify(arr));
+  // }
   if(localStorage.getItem("track1") === null) {
-    let arr = playbackExample;
+    let arr = [];
 
     localStorage.setItem("track1", JSON.stringify(arr));
   }
+
   if(localStorage.getItem("track2") === null) {
     let arr = [];
 
@@ -314,6 +320,7 @@ class DrumMachine extends React.Component {
       let arr = JSON.parse(localStorage.getItem(this.state.currentTrack));
 
       arr.push({kit: this.state.currentKit, key:key,
+        idKey: this.state.currentKit + "-" + key +  "-" + String( new Date().getTime() ),
         pitch:this.state.currentPitch, noteGain:this.state.currentGain,
         highPass:this.state.currentHighPass, lowPass:this.state.currentLowPass,
         time:(this.state.audioCtx.currentTime - this.state.recordingStartTime) * 1000

@@ -8,7 +8,7 @@ class DisplayLeft extends React.Component {
   mapNoteBlocks(key, kit) {
     return this.props.playbackArr.filter(i =>
       i.key === key && i.kit === kit).map(i =>
-        <div key={i.kit + i.key + i.time} className={this.noteBlockStyle()}
+        <div key={i.idKey} className={this.noteBlockStyle()}
         style={{left: ( (i.time / 1600).toFixed(1) * 10 ) + "%",
         backgroundColor: sampleKits[i.kit][i.key].noteColor}}></div>
     );
