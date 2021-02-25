@@ -511,16 +511,20 @@ class DrumMachine extends React.Component {
         let startTime = this.state.audioCtx.currentTime;
         let targetTime = this.state.audioCtx.currentTime + 16.0;
 
+        // check if context is in suspended state (autoplay policy)
+        if(this.state.audioCtx.state === "suspended") {
+          this.state.audioCtx.resume();
+        }
+
         this.playbackInterval = setInterval(function() {
           // ***** PLAYBACK CONTINUES *****
-          if(this.state.audioCtx.currentTime < targetTime) {
-            // check if context is in suspended state (autoplay policy)
-            if(this.state.audioCtx.state === "suspended") {
-              this.state.audioCtx.resume();
-            }
-
+          if(this.state.nowPlaying === true && this.state.currentNoteNumber < this.state.playbackArrCopy.length) {
             this.scheduler();
           }
+          else if(this.state.nowRecording === true && this.state.audioCtx.currentTime < targetTime) {
+            this.scheduler();
+          }
+
           // ***** PLAYBACK FINISHED ******
           else {
             clearInterval(this.playbackInterval);
