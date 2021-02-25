@@ -28,7 +28,7 @@ let initializeLocalStorage = function() {
   //   localStorage.setItem("track1", JSON.stringify(arr));
   // }
   if(localStorage.getItem("track1") === null) {
-    let arr = [];
+    let arr = playbackExample;
 
     localStorage.setItem("track1", JSON.stringify(arr));
   }
