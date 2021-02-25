@@ -18,21 +18,15 @@ const audioKitSourceArray3 = ["audio/hats/hihatwork.mp3", "audio/hats/openhatrev
 const masterAudioKitSourceArray = [audioKitSourceArray1, audioKitSourceArray2, audioKitSourceArray3];
 
 // localStorage.clear();
-localStorage.removeItem("track1");
+// localStorage.removeItem("track1");
 console.log(localStorage);
 
 let initializeLocalStorage = function() {
-  // if(localStorage.getItem("track1") === null) {
-  //   let arr = playbackExample;
-  //
-  //   localStorage.setItem("track1", JSON.stringify(arr));
-  // }
   if(localStorage.getItem("track1") === null) {
     let arr = playbackExample;
 
     localStorage.setItem("track1", JSON.stringify(arr));
   }
-
   if(localStorage.getItem("track2") === null) {
     let arr = [];
 
