@@ -19,7 +19,7 @@ const masterAudioKitSourceArray = [audioKitSourceArray1, audioKitSourceArray2, a
 
 // localStorage.clear();
 // localStorage.removeItem("track1");
-console.log(localStorage);
+// console.log(localStorage);
 
 let initializeLocalStorage = function() {
   if(localStorage.getItem("track1") === null) {
@@ -143,10 +143,10 @@ class DrumMachine extends React.Component {
       if(this.state.nowRecording === true) {
         clearTimeout(this.recordingFinishTimeout);
 
-        console.log("RECORDING STOPPED");
+        // console.log("RECORDING STOPPED");
       }
       if(this.state.nowPlaying === true) {
-        console.log("PLAYBACK STOPPED");
+        // console.log("PLAYBACK STOPPED");
       }
     }
     else {
@@ -249,7 +249,7 @@ class DrumMachine extends React.Component {
       });
 
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
-      console.log("RECORDING DELETED");
+      // console.log("RECORDING DELETED");
     }
   }
 
@@ -270,7 +270,7 @@ class DrumMachine extends React.Component {
           this.setPlaybackArrUndone();
 
           // console.log("recording time end: " + this.state.audioCtx.currentTime);
-          console.log("RECORDING FINISHED");
+          // console.log("RECORDING FINISHED");
         }.bind(this), 16000);
       }
       else if(this.state.playbackArr.length > 0) {
@@ -278,7 +278,7 @@ class DrumMachine extends React.Component {
       }
 
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0)";
-      console.log("RECORDING STARTED");
+      // console.log("RECORDING STARTED");
       // console.log("recording time start: " + this.state.audioCtx.currentTime);
     }
   }
@@ -504,8 +504,8 @@ class DrumMachine extends React.Component {
           nextNoteTime: this.state.audioCtx.currentTime + (this.state.playbackArrCopy[this.state.currentNoteNumber].time / 1000)
         });
 
-        console.log("PLAYBACK STARTED");
-        console.log( this.state.playbackArrCopy );
+        // console.log("PLAYBACK STARTED");
+        // console.log( this.state.playbackArrCopy );
         // console.log("start time:" + this.state.audioCtx.currentTime);
 
         let startTime = this.state.audioCtx.currentTime;
@@ -529,7 +529,7 @@ class DrumMachine extends React.Component {
           else {
             clearInterval(this.playbackInterval);
             // console.log("end time:" + this.state.audioCtx.currentTime);
-            console.log("PLAYBACK FINISHED");
+            // console.log("PLAYBACK FINISHED");
 
             // ***** LOOP PLAYBACK ******
             if(this.state.nowRecording === false) {
@@ -549,7 +549,7 @@ class DrumMachine extends React.Component {
 
               this.setPlaybackArrUndone();
 
-              console.log("RECORDING FINISHED");
+              // console.log("RECORDING FINISHED");
             }
           }
         }.bind(this), this.state.lookahead);
@@ -568,7 +568,7 @@ class DrumMachine extends React.Component {
       this.setPlaybackArrUndone();
 
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
-      console.log("RECORDING STOPPED");
+      // console.log("RECORDING STOPPED");
     }
 
     if(this.state.power === "on" && this.state.nowPlaying === true) {
@@ -579,7 +579,7 @@ class DrumMachine extends React.Component {
       clearInterval(this.playbackInterval);
 
       event.currentTarget.style.boxShadow = "4px 4px 6px rgba(0,0,0, 1.0), inset 0 0 100px 100px rgba(255, 255, 255, 0.5)";
-      console.log("PLAYBACK STOPPED");
+      // console.log("PLAYBACK STOPPED");
     }
   }
 
@@ -590,7 +590,7 @@ class DrumMachine extends React.Component {
       playbackArr: JSON.parse(localStorage.getItem(this.state.currentTrack))
     });
 
-    console.log("UNDO");
+    // console.log("UNDO");
   }
 
   componentDidMount() {
@@ -607,10 +607,7 @@ class DrumMachine extends React.Component {
             }
           });
 
-          console.log("audio sample kit files loaded");
-          // console.log(this.state.audioSampleKit1);
-          // console.log(this.state.audioSampleKit2);
-          // console.log(this.state.audioSampleKit3);
+          // console.log("audio sample kit files loaded");
       });
     });
   }
